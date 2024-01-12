@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) // Clicking in left mouse button
         {
             difference = _camera.ScreenToWorldPoint(Input.mousePosition) - _camera.transform.position;
 
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-        else
+        else // If not clicking in left mouse button drag = false
         {
             drag = false;
         }
