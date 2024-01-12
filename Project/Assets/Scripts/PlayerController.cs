@@ -2,52 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Supinfo.Project
 {
-    private Camera _camera;
-
-    private Vector3 _cameraOriginalPos;
-    private Vector3 _origin;
-    private Vector3 _difference;
-
-    private bool _drag = false;
-    
-    // Start is called before the first frame update
-    void Awake()
+    public class PlayerController : MonoBehaviour
     {
-        _camera = Camera.main;
-        _cameraOriginalPos= _camera.transform.position;
+        private Camera _camera;
 
-    }
+        private Vector3 _cameraOriginalPos;
+        private Vector3 _origin;
+        private Vector3 _difference;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButton(0)) // Clicking in left mouse button
+        private bool _drag = false;
+        
+        // Start is called before the first frame update
+        void Awake()
         {
-            _difference = _camera.ScreenToWorldPoint(Input.mousePosition) - _camera.transform.position;
+            _camera = Camera.main;
+            _cameraOriginalPos= _camera.transform.position;
 
-            if (_drag == false)
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetMouseButton(0)) // Clicking in left mouse button
             {
-                _drag = true;
-                _origin = _camera.ScreenToWorldPoint(Input.mousePosition);
+                _difference = _camera.ScreenToWorldPoint(Input.mousePosition) - _camera.transform.position;
+
+                if (_drag == false)
+                {
+                    _drag = true;
+                    _origin = _camera.ScreenToWorldPoint(Input.mousePosition);
+                }
+                
             }
-            
-        }
-        else // If not clicking in left mouse button drag = false
-        {
-            _drag = false;
+            else // If not clicking in left mouse button drag = false
+            {
+                _drag = false;
+            }
+
+            if (_drag)
+            {
+                MoveCameraHorizontally(_difference.x);
+            }
         }
 
-        if (_drag)
+        private void MoveCameraHorizontally(float offset)
         {
-            MoveCameraHorizontally(_difference.x);
+            // move camera horizontally
+            _camera.transform.position = new Vector3(_origin.x - offset,_cameraOriginalPos.y, _origin.z);
         }
-    }
-
-    private void MoveCameraHorizontally(float offset)
-    {
-        // move camera horizontally
-        _camera.transform.position = new Vector3(_origin.x - offset,_cameraOriginalPos.y, _origin.z);
     }
 }

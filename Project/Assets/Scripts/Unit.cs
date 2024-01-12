@@ -2,34 +2,37 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Unit : MonoBehaviour
+namespace Supinfo.Project
 {
-    
-    // Public
-    public int speed = 2;
-    
-    public Vector3 direction;
+    public class Unit : MonoBehaviour
+    {
 
-    // Private
-    
-    
-    // Public methods
-    
-    public void SetDirection(Vector3 dir)
-    {
-        direction = dir;
-    }
-    
-    // MonoBehaviour methods
-    private void Start()
-    {
-        Debug.Log("unit direction: " + direction);
-    }
+        // Public
+        public int speed = 2;
 
-    private void Update()
-    {
-        transform.Translate(speed * Time.deltaTime * direction);
+        public Vector3 direction;
+
+        // Private
+
+
+        // Public methods
+
+        public void SetDirection(Vector3 dir)
+        {
+            direction = dir;
+        }
+
+        // MonoBehaviour methods
+        private void Start()
+        {
+            Debug.Log("unit direction: " + direction);
+        }
+
+        private void Update()
+        {
+            transform.Translate(speed * Time.deltaTime * direction);
+        }
+
+        // Private methods
     }
-    
-    // Private methods
 }
