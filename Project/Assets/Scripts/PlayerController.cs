@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Camera _camera;
+    private Camera _camera;
 
     private Vector3 origin;
     private Vector3 difference;
