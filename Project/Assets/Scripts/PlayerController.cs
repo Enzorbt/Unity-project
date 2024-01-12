@@ -19,7 +19,6 @@ namespace Supinfo.Project
         {
             _camera = Camera.main;
             _cameraOriginalPos= _camera.transform.position;
-
         }
 
         // Update is called once per frame
