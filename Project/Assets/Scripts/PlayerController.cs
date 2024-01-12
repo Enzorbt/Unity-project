@@ -6,15 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     private Camera _camera;
 
-    private Vector3 origin;
-    private Vector3 difference;
+    private Vector3 _cameraOriginalPos;
+    private Vector3 _origin;
+    private Vector3 _difference;
 
-    private bool drag = false;
+    private bool _drag = false;
     
     // Start is called before the first frame update
     void Awake()
     {
         _camera = Camera.main;
+        _cameraOriginalPos= _camera.transform.position;
+
     }
 
     // Update is called once per frame
@@ -22,29 +25,29 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButton(0)) // Clicking in left mouse button
         {
-            difference = _camera.ScreenToWorldPoint(Input.mousePosition) - _camera.transform.position;
+            _difference = _camera.ScreenToWorldPoint(Input.mousePosition) - _camera.transform.position;
 
-            if (drag == false)
+            if (_drag == false)
             {
-                drag = true;
-                origin = _camera.ScreenToWorldPoint(Input.mousePosition);
+                _drag = true;
+                _origin = _camera.ScreenToWorldPoint(Input.mousePosition);
             }
             
         }
         else // If not clicking in left mouse button drag = false
         {
-            drag = false;
+            _drag = false;
         }
 
-        if (drag)
+        if (_drag)
         {
-            MoveCameraHorizontally(difference.x);
+            MoveCameraHorizontally(_difference.x);
         }
     }
 
-    public void MoveCameraHorizontally(float offset)
+    private void MoveCameraHorizontally(float offset)
     {
         // move camera horizontally
-        _camera.transform.position = new Vector3(origin.x - offset,origin.y, origin.z);
+        _camera.transform.position = new Vector3(_origin.x - offset,_cameraOriginalPos.y, _origin.z);
     }
 }
