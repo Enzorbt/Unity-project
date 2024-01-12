@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Camera camera_;
+    public Camera _camera;
 
     private Vector3 origin;
     private Vector3 difference;
@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     private bool drag = false;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        _camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -22,12 +22,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            difference = camera_.ScreenToWorldPoint(Input.mousePosition) - camera_.transform.position;
+            difference = _camera.ScreenToWorldPoint(Input.mousePosition) - _camera.transform.position;
 
             if (drag == false)
             {
                 drag = true;
-                origin = camera_.ScreenToWorldPoint(Input.mousePosition);
+                origin = _camera.ScreenToWorldPoint(Input.mousePosition);
             }
             
         }
@@ -38,10 +38,13 @@ public class PlayerController : MonoBehaviour
 
         if (drag)
         {
-            // camera_.transform.position = origin - difference;
-            camera_.transform.position = new Vector3(origin.x - difference.x,0, origin.z);
+            MoveCameraHorizontally(difference.x);
         }
-        
-        
+    }
+
+    public void MoveCameraHorizontally(float offset)
+    {
+        // move camera horizontally
+        _camera.transform.position = new Vector3(origin.x - offset,0, origin.z);
     }
 }
