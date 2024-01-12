@@ -45,6 +45,6 @@ public class PlayerController : MonoBehaviour
     public void MoveCameraHorizontally(float offset)
     {
         // move camera horizontally
-        _camera.transform.position = new Vector3(origin.x - offset,0, origin.z);
+        _camera.transform.position = new Vector3(origin.x - offset,origin.y, origin.z);
     }
 }
