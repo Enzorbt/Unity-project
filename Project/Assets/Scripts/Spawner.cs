@@ -21,6 +21,7 @@ namespace Supinfo.Project
         private Vector3 _spawnPosition;
 
         private int _spawnNumber;
+        private int _spawnLimit = 10;
 
         private SpriteRenderer _unitSpriteRenderer;
 
@@ -56,7 +57,7 @@ namespace Supinfo.Project
         // Private methods
         private bool CanSpawn()
         {
-            return _spawnNumber < 10 && !_isCooldown;
+            return _spawnNumber < _spawnLimit && !_isCooldown;
         }
 
 
@@ -69,8 +70,10 @@ namespace Supinfo.Project
             yield return new WaitForSeconds(time);
 
             unit.GetComponent<Unit>().SetDirection(direction);
+            
             // faire spawn une unité
             Instantiate(unit, _spawnPosition, new Quaternion());
+            
             _spawnNumber++;
 
             _isCooldown = false;
