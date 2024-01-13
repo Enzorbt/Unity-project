@@ -7,30 +7,38 @@ namespace Supinfo.Project
     public class Unit : MonoBehaviour
     {
 
-        // Public
+        // Public fields
         public int speed = 2;
 
-        public Vector3 direction;
+        private Vector3 _direction;
 
-        // Private
+        // Private fields
 
 
         // Public methods
-
-        public void SetDirection(Vector3 dir)
-        {
-            direction = dir;
-        }
+        
 
         // MonoBehaviour methods
+        private void Awake()
+        {
+            if (transform.position.x > 0)
+            {
+                _direction = Vector3.left;
+            }
+            else
+            {
+                _direction = Vector3.right;
+            }
+        }
+
         private void Start()
         {
-            Debug.Log("unit direction: " + direction);
+            Debug.Log("unit direction: " + _direction);
         }
 
         private void Update()
         {
-            transform.Translate(speed * Time.deltaTime * direction);
+            transform.Translate(speed * Time.deltaTime * _direction);
         }
 
         // Private methods
