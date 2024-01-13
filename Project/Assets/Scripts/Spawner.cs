@@ -9,14 +9,14 @@ namespace Supinfo.Project
     /// </summary>
     public class Spawner : MonoBehaviour
     {
-        // Public
+        // Public fields
         public GameObject unit;
 
         public int cooldownTime = 2;
 
         public Vector3 direction;
 
-        // Private
+        // Private fields
 
         private Vector3 _spawnPosition;
 
@@ -69,9 +69,8 @@ namespace Supinfo.Project
             // Wait for "time" seconds
             yield return new WaitForSeconds(time);
 
-            unit.GetComponent<Unit>().SetDirection(direction);
-            
-            // faire spawn une unité
+            // spawn a unit
+                // For later: if we need a reference to this particular unit use : "GameObject unitSpawned =" before the Instantiate
             Instantiate(unit, _spawnPosition, new Quaternion());
             
             _spawnNumber++;
