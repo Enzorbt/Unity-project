@@ -27,6 +27,9 @@ namespace Supinfo.Project
 
         private bool _isCooldown = false;
 
+        private Transform _unitsContainer;
+        private Vector3 _transformLocalScale;
+
         // Public methods
 
 
@@ -36,6 +39,7 @@ namespace Supinfo.Project
             _unitSpriteRenderer = unit.GetComponent<SpriteRenderer>();
             Bounds spriteBounds = _unitSpriteRenderer.bounds;
             Vector3 childObjectPosition = transform.Find("SpawnPoint").transform.position;
+            _unitsContainer = transform.Find("Units").transform;
 
             float posX = childObjectPosition.x;
             float posY = childObjectPosition.y + spriteBounds.extents.y;
@@ -70,8 +74,13 @@ namespace Supinfo.Project
             yield return new WaitForSeconds(time);
 
             // spawn a unit
-                // For later: if we need a reference to this particular unit use : "GameObject unitSpawned =" before the Instantiate
-            Instantiate(unit, _spawnPosition, new Quaternion());
+                // reference the instantiated object to keep track of it 
+            GameObject unitSpawned = Instantiate(unit, _spawnPosition, new Quaternion(), _unitsContainer);
+            
+            // changing the localScale of the instantiated object because scale is proportional to the scale of the parent (here castle who is bigger) so object scale becomes object scale / parent scale.
+            _transformLocalScale = transform.localScale;
+            Vector3 unitSpawnedLocalScale = unitSpawned.transform.localScale;
+            unitSpawned.transform.localScale = new Vector3(unitSpawnedLocalScale.x/_transformLocalScale.x, unitSpawnedLocalScale.y/_transformLocalScale.y, unitSpawnedLocalScale.z/_transformLocalScale.z);
             
             _spawnNumber++;
 
