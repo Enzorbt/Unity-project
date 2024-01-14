@@ -1,4 +1,5 @@
 using System;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,7 +14,7 @@ namespace Supinfo.Project
         private Vector3 _direction;
 
         // Private fields
-
+        private UnitData _unitData;
 
         // Public methods
         
@@ -34,11 +35,13 @@ namespace Supinfo.Project
         private void Start()
         {
             Debug.Log("unit direction: " + _direction);
+            // loading scriptable objects must be done in the Start function and not Awake, otherwise an error is thrown 
+            _unitData = Resources.Load<UnitData>("Units/MeleeData");
         }
 
         private void Update()
         {
-            transform.Translate(speed * Time.deltaTime * _direction);
+            transform.Translate(_unitData.WalkSpeed.GetValue() * Time.deltaTime * _direction);
         }
 
         // Private methods

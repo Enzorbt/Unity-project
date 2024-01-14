@@ -8,17 +8,6 @@ namespace Supinfo.Project.Stats
     [Serializable]
     public class Stat
     {
-        private float _value;
-        public float GetValue(int age, int upgrades)
-        {
-            if(_isDirty || lastBaseValue != BaseValue) {
-                lastBaseValue = BaseValue;
-                _value = CalculateFinalValue(age, upgrades);
-                _isDirty = false; // here we check if the value is dirty, if so we clean it
-            }
-            return _value;
-        }
-
         [SerializeField] 
         protected float baseValue;
         protected float BaseValue
@@ -27,8 +16,20 @@ namespace Supinfo.Project.Stats
             set => baseValue = value;
         }
 
-        private float lastBaseValue = float.MinValue;
-        protected bool _isDirty = true;
+        private float _lastBaseValue = float.MinValue;
+        protected bool isDirty = true;
+        
+        private float _value;
+        public float GetValue(int age = 0, int upgrades = 0)
+        {
+            if(isDirty || _lastBaseValue != BaseValue) {
+                Debug.Log("Value is calculated");
+                _lastBaseValue = BaseValue;
+                _value = CalculateFinalValue(age, upgrades);
+                isDirty = false; // here we check if the value is dirty, if so we clean it
+            }
+            return _value;
+        }
         
         // we can access statModifiers in the class as it is protected and use StatModifier which is read-only outside the class as it is a reference and will be changed according to changes in statModifiers
         [SerializeField]
@@ -58,7 +59,7 @@ namespace Supinfo.Project.Stats
         // for script base assignation and handling need change to handle age vs upgrade
         public virtual void AddModifier(StatModifier mod)
         {
-            _isDirty = true;
+            isDirty = true;
             ageStatModifiers.Add(mod);
             ageStatModifiers.Sort(CompareModifierOrder);
         }
@@ -67,7 +68,7 @@ namespace Supinfo.Project.Stats
         {
             if (ageStatModifiers.Remove(mod))
             {
-                _isDirty = true;
+                isDirty = true;
                 return true;
             }
             return false;
@@ -150,7 +151,7 @@ namespace Supinfo.Project.Stats
             {
                 if (ageStatModifiers[i].Source == source)
                 {
-                    _isDirty = true;
+                    isDirty = true;
                     wasRemoved = true;
                     ageStatModifiers.RemoveAt(i);
                 }

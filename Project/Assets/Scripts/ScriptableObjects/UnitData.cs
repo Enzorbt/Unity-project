@@ -22,7 +22,7 @@ namespace ScriptableObjects
         [Header("General properties")]
         // sprite data can be stored in the prefab or here
         [SerializeField]
-        private GameObject _prefab;
+        private GameObject[] _prefab;
         
         
         //--------- Characteristics ---------

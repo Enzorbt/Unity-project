@@ -12,41 +12,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98f448f2d7f66c4ea849875ca51ab9e, type: 3}
   m_Name: MeleeData
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
+  _prefab:
+  - {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
   _type: 0
   _price:
     baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    upgradeStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
   _damage:
     baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    - value: 0
+      type: 0
+      order: 0
+    upgradeStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
   _hitSpeed:
     baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    upgradeStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
   _buildTime:
     baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    upgradeStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
   _walkSpeed:
-    baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    baseValue: 20
+    ageStatModifiers:
+    - value: 10
+      type: 200
+      order: 0
+    upgradeStatModifiers:
+    - value: 20
+      type: 200
+      order: 1
   _range:
     baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    upgradeStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
   _hitPoints:
     baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    upgradeStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
   _goldGiven:
     baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    upgradeStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
   _experienceGiven:
     baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    upgradeStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
