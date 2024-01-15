@@ -1,7 +1,7 @@
-using ScriptableObjects;
+using Supinfo.Project.Scripts.ScriptableObjects;
 using UnityEngine;
 
-namespace Supinfo.Project
+namespace Supinfo.Project.Scripts
 {
     public class Unit : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Supinfo.Project.Stats
+namespace Supinfo.Project.Scripts.Stats
 {
     [Serializable]
     public enum StatModType

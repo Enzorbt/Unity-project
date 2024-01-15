@@ -1,9 +1,8 @@
 using System;
-using Supinfo.Project.Stats;
-using UnityEditor.SceneManagement;
+using Supinfo.Project.Scripts.Stats;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace Supinfo.Project.Scripts.ScriptableObjects
 {
     /// <summary>
     ///  UnitType represents the unit's type a unit can be

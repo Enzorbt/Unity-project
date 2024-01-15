@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Supinfo.Project
+namespace Supinfo.Project.Scripts
 {
     /// <summary>
     /// The Spawner class handles the spawn of the units in the scene

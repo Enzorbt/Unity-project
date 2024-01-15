@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
-namespace Supinfo.Project.Stats
+namespace Supinfo.Project.Scripts.Stats
 {
     [Serializable]
     public class Stat

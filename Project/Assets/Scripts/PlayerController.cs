@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Supinfo.Project
+namespace Supinfo.Project.Scripts
 {
     public class PlayerController : MonoBehaviour
     {
