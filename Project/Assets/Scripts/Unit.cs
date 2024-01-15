@@ -10,8 +10,8 @@ namespace Supinfo.Project.Scripts
 
         // Private fields
         private Vector3 _direction;
-        
-        private readonly UnitData _unitData = Resources.Load<UnitData>("Units/MeleeData");
+
+        private UnitData _unitData;
 
         private float _speed;
         
@@ -33,6 +33,9 @@ namespace Supinfo.Project.Scripts
                 _direction = Vector3.right;
             }
 
+            // fetching a reference to MeleeData
+            _unitData = Resources.Load<UnitData>("Units/MeleeData");
+            
             _speed = _unitData.WalkSpeed.GetValue(_age,_upgrades);
         }
 
