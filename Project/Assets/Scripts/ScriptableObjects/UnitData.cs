@@ -1,9 +1,13 @@
 using System;
 using Supinfo.Project.Stats;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace ScriptableObjects
 {
+    /// <summary>
+    ///  UnitType represents the unit's type a unit can be
+    /// </summary>
     [Serializable]
     public enum UnitType
     {
@@ -12,63 +16,54 @@ namespace ScriptableObjects
         AntiArmor,
         Armor,
     }
+    
     /// <summary>
-    ///  
+    ///  UnitData is the ScriptableObject that is used to store data for the different unit's types.
     /// </summary>
     [CreateAssetMenu(fileName = "UnitData", menuName = "ScriptableObject/Units/UnitData", order = 1)]
     public class UnitData : ScriptableObject
     {
+        
+        
         //--------- General properties ---------
         [Header("General properties")]
         // sprite data can be stored in the prefab or here
-        [SerializeField]
-        private GameObject[] _prefab;
-        
+        [SerializeField] private GameObject[] prefabs;
+        public GameObject[] Prefab => prefabs;
         
         //--------- Characteristics ---------
         [Header("Characteristics")] 
-        [SerializeField]
-        private UnitType _type;
-        public UnitType Type => _type;
+        [SerializeField] private UnitType type;
+        public UnitType Type => type;
+        
+        [SerializeField] private Stat walkSpeed;
+        public Stat WalkSpeed => walkSpeed;
 
-        [SerializeField] 
-        private Stat _price;
-        public Stat Price => _price;
-        [SerializeField]
-        private Stat _damage;
-
-        public Stat Damage => _damage;
-        [SerializeField]
-        private Stat _hitSpeed;
-
-        public Stat HitSpeed => _hitSpeed;
-        [SerializeField]
-        private Stat _buildTime;
-
-        public Stat BuildTime => _buildTime;
-        [SerializeField]
-        private Stat _walkSpeed;
-
-        public Stat WalkSpeed => _walkSpeed;
-        [SerializeField]
-        private Stat _range;
-
-        public Stat Range => _range;
-        [SerializeField]
-        private Stat _hitPoints;
-
-        public Stat HitPoints => _hitPoints;
+        [SerializeField] private Stat price;
+        public Stat Price => price;
+        
+        [SerializeField] private Stat damage;
+        public Stat Damage => damage;
+        
+        [SerializeField] private Stat hitSpeed;
+        public Stat HitSpeed => hitSpeed;
+        
+        [SerializeField] private Stat buildTime;
+        public Stat BuildTime => buildTime;
+        
+        [SerializeField] private Stat range;
+        public Stat Range => range;
+        
+        [SerializeField] private Stat hitPoints;
+        public Stat HitPoints => hitPoints;
 
         //--------- Rewards upon killing ---------
         [Header("Rewards upon killing")]
-        [SerializeField]
-        private Stat _goldGiven;
-
-        public Stat GoldGiven => _goldGiven;
-        [SerializeField]
-        private Stat _experienceGiven;
-
-        public Stat ExperienceGiven => _experienceGiven;
+        [SerializeField] private Stat goldGiven;
+        public Stat GoldGiven => goldGiven;
+        
+        [SerializeField] private Stat experienceGiven;
+        public Stat ExperienceGiven => experienceGiven;
     }
 }
 

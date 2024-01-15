@@ -1,7 +1,5 @@
-using System;
 using ScriptableObjects;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Supinfo.Project
 {
@@ -9,12 +7,16 @@ namespace Supinfo.Project
     {
 
         // Public fields
-        public int speed = 2;
-
-        private Vector3 _direction;
 
         // Private fields
-        private UnitData _unitData;
+        private Vector3 _direction;
+        
+        private readonly UnitData _unitData = Resources.Load<UnitData>("Units/MeleeData");
+
+        private float _speed;
+        
+        private int _age = 0;
+        private int _upgrades = 0;
 
         // Public methods
         
@@ -30,20 +32,25 @@ namespace Supinfo.Project
             {
                 _direction = Vector3.right;
             }
+
+            _speed = _unitData.WalkSpeed.GetValue(_age,_upgrades);
         }
 
         private void Start()
-        {
-            Debug.Log("unit direction: " + _direction);
-            // loading scriptable objects must be done in the Start function and not Awake, otherwise an error is thrown 
-            _unitData = Resources.Load<UnitData>("Units/MeleeData");
+        { 
+            
         }
 
         private void Update()
         {
-            transform.Translate(_unitData.WalkSpeed.GetValue() * Time.deltaTime * _direction);
+            Move();
         }
 
         // Private methods
+
+        private void Move()
+        {
+            transform.Translate(_speed * Time.deltaTime * _direction);
+        }
     }
 }
