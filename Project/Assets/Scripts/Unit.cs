@@ -11,6 +11,7 @@ namespace Supinfo.Project
         public int speed = 2;
 
         private Vector3 _direction;
+        private bool _isMoving = true;
 
         // Private fields
 
@@ -19,6 +20,12 @@ namespace Supinfo.Project
         
 
         // MonoBehaviour methods
+        
+        public void SetIsMoving(bool value)
+        {
+            _isMoving = value;
+        }
+        
         private void Awake()
         {
             if (transform.position.x > 0)
@@ -37,6 +44,14 @@ namespace Supinfo.Project
         }
 
         private void Update()
+        {
+            if (_isMoving)
+            {
+                Move();
+            }
+        }
+
+        private void Move()
         {
             transform.Translate(speed * Time.deltaTime * _direction);
         }
