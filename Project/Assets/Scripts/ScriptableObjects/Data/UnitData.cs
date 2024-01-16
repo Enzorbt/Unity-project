@@ -1,21 +1,9 @@
-using System;
+using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using Supinfo.Project.Scripts.Stats;
 using UnityEngine;
 
-namespace Supinfo.Project.Scripts.ScriptableObjects
+namespace Supinfo.Project.Scripts.ScriptableObjects.Data
 {
-    /// <summary>
-    ///  UnitType represents the unit's type a unit can be
-    /// </summary>
-    [Serializable]
-    public enum UnitType
-    {
-        Melee,
-        Range,
-        AntiArmor,
-        Armor,
-    }
-    
     /// <summary>
     ///  UnitData is the ScriptableObject that is used to store data for the different unit's types.
     /// </summary>

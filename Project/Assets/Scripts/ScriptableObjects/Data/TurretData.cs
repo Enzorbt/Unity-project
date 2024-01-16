@@ -1,7 +1,7 @@
 using Supinfo.Project.Scripts.Stats;
 using UnityEngine;
 
-namespace Supinfo.Project.Scripts.ScriptableObjects
+namespace Supinfo.Project.Scripts.ScriptableObjects.Data
 {
     /// <summary>
     ///  TurretData is the ScriptableObject that is used to store data for the different turret's types.

@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98f448f2d7f66c4ea849875ca51ab9e, type: 3}
   m_Name: MeleeData
   m_EditorClassIdentifier: 
-  prefab: []
-  type: 0
+  prefabs: []
+  type: {fileID: 11400000, guid: cf50e00632f00a94289305bc6f27ce8c, type: 2}
+  walkSpeed:
+    baseValue: 2
+    ageStatModifiers: []
+    upgradeStatModifiers: []
   price:
     baseValue: 100
     ageStatModifiers:
@@ -59,9 +63,5 @@ MonoBehaviour:
     upgradeStatModifiers: []
   experienceGiven:
     baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
-  walkSpeed:
-    baseValue: 2
     ageStatModifiers: []
     upgradeStatModifiers: []

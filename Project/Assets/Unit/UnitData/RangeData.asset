@@ -12,41 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98f448f2d7f66c4ea849875ca51ab9e, type: 3}
   m_Name: RangeData
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _type: 1
-  _price:
+  prefabs: []
+  type: {fileID: 11400000, guid: a5711b07048766645a7b564cbd147794, type: 2}
+  walkSpeed:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  _damage:
+  price:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  _hitSpeed:
+  damage:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  _buildTime:
+  hitSpeed:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  _walkSpeed:
+  buildTime:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  _range:
+  range:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  _hitPoints:
+  hitPoints:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  _goldGiven:
+  goldGiven:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  _experienceGiven:
+  experienceGiven:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []

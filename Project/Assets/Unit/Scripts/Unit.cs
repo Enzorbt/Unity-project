@@ -1,5 +1,6 @@
-using Supinfo.Project.Scripts.ScriptableObjects;
+using Supinfo.Project.Scripts.ScriptableObjects.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Supinfo.Project.Scripts
 {
@@ -10,8 +11,8 @@ namespace Supinfo.Project.Scripts
 
         // Private fields
         private Vector3 _direction;
-
-        private UnitData _unitData;
+        
+        [SerializeField] private UnitData unitData;
 
         private float _speed;
         
@@ -32,11 +33,8 @@ namespace Supinfo.Project.Scripts
             {
                 _direction = Vector3.right;
             }
-
-            // fetching a reference to MeleeData
-            _unitData = Resources.Load<UnitData>("Units/MeleeData");
             
-            _speed = _unitData.WalkSpeed.GetValue(_age,_upgrades);
+            _speed = unitData.WalkSpeed.GetValue(_age,_upgrades);
         }
 
         private void Start()
