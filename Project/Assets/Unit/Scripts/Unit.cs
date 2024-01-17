@@ -10,6 +10,7 @@ namespace Supinfo.Project.Scripts
         // Public fields
 
         // Private fields
+        private bool _isMoving = true;
         private Vector3 _direction;
         
         [SerializeField] private UnitData unitData;
@@ -23,6 +24,12 @@ namespace Supinfo.Project.Scripts
         
 
         // MonoBehaviour methods
+        
+        public void SetIsMoving(bool value)
+        {
+            _isMoving = value;
+        }
+        
         private void Awake()
         {
             if (transform.position.x > 0)
@@ -33,18 +40,19 @@ namespace Supinfo.Project.Scripts
             {
                 _direction = Vector3.right;
             }
-            
-            _speed = unitData.WalkSpeed.GetValue(_age,_upgrades);
         }
 
         private void Start()
-        { 
-            
+        {
+            Debug.Log("unit direction: " + _direction);
         }
 
         private void Update()
         {
-            Move();
+            if (_isMoving)
+            {
+                Move();
+            }
         }
 
         // Private methods
