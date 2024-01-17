@@ -1,8 +1,7 @@
 using Supinfo.Project.Scripts.ScriptableObjects.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Supinfo.Project.Scripts
+namespace Supinfo.Project.Unit.Scripts
 {
     public class Unit : MonoBehaviour
     {
@@ -40,11 +39,14 @@ namespace Supinfo.Project.Scripts
             {
                 _direction = Vector3.right;
             }
+
+            _speed = unitData.WalkSpeed.GetValue();
         }
 
         private void Start()
         {
             Debug.Log("unit direction: " + _direction);
+            Debug.Log("unit speed: " + _speed);
         }
 
         private void Update()
