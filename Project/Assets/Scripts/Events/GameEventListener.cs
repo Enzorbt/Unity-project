@@ -17,12 +17,13 @@ namespace Supinfo.Project.Scripts.Events
     /// </summary>
     public class GameEventListener : MonoBehaviour
     {
-        private GameEvent gameEvent;
+         [SerializeField] private GameEvent gameEvent;
 
         public CustomUnityEvent response;
         private void OnEnable()
         {
             gameEvent.RegisterListener(this);
+
         }
 
         private void OnDisable()
@@ -33,6 +34,7 @@ namespace Supinfo.Project.Scripts.Events
         public void OnEventRaised(Component sender, object data)
         {
             response.Invoke(sender, data);   
+
         }
     }
 }

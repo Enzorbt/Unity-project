@@ -6,7 +6,7 @@ namespace Supinfo.Project.Scripts.Events
     [CreateAssetMenu(menuName = "GameEvent")]
     public class GameEvent : ScriptableObject, IEvent
     {
-        private List<GameEventListener> _listeners;
+        public List<GameEventListener> _listeners;
 
         // Raise event throught different methods signatures
         public void Raise(Component sender, object data)
@@ -20,9 +20,10 @@ namespace Supinfo.Project.Scripts.Events
         // Manage listeners
         public void RegisterListener(GameEventListener listener)
         {
-            if (_listeners.Contains(listener))
+            if (!_listeners.Contains(listener))
             {
                 _listeners.Add(listener);
+
             }
         }
 
