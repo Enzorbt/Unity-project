@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
+using Supinfo.Project.Scripts.Events;
 using UnityEngine;
 
-namespace Supinfo.Project.Scripts
+namespace Supinfo.Project.Castle.Spawner.Scripts
 {
     /// <summary>
     /// The Spawner class handles the spawn of the units in the scene
@@ -19,7 +20,7 @@ namespace Supinfo.Project.Scripts
         // Private fields
 
         private Vector3 _spawnPosition;
-
+        
         private int _spawnNumber;
         private int _spawnLimit = 10;
 
@@ -45,6 +46,7 @@ namespace Supinfo.Project.Scripts
             float posY = spawnPoint.y + spriteBounds.extents.y;
 
             _spawnPosition = new Vector3(posX, posY, 0);
+            
         }
 
         private void Update()
@@ -72,7 +74,7 @@ namespace Supinfo.Project.Scripts
 
             // Wait for "time" seconds
             yield return new WaitForSeconds(time);
-
+                
             // spawn a unit
                 // reference the instantiated object to keep track of it 
             GameObject unitSpawned = Instantiate(unit, _spawnPosition, new Quaternion(), _unitsContainer);
@@ -80,6 +82,12 @@ namespace Supinfo.Project.Scripts
             _spawnNumber++;
 
             _isCooldown = false;
+        }
+
+        public void SpawnUnit(Component sender,object data)
+        {
+            GameObject unitSpawned = Instantiate((GameObject)data, _spawnPosition, new Quaternion(), _unitsContainer);
+    
         }
     }
 }

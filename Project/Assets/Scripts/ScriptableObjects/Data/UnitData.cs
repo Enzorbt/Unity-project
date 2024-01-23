@@ -12,13 +12,13 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
     {
         
         
-        //--------- General properties ---------
+        //--------- General properties ---------//
         [Header("General properties")]
         // sprite data can be stored in the prefab or here
         [SerializeField] private GameObject[] prefabs;
         public GameObject[] Prefab => prefabs;
         
-        //--------- Characteristics ---------
+        //--------- Characteristics ---------//
         [Header("Characteristics")] 
         [SerializeField] private UnitType type;
         public UnitType Type => type;
@@ -44,7 +44,7 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
         [SerializeField] private Stat hitPoints;
         public Stat HitPoints => hitPoints;
 
-        //--------- Rewards upon killing ---------
+        //--------- Rewards upon killing ---------//
         [Header("Rewards upon killing")]
         [SerializeField] private Stat goldGiven;
         public Stat GoldGiven => goldGiven;
