@@ -4,19 +4,26 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
 {
     public class UnitRaycast : MonoBehaviour
     {
+        private float rayLength = 100f;
         private Unit unitScript;
-        private int rayLenght = 20;
+        private RaycastHit hit;
+        //private Rigidbody2D _rigidbody;
+        
         private void Start()
         {
             unitScript = GetComponent<Unit>();
+            //_rigidbody = GetComponent<Rigidbody2D>();
         }
         void Update()
         {
-            // Get the direction of unit 
-            // Make the if else to catch the unit with a raycast 
             // Clean Unity / componant 
             // Comment 
-            Debug.DrawRay(transform.position, Vector3.left * rayLenght);
+            Debug.DrawRay(transform.position, unitScript.GetDirection() * rayLength, Color.green);
+            if (Physics.Raycast(transform.position, unitScript.GetDirection(), rayLength))
+            {
+                // Faire quelque chose avec l'objet frappé
+                Debug.Log("Objet frappé : " + hit.collider.gameObject.name);
+            }
             
         }
     }

@@ -28,7 +28,14 @@ namespace Supinfo.Project.Unit.Scripts
         {
             _isMoving = value;
         }
+
+        public Vector3 GetDirection()
+        {
+            return _direction;
+        }
         
+        
+        // Private methode 
         private void Awake()
         {
             if (transform.position.x > 0)
