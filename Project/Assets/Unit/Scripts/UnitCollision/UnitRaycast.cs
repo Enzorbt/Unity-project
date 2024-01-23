@@ -4,27 +4,27 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
 {
     public class UnitRaycast : MonoBehaviour
     {
-        private float rayLength = 100f;
+        //Private fields
+        private float rayLength = 10f;
         private Unit unitScript;
         private RaycastHit hit;
-        //private Rigidbody2D _rigidbody;
+        private Ray _ray ;
         
         private void Start()
         {
             unitScript = GetComponent<Unit>();
-            //_rigidbody = GetComponent<Rigidbody2D>();
         }
-        void Update()
+        private void Update()
         {
-            // Clean Unity / componant 
-            // Comment 
-            Debug.DrawRay(transform.position, unitScript.GetDirection() * rayLength, Color.green);
-            if (Physics.Raycast(transform.position, unitScript.GetDirection(), rayLength))
+            if (Physics.Raycast(transform.position, unitScript.GetDirection(), out hit, rayLength))
             {
-                // Faire quelque chose avec l'objet frappé
-                Debug.Log("Objet frappé : " + hit.collider.gameObject.name);
+                Debug.Log("Raycast en avant : " + hit.collider.gameObject.name);
             }
-            
+        }
+
+        private void OnDrawGizmos()
+        {
+            Debug.DrawRay(transform.position, unitScript.GetDirection() * rayLength, Color.green);
         }
     }
 }
