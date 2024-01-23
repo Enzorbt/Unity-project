@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class ButtonUI : MonoBehaviour
 {
     [SerializeField] private GameObject unit;
+    
     [SerializeField] private GameEvent onClick;
     private Button _button;
 
