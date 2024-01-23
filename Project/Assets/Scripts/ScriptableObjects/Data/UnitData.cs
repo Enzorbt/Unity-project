@@ -41,8 +41,8 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
         [SerializeField] private Stat range;
         public Stat Range => range;
         
-        [SerializeField] private Stat hitPoints;
-        public Stat HitPoints => hitPoints;
+        [SerializeField] private Stat maxHealth;
+        public Stat MaxHealth => maxHealth;
 
         //--------- Rewards upon killing ---------//
         [Header("Rewards upon killing")]
