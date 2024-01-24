@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmorData
   m_EditorClassIdentifier: 
   prefabs: []
-  type: {fileID: 0}
+  type: {fileID: 11400000, guid: ae01f77c6ef19d84b9cb2c6a3348d900, type: 2}
   walkSpeed:
     baseValue: 1
     ageStatModifiers: []
@@ -38,7 +38,7 @@ MonoBehaviour:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  hitPoints:
+  maxHealth:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
