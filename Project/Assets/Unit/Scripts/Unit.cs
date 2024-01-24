@@ -52,8 +52,8 @@ namespace Supinfo.Project.Unit.Scripts
 
         private void Start()
         {
-            Debug.Log("unit direction: " + _direction);
-            Debug.Log("unit speed: " + _speed);
+            // Debug.Log("unit direction: " + _direction);
+            // Debug.Log("unit speed: " + _speed);
         }
 
         private void Update()

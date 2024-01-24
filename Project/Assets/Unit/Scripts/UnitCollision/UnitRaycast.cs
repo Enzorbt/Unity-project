@@ -1,30 +1,90 @@
-﻿using UnityEngine;
+﻿// using UnityEngine;
+//
+// namespace Supinfo.Project.Unit.Scripts.UnitCollision
+// {
+//     public class UnitRaycast : MonoBehaviour
+//     {
+//         private float _rayLength = 2;
+//         private Unit _unitScript;
+//         private RaycastHit2D _hit;
+//         
+//         private void Start()
+//         {
+//             _unitScript = GetComponent<Unit>();
+//         }
+//
+//         private void FixedUpdate()
+//         {
+//             PerformRaycast(_rayLength);
+//         }
+//         
+//         private void PerformRaycast(float length)
+//         {
+//             _hit = Physics2D.Raycast(transform.position, _unitScript.GetDirection(), length);
+//             
+//             if (_hit.collider != null && _hit.collider != GetComponent<Collider2D>())
+//             {
+//                 Debug.Log("Hit object: " + _hit.transform.name);
+//                 _unitScript.SetIsMoving(false); 
+//                 // if (_hit.collider.gameObject.CompareTag("Unit"))
+//                 // {
+//                 //     Debug.Log("Unit met");
+//                 //     _unitScript.SetIsMoving(false);
+//                 // }
+//                 // else if (_hit.collider.gameObject.CompareTag("Castle"))
+//                 // {
+//                 //     Debug.Log("Castle met");
+//                 //     _unitScript.SetIsMoving(false); 
+//                 // }
+//             }
+//         }
+//         
+//         private void OnDrawGizmos()
+//         {
+//             Debug.DrawRay(transform.position, _unitScript.GetDirection() * _rayLength, Color.green);
+//         }
+//     }
+// }
+using UnityEngine;
 
 namespace Supinfo.Project.Unit.Scripts.UnitCollision
 {
     public class UnitRaycast : MonoBehaviour
     {
-        //Private fields
-        private float rayLength = 10f;
-        private Unit unitScript;
-        private RaycastHit hit;
-        private Ray _ray ;
-        
+        private float _rayLength = 2;
+        private Unit _unitScript;
+        private RaycastHit2D _hit;
+
         private void Start()
         {
-            unitScript = GetComponent<Unit>();
+            _unitScript = GetComponent<Unit>();
         }
-        private void Update()
+
+        private void FixedUpdate()
         {
-            if (Physics.Raycast(transform.position, unitScript.GetDirection(), out hit, rayLength))
+            PerformRaycast(_rayLength);
+        }
+
+        private void PerformRaycast(float length)
+        {
+            _hit = Physics2D.Raycast(transform.position, _unitScript.GetDirection(), length, ~LayerMask.GetMask("Unit"));
+
+            if (_hit.collider != null)
             {
-                Debug.Log("Raycast en avant : " + hit.collider.gameObject.name);
+                if (_hit.collider.gameObject != gameObject && _hit.collider.CompareTag("Unit"))
+                {
+                    Debug.Log("Unit met: " + _hit.transform.name);
+                    _unitScript.SetIsMoving(false);
+                }
             }
         }
 
         private void OnDrawGizmos()
         {
-            Debug.DrawRay(transform.position, unitScript.GetDirection() * rayLength, Color.green);
+            if (_unitScript != null)
+            {
+                Debug.DrawRay(transform.position, _unitScript.GetDirection() * _rayLength, Color.green);
+            }
         }
     }
 }
