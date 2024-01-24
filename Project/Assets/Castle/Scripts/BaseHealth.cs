@@ -1,4 +1,6 @@
 ﻿using System;
+using ScriptableObjects.Base;
+using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
 using UnityEngine;
@@ -10,7 +12,7 @@ namespace Supinfo.Project.Castle.Scripts
     /// It implements the IDamageable interface to handle damage interactions.
     /// This class is responsible for tracking the base's health and triggering events when the health changes or the base is destroyed.
     /// </summary>
-    public class BaseHealth : MonoBehaviour, IDamageable
+    public class BaseHealth : Health, IDamageable
     {
         // Events
 
@@ -29,19 +31,14 @@ namespace Supinfo.Project.Castle.Scripts
         // Private fields
 
         /// <summary>
-        /// Current health of the base.
+        /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from a ScriptableObject.
         /// </summary>
-        private int health;
-
-        /// <summary>
-        /// Maximum health of the base, set from a ScriptableObject.
-        /// </summary>
-        private int maxHealth;
-
+        private int _baseNumber;
+        
         /// <summary>
         /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from a ScriptableObject.
         /// </summary>
-        private int baseNumber;
+        private BaseHealthSO _baseHealthSo;
 
         /// <summary>
         /// Awake is called when the script instance is being loaded.
@@ -49,16 +46,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// </summary>
         private void Awake()
         {
-            // Get the maxHealth and base number from ScriptableObject
-        }
-
-        /// <summary>
-        /// Start is called before the first frame update.
-        /// Initializes the base's current health to its maximum value.
-        /// </summary>
-        private void Start()
-        {
-            health = maxHealth;
+            maxHealth = _baseHealthSo.MaxHealth.GetValue();
         }
 
         /// <summary>
@@ -69,14 +57,14 @@ namespace Supinfo.Project.Castle.Scripts
         public void TakeDamage(int amount)
         {
             // Remove amount of damage taken from health and raise the event
-            health -= amount;
-            onBaseHealthChange.Raise(this, health);
+            curHealth -= amount;
+            onBaseHealthChange.Raise(this, curHealth/maxHealth);
             
             // Check if health <= 0 : Base is dead
-            if (health <= 0)
+            if (curHealth <= 0)
             {
-                health = 0;
-                onBaseDeath.Raise(this, baseNumber);
+                curHealth = 0;
+                onBaseDeath.Raise(this, _baseNumber);
             }
         }
         

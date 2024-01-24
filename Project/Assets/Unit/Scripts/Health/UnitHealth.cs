@@ -1,36 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using ScriptableObjects.Unit;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
+using Supinfo.Project.Scripts.Common;
 using UnityEngine;
 
-namespace Supinfo.Project.Unit.Scripts.Health{
+namespace Supinfo.Project.Unit.Scripts.Health
+{
     /// <summary>
     /// The UnitHealth class manages the health of a unit, including taking damage and triggering events on death.
     /// It implements the IDamageable interface to handle damage interactions.
     /// </summary>
-    public class UnitHealth : MonoBehaviour, IDamageable
+    public class UnitHealth : Project.Scripts.Common.Health, IDamageable
     {
-        /// <summary>
-        /// Current health of the unit.
-        /// </summary>
-        private float curHealth;
-
         /// <summary>
         /// Coins rewarded upon unit death.
         /// </summary>
-        private float coins;
+        private float _coins;
 
         /// <summary>
         /// Experience points rewarded upon unit death.
         /// </summary>
-        private float xp;
-
-        /// <summary>
-        /// Maximum health of the unit.
-        /// </summary>
-        private float maxHealth;
+        private float _xp;
 
         /// <summary>
         /// Reference to the health bar UI for the unit.
@@ -50,7 +40,8 @@ namespace Supinfo.Project.Unit.Scripts.Health{
         /// <summary>
         /// ScriptableObject containing health-related data for the unit.
         /// </summary>
-        private UnitHealthSO _uniHealthSO;
+        [SerializeField]
+        private UnitHealthSO unitHealthSo;
 
         /// <summary>
         /// Awake is called when the script instance is being loaded.
@@ -59,18 +50,9 @@ namespace Supinfo.Project.Unit.Scripts.Health{
         public void Awake()
         {
             // Get coins, maxHealth, and xp from ScriptableObject
-            coins = _uniHealthSO.GoldGiven.GetValue();
-            xp = _uniHealthSO.ExperienceGiven.GetValue();
-            maxHealth = _uniHealthSO.MaxHealth.GetValue();
-        }
-        
-        /// <summary>
-        /// Start is called before the first frame update.
-        /// Initializes current health to maximum health.
-        /// </summary>
-        void Start()
-        {
-            curHealth = maxHealth;
+            _coins = unitHealthSo.GoldGiven.GetValue();
+            _xp = unitHealthSo.ExperienceGiven.GetValue();
+            maxHealth = unitHealthSo.MaxHealth.GetValue();
         }
         
         /// <summary>
@@ -92,12 +74,12 @@ namespace Supinfo.Project.Unit.Scripts.Health{
         public void TakeDamage(int damage)
         {
             curHealth -= damage;
-            healthBar.SetHealth(curHealth);
+            healthBar.SetHealthSliderValue(curHealth/maxHealth);
             
             if (curHealth <= 0)
             {
-                onUnitDeathCoins.Raise(this, coins);
-                onUnitDeathXp.Raise(this, xp);
+                onUnitDeathCoins.Raise(this, _coins);
+                onUnitDeathXp.Raise(this, _xp);
             }
         }
     }
