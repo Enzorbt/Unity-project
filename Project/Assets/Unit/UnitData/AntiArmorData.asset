@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AntiArmorData
   m_EditorClassIdentifier: 
   prefabs: []
-  type: {fileID: 0}
+  type: {fileID: 11400000, guid: fa4c53ade78d6d54aac1ac2069307556, type: 2}
   walkSpeed:
     baseValue: 2.5
     ageStatModifiers: []
@@ -38,7 +38,7 @@ MonoBehaviour:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  hitPoints:
+  maxHealth:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
