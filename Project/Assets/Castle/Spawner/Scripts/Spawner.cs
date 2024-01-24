@@ -146,6 +146,7 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
                 // for now the unit is spawn instantly
                 GameObject unitSpawned = Instantiate(unitPrefab, _spawnPosition, new Quaternion(), _unitsContainer);
                 
+                
                 // add the unit to the unit to spawn queue
             }
             
