@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Scripts.ScriptableObjects.Unit;
 using UnityEngine;
 
 namespace Supinfo.Project.Castle.Spawner.Scripts
@@ -134,7 +135,21 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
         /// <param name="data">Data or parameters for spawning, typically the unit prefab.</param>
         public void SpawnUnit(Component sender, object data)
         {
-            GameObject unitSpawned = Instantiate((GameObject)data, _spawnPosition, new Quaternion(), _unitsContainer);
+            // check if the sent data is a UnitSpawnSo
+            UnitSpawnSo unitSpawnSo = data as UnitSpawnSo;
+
+            if (unitSpawnSo != null)
+            {
+                var coolDown = unitSpawnSo.BuildTime.GetValue();
+                var unitPrefab = unitSpawnSo.Prefab;
+
+                // for now the unit is spawn instantly
+                GameObject unitSpawned = Instantiate(unitPrefab, _spawnPosition, new Quaternion(), _unitsContainer);
+                
+                // add the unit to the unit to spawn queue
+            }
+            
+            
         }
     }
 }
