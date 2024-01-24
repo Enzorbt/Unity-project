@@ -15,52 +15,24 @@ namespace Supinfo.Project.Unit.Scripts.Health
         /// <summary>
         /// The UI Slider component that represents the health bar.
         /// </summary>
-        public Slider healthBar;
-
+        private Slider _healthBarSlider;
+        
         /// <summary>
-        /// Reference to the UnitHealth component of the player.
+        /// Awake is called before the first frame update.
+        /// It fetch the Slider component of the Children object.
         /// </summary>
-        public UnitHealth playerHealth;
-
-        /// <summary>
-        /// ScriptableObject containing health-related data.
-        /// </summary>
-        private UnitHealthSO _uniHealthSO;
-
-        /// <summary>
-        /// Maximum health of the unit, retrieved from the ScriptableObject.
-        /// </summary>
-        private float maxHealth;
-
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// Initializes the maximum health of the unit from the ScriptableObject.
-        /// </summary>
-        public void Awake()
+        private void Awake()
         {
-            // Get maxHealth from ScriptableObject
-            maxHealth = _uniHealthSO.MaxHealth.GetValue();
+            _healthBarSlider = GetComponentInChildren<Slider>();
         }
         
         /// <summary>
-        /// Start is called before the first frame update.
-        /// It initializes the health bar's maximum value and current value based on the player's health.
+        /// Sets the current health ratio value on the health bar.
         /// </summary>
-        private void Start()
+        /// <param name="value">The current value to set on the health bar.</param>
+        public void SetHealthSliderValue(float value)
         {
-            playerHealth = GetComponent<UnitHealth>();
-            healthBar = GetComponent<Slider>();
-            healthBar.maxValue = maxHealth;
-            healthBar.value = maxHealth;
-        }
-        
-        /// <summary>
-        /// Sets the current health value on the health bar.
-        /// </summary>
-        /// <param name="hp">The current health to set on the health bar.</param>
-        public void SetHealth(float hp)
-        {
-            healthBar.value = hp;
+            _healthBarSlider.value = value;
         }
     }
 }
