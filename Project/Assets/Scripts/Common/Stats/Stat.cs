@@ -20,13 +20,13 @@ namespace Supinfo.Project.Scripts.Common.Stats
         private bool _isDirty = true;
         
         private float _value;
-        public float GetValue() // or GetValue(int age = 0, int upgrades = 0)
+        public float GetValue(int age = 0, int upgrades = 0)
         {
             // here we check if the value is dirty, if so we clean it
             if(_isDirty || Math.Abs(_lastBaseValue - BaseValue) > 1e-9) { // if the absolute value of A - B is more than tolerance (10 to the power -9 here), then we know the value is dirty
                 Debug.Log("Value is calculated");
                 _lastBaseValue = BaseValue;
-                _value = CalculateFinalValue(_currentAge, _currentUpgrade);
+                _value = CalculateFinalValue(age, upgrades);
                 // or _value = CalculateFinalValue(age, upgrades);
                 _isDirty = false; 
             }
@@ -41,21 +41,9 @@ namespace Supinfo.Project.Scripts.Common.Stats
         [SerializeField]
         private List<StatModifier> upgradeStatModifiers; // Collection that can modify
         public ReadOnlyCollection<StatModifier> UpgradeStatModifiers { get; } // readonly Collection to access the data
-
-        // Age and Upgrade counts
-        private int _currentAge = 0;
-        public void CurrentAge(int age)
-        {
-            _currentAge = age;
-        }
-
-        private int _currentUpgrade = 0;
-        public void CurrentUpgrade(int upgrade)
-        {
-            _currentUpgrade = upgrade;
-        }
         
-        // Constructors
+        
+        // Constructors -------------------------------------------
         public Stat()
         {
             ageStatModifiers = new List<StatModifier>();
@@ -71,7 +59,7 @@ namespace Supinfo.Project.Scripts.Common.Stats
         }
         
         
-        // for script base assignation 
+        // for script base assignation ---------------------------------
 
         public virtual void AddModifier(StatModifier mod)
         {
@@ -100,7 +88,7 @@ namespace Supinfo.Project.Scripts.Common.Stats
         }
 
 
-        // for script stats access, age between 0 and X
+        // for script stats access, age between 0 and X -----------------------------
         protected virtual float CalculateFinalValue(int age, int upgrades)
         {
             float finalValue = BaseValue;
@@ -158,7 +146,7 @@ namespace Supinfo.Project.Scripts.Common.Stats
             return (float)Math.Round(tempValue, 4);
         }
 
-        // to reset the game ?
+        // to reset the game ? ----------------------------------------------
         public virtual bool RemoveAllModifiersFromSource(object source)
         {
             var wasRemoved = false;
