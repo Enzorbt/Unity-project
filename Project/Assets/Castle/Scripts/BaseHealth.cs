@@ -1,5 +1,4 @@
-﻿using System;
-using ScriptableObjects.Base;
+﻿using Supinfo.Project.ScriptableObjects.Base;
 using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
@@ -38,7 +37,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// <summary>
         /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from a ScriptableObject.
         /// </summary>
-        private BaseHealthSO _baseHealthSo;
+        private BaseHealthSo _baseHealthSo;
 
         /// <summary>
         /// Awake is called when the script instance is being loaded.

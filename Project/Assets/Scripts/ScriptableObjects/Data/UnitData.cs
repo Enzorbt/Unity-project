@@ -1,5 +1,5 @@
 using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
-using Supinfo.Project.Scripts.Stats;
+using Supinfo.Project.Scripts.Common.Stats;
 using UnityEngine;
 
 namespace Supinfo.Project.Scripts.ScriptableObjects.Data
@@ -18,7 +18,7 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
         /// </summary>
         [Header("General properties")]
         [SerializeField] private GameObject[] prefabs;
-        public GameObject[] Prefab => prefabs;
+        public GameObject[] Prefab => prefabs; // transferred
         
         //--------- Characteristics ---------//
         
@@ -27,19 +27,19 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
         /// </summary>
         [Header("Characteristics")] 
         [SerializeField] private UnitType type;
-        public UnitType Type => type;
+        public UnitType Type => type; 
         
         /// <summary>
         /// Walking speed of the unit.
         /// </summary>
         [SerializeField] private Stat walkSpeed;
-        public Stat WalkSpeed => walkSpeed;
+        public Stat WalkSpeed => walkSpeed; // transferred
 
         /// <summary>
         /// Purchase price of the unit.
         /// </summary>
         [SerializeField] private Stat price;
-        public Stat Price => price;
+        public Stat Price => price; // transferred
         
         /// <summary>
         /// Damage dealt by the unit.
@@ -57,7 +57,7 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
         /// Time required to build or spawn the unit.
         /// </summary>
         [SerializeField] private Stat buildTime;
-        public Stat BuildTime => buildTime;
+        public Stat BuildTime => buildTime; // transferred
         
         /// <summary>
         /// Attack range of the unit.
@@ -69,7 +69,7 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
         /// Maximum health of the unit.
         /// </summary>
         [SerializeField] private Stat maxHealth;
-        public Stat MaxHealth => maxHealth;
+        public Stat MaxHealth => maxHealth; // transferred
 
         //--------- Rewards upon killing ---------//
         
@@ -78,13 +78,13 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
         /// </summary>
         [Header("Rewards upon killing")]
         [SerializeField] private Stat goldGiven;
-        public Stat GoldGiven => goldGiven;
+        public Stat GoldGiven => goldGiven; // transferred
         
         /// <summary>
         /// Amount of experience given for defeating the unit.
         /// </summary>
         [SerializeField] private Stat experienceGiven;
-        public Stat ExperienceGiven => experienceGiven;
+        public Stat ExperienceGiven => experienceGiven; // transferred
     }
 }
 

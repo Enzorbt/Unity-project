@@ -1,4 +1,4 @@
-using Supinfo.Project.Scripts.Stats;
+using Supinfo.Project.Scripts.Common.Stats;
 using UnityEngine;
 
 namespace Supinfo.Project.Scripts.ScriptableObjects.Data
