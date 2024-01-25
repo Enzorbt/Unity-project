@@ -53,6 +53,7 @@ namespace Supinfo.Project.Unit.Scripts.Health
             _coins = unitHealthSo.GoldGiven.GetValue();
             _xp = unitHealthSo.ExperienceGiven.GetValue();
             maxHealth = unitHealthSo.MaxHealth.GetValue();
+            
         }
         
         /// <summary>
@@ -78,8 +79,15 @@ namespace Supinfo.Project.Unit.Scripts.Health
             
             if (curHealth <= 0)
             {
-                onUnitDeathCoins.Raise(this, _coins);
-                onUnitDeathXp.Raise(this, _xp);
+                if (onUnitDeathCoins is null)
+                {
+                    onUnitDeathCoins.Raise(this, _coins);
+                }
+                if (onUnitDeathXp is null)
+                {
+                    onUnitDeathXp.Raise(this, _xp);
+                }
+                Destroy(gameObject);
             }
         }
     }
