@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Supinfo.Project.Scripts.Stats
+namespace Supinfo.Project.Scripts.Common.Stats
 {
     /// <summary>
     /// Enumeration representing the type of modification applied by a StatModifier.

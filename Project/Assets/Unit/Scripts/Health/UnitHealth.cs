@@ -1,7 +1,6 @@
-using ScriptableObjects.Unit;
+using Supinfo.Project.ScriptableObjects.Unit;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
-using Supinfo.Project.Scripts.Common;
 using UnityEngine;
 
 namespace Supinfo.Project.Unit.Scripts.Health
@@ -41,7 +40,7 @@ namespace Supinfo.Project.Unit.Scripts.Health
         /// ScriptableObject containing health-related data for the unit.
         /// </summary>
         [SerializeField]
-        private UnitHealthSO unitHealthSo;
+        private UnitHealthSo unitHealthSo;
 
         /// <summary>
         /// Awake is called when the script instance is being loaded.

@@ -1,7 +1,7 @@
-﻿using Supinfo.Project.Scripts.Stats;
+﻿using Supinfo.Project.Scripts.Common.Stats;
 using UnityEngine;
 
-namespace ScriptableObjects.Common
+namespace Supinfo.Project.ScriptableObjects.Common
 {
     /// <summary>
     /// HealthSO is a ScriptableObject that defines the health-related properties of an object.

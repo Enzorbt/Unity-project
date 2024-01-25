@@ -1,18 +1,17 @@
 ﻿using System;
-using ScriptableObjects.Common;
-using Supinfo.Project.Scripts.Stats;
+using Supinfo.Project.ScriptableObjects.Common;
+using Supinfo.Project.Scripts.Common.Stats;
 using UnityEngine;
 
-namespace ScriptableObjects.Unit
+namespace Supinfo.Project.ScriptableObjects.Unit
 {
     /// <summary>
     /// UnitHealthSO is a ScriptableObject that extends HealthSO to include additional properties specific to units.
     /// It inherits the max health functionality from HealthSO and adds new features related to rewards upon killing the unit.
     /// This makes it suitable for defining health properties as well as rewards for units in the game.
     /// </summary>
-    [CreateAssetMenu(menuName = "ScriptableObject/Units/UnitHealthSO")]
-    [Serializable]
-    public class UnitHealthSO : HealthSO
+    [CreateAssetMenu(menuName = "ScriptableObject/Units/UnitHealthSo")]
+    public class UnitHealthSo : HealthSO
     {
         //--------- Rewards upon killing ---------//
 

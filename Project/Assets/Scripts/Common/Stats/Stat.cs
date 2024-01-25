@@ -3,44 +3,59 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
-namespace Supinfo.Project.Scripts.Stats
+namespace Supinfo.Project.Scripts.Common.Stats
 {
     [Serializable]
     public class Stat
     {
         [SerializeField] 
-        protected float baseValue;
-        protected float BaseValue
+        private float baseValue;
+        private float BaseValue
         {
             get => baseValue;
             set => baseValue = value;
         }
 
         private float _lastBaseValue = float.MinValue;
-        protected bool isDirty = true;
+        private bool _isDirty = true;
         
         private float _value;
-        public float GetValue(int age = 0, int upgrades = 0)
+        public float GetValue() // or GetValue(int age = 0, int upgrades = 0)
         {
-            if(isDirty || _lastBaseValue != BaseValue) { // here we check if the value is dirty, if so we clean it
+            // here we check if the value is dirty, if so we clean it
+            if(_isDirty || Math.Abs(_lastBaseValue - BaseValue) > 1e-9) { // if the absolute value of A - B is more than tolerance (10 to the power -9 here), then we know the value is dirty
                 Debug.Log("Value is calculated");
                 _lastBaseValue = BaseValue;
-                _value = CalculateFinalValue(age, upgrades);
-                isDirty = false; 
+                _value = CalculateFinalValue(_currentAge, _currentUpgrade);
+                // or _value = CalculateFinalValue(age, upgrades);
+                _isDirty = false; 
             }
             return _value;
         }
         
         // statModifiers shouldn't change and so we use StatModifier which is read-only, it is a reference and will be changed according to changes in statModifiers
         [SerializeField]
-        protected List<StatModifier> ageStatModifiers;
+        private List<StatModifier> ageStatModifiers;
         public ReadOnlyCollection<StatModifier> AgeStatModifiers { get; }
         
         [SerializeField]
-        protected List<StatModifier> upgradeStatModifiers; // Collection that can modify
+        private List<StatModifier> upgradeStatModifiers; // Collection that can modify
         public ReadOnlyCollection<StatModifier> UpgradeStatModifiers { get; } // readonly Collection to access the data
+
+        // Age and Upgrade counts
+        private int _currentAge = 0;
+        public void CurrentAge(int age)
+        {
+            _currentAge = age;
+        }
+
+        private int _currentUpgrade = 0;
+        public void CurrentUpgrade(int upgrade)
+        {
+            _currentUpgrade = upgrade;
+        }
         
-        // Constructor
+        // Constructors
         public Stat()
         {
             ageStatModifiers = new List<StatModifier>();
@@ -57,9 +72,10 @@ namespace Supinfo.Project.Scripts.Stats
         
         
         // for script base assignation 
+
         public virtual void AddModifier(StatModifier mod)
         {
-            isDirty = true;
+            _isDirty = true;
             ageStatModifiers.Add(mod);
             ageStatModifiers.Sort(CompareModifierOrder);
         }
@@ -68,7 +84,7 @@ namespace Supinfo.Project.Scripts.Stats
         {
             if (ageStatModifiers.Remove(mod))
             {
-                isDirty = true;
+                _isDirty = true;
                 return true;
             }
             return false;
@@ -82,8 +98,8 @@ namespace Supinfo.Project.Scripts.Stats
                 return 1;
             return 0; // if (a.Order == b.Order)
         }
-     
-        
+
+
         // for script stats access, age between 0 and X
         protected virtual float CalculateFinalValue(int age, int upgrades)
         {
@@ -151,7 +167,7 @@ namespace Supinfo.Project.Scripts.Stats
             {
                 if (ageStatModifiers[i].Source == source)
                 {
-                    isDirty = true;
+                    _isDirty = true;
                     wasRemoved = true;
                     ageStatModifiers.RemoveAt(i);
                 }
@@ -163,7 +179,5 @@ namespace Supinfo.Project.Scripts.Stats
         
 
     }
-
-    
 }
 
