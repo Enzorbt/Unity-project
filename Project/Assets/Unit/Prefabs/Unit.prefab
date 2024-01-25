@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 4017872775033760459}
   - component: {fileID: 288318026824580295}
   - component: {fileID: 6092957357902687793}
+  - component: {fileID: 9049587419245293449}
   - component: {fileID: 1776877459599816412}
   m_Layer: 0
   m_Name: Unit
@@ -554,6 +555,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9049587419245293449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094864365306331561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23bd930381174f279c8a9b3f479d2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1776877459599816412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2f0f2d578f146dd96981a40adcfe82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHealth: 0
   healthBar: {fileID: 1651531720413543367}
   onUnitDeathCoins: {fileID: 0}
   onUnitDeathXp: {fileID: 0}
