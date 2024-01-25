@@ -22,16 +22,16 @@ namespace Supinfo.Project.Scripts.Stats
         private float _value;
         public float GetValue(int age = 0, int upgrades = 0)
         {
-            if(isDirty || _lastBaseValue != BaseValue) {
+            if(isDirty || _lastBaseValue != BaseValue) { // here we check if the value is dirty, if so we clean it
                 Debug.Log("Value is calculated");
                 _lastBaseValue = BaseValue;
                 _value = CalculateFinalValue(age, upgrades);
-                isDirty = false; // here we check if the value is dirty, if so we clean it
+                isDirty = false; 
             }
             return _value;
         }
         
-        // we can access statModifiers in the class as it is protected and use StatModifier which is read-only outside the class as it is a reference and will be changed according to changes in statModifiers
+        // statModifiers shouldn't change and so we use StatModifier which is read-only, it is a reference and will be changed according to changes in statModifiers
         [SerializeField]
         protected List<StatModifier> ageStatModifiers;
         public ReadOnlyCollection<StatModifier> AgeStatModifiers { get; }
@@ -44,7 +44,7 @@ namespace Supinfo.Project.Scripts.Stats
         public Stat()
         {
             ageStatModifiers = new List<StatModifier>();
-            AgeStatModifiers = ageStatModifiers.AsReadOnly(); // create a reference to ageStatModifiers can can only be read
+            AgeStatModifiers = ageStatModifiers.AsReadOnly(); // create a reference to ageStatModifiers that can only be read
             
             upgradeStatModifiers = new List<StatModifier>();
             UpgradeStatModifiers = upgradeStatModifiers.AsReadOnly();
@@ -56,7 +56,7 @@ namespace Supinfo.Project.Scripts.Stats
         }
         
         
-        // for script base assignation and handling need change to handle age vs upgrade
+        // for script base assignation 
         public virtual void AddModifier(StatModifier mod)
         {
             isDirty = true;
@@ -84,7 +84,7 @@ namespace Supinfo.Project.Scripts.Stats
         }
      
         
-        // for script stats access, age between 0 and 
+        // for script stats access, age between 0 and X
         protected virtual float CalculateFinalValue(int age, int upgrades)
         {
             float finalValue = BaseValue;

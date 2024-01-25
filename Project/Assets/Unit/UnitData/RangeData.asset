@@ -15,7 +15,7 @@ MonoBehaviour:
   prefabs: []
   type: {fileID: 11400000, guid: a5711b07048766645a7b564cbd147794, type: 2}
   walkSpeed:
-    baseValue: 0
+    baseValue: 1.7
     ageStatModifiers: []
     upgradeStatModifiers: []
   price:
