@@ -56,7 +56,13 @@ namespace Supinfo.Project.Unit.Scripts
         {
             _isMoving = value;
         }
+
+        public Vector3 GetDirection()
+        {
+            return _direction;
+        }
         
+       
         /// <summary>
         /// Awake is called when the script instance is being loaded.
         /// It initializes the unit's direction and speed based on its position and data.
@@ -81,8 +87,8 @@ namespace Supinfo.Project.Unit.Scripts
         /// </summary>
         private void Start()
         {
-            Debug.Log("unit direction: " + _direction);
-            Debug.Log("unit speed: " + _speed);
+            // Debug.Log("unit direction: " + _direction);
+            // Debug.Log("unit speed: " + _speed);
         }
 
         /// <summary>

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace Supinfo.Project.Unit.Scripts
+namespace Supinfo.Project.Unit.Scripts.UnitCollision
 {
-    public class UnitCollision : MonoBehaviour
-    {
+    public class UnitOnTrigger : MonoBehaviour
+    { 
         private Unit unitScript; 
         private void Start()
         {
