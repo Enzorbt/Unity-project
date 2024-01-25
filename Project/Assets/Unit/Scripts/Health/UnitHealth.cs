@@ -79,11 +79,11 @@ namespace Supinfo.Project.Unit.Scripts.Health
             
             if (curHealth <= 0)
             {
-                if (onUnitDeathCoins is null)
+                if (!(onUnitDeathCoins is null))
                 {
                     onUnitDeathCoins.Raise(this, _coins);
                 }
-                if (onUnitDeathXp is null)
+                if (!(onUnitDeathXp is null))
                 {
                     onUnitDeathXp.Raise(this, _xp);
                 }

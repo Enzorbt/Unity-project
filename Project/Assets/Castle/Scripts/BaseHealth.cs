@@ -58,13 +58,20 @@ namespace Supinfo.Project.Castle.Scripts
         {
             // Remove amount of damage taken from health and raise the event
             curHealth -= amount;
-            onBaseHealthChange.Raise(this, curHealth/maxHealth);
+            if (!(onBaseHealthChange is null))
+            {
+                onBaseHealthChange.Raise(this, curHealth/maxHealth);
+            }
             
             // Check if health <= 0 : Base is dead
             if (curHealth <= 0)
             {
+                if (!(onBaseDeath is null))
+                {
+                    onBaseDeath.Raise(this, _baseNumber);
+                }
+                
                 curHealth = 0;
-                onBaseDeath.Raise(this, _baseNumber);
             }
         }
         
