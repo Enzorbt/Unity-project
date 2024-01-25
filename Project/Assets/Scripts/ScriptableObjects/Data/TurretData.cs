@@ -6,7 +6,7 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
     /// <summary>
     ///  TurretData is the ScriptableObject that is used to store data for the different turret's types.
     /// </summary>
-    [CreateAssetMenu(fileName = "TurretData", menuName = "ScriptableObject/Turrets/TurretData", order = 1)]
+    // [CreateAssetMenu(fileName = "TurretData", menuName = "ScriptableObject/Turrets/TurretData", order = 1)]
     public class TurretData : ScriptableObject
     {
         //--------- General properties ---------

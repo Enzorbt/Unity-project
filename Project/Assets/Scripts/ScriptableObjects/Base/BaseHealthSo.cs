@@ -6,6 +6,6 @@ namespace Supinfo.Project.ScriptableObjects.Base
     [CreateAssetMenu(menuName = "ScriptableObject/Base/BaseHealthSO")]
     public class BaseHealthSo : HealthSO
     {
-        
+        // other stats that the health component of the base needs
     }
 }

@@ -9,6 +9,7 @@ namespace Supinfo.Project.ScriptableObjects.Unit
         /// <summary>
         /// Walking speed of the unit.
         /// </summary>
+        [Header("Speed of the unit")]
         [SerializeField] private Stat walkSpeed;
         public Stat WalkSpeed => walkSpeed; 
     }
