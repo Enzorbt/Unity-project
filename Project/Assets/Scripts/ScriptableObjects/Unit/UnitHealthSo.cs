@@ -13,13 +13,11 @@ namespace Supinfo.Project.ScriptableObjects.Unit
     [CreateAssetMenu(menuName = "ScriptableObject/Units/UnitHealthSo")]
     public class UnitHealthSo : HealthSO
     {
-        //--------- Rewards upon killing ---------//
-
         /// <summary>
         /// The amount of gold given to the player upon killing the unit.
         /// This value can be used to determine the economic reward for defeating this unit.
         /// </summary>
-        [Header("Rewards upon killing")]
+        [Header("Gold given when unit dies")]
         [SerializeField] private Stat goldGiven;
         public Stat GoldGiven => goldGiven;
         
@@ -27,6 +25,7 @@ namespace Supinfo.Project.ScriptableObjects.Unit
         /// The amount of experience given to the player upon killing the unit.
         /// This value helps in calculating the experience points a player earns, contributing to their overall progression.
         /// </summary>
+        [Header("Exeprience given when unit dies")]
         [SerializeField] private Stat experienceGiven;
         public Stat ExperienceGiven => experienceGiven;
     }

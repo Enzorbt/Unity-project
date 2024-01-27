@@ -1,11 +1,12 @@
-﻿using Supinfo.Project.Scripts.Common.Stats;
+﻿using Supinfo.Project.ScriptableObjects.Common;
+using Supinfo.Project.Scripts.Common.Stats;
 using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
 
 namespace Supinfo.Project.ScriptableObjects.Unit
 {
     [CreateAssetMenu(menuName = "ScriptableObject/Units/UnitAttackSo")]
-    public class UnitAttackSo : ScriptableObject
+    public class UnitAttackSo : AttackSo
     {
         /// <summary>
         /// Type of the unit, defined in UnitType.
@@ -15,21 +16,10 @@ namespace Supinfo.Project.ScriptableObjects.Unit
         public UnitType Type => type; 
         
         /// <summary>
-        /// Damage dealt by the unit.
+        /// Build time of the unit
         /// </summary>
-        [SerializeField] private Stat damage;
-        public Stat Damage => damage;
-        
-        /// <summary>
-        /// Attack speed of the unit.
-        /// </summary>
-        [SerializeField] private Stat hitSpeed;
-        public Stat HitSpeed => hitSpeed;
-        
-        /// <summary>
-        /// Attack range of the unit.
-        /// </summary>
-        [SerializeField] private Stat range;
-        public Stat Range => range;
+        [Header("Spawn Cooldown")] 
+        [SerializeField] private Stat buildTime;
+        public Stat BuildTime => buildTime;
     }
 }

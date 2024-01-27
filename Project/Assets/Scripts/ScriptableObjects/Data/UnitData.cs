@@ -8,7 +8,7 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Data
     ///  UnitData is a ScriptableObject used for storing data for various unit types in the game.
     ///  It includes details about general properties, unit characteristics, and rewards for defeating the unit.
     /// </summary>
-    [CreateAssetMenu(fileName = "UnitData", menuName = "ScriptableObject/Units/UnitData", order = 1)]
+    // [CreateAssetMenu(fileName = "UnitData", menuName = "ScriptableObject/Units/UnitData", order = 1)]
     public class UnitData : ScriptableObject
     {
         //--------- General properties ---------//
