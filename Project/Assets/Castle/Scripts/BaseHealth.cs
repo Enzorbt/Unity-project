@@ -45,7 +45,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// </summary>
         private void Awake()
         {
-            maxHealth = _baseHealthSo.MaxHealth.GetValue();
+            maxHealth = _baseHealthSo.MaxHealth;
         }
 
         /// <summary>

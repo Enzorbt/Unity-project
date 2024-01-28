@@ -4,8 +4,12 @@ using UnityEngine;
 namespace Supinfo.Project.ScriptableObjects.Base
 {
     [CreateAssetMenu(menuName = "ScriptableObject/Base/BaseHealthSO")]
-    public class BaseHealthSo : HealthSO
+    public class BaseHealthSo : HealthSo
     {
-        // other stats that the health component of the base needs
+        private void OnEnable()
+        {
+            currentAge = 0;
+            currentHealthUpgrade = 0;
+        }
     }
 }

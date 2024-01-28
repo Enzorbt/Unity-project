@@ -1,6 +1,7 @@
 ﻿using System;
 using Supinfo.Project.ScriptableObjects.Common;
 using Supinfo.Project.Scripts.Common.Stats;
+using Supinfo.Project.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Supinfo.Project.ScriptableObjects.Unit
@@ -11,15 +12,24 @@ namespace Supinfo.Project.ScriptableObjects.Unit
     /// This makes it suitable for defining health properties as well as rewards for units in the game.
     /// </summary>
     [CreateAssetMenu(menuName = "ScriptableObject/Units/UnitHealthSo")]
-    public class UnitHealthSo : HealthSO
+    public class UnitHealthSo : HealthSo, ICoinsOnDeathUpgradable
     {
+        private int _currentGoldGivenUpgrade = 0;
+        
+        
+        private void OnEnable()
+        {
+            currentAge = 0;
+            currentHealthUpgrade = 0;
+            _currentGoldGivenUpgrade = 0;
+        }
         /// <summary>
         /// The amount of gold given to the player upon killing the unit.
         /// This value can be used to determine the economic reward for defeating this unit.
         /// </summary>
         [Header("Gold given when unit dies")]
         [SerializeField] private Stat goldGiven;
-        public Stat GoldGiven => goldGiven;
+        public float GoldGiven => goldGiven.GetValue(currentAge, _currentGoldGivenUpgrade);
         
         /// <summary>
         /// The amount of experience given to the player upon killing the unit.
@@ -27,6 +37,10 @@ namespace Supinfo.Project.ScriptableObjects.Unit
         /// </summary>
         [Header("Exeprience given when unit dies")]
         [SerializeField] private Stat experienceGiven;
-        public Stat ExperienceGiven => experienceGiven;
+        public float ExperienceGiven => experienceGiven.GetValue(currentAge, 0);
+        public void UpgradeGoldGiven()
+        {
+            _currentGoldGivenUpgrade++;
+        }
     }
 }

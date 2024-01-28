@@ -49,9 +49,9 @@ namespace Supinfo.Project.Unit.Scripts.Health
         public void Awake()
         {
             // Get coins, maxHealth, and xp from ScriptableObject
-            _coins = unitHealthSo.GoldGiven.GetValue();
-            _xp = unitHealthSo.ExperienceGiven.GetValue();
-            maxHealth = unitHealthSo.MaxHealth.GetValue();
+            _coins = unitHealthSo.GoldGiven;
+            _xp = unitHealthSo.ExperienceGiven;
+            maxHealth = unitHealthSo.MaxHealth;
             
         }
         
