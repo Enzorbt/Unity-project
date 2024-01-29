@@ -1,3 +1,6 @@
+using Supinfo.Project.ScriptableObjects.Common;
+using Supinfo.Project.ScriptableObjects.Unit;
+using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.ScriptableObjects.Data;
 using UnityEngine;
 
@@ -7,7 +10,7 @@ namespace Supinfo.Project.Unit.Scripts
     /// The Unit class represents a unit in the game, controlling its movement and behavior.
     /// It uses UnitData to access various properties such as speed and incorporates basic unit functionality.
     /// </summary>
-    public class Unit : MonoBehaviour
+    public class UnitMovement : MonoBehaviour, IMovement
     {
         // Public fields
 
@@ -26,36 +29,17 @@ namespace Supinfo.Project.Unit.Scripts
         /// <summary>
         /// Data containing the unit's properties like speed, health, etc.
         /// </summary>
-        [SerializeField] private UnitData unitData;
+        [SerializeField] private UnitMovementSo unitMovementSo;
 
         /// <summary>
         /// The movement speed of the unit, derived from unitData.
         /// </summary>
         private float _speed;
-        
-        /// <summary>
-        /// The age of the unit, can be used for unit lifecycle management.
-        /// </summary>
-        private int _age = 0;
-
-        /// <summary>
-        /// Number of upgrades applied to the unit.
-        /// </summary>
-        private int _upgrades = 0;
 
         // Public methods
         
 
         // MonoBehaviour methods
-
-        /// <summary>
-        /// Sets the movement state of the unit.
-        /// </summary>
-        /// <param name="value">Boolean value to set the _isMoving field.</param>
-        public void SetIsMoving(bool value)
-        {
-            _isMoving = value;
-        }
 
         public Vector3 GetDirection()
         {
@@ -78,17 +62,7 @@ namespace Supinfo.Project.Unit.Scripts
                 _direction = Vector3.right;
             }
 
-            _speed = unitData.WalkSpeed.GetValue();
-        }
-
-        /// <summary>
-        /// Start is called before the first frame update.
-        /// It logs the initial direction and speed of the unit.
-        /// </summary>
-        private void Start()
-        {
-            // Debug.Log("unit direction: " + _direction);
-            // Debug.Log("unit speed: " + _speed);
+            _speed = unitMovementSo.WalkSpeed;
         }
 
         /// <summary>
@@ -110,6 +84,16 @@ namespace Supinfo.Project.Unit.Scripts
         private void Move()
         {
             transform.Translate(_speed * Time.deltaTime * _direction);
+        }
+
+        public void Stop()
+        {
+            _isMoving = false;
+        }
+
+        public void Start()
+        {
+            _isMoving = true;
         }
     }
 }
