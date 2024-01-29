@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -533526399282706484, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: unitMovementSo
+      value: 
+      objectReference: {fileID: 11400000, guid: e8ba1518f9ec00b408ad54fc8bab7d12, type: 2}
     - target: {fileID: 288318026824580295, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: unitData
       value: 
@@ -26,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_Name
-      value: Unit2
+      value: RangeUnit1
       objectReference: {fileID: 0}
     - target: {fileID: 8827721182540866462, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_LocalPosition.x

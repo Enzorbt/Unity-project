@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c71233131247b3af55d68b86d69a18, type: 3}
   m_Name: ArmorSpawn
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3205478704301574675, guid: 474168cee32cc4a8d8b4370ad5f6fe27, type: 3}
+  prefabs:
+  - {fileID: 3205478704301574675, guid: 474168cee32cc4a8d8b4370ad5f6fe27, type: 3}
+  price:
+    baseValue: 0
+    ageStatModifiers: []
+    upgradeStatModifiers: []
   buildTime:
     baseValue: 4
     ageStatModifiers: []

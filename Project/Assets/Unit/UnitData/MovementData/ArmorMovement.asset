@@ -9,16 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c71233131247b3af55d68b86d69a18, type: 3}
-  m_Name: AntiArmorSpawn
+  m_Script: {fileID: 11500000, guid: 011301f0bfa7490daeee19a929a269a1, type: 3}
+  m_Name: ArmorMovement
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 4918686205561991012, guid: f0a552fc7ec004ce8824e14105f56ea4, type: 3}
-  price:
-    baseValue: 0
-    ageStatModifiers: []
-    upgradeStatModifiers: []
-  buildTime:
-    baseValue: 3
+  walkSpeed:
+    baseValue: 2
     ageStatModifiers: []
     upgradeStatModifiers: []

@@ -1,17 +1,16 @@
-﻿using Supinfo.Project.Scripts.Common.Stats;
+﻿using Supinfo.Project.ScriptableObjects.Common;
+using Supinfo.Project.Scripts.Common.Stats;
 using UnityEngine;
 
 namespace Supinfo.Project.ScriptableObjects.Unit
 {
     [CreateAssetMenu(menuName = "ScriptableObject/Units/UnitMovementSo")]
-    public class UnitMovementSo : ScriptableObject
+    public class UnitMovementSo : MovementSo
     {
-        /// <summary>
-        /// Walking speed of the unit.
-        /// </summary>
-        [Header("Speed of the unit")]
-        [SerializeField] private Stat walkSpeed;
-        public Stat WalkSpeed => walkSpeed; 
+        private void OnEnable()
+        {
+            currentAge = 0;
+        }
     }
     
     
