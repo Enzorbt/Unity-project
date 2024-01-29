@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Supinfo.Project.ScriptableObjects.Common
 {
-    public class AttackSo : ScriptableObject, IRangeUpgradable, IAttackUpgradable, IAgeUpgradable
+    public class AttackSo : ScriptableObject, IAgeUpgradable
     {
         protected int currentAge;
         protected int currentAttackUpgrade = 0;
@@ -33,18 +33,7 @@ namespace Supinfo.Project.ScriptableObjects.Common
         [SerializeField] protected Stat range;
         public float Range => range.GetValue(currentAge, currentRangeUpgrade);
         
-        // IAttackUpgradable implementation
-        public void UpgradeRange()
-        {
-            currentRangeUpgrade++;
-        }
-
-        // IRangeUpgradable implementation
-        public void UpgradeAttack()
-        {
-            currentAttackUpgrade++;
-        }
-
+        
         public void UpgradeAge()
         {
             currentAge++;

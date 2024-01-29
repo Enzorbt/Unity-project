@@ -8,7 +8,7 @@ namespace Supinfo.Project.ScriptableObjects.Common
     /// HealthSO is a ScriptableObject that defines the health-related properties of an object.
     /// It is used to store the maximum health value of the object.
     /// </summary>
-    public class HealthSo : ScriptableObject, IAgeUpgradable, IHealthUpgradable
+    public class HealthSo : ScriptableObject, IAgeUpgradable
     {
         protected int currentAge;
         protected int currentHealthUpgrade = 0;
@@ -23,11 +23,6 @@ namespace Supinfo.Project.ScriptableObjects.Common
         public void UpgradeAge()
         {
             currentAge++;
-        }
-
-        public void UpgradeHealth()
-        {
-            currentHealthUpgrade++;
         }
     }
 }

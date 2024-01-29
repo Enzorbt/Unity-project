@@ -18,6 +18,6 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Unit
         /// </summary>
         [Header("Spawn Cooldown")] 
         [SerializeField] private Stat buildTime;
-        public Stat BuildTime => buildTime;
+        public float BuildTime => buildTime.GetValue(currentAge, 0);
     }
 }

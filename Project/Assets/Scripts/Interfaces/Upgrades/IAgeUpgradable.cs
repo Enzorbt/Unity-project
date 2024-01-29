@@ -2,6 +2,6 @@
 {
     public interface IAgeUpgradable
     {
-        public void UpgradeAge();
+        public void UpgradeAge(); // Upgrade the current age
     }
 }

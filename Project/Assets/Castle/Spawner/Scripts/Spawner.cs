@@ -140,7 +140,7 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
 
             if (unitSpawnSo != null)
             {
-                var coolDown = unitSpawnSo.BuildTime.GetValue();
+                var coolDown = unitSpawnSo.BuildTime;
                 var unitPrefab = unitSpawnSo.GetPrefab(); // add age here to get different prefab
 
                 // for now the unit is spawn instantly

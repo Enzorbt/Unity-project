@@ -9,8 +9,10 @@ namespace Supinfo.Project.Scripts.Common.Stats
     [Serializable]
     public class Stat
     {
-        private int _lastAge = 1;
+        private int _lastAge = 0;
         private int _lastUpgrade = 0;
+        
+        private bool _hasBeenCalculated = false;
 
         [SerializeField] 
         private float baseValue;
@@ -26,8 +28,9 @@ namespace Supinfo.Project.Scripts.Common.Stats
         public float GetValue(int age = 0, int upgrades = 0)
         {
             // here we check if the value is dirty, if so we clean it
-            if(age != _lastAge || upgrades != _lastUpgrade) {
+            if(age != _lastAge || upgrades != _lastUpgrade || !_hasBeenCalculated) {
                 Debug.Log("Value is calculated");
+                _hasBeenCalculated = true;
                 _lastAge = age;
                 _lastUpgrade = upgrades;
                 _value = CalculateFinalValue(age, upgrades);

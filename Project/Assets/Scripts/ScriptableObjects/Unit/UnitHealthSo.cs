@@ -1,7 +1,7 @@
 ﻿using System;
 using Supinfo.Project.ScriptableObjects.Common;
 using Supinfo.Project.Scripts.Common.Stats;
-using Supinfo.Project.Scripts.Interfaces;
+using Supinfo.Project.Scripts.Interfaces.Upgrades;
 using UnityEngine;
 
 namespace Supinfo.Project.ScriptableObjects.Unit
@@ -12,7 +12,7 @@ namespace Supinfo.Project.ScriptableObjects.Unit
     /// This makes it suitable for defining health properties as well as rewards for units in the game.
     /// </summary>
     [CreateAssetMenu(menuName = "ScriptableObject/Units/UnitHealthSo")]
-    public class UnitHealthSo : HealthSo, ICoinsOnDeathUpgradable
+    public class UnitHealthSo : HealthSo, IUpgradable
     {
         private int _currentGoldGivenUpgrade = 0;
         
@@ -38,9 +38,27 @@ namespace Supinfo.Project.ScriptableObjects.Unit
         [Header("Exeprience given when unit dies")]
         [SerializeField] private Stat experienceGiven;
         public float ExperienceGiven => experienceGiven.GetValue(currentAge, 0);
-        public void UpgradeGoldGiven()
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        public void Upgrade(UpgradeType type)
         {
-            _currentGoldGivenUpgrade++;
+            switch (type)
+            {
+                case UpgradeType.GoldGiven:
+                    currentHealthUpgrade++;
+                    break;
+                case UpgradeType.Health:
+                    _currentGoldGivenUpgrade++;
+                    break;
+                default:
+                    Debug.Log("Wrong type of upgrade (health)");
+                    break;
+            }
+            currentHealthUpgrade++;
         }
+        
     }
 }

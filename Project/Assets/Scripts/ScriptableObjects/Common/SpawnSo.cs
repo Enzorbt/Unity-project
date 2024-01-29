@@ -25,6 +25,8 @@ namespace Supinfo.Project.ScriptableObjects.Common
         [Header("Price")] 
         [SerializeField] private Stat price;
         public Stat Price => price;
+        
+        
         public void UpgradeAge()
         {
             currentAge++;

@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c71233131247b3af55d68b86d69a18, type: 3}
   m_Name: AntiArmorSpawn
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4918686205561991012, guid: f0a552fc7ec004ce8824e14105f56ea4, type: 3}
+  prefabs:
+  - {fileID: 4918686205561991012, guid: f0a552fc7ec004ce8824e14105f56ea4, type: 3}
+  price:
+    baseValue: 0
+    ageStatModifiers: []
+    upgradeStatModifiers: []
   buildTime:
     baseValue: 3
     ageStatModifiers: []
