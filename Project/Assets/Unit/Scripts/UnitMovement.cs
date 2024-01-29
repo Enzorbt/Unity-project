@@ -1,3 +1,4 @@
+using System;
 using Supinfo.Project.ScriptableObjects.Common;
 using Supinfo.Project.ScriptableObjects.Unit;
 using Supinfo.Project.Scripts.Interfaces;
@@ -19,7 +20,7 @@ namespace Supinfo.Project.Unit.Scripts
         /// <summary>
         /// Represents whether the unit is currently moving.
         /// </summary>
-        private bool _isMoving = true;
+        private bool _isMoving = false;
 
         /// <summary>
         /// The direction in which the unit is moving.
@@ -65,6 +66,11 @@ namespace Supinfo.Project.Unit.Scripts
             _speed = unitMovementSo.WalkSpeed;
         }
 
+        private void Start()
+        {
+            _isMoving = true;
+        }
+
         /// <summary>
         /// Update is called once per frame and is responsible for moving the unit if it is set to move.
         /// </summary>
@@ -86,12 +92,12 @@ namespace Supinfo.Project.Unit.Scripts
             transform.Translate(_speed * Time.deltaTime * _direction);
         }
 
-        public void Stop()
+        public void StopMovement()
         {
             _isMoving = false;
         }
 
-        public void Start()
+        public void StartMovement()
         {
             _isMoving = true;
         }

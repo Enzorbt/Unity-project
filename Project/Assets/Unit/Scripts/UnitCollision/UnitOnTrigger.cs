@@ -17,7 +17,7 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
             if (collision.CompareTag("Unit"))
             {
                 Debug.Log("Unit find");
-                _unitMovementScript.Stop();
+                _unitMovementScript.StopMovement();
             }
 
             if (collision.CompareTag("Castle"))

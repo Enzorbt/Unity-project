@@ -41,7 +41,7 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
                 if (_hit.collider.gameObject != gameObject && _hit.collider.CompareTag("Unit"))
                 {
                     Debug.Log("Unit met: " + _hit.transform.name);
-                    _unitMovementScript.Stop();
+                    _unitMovementScript.StopMovement();
                 }
             }
         }
