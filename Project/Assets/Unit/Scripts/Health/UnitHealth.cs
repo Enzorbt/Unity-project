@@ -1,7 +1,6 @@
-using ScriptableObjects.Unit;
+using Supinfo.Project.ScriptableObjects.Unit;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
-using Supinfo.Project.Scripts.Common;
 using UnityEngine;
 
 namespace Supinfo.Project.Unit.Scripts.Health
@@ -41,7 +40,7 @@ namespace Supinfo.Project.Unit.Scripts.Health
         /// ScriptableObject containing health-related data for the unit.
         /// </summary>
         [SerializeField]
-        private UnitHealthSO unitHealthSo;
+        private UnitHealthSo unitHealthSo;
 
         /// <summary>
         /// Awake is called when the script instance is being loaded.
@@ -50,9 +49,10 @@ namespace Supinfo.Project.Unit.Scripts.Health
         public void Awake()
         {
             // Get coins, maxHealth, and xp from ScriptableObject
-            _coins = unitHealthSo.GoldGiven.GetValue();
-            _xp = unitHealthSo.ExperienceGiven.GetValue();
-            maxHealth = unitHealthSo.MaxHealth.GetValue();
+            _coins = unitHealthSo.GoldGiven;
+            _xp = unitHealthSo.ExperienceGiven;
+            maxHealth = unitHealthSo.MaxHealth;
+            
         }
         
         /// <summary>
@@ -78,8 +78,15 @@ namespace Supinfo.Project.Unit.Scripts.Health
             
             if (curHealth <= 0)
             {
-                onUnitDeathCoins.Raise(this, _coins);
-                onUnitDeathXp.Raise(this, _xp);
+                if (!(onUnitDeathCoins is null))
+                {
+                    onUnitDeathCoins.Raise(this, _coins);
+                }
+                if (!(onUnitDeathXp is null))
+                {
+                    onUnitDeathXp.Raise(this, _xp);
+                }
+                Destroy(gameObject);
             }
         }
     }

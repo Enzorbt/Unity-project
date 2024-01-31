@@ -1,16 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.ScriptableObjects.Unit;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
-
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace Supinfo.Project.UI.Button.Scripts
 {

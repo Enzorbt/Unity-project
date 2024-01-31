@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using ScriptableObjects.Unit;
 using UnityEngine;
 using UnityEngine.UI;
 

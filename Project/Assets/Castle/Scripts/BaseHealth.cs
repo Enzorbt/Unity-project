@@ -1,5 +1,4 @@
-﻿using System;
-using ScriptableObjects.Base;
+﻿using Supinfo.Project.ScriptableObjects.Base;
 using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
@@ -38,7 +37,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// <summary>
         /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from a ScriptableObject.
         /// </summary>
-        private BaseHealthSO _baseHealthSo;
+        private BaseHealthSo _baseHealthSo;
 
         /// <summary>
         /// Awake is called when the script instance is being loaded.
@@ -46,7 +45,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// </summary>
         private void Awake()
         {
-            maxHealth = _baseHealthSo.MaxHealth.GetValue();
+            maxHealth = _baseHealthSo.MaxHealth;
         }
 
         /// <summary>
@@ -58,13 +57,20 @@ namespace Supinfo.Project.Castle.Scripts
         {
             // Remove amount of damage taken from health and raise the event
             curHealth -= amount;
-            onBaseHealthChange.Raise(this, curHealth/maxHealth);
+            if (!(onBaseHealthChange is null))
+            {
+                onBaseHealthChange.Raise(this, curHealth/maxHealth);
+            }
             
             // Check if health <= 0 : Base is dead
             if (curHealth <= 0)
             {
+                if (!(onBaseDeath is null))
+                {
+                    onBaseDeath.Raise(this, _baseNumber);
+                }
+                
                 curHealth = 0;
-                onBaseDeath.Raise(this, _baseNumber);
             }
         }
         

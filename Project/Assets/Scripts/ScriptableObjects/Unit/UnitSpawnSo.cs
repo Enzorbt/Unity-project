@@ -1,21 +1,23 @@
 ﻿using System;
-using Supinfo.Project.Scripts.Stats;
+using Supinfo.Project.ScriptableObjects.Common;
+using Supinfo.Project.Scripts.Common.Stats;
 using UnityEngine;
 
 namespace Supinfo.Project.Scripts.ScriptableObjects.Unit
 {
     [CreateAssetMenu(menuName = "ScriptableObject/Units/UnitSpawnSo")]
-    [Serializable]
-    public class UnitSpawnSo : ScriptableObject
+    public class UnitSpawnSo : SpawnSo
     {
-        [Header("Prefab")] 
-        [SerializeField] private GameObject prefab;
-        public GameObject Prefab => prefab;
+        private void OnEnable()
+        {
+            currentAge = 0;
+        }
         
+        /// <summary>
+        /// Build time of the unit
+        /// </summary>
         [Header("Spawn Cooldown")] 
         [SerializeField] private Stat buildTime;
-        public Stat BuildTime => buildTime;
-        
-        
+        public float BuildTime => buildTime.GetValue(currentAge, 0);
     }
 }
