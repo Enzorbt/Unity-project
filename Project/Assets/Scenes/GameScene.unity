@@ -765,6 +765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle1
       objectReference: {fileID: 0}
+    - target: {fileID: 8242651989332693652, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: m_TagString
+      value: Unit,Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8386321039771869578, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -1181,6 +1185,10 @@ PrefabInstance:
     - target: {fileID: 8159974408950080524, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
       propertyPath: m_Name
       value: Castle0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242651989332693652, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: m_TagString
+      value: Unit,Allies
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
