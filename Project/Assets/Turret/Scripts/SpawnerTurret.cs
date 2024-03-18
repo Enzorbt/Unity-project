@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class SpawnerTurret : MonoBehaviour
 {
     public GameObject turretPrefab;
-    public Vector3 spawnPosition = Vector3.zero;
+    public GameObject spawnPosition;
     private int _spawnNumber;
     private int _spawnLimit = 4;
     private List<GameObject> _spawnedTurrets = new List<GameObject>();
@@ -29,12 +29,11 @@ public class SpawnerTurret : MonoBehaviour
     {
         if (turretPrefab != null)
         {
-            float yPosition = spawnPosition.y + _spawnNumber * 1f; 
-            Vector3 newSpawnPosition = new Vector3(spawnPosition.x, yPosition, spawnPosition.z);
+            float yPosition = spawnPosition.transform.position.y + _spawnNumber * 1f; 
+            Vector3 newSpawnPosition = new Vector3(spawnPosition.transform.position.x, yPosition, spawnPosition.transform.position.z);
             GameObject spawnedTurret = Instantiate(turretPrefab, newSpawnPosition, Quaternion.identity);
             _spawnedTurrets.Add(spawnedTurret);
             _spawnNumber++;
-            spawnedTurret.SetActive(true);
         }
         else
         {

@@ -664,51 +664,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6419648924715369162, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
   m_PrefabInstance: {fileID: 641193429}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &998073479 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8242651989332693652, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
-  m_PrefabInstance: {fileID: 6031698437914056396}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &998073481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998073479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 998073482}
-        m_TargetAssemblyTypeName: Supinfo.Project.Castle.Spawner.Scripts.Spawner,
-          Assembly-CSharp
-        m_MethodName: SpawnUnit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &998073482 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 194036574691145683, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
-  m_PrefabInstance: {fileID: 6031698437914056396}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998073479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb1fb2712c64c2c41b91e180ae018ed5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1033456888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -761,6 +716,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -1.99
       objectReference: {fileID: 0}
+    - target: {fileID: 6373652787784720674, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: turretPrefab
+      value: 
+      objectReference: {fileID: 8346566440712086298, guid: 54abae10a0c6cd94b822adb08c6e6623, type: 3}
     - target: {fileID: 8159974408950080524, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
       propertyPath: m_Name
       value: Castle1
@@ -776,6 +735,14 @@ PrefabInstance:
     - target: {fileID: 8386321039771869578, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596861908806436338, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596861908806436338, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1134,10 +1101,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 194036574691145683, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
     - target: {fileID: 1569555876603605641, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.84
@@ -1178,17 +1141,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6373652787784720674, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: turretPrefab
+      value: 
+      objectReference: {fileID: 8346566440712086298, guid: 54abae10a0c6cd94b822adb08c6e6623, type: 3}
     - target: {fileID: 8159974408950080524, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
       propertyPath: m_Name
       value: Castle0
       objectReference: {fileID: 0}
+    - target: {fileID: 8596861908806436338, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596861908806436338, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8242651989332693652, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 998073481}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

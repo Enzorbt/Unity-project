@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8596861908806436338}
   m_Father: {fileID: 1569555876603605641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6373652787784720674
@@ -45,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c777c32159d541ce8bdf8f036ce4def5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretPrefab: {fileID: 0}
+  turretPrefab: {fileID: 115771071481155613, guid: 00d2f0e9b22828a46aaffcbb8217ca9d, type: 3}
+  spawnPosition: {fileID: 4944532432436838791}
 --- !u!114 &6523809192702075535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +76,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &4944532432436838791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8596861908806436338}
+  m_Layer: 0
+  m_Name: SpawnPointTurret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8596861908806436338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4944532432436838791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2189529083076343058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5398998398267360690
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5833999341401420979}
   - component: {fileID: 194036574691145683}
+  - component: {fileID: 3067608788213085469}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -349,3 +383,32 @@ MonoBehaviour:
   unit: {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
   cooldownTime: 2
   direction: {x: 0, y: 0, z: 0}
+--- !u!114 &3067608788213085469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242651989332693652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 194036574691145683}
+        m_TargetAssemblyTypeName: Supinfo.Project.Castle.Spawner.Scripts.Spawner,
+          Assembly-CSharp
+        m_MethodName: SpawnUnit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
