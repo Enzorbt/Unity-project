@@ -65,13 +65,13 @@ namespace Supinfo.Project.Unit.Scripts.Health
                 TakeDamage(10);
             }
         }
-        
+
         /// <summary>
         /// Applies damage to the unit and updates the health bar.
         /// Triggers death events if health falls to zero or below.
         /// </summary>
         /// <param name="damage">The amount of damage to apply to the unit.</param>
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             curHealth -= damage;
             healthBar.SetHealthSliderValue(curHealth/maxHealth);

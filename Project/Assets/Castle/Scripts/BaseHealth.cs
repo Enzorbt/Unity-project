@@ -53,7 +53,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// Applies damage to the base, updates its health, and triggers events based on health changes or destruction.
         /// </summary>
         /// <param name="amount">The amount of damage to apply to the base.</param>
-        public void TakeDamage(int amount)
+        public void TakeDamage(float amount)
         {
             // Remove amount of damage taken from health and raise the event
             curHealth -= amount;

@@ -2,7 +2,7 @@
 {
     public interface IDamageable
     {
-        public void TakeDamage(int amount); // Take damage from attacker or effect
+        public void TakeDamage(float amount); // Take damage from attacker or effect
         
     }
 }
