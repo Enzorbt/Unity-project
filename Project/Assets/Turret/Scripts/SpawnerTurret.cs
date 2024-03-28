@@ -32,6 +32,8 @@ public class SpawnerTurret : MonoBehaviour
             float yPosition = spawnPosition.transform.position.y + _spawnNumber * 1f; 
             Vector3 newSpawnPosition = new Vector3(spawnPosition.transform.position.x, yPosition, spawnPosition.transform.position.z);
             GameObject spawnedTurret = Instantiate(turretPrefab, newSpawnPosition, Quaternion.identity);
+            string[] tags = transform.tag.Split(',');
+            spawnedTurret.tag = "Turret," + tags[1];
             _spawnedTurrets.Add(spawnedTurret);
             _spawnNumber++;
         }
