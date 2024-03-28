@@ -1,6 +1,7 @@
 ﻿using Common;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Turret.Scripts;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Turret.Scripts
@@ -8,16 +9,28 @@ namespace Turret.Scripts
     [CreateAssetMenu(menuName = "Brains/TurretBrain")]
     public class TurretBrain: Brain
     {
+        public GameObject projectilePrefab;
         public override void Think(Thinker thinker)
         {
             if (thinker is not TurretThinker turretThinker) return;
             turretThinker.TryGetComponent(out IDetection detection);
             if (detection is null) return ;
-            var targetCollider = detection.Detect(turretThinker.TurretAttackSo.TargetTag, turretThinker.TurretAttackSo.Range);
+            string[] tags = thinker.transform.tag.Split(',');
+            var targetCollider = detection.Detect(tags[1] == "Allies" ? "Unit,Enemy": "Unit,Allies", 500);
+            //Debug.Log(tags[1] == "Allies" ? "Unit,Enemy": "Unit,Allies");
             if (targetCollider is null) return;
-            targetCollider.TryGetComponent(out IDamageable damageable);
+            //Debug.Log(targetCollider.transform.tag);
+            /*targetCollider.TryGetComponent(out IDamageable damageable);
             if (damageable is null) return;
-            damageable.TakeDamage((int)turretThinker.TurretAttackSo.Damage);
+            damageable.TakeDamage((int)turretThinker.TurretAttackSo.Damage);*/
+            
+            GameObject newProjectile = Instantiate(projectilePrefab, turretThinker.transform.position, Quaternion.identity);
+            
+            ProjectileMovement projectileMovement = newProjectile.GetComponent<ProjectileMovement>();
+            if (projectileMovement != null)
+            {
+                projectileMovement.SetTarget(targetCollider.transform.position);
+            }
         }
     }
 }
