@@ -5,7 +5,8 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
 {
     public class UnitRaycast : MonoBehaviour
     {
-        private float _rayLength = 2;
+        private float _rayMoovementLength = 1; // Need to be find in the age data 
+        private float _rayAttackLength = 2; // Need to be find in the unit data
         private IMovement _unitMovementScript;
         private RaycastHit2D _hit;
         private Vector3 _direction;
@@ -29,19 +30,40 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
 
         private void FixedUpdate()
         {
-            PerformRaycast(_rayLength);
+            PerformRaycastMoovement(_rayMoovementLength);
+            PerformRaycastAttack(_rayAttackLength);
         }
 
-        private void PerformRaycast(float length)
+        private void PerformRaycastMoovement(float length)
         {
             _hit = Physics2D.Raycast(transform.position, _direction, length, ~LayerMask.GetMask("Unit"));
 
             if (_hit.collider is not null)
+            { 
+                _unitMovementScript.StopMovement();
+            }
+            else
             {
-                if (_hit.collider.gameObject != gameObject && _hit.collider.CompareTag("Unit"))
+                _unitMovementScript.StartMovement();
+            }
+        }
+
+        private void PerformRaycastAttack(float length)
+        {
+            // Vérfier si une unité et dans le range de l'unité pour l'attaquer (Avec le range d'attack récupèrer dans la data des unit)
+            _hit = Physics2D.Raycast(transform.position, _direction, length, ~LayerMask.GetMask("Unit"));
+
+            if (_hit.collider is not null)
+            {
+                string[] hitTagParts = _hit.collider.tag.Split(',');
+                string[] myTagParts = gameObject.tag.Split(',');
+                if (hitTagParts[0] == "Unit")
                 {
-                    Debug.Log("Unit met: " + _hit.transform.name);
-                    _unitMovementScript.StopMovement();
+                    if (hitTagParts[1] != myTagParts[1])
+                    {
+                        // Attaque avec une unité enemy, implémenter un appel pour attaquer l'unité, avec nombre de dégats  
+                        Debug.Log("Enemy find !");
+                    }
                 }
             }
         }
@@ -50,7 +72,8 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
         {
             if (_unitMovementScript != null)
             {
-                Debug.DrawRay(transform.position, _direction * _rayLength, Color.green);
+                Debug.DrawRay(transform.position, _direction * _rayMoovementLength, Color.green); // Mouvement 
+                Debug.DrawRay(transform.position, _direction * _rayAttackLength, Color.red); // Attaque
             }
         }
     }
