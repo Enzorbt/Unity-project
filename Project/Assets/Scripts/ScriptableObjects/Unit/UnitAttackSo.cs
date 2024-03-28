@@ -21,7 +21,7 @@ namespace Supinfo.Project.ScriptableObjects.Unit
         /// </summary>
         [Header("Characteristics")] 
         [SerializeField] private UnitType unitType;
-        public UnitType Type => unitType; 
+        public UnitType Type => unitType;
         
         /// <summary>
         /// 

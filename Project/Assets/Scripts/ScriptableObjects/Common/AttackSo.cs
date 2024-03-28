@@ -27,6 +27,12 @@ namespace Supinfo.Project.ScriptableObjects.Common
         public float HitSpeed => hitSpeed.GetValue(currentAge, 0);
         
         /// <summary>
+        /// The target type of the unit
+        /// </summary>
+        [SerializeField] private string targetTag;
+        public string TargetTag => targetTag; 
+        
+        /// <summary>
         /// Attack range of the unit.
         /// </summary>
         [Header("Range of the Units")]
