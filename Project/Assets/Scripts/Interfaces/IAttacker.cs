@@ -2,6 +2,6 @@
 {
     public interface IAttacker
     {
-        public void Attack(float amount); // Deals damage
+        public void Attack(float amount, IDamageable target); // Deals damage
     }
 }

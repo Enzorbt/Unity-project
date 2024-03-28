@@ -402,9 +402,11 @@ GameObject:
   - component: {fileID: 4371070662113245973}
   - component: {fileID: 4017872775033760459}
   - component: {fileID: 6092957357902687793}
-  - component: {fileID: -533526399282706484}
-  - component: {fileID: 9049587419245293449}
   - component: {fileID: 1776877459599816412}
+  - component: {fileID: 6359458530771199948}
+  - component: {fileID: 5842219500471513408}
+  - component: {fileID: 3590464389390261383}
+  - component: {fileID: 68153942580603145}
   m_Layer: 0
   m_Name: MeleeUnit1
   m_TagString: Unit
@@ -542,31 +544,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-533526399282706484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7094864365306331561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfd46aff488e2f04e9533b09bfa6ee06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitMovementSo: {fileID: 11400000, guid: cc63b7eec5b2019448b286766b94afb2, type: 2}
---- !u!114 &9049587419245293449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7094864365306331561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23bd930381174f279c8a9b3f479d2a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1776877459599816412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,6 +560,58 @@ MonoBehaviour:
   onUnitDeathCoins: {fileID: 0}
   onUnitDeathXp: {fileID: 0}
   unitHealthSo: {fileID: 11400000, guid: e9641f235187b9945bc8f24a939a5d57, type: 2}
+--- !u!114 &6359458530771199948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094864365306331561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30595ec7ed924fcda8412607fa2d6f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: a6267f36ccafe364d9b3f6c14eae1216, type: 2}
+  unityAttack: {fileID: 11400000, guid: 70ad2a1f4b050a847b02105de132ab26, type: 2}
+  unitHealth: {fileID: 11400000, guid: e9641f235187b9945bc8f24a939a5d57, type: 2}
+  unitMovement: {fileID: 11400000, guid: cc63b7eec5b2019448b286766b94afb2, type: 2}
+--- !u!114 &5842219500471513408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094864365306331561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2641f4dc4c1f422aa945147ee6e6f0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3590464389390261383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094864365306331561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e585eb083dd49e591a32e93bc0172fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &68153942580603145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094864365306331561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0490ac74a65a40c880ae5ff78a9ba9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8969170608295762698
 GameObject:
   m_ObjectHideFlags: 0

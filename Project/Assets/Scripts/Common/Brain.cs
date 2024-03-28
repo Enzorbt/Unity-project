@@ -4,6 +4,6 @@ namespace Common
 {
     public abstract class Brain : ScriptableObject
     {
-        public abstract void Think(Thinker think);
+        public abstract void Think(Thinker thinker);
     }
 }
