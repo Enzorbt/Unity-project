@@ -14,11 +14,11 @@ namespace Supinfo.Project.Unit.Scripts
             var tags = unitThinker.transform.tag.Split(",");
             
             // Detection d'allies 
-            var target = detection?.Detect(unitThinker.Direction, unitThinker.UnitAttack.Range, tags[1]=="Allies"?"Unit,Allies":"Unit,Enemy");
+            var target = detection?.Detect(unitThinker.Direction, unitThinker.UnitAttack.Range, tags[1]=="Allies"?"Unit,Allies":"Unit,Enemies");
             if (target) return;
             
             // Detection d'enemies
-            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitAttack.Range, tags[1]=="Allies"?"Unit,Enemy":"Unit,Allies");
+            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitAttack.Range, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
             if (target)
             {
                 unitThinker.TryGetComponent(out IAttacker attacker);
@@ -29,7 +29,7 @@ namespace Supinfo.Project.Unit.Scripts
             }
             
             // Detection de chateau 
-            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitAttack.Range, tags[1]=="Allies"?"Castle,Enemy":"Castle,Allies");
+            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitAttack.Range, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
             if (target)
             {
                 unitThinker.TryGetComponent(out IAttacker attacker);
