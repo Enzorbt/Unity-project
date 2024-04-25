@@ -6,8 +6,10 @@ TagManager:
   tags:
   - Castle
   - Unit,Allies
-  - Unit,Enemy
   - Unit
+  - Castle,Allies
+  - Caste,Enemies
+  - Unit,Enemies
   layers:
   - Default
   - TransparentFX
