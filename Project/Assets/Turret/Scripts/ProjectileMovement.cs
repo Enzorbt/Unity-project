@@ -6,6 +6,7 @@ namespace Supinfo.Project.Turret.Scripts
     public class ProjectileMovement : MonoBehaviour
     {
         public float speed = 10f;
+        public float Speed => speed;
         private Vector3 targetPosition;
         
         public void SetTarget(Vector3 target)

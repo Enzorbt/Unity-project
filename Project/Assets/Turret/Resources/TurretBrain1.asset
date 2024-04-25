@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e4928c41cd4acfacf8875d5c6b0345, type: 3}
   m_Name: TurretBrain1
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 7530026430527224068, guid: 4459b9b64ed92ed4d910fe334196fdad, type: 3}

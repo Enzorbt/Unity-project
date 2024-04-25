@@ -20,8 +20,8 @@ MonoBehaviour:
     baseValue: 0
     ageStatModifiers: []
     upgradeStatModifiers: []
-  targetTag: Unit
+  targetTag: Unit,Allies
   range:
-    baseValue: 20
+    baseValue: 1
     ageStatModifiers: []
     upgradeStatModifiers: []
