@@ -1,7 +1,6 @@
-﻿using Unity.VisualScripting.YamlDotNet.Core.Tokens;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Supinfo.Project.Scripts.Interfaces
+namespace Interfaces
 {
     public interface IDetection
     {
