@@ -1,4 +1,5 @@
-﻿using Supinfo.Project.Scripts.Interfaces;
+﻿using Interfaces;
+using Supinfo.Project.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Supinfo.Project.Unit.Scripts
