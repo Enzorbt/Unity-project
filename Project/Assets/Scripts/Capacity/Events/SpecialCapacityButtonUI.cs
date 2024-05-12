@@ -1,9 +1,7 @@
 using Supinfo.Project.Scripts.Events;
-using Supinfo.Project.Scripts.ScriptableObjects.Unit;
 using UnityEngine;
-using Supinfo.Project.Scripts.Events;
 
-namespace Supinfo.Project.Scripts.Events
+namespace Capacity.Events
 {
     public class SpecialCapacityButtonUI : MonoBehaviour
     {
