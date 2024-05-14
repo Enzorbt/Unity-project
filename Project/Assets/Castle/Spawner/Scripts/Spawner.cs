@@ -31,7 +31,7 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             float posY = spawnPoint.y + spriteBounds.extents.y;
 
             _spawnPosition = new Vector3(posX, posY, 0);
-            _unitTag = gameObject.tag;
+            _unitTag = "Unit," + gameObject.tag.Split(",")[1];
         }
 
         private void Update()

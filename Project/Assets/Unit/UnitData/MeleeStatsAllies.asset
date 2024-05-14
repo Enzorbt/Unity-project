@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d121ed7724f24539b910a69beea357ff, type: 3}
-  m_Name: AntiArmorStats
+  m_Name: MeleeStatsAllies
   m_EditorClassIdentifier: 
   damage:
     baseValue: 10
-    ageStatModifiers: []
+    ageStatModifiers:
+    - value: 5
+      type: 100
+      order: 0
     upgradeStatModifiers: []
   hitSpeed:
     baseValue: 1
@@ -26,7 +29,7 @@ MonoBehaviour:
     ageStatModifiers: []
     upgradeStatModifiers: []
   buildTime:
-    baseValue: 2
+    baseValue: 1
     ageStatModifiers: []
     upgradeStatModifiers: []
   goldGiven:
@@ -37,17 +40,17 @@ MonoBehaviour:
     baseValue: 10
     ageStatModifiers: []
     upgradeStatModifiers: []
-  unitType: {fileID: 11400000, guid: fa4c53ade78d6d54aac1ac2069307556, type: 2}
+  unitType: {fileID: 11400000, guid: cf50e00632f00a94289305bc6f27ce8c, type: 2}
   maxHealth:
     baseValue: 50
     ageStatModifiers: []
     upgradeStatModifiers: []
   walkSpeed:
-    baseValue: 5
+    baseValue: 2
     ageStatModifiers: []
     upgradeStatModifiers: []
   prefabs:
-  - {fileID: 3205478704301574675, guid: 474168cee32cc4a8d8b4370ad5f6fe27, type: 3}
+  - {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
   price:
     baseValue: 10
     ageStatModifiers: []
