@@ -1,6 +1,5 @@
 using System.Collections;
-using Supinfo.Project.Scripts.Events;
-using Supinfo.Project.Scripts.ScriptableObjects.Unit;
+using ScriptableObjects.Unit;
 using UnityEngine;
 
 namespace Supinfo.Project.Castle.Spawner.Scripts
@@ -32,7 +31,7 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             float posY = spawnPoint.y + spriteBounds.extents.y;
 
             _spawnPosition = new Vector3(posX, posY, 0);
-            _unitTag = gameObject.tag;
+            _unitTag = "Unit," + gameObject.tag.Split(",")[1];
         }
 
         private void Update()
@@ -63,12 +62,12 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
 
         public void SpawnUnit(Component sender, object data)
         {
-            UnitSpawnSo unitSpawnSo = data as UnitSpawnSo;
+            UnitStatSo unitStatSo = data as UnitStatSo;
 
-            if (unitSpawnSo != null)
+            if (unitStatSo != null)
             {
-                var coolDown = unitSpawnSo.BuildTime;
-                var unitPrefab = unitSpawnSo.GetPrefab();
+                var coolDown = unitStatSo.BuildTime;
+                var unitPrefab = unitStatSo.GetPrefab();
                 GameObject unitSpawned = Instantiate(unitPrefab, _spawnPosition, Quaternion.identity, _unitsContainer);
                 unitSpawned.tag = _unitTag;
             }

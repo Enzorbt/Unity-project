@@ -1,19 +1,13 @@
 ﻿using Common;
-using Supinfo.Project.ScriptableObjects.Unit;
+using ScriptableObjects.Unit;
 using UnityEngine;
 
 namespace Supinfo.Project.Unit.Scripts
 {
     public class UnitThinker: Thinker
     {
-        [SerializeField] private UnitAttackSo unityAttack;
-        public UnitAttackSo UnitAttack => unityAttack;
-        
-        [SerializeField] private UnitHealthSo unitHealth;
-        public UnitHealthSo UnitHealth => unitHealth;
-        
-        [SerializeField] private UnitMovementSo unitMovement;
-        public UnitMovementSo UnitMovement => unitMovement;
+        [SerializeField] private UnitStatSo unitStatSo;
+        public UnitStatSo UnitStatSo => unitStatSo;
 
         public Vector3 Direction { get; set; }
         private void Awake()

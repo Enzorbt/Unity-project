@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d121ed7724f24539b910a69beea357ff, type: 3}
+  m_Name: MeleeStatsAllies
+  m_EditorClassIdentifier: 
+  damage:
+    baseValue: 10
+    ageStatModifiers:
+    - value: 5
+      type: 100
+      order: 0
+    upgradeStatModifiers: []
+  hitSpeed:
+    baseValue: 1
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  targetTag: 
+  range:
+    baseValue: 1
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  buildTime:
+    baseValue: 1
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  goldGiven:
+    baseValue: 10
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  experienceGiven:
+    baseValue: 10
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  unitType: {fileID: 11400000, guid: cf50e00632f00a94289305bc6f27ce8c, type: 2}
+  maxHealth:
+    baseValue: 50
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  walkSpeed:
+    baseValue: 2
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  prefabs:
+  - {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+  price:
+    baseValue: 10
+    ageStatModifiers: []
+    upgradeStatModifiers: []
