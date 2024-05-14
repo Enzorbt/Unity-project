@@ -29,7 +29,6 @@ namespace Supinfo.Project.Scripts.Common.Stats
         {
             // here we check if the value is dirty, if so we clean it
             if(age != _lastAge || upgrades != _lastUpgrade || !_hasBeenCalculated) {
-                Debug.Log("Value is calculated");
                 _hasBeenCalculated = true;
                 _lastAge = age;
                 _lastUpgrade = upgrades;
@@ -58,13 +57,11 @@ namespace Supinfo.Project.Scripts.Common.Stats
             // if age or upgrades is greater than the number of modifiers in the list, set it to the max
             if (age > ageStatModifiers.Count)
             {
-                Debug.LogWarning("Age adjusted in the calculation of the value");
                 age = ageStatModifiers.Count;
             }
 
             if (upgrades > upgradeStatModifiers.Count)
             {
-                Debug.LogWarning("Upgrades number adjusted in the calculation of the value");
                 upgrades = upgradeStatModifiers.Count;
             }
             
