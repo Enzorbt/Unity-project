@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d121ed7724f24539b910a69beea357ff, type: 3}
+  m_Name: AntiArmorStats
+  m_EditorClassIdentifier: 
+  damage:
+    baseValue: 10
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  hitSpeed:
+    baseValue: 1
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  targetTag: 
+  range:
+    baseValue: 1
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  buildTime:
+    baseValue: 2
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  goldGiven:
+    baseValue: 10
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  experienceGiven:
+    baseValue: 10
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  unitType: {fileID: 11400000, guid: fa4c53ade78d6d54aac1ac2069307556, type: 2}
+  maxHealth:
+    baseValue: 50
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  walkSpeed:
+    baseValue: 5
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  prefabs:
+  - {fileID: 3205478704301574675, guid: 474168cee32cc4a8d8b4370ad5f6fe27, type: 3}
+  price:
+    baseValue: 10
+    ageStatModifiers: []
+    upgradeStatModifiers: []

@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: unitData
       value: 
       objectReference: {fileID: 11400000, guid: 7b92e314bf7643a4f8c3d8e323cf64a9, type: 2}
+    - target: {fileID: 1776877459599816412, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: unitStatSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a5d22672fdd15f4c878c16c2056be01, type: 2}
     - target: {fileID: 4371070662113245973, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_Color.b
       value: 0.9469586
@@ -28,6 +32,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.0047169924
       objectReference: {fileID: 0}
+    - target: {fileID: 6359458530771199948, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: unitStatSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a5d22672fdd15f4c878c16c2056be01, type: 2}
     - target: {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_Name
       value: RangeUnit1

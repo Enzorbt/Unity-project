@@ -20,7 +20,7 @@ namespace Supinfo.Project.Scripts.Events
          [SerializeField] private GameEvent gameEvent;
 
         public CustomUnityEvent response;
-        private void OnEnable()
+        private void Start()
         {
             gameEvent.RegisterListener(this);
 
