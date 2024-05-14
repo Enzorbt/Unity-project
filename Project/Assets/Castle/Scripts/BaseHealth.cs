@@ -3,6 +3,7 @@ using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Supinfo.Project.Castle.Scripts
 {
@@ -37,7 +38,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// <summary>
         /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from a ScriptableObject.
         /// </summary>
-        private BaseHealthSo _baseHealthSo;
+        public BaseStatSo baseStatSo;
 
         /// <summary>
         /// Awake is called when the script instance is being loaded.
@@ -45,7 +46,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// </summary>
         private void Awake()
         {
-            maxHealth = _baseHealthSo.MaxHealth;
+            maxHealth = baseStatSo.MaxHealth;
         }
 
         /// <summary>

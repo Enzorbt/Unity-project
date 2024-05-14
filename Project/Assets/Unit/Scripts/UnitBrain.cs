@@ -15,28 +15,28 @@ namespace Supinfo.Project.Unit.Scripts
             var tags = unitThinker.transform.tag.Split(",");
             
             // Detection d'allies 
-            var target = detection?.Detect(unitThinker.Direction, unitThinker.UnitAttack.Range, tags[1]=="Allies"?"Unit,Allies":"Unit,Enemies");
+            var target = detection?.Detect(unitThinker.Direction, 1, tags[1]=="Allies"?"Unit,Allies":"Unit,Enemies");
             if (target) return;
             
             // Detection d'enemies
-            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitAttack.Range, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
+            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitStatSo.Range, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
             if (target)
             {
                 unitThinker.TryGetComponent(out IAttacker attacker);
                 target.TryGetComponent(out IDamageable damageable);
                 if(damageable is null)return;
-                attacker?.Attack(unitThinker.UnitAttack.Damage, damageable);
+                attacker?.Attack(unitThinker.UnitStatSo.Damage, damageable);
                 return;
             }
             
             // Detection de chateau 
-            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitAttack.Range, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
+            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitStatSo.Range, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
             if (target)
             {
                 unitThinker.TryGetComponent(out IAttacker attacker);
                 target.TryGetComponent(out IDamageable damageable);
                 if(damageable is null)return;
-                attacker?.Attack(unitThinker.UnitAttack.Damage, damageable);
+                attacker?.Attack(unitThinker.UnitStatSo.Damage, damageable);
                 return;
             }
             
@@ -44,7 +44,7 @@ namespace Supinfo.Project.Unit.Scripts
             if (target is null)
             {
                 unitThinker.TryGetComponent(out IMovement movement);
-                movement?.Move(unitThinker.Direction, unitThinker.UnitMovement.WalkSpeed);
+                movement?.Move(unitThinker.Direction, unitThinker.UnitStatSo.WalkSpeed);
             }
         }
     }

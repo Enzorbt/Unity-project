@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: unitData
       value: 
       objectReference: {fileID: 11400000, guid: d74a7f12376034fa0b8a741ea485169c, type: 2}
+    - target: {fileID: 1776877459599816412, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: unitStatSo
+      value: 
+      objectReference: {fileID: 11400000, guid: cef5983a8def2c14f9c025eddb6a516c, type: 2}
     - target: {fileID: 4371070662113245973, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_Color.b
       value: 0.88169384
@@ -28,6 +32,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6359458530771199948, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: unitStatSo
+      value: 
+      objectReference: {fileID: 11400000, guid: cef5983a8def2c14f9c025eddb6a516c, type: 2}
     - target: {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_Name
       value: ArmorUnit1

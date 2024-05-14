@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Supinfo.Project.ScriptableObjects.Common;
+using ScriptableObjects.Unit;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,52 +9,24 @@ namespace Supinfo.Project.Scripts
     public class AgeManager : MonoBehaviour
     {
         // Health SOs that can be modify with age
-        [SerializeField] private List<HealthSo> healthSosPlayer;
-        [SerializeField] private List<HealthSo> healthSosEnemy;
-        
-        // Attack SOs that can be modify with age
-        [SerializeField] private List<AttackSo> attackSosPlayer;
-        [SerializeField] private List<AttackSo> attackSosEnemy; 
-        
-        // Spawn SOs that can be modify with age
-        [SerializeField] private List<SpawnSo> spawnSosPlayer;
-        [SerializeField] private List<SpawnSo> spawnSosEnemy;
+        [SerializeField] private List<UnitStatSo> unitStatSosAllies;
+        [SerializeField] private List<UnitStatSo> unitStatSosEnemies;
         
         public void UpgradeAgePlayer(Component sender, object data)
         {
             // Modify SOs with age
-            foreach (AttackSo attackSo in attackSosPlayer)
+            foreach (var unitStatSo in unitStatSosAllies)
             {
-                // call function to set age in SO
-            }
-
-            foreach (HealthSo healthSo in healthSosPlayer)
-            {
-                
-            }
-            
-            foreach (SpawnSo spawnSo in spawnSosPlayer)
-            {
-                
+                unitStatSo.UpgradeAge();
             }
         }
         
         public void UpgradeAgeEnemy(Component sender, object data)
         {
             // Modify SOs with age
-            foreach (AttackSo attackSo in attackSosEnemy)
+            foreach (var unitStatSo in unitStatSosEnemies)
             {
-                // call function to set age in SO
-            }
-
-            foreach (HealthSo healthSo in healthSosEnemy)
-            {
-                
-            }
-            
-            foreach (SpawnSo spawnSo in spawnSosEnemy)
-            {
-                
+                unitStatSo.UpgradeAge();
             }
         }
     }

@@ -1,6 +1,7 @@
+using ScriptableObjects.Unit;
 using Supinfo.Project.Scripts.Events;
-using Supinfo.Project.Scripts.ScriptableObjects.Unit;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Supinfo.Project.UI.Button.Scripts
 {
@@ -9,8 +10,8 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// <summary>
         /// The unit spawn So with the prefab and cooldown stat
         /// </summary>
-        [SerializeField]
-        private UnitSpawnSo unitSpawnSo;
+        [FormerlySerializedAs("unitSpawnSo")] [SerializeField]
+        private UnitStatSo unitStatSo;
     
         /// <summary>
         /// Event to be raised when the button is clicked.
@@ -23,7 +24,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// </summary>
         public void OnClick()
         {
-            onClick.Raise(this, unitSpawnSo);
+            onClick.Raise(this, unitStatSo);
         }
     }
 

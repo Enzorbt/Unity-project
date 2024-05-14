@@ -5,7 +5,8 @@
         Attack,
         Range,
         GoldGiven,
-        Health
+        Health,
+        Price
     }
     
     public interface IUpgradable
