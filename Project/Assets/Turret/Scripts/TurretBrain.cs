@@ -17,7 +17,7 @@ namespace Turret.Scripts
             turretThinker.TryGetComponent(out IDetection detection);
             if (detection is null) return ;
             string[] tags = thinker.transform.tag.Split(',');
-            var targetCollider = detection.Detect(tags[1] == "Allies" ? "Unit,Enemy": "Unit,Allies", 500);
+            var targetCollider = detection.Detect(tags[1] == "Allies" ? "Unit,Enemies": "Unit,Allies", 500);
             //Debug.Log(tags[1] == "Allies" ? "Unit,Enemy": "Unit,Allies");
             if (targetCollider is null) return;
             //Debug.Log(targetCollider.transform.tag);
