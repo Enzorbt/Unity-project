@@ -13,6 +13,8 @@ TagManager:
   - Castle,Enemies
   - Turret,Allies
   - Turret,Enemies
+  - Spawner,Allies
+  - Spawner,Enemies
   layers:
   - Default
   - TransparentFX
