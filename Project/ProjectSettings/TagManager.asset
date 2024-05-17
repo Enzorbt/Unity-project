@@ -10,10 +10,11 @@ TagManager:
   - Castle,Allies
   - Caste,Enemies
   - Unit,Enemies
-  - SpawnerTurret,Enemy
-  - SpawnerTurret,Allies
+  - Castle,Enemies
   - Turret,Allies
-  - Turret,Enemy
+  - Turret,Enemies
+  - Spawner,Allies
+  - Spawner,Enemies
   layers:
   - Default
   - TransparentFX
