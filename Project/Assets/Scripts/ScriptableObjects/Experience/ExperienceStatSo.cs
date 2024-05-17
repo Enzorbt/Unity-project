@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Supinfo.Project.Scripts.ScriptableObjects.Experience
 {
-    [CreateAssetMenu(menuName = "MENUNAME", order = 0)]
+    [CreateAssetMenu(menuName = "scriptableObject/stat", order = 0)]
     public class ExperienceStatSo : ScriptableObject
     {
         [SerializeField] private List<float> experienceLevels;

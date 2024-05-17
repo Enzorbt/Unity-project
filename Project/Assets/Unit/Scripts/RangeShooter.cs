@@ -26,7 +26,7 @@ namespace Supinfo.Project.Unit.Scripts
             
             GameObject instantiatedProjectile = Instantiate(projectile, Vector3.zero, Quaternion.identity, transform);
 
-            instantiatedProjectile.TryGetComponent<>(out ProjectileThinker projectileThinker);
+            instantiatedProjectile.TryGetComponent(out ProjectileThinker projectileThinker);
             if (projectileThinker is null) yield break;
             
             projectileThinker.Direction = direction;

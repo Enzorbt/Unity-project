@@ -557,8 +557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1651531720413543367}
-  onUnitDeathCoins: {fileID: 0}
-  onUnitDeathXp: {fileID: 0}
+  onUnitDeathCoins: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+  onUnitDeathXp: {fileID: 11400000, guid: e2ebdb48bc152294983e78fa2b44f1df, type: 2}
   unitStatSo: {fileID: 11400000, guid: b90020653a2fa7d49a7ab09e743ea76e, type: 2}
 --- !u!114 &6359458530771199948
 MonoBehaviour:
