@@ -1,4 +1,5 @@
-﻿using Supinfo.Project.Scripts.Interfaces.Upgrades;
+﻿using Supinfo.Project.Scripts;
+using Supinfo.Project.Scripts.Interfaces.Upgrades;
 using UnityEngine;
 
 namespace ScriptableObjects.Unit.StatSo
@@ -11,19 +12,15 @@ namespace ScriptableObjects.Unit.StatSo
             switch (type)
             {
                 case UpgradeType.GoldGiven:
-                    currentHealthUpgrade++;
-                    break;
-                case UpgradeType.Health:
                     currentGoldGivenUpgrade++;
                     break;
-                case UpgradeType.Attack:
+                case UpgradeType.RangeAttack:
                     currentAttackUpgrade++;
                     break;
-                case UpgradeType.Range:
+                case UpgradeType.RangeRange:
                     currentRangeUpgrade++;
                     break;
                 default:
-                    Debug.Log("Wrong type of upgrade");
                     break;
             }
         }
