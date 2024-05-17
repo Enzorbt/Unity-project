@@ -1,13 +1,11 @@
-﻿using System;
-using Supinfo.Project.Scripts.Common.Stats;
+﻿using Supinfo.Project.Scripts.Common.Stats;
 using Supinfo.Project.Scripts.Interfaces;
-using Supinfo.Project.Scripts.Interfaces.Upgrades;
 using UnityEngine;
 
 namespace Supinfo.Project.ScriptableObjects.Base
 {
     [CreateAssetMenu(menuName = "ScriptableObject/Stats/BaseUnitStat", order = 2)]
-    public class BaseStatSo: ScriptableObject, IAgeUpgradable, IUpgradable
+    public class BaseStatSo: ScriptableObject, IAgeUpgradable
     {
         private int _currentAge;
         private int _currentHealthUpgrade = 0;
@@ -28,19 +26,6 @@ namespace Supinfo.Project.ScriptableObjects.Base
         public void UpgradeAge()
         {
             _currentAge++;
-        }
-
-        public void Upgrade(UpgradeType type)
-        {
-            switch (type)
-            {
-                case UpgradeType.Health:
-                    _currentHealthUpgrade++;
-                    break;
-                default:
-                    Debug.LogError("Wrong upgrade type");
-                    break;
-            }
         }
     }
 }
