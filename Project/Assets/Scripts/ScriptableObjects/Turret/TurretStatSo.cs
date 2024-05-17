@@ -1,4 +1,5 @@
-﻿using Supinfo.Project.Scripts.Common.Stats;
+﻿using Supinfo.Project.Scripts;
+using Supinfo.Project.Scripts.Common.Stats;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.Interfaces.Upgrades;
 using UnityEngine;
@@ -77,17 +78,11 @@ namespace ScriptableObjects.Turret
         {
             switch (type)
             {
-                case UpgradeType.Attack:
-                    _currentAttackUpgrade++;
+                case UpgradeType.TurretAttack:
                     break;
-                case UpgradeType.Range:
-                    _currentRangeUpgrade++;
-                    break;
-                case UpgradeType.Price:
-                    _currentPriceUpgrade++;
+                case UpgradeType.TurretRange:
                     break;
                 default:
-                    Debug.LogError("Wrong Upgrade Type");
                     break;
             }
         }

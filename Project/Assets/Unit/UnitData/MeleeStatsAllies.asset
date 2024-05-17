@@ -13,45 +13,186 @@ MonoBehaviour:
   m_Name: MeleeStatsAllies
   m_EditorClassIdentifier: 
   damage:
-    baseValue: 10
+    baseValue: 15
     ageStatModifiers:
     - value: 5
       type: 100
       order: 0
-    upgradeStatModifiers: []
+    - value: 5
+      type: 100
+      order: 1
+    - value: 5
+      type: 100
+      order: 2
+    - value: 10
+      type: 100
+      order: 3
+    - value: 10
+      type: 100
+      order: 4
+    - value: 15
+      type: 100
+      order: 5
+    upgradeStatModifiers:
+    - value: 5
+      type: 100
+      order: 0
+    - value: 5
+      type: 100
+      order: 1
+    - value: 5
+      type: 100
+      order: 2
   hitSpeed:
-    baseValue: 1
+    baseValue: 6
     ageStatModifiers: []
     upgradeStatModifiers: []
   targetTag: 
   range:
     baseValue: 1
-    ageStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    - value: 0
+      type: 0
+      order: 1
+    - value: 0
+      type: 0
+      order: 2
+    - value: 10
+      type: 200
+      order: 3
+    - value: 20
+      type: 200
+      order: 4
+    - value: 30
+      type: 200
+      order: 5
     upgradeStatModifiers: []
   buildTime:
     baseValue: 1
     ageStatModifiers: []
     upgradeStatModifiers: []
   goldGiven:
-    baseValue: 10
-    ageStatModifiers: []
-    upgradeStatModifiers: []
+    baseValue: 40
+    ageStatModifiers:
+    - value: 10
+      type: 200
+      order: 0
+    - value: 10
+      type: 200
+      order: 1
+    - value: 10
+      type: 200
+      order: 2
+    - value: 10
+      type: 200
+      order: 3
+    - value: 10
+      type: 200
+      order: 4
+    - value: 10
+      type: 200
+      order: 5
+    upgradeStatModifiers:
+    - value: 10
+      type: 200
+      order: 0
+    - value: 20
+      type: 200
+      order: 1
+    - value: 30
+      type: 200
+      order: 2
   experienceGiven:
-    baseValue: 10
-    ageStatModifiers: []
+    baseValue: 200
+    ageStatModifiers:
+    - value: 15
+      type: 200
+      order: 0
+    - value: 15
+      type: 200
+      order: 1
+    - value: 15
+      type: 200
+      order: 2
+    - value: 15
+      type: 200
+      order: 3
+    - value: 15
+      type: 200
+      order: 4
+    - value: 15
+      type: 200
+      order: 5
     upgradeStatModifiers: []
   unitType: {fileID: 11400000, guid: cf50e00632f00a94289305bc6f27ce8c, type: 2}
   maxHealth:
-    baseValue: 50
-    ageStatModifiers: []
+    baseValue: 140
+    ageStatModifiers:
+    - value: 200
+      type: 100
+      order: 0
+    - value: 200
+      type: 100
+      order: 1
+    - value: 200
+      type: 100
+      order: 2
+    - value: 200
+      type: 100
+      order: 3
+    - value: 200
+      type: 100
+      order: 4
+    - value: 200
+      type: 100
+      order: 5
     upgradeStatModifiers: []
   walkSpeed:
     baseValue: 2
-    ageStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 100
+      order: 0
+    - value: 1
+      type: 100
+      order: 1
+    - value: 0
+      type: 100
+      order: 2
+    - value: 1
+      type: 100
+      order: 3
+    - value: 0
+      type: 100
+      order: 4
+    - value: 1
+      type: 100
+      order: 5
     upgradeStatModifiers: []
   prefabs:
   - {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
   price:
-    baseValue: 10
-    ageStatModifiers: []
+    baseValue: 130
+    ageStatModifiers:
+    - value: 10
+      type: 100
+      order: 0
+    - value: 10
+      type: 100
+      order: 1
+    - value: 10
+      type: 100
+      order: 2
+    - value: 10
+      type: 100
+      order: 3
+    - value: 10
+      type: 100
+      order: 4
+    - value: 10
+      type: 100
+      order: 5
     upgradeStatModifiers: []
