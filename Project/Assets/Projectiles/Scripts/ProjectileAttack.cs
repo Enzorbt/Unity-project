@@ -2,9 +2,9 @@
 using Supinfo.Project.Scripts.Interfaces;
 using UnityEngine;
 
-namespace Supinfo.Project.Unit.Scripts.UnitCollision
+namespace Supinfo.Project.Projectiles.Scripts
 {
-    public class UnitAttack : MonoBehaviour, IAttacker
+    public class ProjectileAttack: MonoBehaviour, IAttacker
     {
         private bool _canAttack;
         
@@ -12,6 +12,7 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
         {
             if (_canAttack) return;
             StartCoroutine(AttackWithCooldown(amount, target, cooldown));
+
         }
 
         public IEnumerator AttackWithCooldown(float amount, IDamageable target, float cooldown)
@@ -21,7 +22,6 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
 
             yield return new WaitForSeconds(cooldown);
             
-            _canAttack = false;        
-        }
+            _canAttack = false;        }
     }
 }
