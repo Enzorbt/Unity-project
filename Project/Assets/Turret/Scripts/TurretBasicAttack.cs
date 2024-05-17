@@ -1,13 +1,20 @@
-﻿using Supinfo.Project.Scripts.Interfaces;
+﻿using System.Collections;
+using Interfaces;
+using Supinfo.Project.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Supinfo.Project.Turret.Scripts
 {
-    public class TurretBasicAttack : MonoBehaviour, IAttacker
+    public class TurretBasicAttack : MonoBehaviour, IShooter
     {
-        public void Attack(float amount, IDamageable target)
+        public void Shoot(float amount, string tags, float cooldown, Vector3 direction, float speed)
         {
-            
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerator ShootWithCooldown(float amount, string tags, float cooldown, Vector3 direction, float speed)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
