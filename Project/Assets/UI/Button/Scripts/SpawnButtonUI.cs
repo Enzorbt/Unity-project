@@ -10,7 +10,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// <summary>
         /// The unit spawn So with the prefab and cooldown stat
         /// </summary>
-        [FormerlySerializedAs("unitSpawnSo")] [SerializeField]
+        [SerializeField]
         private UnitStatSo unitStatSo;
     
         /// <summary>

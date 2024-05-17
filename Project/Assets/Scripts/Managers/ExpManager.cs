@@ -23,7 +23,7 @@ namespace Supinfo.Project.Scripts.Managers
         }
 
         // listener age upgrade
-        private void UpgradeAge(Component sender, object data)
+        public void UpgradeAge(Component sender, object data)
         {
             _age++;
         }
@@ -31,16 +31,18 @@ namespace Supinfo.Project.Scripts.Managers
         // listener exp recovery
         public void ReceiveExp(Component sender, object data)
         {
+            Debug.Log(data);
             // do nothing if no more ages
             if (_age >= experienceStatSo.ExperienceLevel.Count) return;
-            
+            Debug.Log(2);
             // do nothing if data not a float
             if (data is not float expGain) return;
             _expCount += expGain;
-            
+            Debug.Log(3);
             // raise Can evolve event (for evolution button)
             if (_expCount > experienceStatSo.ExperienceLevel[_age])
             {
+                Debug.Log(4);
                 onCanEvolve.Raise(this, true);
             }
 
