@@ -22,7 +22,7 @@ namespace Supinfo.Project.Unit.Scripts
         public IEnumerator ShootWithCooldown(float amount, string tags, float cooldown, Vector3 direction, float speed)
         {
             _canShoot = true;
-            if (this.projectile is null) yield break;
+            if (projectile is null) yield break;
             
             GameObject instantiatedProjectile = Instantiate(projectile, Vector3.zero, Quaternion.identity, transform);
 
@@ -35,6 +35,7 @@ namespace Supinfo.Project.Unit.Scripts
 
             yield return new WaitForSeconds(cooldown);
 
-            _canShoot = false;        }
+            _canShoot = false;
+        }
     }
 }
