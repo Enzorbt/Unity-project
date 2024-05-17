@@ -1,4 +1,5 @@
-﻿using Supinfo.Project.Scripts.Interfaces.Upgrades;
+﻿using Supinfo.Project.Scripts;
+using Supinfo.Project.Scripts.Interfaces.Upgrades;
 using UnityEngine;
 
 namespace ScriptableObjects.Unit.StatSo
@@ -11,13 +12,13 @@ namespace ScriptableObjects.Unit.StatSo
         {
             switch (type)
             {
-                case UpgradeType.GoldGiven:
+                case UpgradeType.MeleeHealth or UpgradeType.ArmorHealth or UpgradeType.AntiArmorHealth:
                     currentHealthUpgrade++;
                     break;
-                case UpgradeType.Health:
+                case UpgradeType.GoldGiven:
                     currentGoldGivenUpgrade++;
                     break;
-                case UpgradeType.Attack:
+                case UpgradeType.MeleeAttack or UpgradeType.ArmorAttack or UpgradeType.AntiArmorAttack:
                     currentAttackUpgrade++;
                     break;
                 default:
