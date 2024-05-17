@@ -84,7 +84,7 @@ MonoBehaviour:
     ageStatModifiers: []
     upgradeStatModifiers: []
   goldGiven:
-    baseValue: 50
+    baseValue: 60
     ageStatModifiers:
     - value: 10
       type: 200
@@ -140,27 +140,27 @@ MonoBehaviour:
   maxHealth:
     baseValue: 175
     ageStatModifiers:
-    - value: 10
+    - value: 75
       type: 100
       order: 0
-    - value: 10
+    - value: 75
       type: 100
       order: 1
-    - value: 10
+    - value: 75
       type: 100
       order: 2
-    - value: 10
+    - value: 75
       type: 100
       order: 3
-    - value: 10
+    - value: 75
       type: 100
       order: 4
-    - value: 10
+    - value: 75
       type: 100
       order: 5
     upgradeStatModifiers: []
   walkSpeed:
-    baseValue: 1
+    baseValue: 3
     ageStatModifiers:
     - value: 0
       type: 100
