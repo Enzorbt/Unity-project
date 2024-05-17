@@ -33,9 +33,18 @@ MonoBehaviour:
     - value: 15
       type: 100
       order: 5
-    upgradeStatModifiers: []
+    upgradeStatModifiers:
+    - value: 5
+      type: 100
+      order: 0
+    - value: 5
+      type: 100
+      order: 1
+    - value: 5
+      type: 100
+      order: 2
   hitSpeed:
-    baseValue: 5
+    baseValue: 6
     ageStatModifiers: []
     upgradeStatModifiers: []
   targetTag: 
@@ -60,16 +69,7 @@ MonoBehaviour:
     - value: 30
       type: 200
       order: 5
-    upgradeStatModifiers:
-    - value: 20
-      type: 200
-      order: 0
-    - value: 30
-      type: 200
-      order: 1
-    - value: 40
-      type: 200
-      order: 2
+    upgradeStatModifiers: []
   buildTime:
     baseValue: 1
     ageStatModifiers: []
@@ -99,10 +99,10 @@ MonoBehaviour:
     - value: 10
       type: 200
       order: 0
-    - value: 10
+    - value: 20
       type: 200
       order: 1
-    - value: 10
+    - value: 30
       type: 200
       order: 2
   experienceGiven:
