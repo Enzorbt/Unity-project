@@ -1,10 +1,19 @@
 using Interfaces.IA;
-using Supinfo.Project.Scripts.Interfaces.Capacity;
+using Supinfo.Project.Scripts.Events;
+using UnityEngine;
+using Supinfo.Project.Interfaces.Capacity;
+using Supinfo.Project.
 
 namespace Supinfo.Project.IA
 {
     public class Foundation : IFoundation
     {
+        [SerializeField] private GameEvent LaunchCapacity;
+        
+        [SerializeField] private GameEvent ;
+        
+        
+
         public void SpawnUnit()
         {
             

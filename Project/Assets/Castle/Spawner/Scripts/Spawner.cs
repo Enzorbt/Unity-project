@@ -38,10 +38,15 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (CanSpawn())
-                {
-                    StartCoroutine(SpawnWithCoolDown(cooldownTime));
-                }
+                Spawn();
+            }
+        }
+        
+        private void Spawn()
+        {
+            if (CanSpawn())
+            {
+                StartCoroutine(SpawnWithCoolDown(cooldownTime));
             }
         }
 
