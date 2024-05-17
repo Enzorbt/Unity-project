@@ -1,22 +1,21 @@
 using Interfaces.IA;
+using ScriptableObjects.Unit;
+using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.Events;
 using UnityEngine;
-using Supinfo.Project.Interfaces.Capacity;
-using Supinfo.Project.
 
 namespace Supinfo.Project.IA
 {
-    public class Foundation : IFoundation
+    public class Foundation : MonoBehaviour, IFoundation
     {
-        [SerializeField] private GameEvent LaunchCapacity;
+        [SerializeField] private GameEvent onLaunchCapacity;
         
-        [SerializeField] private GameEvent ;
-        
+        [SerializeField] private GameEvent onSpawnUnit;
         
 
-        public void SpawnUnit()
+        public void SpawnUnit(UnitStatSo unitStatSo)
         {
-            
+            onSpawnUnit.Raise(this, unitStatSo);
             throw new System.NotImplementedException();
         }
 
@@ -25,12 +24,12 @@ namespace Supinfo.Project.IA
             throw new System.NotImplementedException();
         }
 
-        public void GetAmelioration(int pAmeliorationID)
+        public void Upgrade(UpgradeType upgradeType)
         {
             throw new System.NotImplementedException();
         }
 
-        public void BuyTurretEmplacement()
+        public void SpawnTurret()
         {
             throw new System.NotImplementedException();
         }

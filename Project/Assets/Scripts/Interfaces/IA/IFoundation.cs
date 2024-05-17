@@ -1,15 +1,18 @@
+using ScriptableObjects.Unit;
+using Supinfo.Project.Scripts;
+
 namespace Interfaces.IA
 {
     public interface IFoundation
     {
         // SPAWN UNIT 
-        public void SpawnUnit();
+        public void SpawnUnit(UnitStatSo unitStatSo);
         
         // GET AMELIORATION 
-        public void GetAmelioration(int pAmeliorationID);
+        public void Upgrade(UpgradeType upgradeType);
         
         // BUY TURRET EMPLACEMENT 
-        public void BuyTurretEmplacement();
+        public void SpawnTurret();
         
         // BUY TURRET 
         public void BuyTurret(int pTurretID);

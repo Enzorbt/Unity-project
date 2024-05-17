@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Supinfo.Project.IA;
+using UnityEngine;
 
 namespace Supinfo.Project.Scripts.Events
 {
