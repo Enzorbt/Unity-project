@@ -1,7 +1,9 @@
 using Interfaces.IA;
+using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
 using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
 
 namespace Supinfo.Project.IA
@@ -12,14 +14,21 @@ namespace Supinfo.Project.IA
         
         [SerializeField] private GameEvent onSpawnUnit;
         
-
+        [SerializeField] private GameEvent onSpawnTurret;
+        
+// Voir les autres action  
         public void SpawnUnit(UnitStatSo unitStatSo)
         {
             onSpawnUnit.Raise(this, unitStatSo);
             throw new System.NotImplementedException();
         }
 
-        public void UseCapacity()
+        public void UseCapacity(CapacitySo capacitySo)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpgradeAge()
         {
             throw new System.NotImplementedException();
         }
@@ -29,12 +38,13 @@ namespace Supinfo.Project.IA
             throw new System.NotImplementedException();
         }
 
-        public void SpawnTurret()
+        public void SpawnTurret(TurretStatSo turretStatSo)
         {
+            onSpawnTurret.Raise(this, turretStatSo);
             throw new System.NotImplementedException();
         }
 
-        public void BuyTurret(int pTurretID)
+        public void BuyTurret()
         {
             throw new System.NotImplementedException();
         }
