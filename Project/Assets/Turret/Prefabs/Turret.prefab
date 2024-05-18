@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: bdebd8b76674a1140bbf5424b4680510, type: 2}
-  turretAttackSo: {fileID: 11400000, guid: ac5f0b28a02ae854f998fe3a0fee7aa9, type: 2}
+  turretStatSo: {fileID: 11400000, guid: 1693377c11a814f128bbf777937c8797, type: 2}
 --- !u!114 &-1278255880181997762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,3 +157,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a88026b990f4bf58635fa7bd723e0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 9031365976890039232, guid: 4db086e24358fa146ac035ff2d6f5b65, type: 3}

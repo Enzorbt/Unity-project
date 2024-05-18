@@ -8,7 +8,6 @@ namespace Supinfo.Project.Unit.Scripts
     [CreateAssetMenu(menuName = "Brains/RangeBrain")]
     public class RangeBrain : UnitBrain
     {
-        
         public override void Think(Thinker thinker)
         {
             if (thinker is not UnitThinker unitThinker) return;
