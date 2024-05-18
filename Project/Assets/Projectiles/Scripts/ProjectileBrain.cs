@@ -1,6 +1,7 @@
 ﻿using Common;
 using Interfaces;
 using Supinfo.Project.Scripts.Interfaces;
+using Supinfo.Project.Unit.Scripts;
 using UnityEngine;
 
 namespace Supinfo.Project.Projectiles.Scripts
@@ -11,12 +12,14 @@ namespace Supinfo.Project.Projectiles.Scripts
         public override void Think(Thinker thinker)
         {
             if (thinker is not ProjectileThinker projectileThinker) return;
-            projectileThinker.TryGetComponent(out IUnitDetection detection);
+
             var tags = projectileThinker.transform.tag.Split(",");
             
-            // enemies detection
-            var target = detection?.Detect(projectileThinker.Direction, 0.1f, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
-            if (target)
+            // enemy detection
+            projectileThinker.TryGetComponent(out IUnitDetection detection);
+            var target = detection?.Detect(projectileThinker.Direction, 0.1f, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");            // damage enemy if in range (distance)
+            
+            if (target is not null)
             {
                 // attack the enemy
                 projectileThinker.TryGetComponent(out IAttacker attacker);
