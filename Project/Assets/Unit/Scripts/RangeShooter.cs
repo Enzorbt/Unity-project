@@ -16,7 +16,6 @@ namespace Supinfo.Project.Unit.Scripts
         {
             if (!_canShoot) return;
             StartCoroutine(ShootWithCooldown(amount, cooldown, speed, target));
-
         }
 
         public IEnumerator ShootWithCooldown(float amount, float cooldown, float speed, Transform target)
@@ -29,8 +28,10 @@ namespace Supinfo.Project.Unit.Scripts
             var newPosition = transform.position;
             
             var direction = new Vector3((target.position - newPosition).normalized.x, 0, 0);
+
+            var scaledSpriteSize = projectile.transform.localScale * sprite.bounds.extents.x; 
             
-            newPosition.x += direction.x > 0 ? -sprite.bounds.extents.x : sprite.bounds.extents.x;
+            newPosition.x += direction.x > 0 ? - scaledSpriteSize.x : scaledSpriteSize.x;
             
             var instantiatedProjectile = Instantiate(projectile, newPosition, Quaternion.identity, transform);
 
