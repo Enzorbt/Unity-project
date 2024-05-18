@@ -19,7 +19,12 @@ namespace Supinfo.Project.Unit.Scripts
             var target = detection?.Detect(unitThinker.Direction, 1, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
             if (target is not null)
             {
-                Attack(unitThinker, target);
+                unitThinker.TryGetComponent(out IShooter shooter);
+                shooter?.Shoot(
+                    unitThinker.UnitStatSo.Damage,
+                    unitThinker.UnitStatSo.HitSpeed, 
+                    2, 
+                    target.transform);
                 return;
             }
             
@@ -27,15 +32,24 @@ namespace Supinfo.Project.Unit.Scripts
             target = detection?.Detect(unitThinker.Direction, unitThinker.UnitStatSo.Range, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
             if (target is not null)
             {
-                Attack(unitThinker, target);
+                unitThinker.TryGetComponent(out IShooter shooter);
+                shooter?.Shoot(
+                    unitThinker.UnitStatSo.Damage,
+                    unitThinker.UnitStatSo.HitSpeed, 
+                    2, 
+                    target.transform);
             }
             
             // Detection de chateau 
             target = detection?.Detect(unitThinker.Direction, unitThinker.UnitStatSo.Range, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
             if (target is not null)
             {
-                Attack(unitThinker, target);
-                return;
+                unitThinker.TryGetComponent(out IShooter shooter);
+                shooter?.Shoot(
+                    unitThinker.UnitStatSo.Damage,
+                    unitThinker.UnitStatSo.HitSpeed, 
+                    2, 
+                    target.transform);
             }
             
             // Detection d'allies
@@ -49,10 +63,12 @@ namespace Supinfo.Project.Unit.Scripts
 
         protected override void Attack(UnitThinker unitThinker, Collider2D target)
         {
-            var tags = unitThinker.transform.tag.Split(",");
-            
             unitThinker.TryGetComponent(out IShooter shooter);
-            shooter?.Shoot(unitThinker.UnitStatSo.Damage, tags[1], unitThinker.UnitStatSo.HitSpeed, tags[1]=="Allies"?Vector3.right : Vector3.left, 4);
+            shooter?.Shoot(
+                unitThinker.UnitStatSo.Damage,
+                unitThinker.UnitStatSo.HitSpeed, 
+                2, 
+                target.transform);
         }
     }
 }
