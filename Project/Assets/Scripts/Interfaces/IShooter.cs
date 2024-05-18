@@ -5,7 +5,7 @@ namespace Interfaces
 {
     public interface IShooter
     {
-        public void Shoot(float amount, string tags, float cooldown, Vector3 direction, float speed); // shoot at enemies
-        public IEnumerator ShootWithCooldown(float amount, string tag, float cooldown, Vector3 direction, float speed);
+        public void Shoot(float amount, float cooldown, float speed, Transform target); // shoot at enemies
+        public IEnumerator ShootWithCooldown(float amount, float cooldown, float speed, Transform target);
     }
 }
