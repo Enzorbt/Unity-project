@@ -33,6 +33,10 @@ PrefabInstance:
       value: 0.0047169924
       objectReference: {fileID: 0}
     - target: {fileID: 6359458530771199948, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f89cec529c62447bd6fe70aab8d6aa, type: 2}
+    - target: {fileID: 6359458530771199948, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: unitStatSo
       value: 
       objectReference: {fileID: 11400000, guid: 2a5d22672fdd15f4c878c16c2056be01, type: 2}
@@ -80,8 +84,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5842219500471513408, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 8638902355858426924}
   m_SourcePrefab: {fileID: 100100000, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+--- !u!1 &1671971147852743908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+  m_PrefabInstance: {fileID: 8449330601057469773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8638902355858426924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671971147852743908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40274b4c9aa44ebba594bae33db386e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 9031365976890039232, guid: 4db086e24358fa146ac035ff2d6f5b65, type: 3}

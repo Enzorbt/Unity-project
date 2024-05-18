@@ -9,7 +9,7 @@ namespace Common
         [SerializeField]
         private Brain brain;
 
-        private void Update()
+        private void FixedUpdate()
         {
             brain.Think(this);
         }

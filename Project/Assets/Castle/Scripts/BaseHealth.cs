@@ -2,6 +2,7 @@
 using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
+using Supinfo.Project.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -31,9 +32,10 @@ namespace Supinfo.Project.Castle.Scripts
         // Private fields
 
         /// <summary>
-        /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from a ScriptableObject.
+        /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from the editor.
         /// </summary>
-        private int _baseNumber;
+        [SerializeField]
+        private BaseIdentifier baseId;
         
         /// <summary>
         /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from a ScriptableObject.
@@ -68,7 +70,7 @@ namespace Supinfo.Project.Castle.Scripts
             {
                 if (!(onBaseDeath is null))
                 {
-                    onBaseDeath.Raise(this, _baseNumber);
+                    onBaseDeath.Raise(this, baseId);
                 }
                 
                 curHealth = 0;
