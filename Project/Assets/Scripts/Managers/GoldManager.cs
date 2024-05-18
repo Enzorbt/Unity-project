@@ -7,11 +7,11 @@ namespace Supinfo.Project.Scripts.Managers
     {
         [SerializeField] private GameEvent onGoldCountChange;
 
-        private int _gold;
+        private float _gold;
 
         public void OnGoldChange(Component sender, object data)
         {
-            if (data is not int gold) return;
+            if (data is not float gold) return;
             
             // add gold to total
             _gold += gold;

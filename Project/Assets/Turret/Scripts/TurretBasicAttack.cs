@@ -12,7 +12,7 @@ namespace Supinfo.Project.Turret.Scripts
             throw new System.NotImplementedException();
         }
 
-        public IEnumerator ShootWithCooldown(float amount, string tags, float cooldown, Vector3 direction, float speed)
+        public IEnumerator ShootWithCooldown(float amount, string tag, float cooldown, Vector3 direction, float speed)
         {
             throw new System.NotImplementedException();
         }
