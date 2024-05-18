@@ -56,6 +56,10 @@ namespace Supinfo.Project.Unit.Scripts
             target = detection?.Detect(unitThinker.Direction, 1, tags[1]=="Allies"?"Unit,Allies":"Unit,Enemies");
             if (target is not null) return;
             
+            // Detection de chateau (Proche)
+            target = detection?.Detect(unitThinker.Direction, 1, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
+            if (target is not null) return;
+            
             // Mouvement basic
             unitThinker.TryGetComponent(out IMovement movement);
             movement?.Move(unitThinker.Direction, unitThinker.UnitStatSo.WalkSpeed);

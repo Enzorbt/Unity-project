@@ -29,7 +29,7 @@ public class SpawnerTurret : MonoBehaviour
     {
         if (turretPrefab != null)
         {
-            float yPosition = spawnPosition.transform.position.y + _spawnNumber * 1f; 
+            float yPosition = spawnPosition.transform.position.y + _spawnNumber * 0.9f; 
             Vector3 newSpawnPosition = new Vector3(spawnPosition.transform.position.x, yPosition, spawnPosition.transform.position.z);
             GameObject spawnedTurret = Instantiate(turretPrefab, newSpawnPosition, Quaternion.identity);
             string[] tags = transform.tag.Split(',');
