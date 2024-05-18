@@ -19,12 +19,13 @@ namespace Supinfo.Project.Unit.Scripts
 
         }
 
-        public IEnumerator ShootWithCooldown(float amount, string tags, float cooldown, Vector3 direction, float speed)
+        public IEnumerator ShootWithCooldown(float amount, string tag, float cooldown, Vector3 direction, float speed)
         {
             _canShoot = true;
             if (projectile is null) yield break;
             
-            GameObject instantiatedProjectile = Instantiate(projectile, Vector3.zero, Quaternion.identity, transform);
+            
+            GameObject instantiatedProjectile = Instantiate(projectile, new Vector3(0,-1), Quaternion.identity, transform);
 
             instantiatedProjectile.TryGetComponent(out ProjectileThinker projectileThinker);
             if (projectileThinker is null) yield break;
@@ -32,6 +33,7 @@ namespace Supinfo.Project.Unit.Scripts
             projectileThinker.Direction = direction;
             projectileThinker.Damage = amount;
             projectileThinker.Speed = speed;
+            projectileThinker.tag = "Projectile," + tag;
 
             yield return new WaitForSeconds(cooldown);
 

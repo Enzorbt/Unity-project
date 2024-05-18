@@ -15,7 +15,7 @@ namespace Supinfo.Project.Projectiles.Scripts
             var tags = projectileThinker.transform.tag.Split(",");
             
             // enemies detection
-            var target = detection?.Detect(projectileThinker.Direction, 0.0001f, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
+            var target = detection?.Detect(projectileThinker.Direction, 0.1f, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
             if (target)
             {
                 // attack the enemy
