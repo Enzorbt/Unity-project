@@ -3,6 +3,7 @@ using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.Managers;
+using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -48,7 +49,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// </summary>
         private void Awake()
         {
-            maxHealth = baseStatSo.MaxHealth;
+            MaxHealth = baseStatSo.MaxHealth;
         }
 
         /// <summary>
@@ -56,24 +57,25 @@ namespace Supinfo.Project.Castle.Scripts
         /// Applies damage to the base, updates its health, and triggers events based on health changes or destruction.
         /// </summary>
         /// <param name="amount">The amount of damage to apply to the base.</param>
-        public void TakeDamage(float amount)
+        /// <param name="attackerType"></param>
+        public void TakeDamage(float amount, UnitType attackerType)
         {
             // Remove amount of damage taken from health and raise the event
-            curHealth -= amount;
+            CurHealth -= amount;
             if (!(onBaseHealthChange is null))
             {
-                onBaseHealthChange.Raise(this, curHealth/maxHealth);
+                onBaseHealthChange.Raise(this, CurHealth/MaxHealth);
             }
             
             // Check if health <= 0 : Base is dead
-            if (curHealth <= 0)
+            if (CurHealth <= 0)
             {
                 if (!(onBaseDeath is null))
                 {
                     onBaseDeath.Raise(this, baseId);
                 }
                 
-                curHealth = 0;
+                CurHealth = 0;
             }
         }
         
