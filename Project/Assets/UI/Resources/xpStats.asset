@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   experienceLevels:
   - 700
-  - 100
-  - 200
-  - 300
-  - 400
-  - 500
-  - 600
+  - 1000
+  - 1500
+  - 2050
+  - 2600
+  - 3200
+  - 6000

@@ -40,13 +40,13 @@ namespace Supinfo.Project.UI.Scripts
 
         public void OnCanEvolve(Component sender, object data)
         {
-            image.sprite = buttonImg;
-            EnableButton(true);
+            if (data is not bool value) return;
+            EnableButton(value);
+            
         }
         public void OnClick()
         {
             onAgeUpgrade.Raise(this, 2);
-            image.sprite = pressButtonImg;
             EnableButton(false);
 
             // Incrémenter l'index de l'âge actuel et vérifier les limites
@@ -62,6 +62,7 @@ namespace Supinfo.Project.UI.Scripts
             var button = transform.GetComponentInChildren<UnityEngine.UI.Button>();
             if (button is null) return;
             button.enabled = value;
+            image.sprite = value ? buttonImg : pressButtonImg;
         }
         
         private void UpdateAgeText()
