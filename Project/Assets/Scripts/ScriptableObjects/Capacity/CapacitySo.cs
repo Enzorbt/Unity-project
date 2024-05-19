@@ -23,6 +23,9 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Capacity
 
         [SerializeField] private string _tag;
         public string Tag => _tag;
+        
+        [SerializeField] private Stat _cost;
+        public float Cost => _cost.GetValue(_ageUpgrade);
 
         public void UpgradeAge()
         {
