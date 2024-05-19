@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: AntiArmor
   m_EditorClassIdentifier: 
   _name: 
-  _strongAgainst:
-  - {fileID: 11400000, guid: ae01f77c6ef19d84b9cb2c6a3348d900, type: 2}
+  _strongAgainst: {fileID: 11400000, guid: ae01f77c6ef19d84b9cb2c6a3348d900, type: 2}

@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Range
   m_EditorClassIdentifier: 
   _name: 
-  _strongAgainst:
-  - {fileID: 11400000, guid: fa4c53ade78d6d54aac1ac2069307556, type: 2}
+  _strongAgainst: {fileID: 11400000, guid: fa4c53ade78d6d54aac1ac2069307556, type: 2}
