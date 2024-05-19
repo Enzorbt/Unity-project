@@ -24,14 +24,16 @@ namespace Turret.Scripts
             }
         }
 
-        protected void Attack(TurretThinker unitThinker, Collider2D target)
+        protected void Attack(TurretThinker turretThinker, Collider2D target)
         {
-            unitThinker.TryGetComponent(out IShooter shooter);
+            turretThinker.TryGetComponent(out IShooter shooter);
             shooter?.Shoot(
-                unitThinker.TurretStatSo.Damage,
-                unitThinker.TurretStatSo.HitSpeed, 
+                turretThinker.TurretStatSo.Damage,
+                turretThinker.TurretStatSo.HitSpeed, 
                 10, 
-                target.transform);
+                target.transform, 
+                null
+                );
         }
     }
 }

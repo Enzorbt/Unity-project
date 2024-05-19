@@ -20,35 +20,35 @@ namespace Supinfo.Project.Unit.Scripts
             {
                 unitThinker.TryGetComponent(out IShooter shooter);
                 shooter?.Shoot(
-                    unitThinker.UnitStatSo.Damage,
-                    unitThinker.UnitStatSo.HitSpeed, 
+                    unitThinker.Damage,
+                    unitThinker.HitSpeed, 
                     2, 
-                    target.transform);
+                    target.transform, unitThinker.UnitType);
                 return;
             }
             
             // Detection d'enemies (loin)
-            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitStatSo.Range, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
+            target = detection?.Detect(unitThinker.Direction, unitThinker.Range, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
             if (target is not null)
             {
                 unitThinker.TryGetComponent(out IShooter shooter);
                 shooter?.Shoot(
-                    unitThinker.UnitStatSo.Damage,
-                    unitThinker.UnitStatSo.HitSpeed, 
+                    unitThinker.Damage,
+                    unitThinker.HitSpeed, 
                     2, 
-                    target.transform);
+                    target.transform, unitThinker.UnitType);
             }
             
             // Detection de chateau 
-            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitStatSo.Range, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
+            target = detection?.Detect(unitThinker.Direction, unitThinker.Range, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
             if (target is not null)
             {
                 unitThinker.TryGetComponent(out IShooter shooter);
                 shooter?.Shoot(
-                    unitThinker.UnitStatSo.Damage,
-                    unitThinker.UnitStatSo.HitSpeed, 
+                    unitThinker.Damage,
+                    unitThinker.HitSpeed, 
                     2, 
-                    target.transform);
+                    target.transform, unitThinker.UnitType);
             }
             
             // Detection d'allies
@@ -61,17 +61,18 @@ namespace Supinfo.Project.Unit.Scripts
             
             // Mouvement basic
             unitThinker.TryGetComponent(out IMovement movement);
-            movement?.Move(unitThinker.Direction, unitThinker.UnitStatSo.WalkSpeed);
+            movement?.Move(unitThinker.Direction, unitThinker.WalkSpeed);
         }
 
         protected override void Attack(UnitThinker unitThinker, Collider2D target)
         {
             unitThinker.TryGetComponent(out IShooter shooter);
             shooter?.Shoot(
-                unitThinker.UnitStatSo.Damage,
-                unitThinker.UnitStatSo.HitSpeed, 
+                unitThinker.Damage,
+                unitThinker.HitSpeed, 
                 2, 
-                target.transform);
+                target.transform,
+                unitThinker.UnitType);
         }
     }
 }

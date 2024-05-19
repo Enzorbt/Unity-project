@@ -43,7 +43,7 @@ namespace Supinfo.Project.Projectiles.Scripts
             projectileThinker.TryGetComponent(out IAttacker attacker);
             target.TryGetComponent(out IDamageable damageable);
             if(damageable is null) return;
-            attacker?.Attack(projectileThinker.Damage, damageable, 0);
+            attacker?.Attack(projectileThinker.Damage, damageable, 0, projectileThinker.UnitType);
                 
             // after attack, object gets destroyed
             Destroy(projectileThinker.gameObject);

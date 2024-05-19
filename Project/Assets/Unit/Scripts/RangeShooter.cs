@@ -2,6 +2,7 @@
 using Common;
 using Interfaces;
 using Supinfo.Project.Projectiles.Scripts;
+using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
 
 namespace Supinfo.Project.Unit.Scripts
@@ -12,13 +13,13 @@ namespace Supinfo.Project.Unit.Scripts
         
         private bool _canShoot = true;
 
-        public void Shoot(float amount, float cooldown, float speed, Transform target)
+        public void Shoot(float amount, float cooldown, float speed, Transform target, UnitType attackerType)
         {
             if (!_canShoot) return;
-            StartCoroutine(ShootWithCooldown(amount, cooldown, speed, target));
+            StartCoroutine(ShootWithCooldown(amount, cooldown, speed, target, attackerType));
         }
 
-        public IEnumerator ShootWithCooldown(float amount, float cooldown, float speed, Transform target)
+        public IEnumerator ShootWithCooldown(float amount, float cooldown, float speed, Transform target, UnitType attackerType)
         {
             _canShoot = false;
             if (projectile is null) yield break;
@@ -46,6 +47,7 @@ namespace Supinfo.Project.Unit.Scripts
             projectileThinker.Direction = direction;
             projectileThinker.Damage = amount;
             projectileThinker.Speed = speed;
+            projectileThinker.UnitType = attackerType;
             projectileThinker.tag = "Projectile," + gameObject.tag.Split(",")[1];
             
             instantiatedProjectile.SetActive(true);
