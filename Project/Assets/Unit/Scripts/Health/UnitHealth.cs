@@ -59,7 +59,7 @@ namespace Supinfo.Project.Unit.Scripts.Health
         /// <param name="attackerType"></param>
         public void TakeDamage(float damage, UnitType attackerType)
         {
-            if (attackerType.StrongAgainst == UnitType)
+            if (attackerType is not null && attackerType.StrongAgainst == UnitType)
             {
                 damage *= 1.5f;
             }
