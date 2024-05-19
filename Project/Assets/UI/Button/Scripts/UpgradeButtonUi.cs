@@ -43,7 +43,7 @@ namespace Supinfo.Project.UI.Button.Scripts
 
             if (onGoldChange is null) return;
             
-            onGoldChange.Raise(this, upgradeCosts[_count]);
+            onGoldChange.Raise(this, - upgradeCosts[_count]);
             
             medals[_count].gameObject.SetActive(true);
             _count++;

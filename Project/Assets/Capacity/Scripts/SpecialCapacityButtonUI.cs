@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
@@ -7,7 +8,7 @@ namespace Capacity.Events
 {
     public class SpecialCapacityButtonUI : MonoBehaviour
     {
-        private float _xpCount;
+        private float _xpMax;
         
         /// <summary>
         /// On capacity use event
@@ -24,7 +25,13 @@ namespace Capacity.Events
         
         [Range(0,1)]
         [SerializeField] private float cost;
-        
+
+        private void Awake()
+        {
+            SetActiveButton(false);
+        }
+
+
         /// <summary>
         /// Method to be called when the button is clicked.
         /// Raises the onClick event with the associated unit.
@@ -32,7 +39,7 @@ namespace Capacity.Events
         public void OnClick()
         {
             onClick.Raise(this, _capacitySo);
-            onXpChange.Raise(this, _xpCount * cost);
+            onXpChange.Raise(this, - (_xpMax * cost));
         }
 
         public void OnXpRatioChange(Component sender, object data)
@@ -48,12 +55,12 @@ namespace Capacity.Events
             gameObject.GetComponentInChildren<UnityEngine.UI.Button>().enabled = state;
         }
         
-        public void OnXpCountChange(Component sender, object data)
+        public void OnXpMaxChange(Component sender, object data)
         {
-            if (data is not float xpCount) return;
+            if (data is not float xpMax) return;
             
             // update xp count
-            _xpCount = xpCount;
+            _xpMax = xpMax;
         }
     }
 }

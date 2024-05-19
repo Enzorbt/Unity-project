@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15571260627645d9af07840ef618c4aa, type: 3}
-  m_Name: xpStats
+  m_Script: {fileID: 11500000, guid: 4b89b869884040d3aa6eb023bb7af4bf, type: 3}
+  m_Name: onXpCountChange
   m_EditorClassIdentifier: 
-  experienceLevels:
-  - 700
-  - 1000
-  - 1500
-  - 2050
-  - 2600
-  - 3200
-  - 6000
+  _listeners: []
