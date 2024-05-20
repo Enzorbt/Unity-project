@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Capacity.Events
 {
@@ -26,9 +27,12 @@ namespace Capacity.Events
         [Range(0,1)]
         [SerializeField] private float cost;
 
+        private Image _image;
+
         private void Awake()
         {
             SetActiveButton(false);
+            _image = GetComponentInChildren<Image>();
         }
 
 
@@ -61,6 +65,11 @@ namespace Capacity.Events
             
             // update xp count
             _xpMax = xpMax;
+        }
+
+        public void OnAgeUpgrade(Component sender, object data)
+        {
+            _image.sprite = _capacitySo.Sprite;
         }
     }
 }

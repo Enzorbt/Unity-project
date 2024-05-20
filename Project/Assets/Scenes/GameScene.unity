@@ -6062,9 +6062,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106e80c254064000a6154f5814731ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBaseDeath: {fileID: 11400000, guid: 11398a9282b8529489310ecdc2d86d1e, type: 2}
-  onBaseHealthChange: {fileID: 11400000, guid: 61824ee6f5d1b574d8f1d97be9b861d7, type: 2}
-  baseId: 0
+  onBaseDeath: {fileID: 11400000, guid: b67b2e27396560b4e8a6ed11bcc38c30, type: 2}
+  onBaseHealthRatioChange: {fileID: 11400000, guid: 61824ee6f5d1b574d8f1d97be9b861d7, type: 2}
+  baseId: 1
   baseStatSo: {fileID: 11400000, guid: deda89dff20581e4399e437626a1306a, type: 2}
 --- !u!1 &1894249905 stripped
 GameObject:
@@ -6084,7 +6084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onBaseDeath: {fileID: 11400000, guid: b67b2e27396560b4e8a6ed11bcc38c30, type: 2}
-  onBaseHealthChange: {fileID: 11400000, guid: cb5a29a595c05194aacd04c93468c13a, type: 2}
+  onBaseHealthRatioChange: {fileID: 11400000, guid: cb5a29a595c05194aacd04c93468c13a, type: 2}
   baseId: 0
   baseStatSo: {fileID: 11400000, guid: 0a2d757d93918704db672f9fc85121c9, type: 2}
 --- !u!1 &1905382445
