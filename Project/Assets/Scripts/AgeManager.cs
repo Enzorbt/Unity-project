@@ -6,7 +6,7 @@ namespace Supinfo.Project.Scripts
 {
     public class AgeManager : MonoBehaviour
     {
-        // Health SOs that can be modify with age
+        [Header("All Stats Scriptable Objects")]
         [SerializeField] private List<UnitStatSo> statSosAllies;
         [SerializeField] private List<UnitStatSo> statSosEnemies;
         

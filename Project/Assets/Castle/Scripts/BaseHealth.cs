@@ -28,7 +28,7 @@ namespace Supinfo.Project.Castle.Scripts
         /// Event triggered when the base's health changes.
         /// </summary>
         [SerializeField] 
-        private GameEvent onBaseHealthChange;
+        private GameEvent onBaseHealthRatioChange;
         
         // Private fields
 
@@ -43,6 +43,10 @@ namespace Supinfo.Project.Castle.Scripts
         /// </summary>
         public BaseStatSo baseStatSo;
 
+        private SpriteRenderer _spriteRenderer;
+        
+        private int _age;
+
         /// <summary>
         /// Awake is called when the script instance is being loaded.
         /// Initializes the base's maximum health and number from a ScriptableObject.
@@ -50,6 +54,7 @@ namespace Supinfo.Project.Castle.Scripts
         private void Awake()
         {
             MaxHealth = baseStatSo.MaxHealth;
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         /// <summary>
@@ -62,9 +67,9 @@ namespace Supinfo.Project.Castle.Scripts
         {
             // Remove amount of damage taken from health and raise the event
             CurHealth -= amount;
-            if (!(onBaseHealthChange is null))
+            if (!(onBaseHealthRatioChange is null))
             {
-                onBaseHealthChange.Raise(this, CurHealth/MaxHealth);
+                onBaseHealthRatioChange.Raise(this, CurHealth/MaxHealth);
             }
             
             // Check if health <= 0 : Base is dead
@@ -77,6 +82,19 @@ namespace Supinfo.Project.Castle.Scripts
                 
                 CurHealth = 0;
             }
+        }
+
+        private void OnAgeUpgrade(Component sender, object data)
+        {
+            // update max heath and current health
+            MaxHealth = baseStatSo.MaxHealth;
+            CurHealth += MaxHealth;
+            
+            // send data to listeners
+            onBaseHealthRatioChange.Raise(this, CurHealth/MaxHealth);
+            
+            // update sprite
+            _spriteRenderer.sprite = baseStatSo.Sprite;
         }
         
     }
