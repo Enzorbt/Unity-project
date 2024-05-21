@@ -2,6 +2,8 @@
 using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
+using Supinfo.Project.Scripts.Managers;
+using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -26,19 +28,24 @@ namespace Supinfo.Project.Castle.Scripts
         /// Event triggered when the base's health changes.
         /// </summary>
         [SerializeField] 
-        private GameEvent onBaseHealthChange;
+        private GameEvent onBaseHealthRatioChange;
         
         // Private fields
 
         /// <summary>
-        /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from a ScriptableObject.
+        /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from the editor.
         /// </summary>
-        private int _baseNumber;
+        [SerializeField]
+        private BaseIdentifier baseId;
         
         /// <summary>
         /// Identifier for the base (e.g., 0 or 1 / 1 or 2), set from a ScriptableObject.
         /// </summary>
         public BaseStatSo baseStatSo;
+
+        private SpriteRenderer _spriteRenderer;
+        
+        private int _age;
 
         /// <summary>
         /// Awake is called when the script instance is being loaded.
@@ -46,7 +53,8 @@ namespace Supinfo.Project.Castle.Scripts
         /// </summary>
         private void Awake()
         {
-            maxHealth = baseStatSo.MaxHealth;
+            MaxHealth = baseStatSo.MaxHealth;
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         /// <summary>
@@ -54,25 +62,39 @@ namespace Supinfo.Project.Castle.Scripts
         /// Applies damage to the base, updates its health, and triggers events based on health changes or destruction.
         /// </summary>
         /// <param name="amount">The amount of damage to apply to the base.</param>
-        public void TakeDamage(float amount)
+        /// <param name="attackerType"></param>
+        public void TakeDamage(float amount, UnitType attackerType)
         {
             // Remove amount of damage taken from health and raise the event
-            curHealth -= amount;
-            if (!(onBaseHealthChange is null))
+            CurHealth -= amount;
+            if (!(onBaseHealthRatioChange is null))
             {
-                onBaseHealthChange.Raise(this, curHealth/maxHealth);
+                onBaseHealthRatioChange.Raise(this, CurHealth/MaxHealth);
             }
             
             // Check if health <= 0 : Base is dead
-            if (curHealth <= 0)
+            if (CurHealth <= 0)
             {
                 if (!(onBaseDeath is null))
                 {
-                    onBaseDeath.Raise(this, _baseNumber);
+                    onBaseDeath.Raise(this, baseId);
                 }
                 
-                curHealth = 0;
+                CurHealth = 0;
             }
+        }
+
+        private void OnAgeUpgrade(Component sender, object data)
+        {
+            // update max heath and current health
+            MaxHealth = baseStatSo.MaxHealth;
+            CurHealth += MaxHealth;
+            
+            // send data to listeners
+            onBaseHealthRatioChange.Raise(this, CurHealth/MaxHealth);
+            
+            // update sprite
+            _spriteRenderer.sprite = baseStatSo.Sprite;
         }
         
     }

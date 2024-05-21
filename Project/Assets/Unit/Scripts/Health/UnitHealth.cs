@@ -1,6 +1,7 @@
 using ScriptableObjects.Unit;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
+using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -15,17 +16,19 @@ namespace Supinfo.Project.Unit.Scripts.Health
         /// <summary>
         /// Coins rewarded upon unit death.
         /// </summary>
-        private float _coins;
+        public float GoldGiven { get; set; }
 
         /// <summary>
         /// Experience points rewarded upon unit death.
         /// </summary>
-        private float _xp;
+        public float XpGiven { get; set; }
 
         /// <summary>
         /// Reference to the health bar UI for the unit.
         /// </summary>
         public HealthBar healthBar;
+        
+        public UnitType UnitType { get; set; }
 
         /// <summary>
         /// Event triggered when the unit dies to provide coins.
@@ -36,25 +39,6 @@ namespace Supinfo.Project.Unit.Scripts.Health
         /// Event triggered when the unit dies to provide experience points.
         /// </summary>
         public GameEvent onUnitDeathXp;
-
-        /// <summary>
-        /// ScriptableObject containing health-related data for the unit.
-        /// </summary>
-        [FormerlySerializedAs("unitHealthSo")] [SerializeField]
-        private UnitStatSo unitStatSo;
-
-        /// <summary>
-        /// Awake is called when the script instance is being loaded.
-        /// Initializes the unit's health data from the ScriptableObject.
-        /// </summary>
-        public void Awake()
-        {
-            // Get coins, maxHealth, and xp from ScriptableObject
-            _coins = unitStatSo.GoldGiven;
-            _xp = unitStatSo.ExperienceGiven;
-            maxHealth = unitStatSo.MaxHealth;
-            
-        }
         
         /// <summary>
         /// Update is called once per frame. Here it's used to test damage reception on a key press.
@@ -63,7 +47,7 @@ namespace Supinfo.Project.Unit.Scripts.Health
         {
             if( Input.GetKeyDown( KeyCode.Space ) )
             {
-                TakeDamage(10);
+                TakeDamage(10, null);
             }
         }
 
@@ -72,20 +56,26 @@ namespace Supinfo.Project.Unit.Scripts.Health
         /// Triggers death events if health falls to zero or below.
         /// </summary>
         /// <param name="damage">The amount of damage to apply to the unit.</param>
-        public void TakeDamage(float damage)
+        /// <param name="attackerType"></param>
+        public void TakeDamage(float damage, UnitType attackerType)
         {
-            curHealth -= damage;
-            healthBar.SetHealthSliderValue(curHealth/maxHealth);
+            if (attackerType is not null && attackerType.StrongAgainst == UnitType)
+            {
+                damage *= 1.5f;
+            }
             
-            if (curHealth <= 0)
+            CurHealth -= damage;
+            healthBar.SetHealthSliderValue(CurHealth/MaxHealth);
+            
+            if (CurHealth <= 0)
             {
                 if (!(onUnitDeathCoins is null))
                 {
-                    onUnitDeathCoins.Raise(this, _coins);
+                    onUnitDeathCoins.Raise(this, GoldGiven);
                 }
                 if (!(onUnitDeathXp is null))
                 {
-                    onUnitDeathXp.Raise(this, _xp);
+                    onUnitDeathXp.Raise(this, XpGiven);
                 }
                 Destroy(gameObject);
             }

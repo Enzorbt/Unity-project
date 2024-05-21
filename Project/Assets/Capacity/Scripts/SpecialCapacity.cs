@@ -30,7 +30,7 @@ namespace Supinfo.Project.Capacity.Scripts
                 if (!unit.TryGetComponent(out IDamageable damageable)) break;
                 if (Random.value < capacitySo.HitProbability)
                 {
-                    damageable.TakeDamage(capacitySo.Value);
+                    damageable.TakeDamage(capacitySo.Value, null);
                 }
             }
             

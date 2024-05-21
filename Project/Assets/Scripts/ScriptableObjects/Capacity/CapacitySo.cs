@@ -7,26 +7,30 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Capacity
     [CreateAssetMenu(menuName = "ScriptableObject/Capacity", order = 0)]
     public class CapacitySo : ScriptableObject, IAgeUpgradable
     {
-        private int _ageUpgrade;
+        private int _currentAge;
 
         [SerializeField] private Stat _value;
-        public float Value => _value.GetValue(_ageUpgrade);
+        public float Value => _value.GetValue(_currentAge);
 
         [SerializeField] private Stat _actionTime;
-        public float ActionTime => _actionTime.GetValue(_ageUpgrade);
+        public float ActionTime => _actionTime.GetValue(_currentAge);
 
         [SerializeField] private Stat _hitProbability;
-        public float HitProbability => _hitProbability.GetValue(_ageUpgrade);
+        public float HitProbability => _hitProbability.GetValue(_currentAge);
 
         [SerializeField] private Stat _cooldown;
-        public float Cooldown => _cooldown.GetValue(_ageUpgrade);
+        public float Cooldown => _cooldown.GetValue(_currentAge);
 
         [SerializeField] private string _tag;
         public string Tag => _tag;
+        
+        [Header("Sprites (7, 1 per age)")] [SerializeField]
+        private Sprite[] _sprites;
+        public Sprite Sprite => _sprites[_currentAge];
 
         public void UpgradeAge()
         {
-            _ageUpgrade++;
+            _currentAge++;
         }
     }
 }

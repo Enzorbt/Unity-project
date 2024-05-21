@@ -1,11 +1,12 @@
 ﻿using System.Collections;
+using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
 
 namespace Interfaces
 {
     public interface IShooter
     {
-        public void Shoot(float amount, string tags, float cooldown, Vector3 direction, float speed); // shoot at enemies
-        public IEnumerator ShootWithCooldown(float amount, string tags, float cooldown, Vector3 direction, float speed);
+        public void Shoot(float amount, float cooldown, float speed, Transform target, UnitType attackerType); // shoot at enemies
+        public IEnumerator ShootWithCooldown(float amount, float cooldown, float speed, Transform target, UnitType attackerType);
     }
 }

@@ -10,28 +10,30 @@ namespace Turret.Scripts
     [CreateAssetMenu(menuName = "Brains/TurretBrain")]
     public class TurretBrain: Brain
     {
-        public GameObject projectilePrefab;
         public override void Think(Thinker thinker)
         {
             if (thinker is not TurretThinker turretThinker) return;
             turretThinker.TryGetComponent(out IDetection detection);
-            if (detection is null) return ;
-            string[] tags = thinker.transform.tag.Split(',');
-            var targetCollider = detection.Detect(tags[1] == "Allies" ? "Unit,Enemies": "Unit,Allies", 500);
-            //Debug.Log(tags[1] == "Allies" ? "Unit,Enemy": "Unit,Allies");
-            if (targetCollider is null) return;
-            //Debug.Log(targetCollider.transform.tag);
-            /*targetCollider.TryGetComponent(out IDamageable damageable);
-            if (damageable is null) return;
-            damageable.TakeDamage((int)turretThinker.TurretAttackSo.Damage);*/
+            var tags = turretThinker.transform.tag.Split(",");
             
-            GameObject newProjectile = Instantiate(projectilePrefab, turretThinker.transform.position, Quaternion.identity);
-            
-            ProjectileMovement projectileMovement = newProjectile.GetComponent<ProjectileMovement>();
-            if (projectileMovement != null)
+            // Detection d'enemies (loin)
+            var target = detection?.Detect(tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies", turretThinker.TurretStatSo.Range);
+            if (target is not null)
             {
-                projectileMovement.SetTarget(targetCollider.transform.position);
+                Attack(turretThinker, target);
             }
+        }
+
+        protected void Attack(TurretThinker turretThinker, Collider2D target)
+        {
+            turretThinker.TryGetComponent(out IShooter shooter);
+            shooter?.Shoot(
+                turretThinker.TurretStatSo.Damage,
+                turretThinker.TurretStatSo.HitSpeed, 
+                10, 
+                target.transform, 
+                null
+                );
         }
     }
 }

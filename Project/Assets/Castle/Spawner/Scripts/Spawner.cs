@@ -1,68 +1,96 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using ScriptableObjects.Unit;
+using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Unit.Scripts;
+using Supinfo.Project.Unit.Scripts.Health;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Supinfo.Project.Castle.Spawner.Scripts
 {
     public class Spawner : MonoBehaviour
     {
-        // Public fields
-        public GameObject unit;
-        public int cooldownTime = 2;
-        public Vector3 direction;
-
         // Private fields
         private Vector3 _spawnPosition;
         private int _spawnNumber;
-        private int _spawnLimit = 10;
+        [SerializeField]
+        private int spawnLimit = 10;
+
+        [SerializeField]
+        private GameEvent onSpawnQueueStatusChange;
+        
         private SpriteRenderer _unitSpriteRenderer;
-        private bool _isCooldown = false;
+        private bool _isSpawning = false;
         private Transform _unitsContainer;
         private string _unitTag;
 
+        private Queue<UnitStatSo> _unitStatSos;
+        private Vector3 _spawnPoint;
+
         private void Start()
         {
-            _unitSpriteRenderer = unit.GetComponent<SpriteRenderer>();
-            Bounds spriteBounds = _unitSpriteRenderer.bounds;
-            Vector3 spawnPoint = transform.Find("SpawnPoint").transform.position;
-            _unitsContainer = transform.parent.transform.Find("Units").transform;
-
-            float posX = spawnPoint.x;
-            float posY = spawnPoint.y + spriteBounds.extents.y;
-
-            _spawnPosition = new Vector3(posX, posY, 0);
+            _unitStatSos = new Queue<UnitStatSo>();
             _unitTag = "Unit," + gameObject.tag.Split(",")[1];
+            _unitsContainer = transform.parent.transform.Find("Units").transform;
+            _spawnPoint = transform.Find("SpawnPoint").transform.position;
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (!_isSpawning && _spawnNumber <= spawnLimit && _unitStatSos.Count != 0)
             {
-                Spawn();
+                StartCoroutine(SpawnWithCoolDown());
             }
-        }
-        
-        private void Spawn()
-        {
-            if (CanSpawn())
-            {
-                StartCoroutine(SpawnWithCoolDown(cooldownTime));
-            }
+
+            _spawnNumber = _unitsContainer.childCount;
         }
 
-        private bool CanSpawn()
+        private Vector3 GetSpawnPoint(GameObject unit)
         {
-            return _spawnNumber < _spawnLimit && !_isCooldown;
+            var unitSpriteRenderer = unit.GetComponent<SpriteRenderer>();
+            var spriteBounds = unitSpriteRenderer.bounds;
+            
+            var posX = _spawnPoint.x;
+            var posY = _spawnPoint.y + spriteBounds.extents.y;
+
+            return new Vector3(posX, posY, 0);
         }
 
-        IEnumerator SpawnWithCoolDown(int time)
+        private IEnumerator SpawnWithCoolDown()
         {
-            _isCooldown = true;
-            yield return new WaitForSeconds(time);
-            GameObject unitSpawned = Instantiate(unit, _spawnPosition, Quaternion.identity, _unitsContainer);
+            _isSpawning = true;
+            
+            var unitStatSo = _unitStatSos.Dequeue();
+            
+            var coolDown = unitStatSo.BuildTime;
+            var unitPrefab = unitStatSo.GetPrefab();
+            
+            yield return new WaitForSeconds(coolDown);
+            GameObject unitSpawned = Instantiate(unitPrefab, GetSpawnPoint(unitPrefab), Quaternion.identity, _unitsContainer);
             unitSpawned.tag = _unitTag;
-            _spawnNumber++;
-            _isCooldown = false;
+            
+            // give unit its stats
+            unitSpawned.TryGetComponent(out UnitThinker unitThinker);
+            
+            if (unitThinker is null) yield break;
+            
+            unitThinker.Damage = unitStatSo.Damage;
+            unitThinker.WalkSpeed = unitStatSo.WalkSpeed;
+            unitThinker.Range = unitStatSo.Range;
+            unitThinker.HitSpeed = unitStatSo.HitSpeed;
+            unitThinker.UnitType = unitStatSo.Type;
+            
+            unitSpawned.TryGetComponent(out UnitHealth unitHealth);
+            
+            if (unitHealth is null) yield break;
+            
+            unitHealth.MaxHealth = unitStatSo.MaxHealth;
+            unitHealth.GoldGiven = unitStatSo.GoldGiven;
+            unitHealth.XpGiven = unitStatSo.ExperienceGiven;
+
+            _isSpawning = false;
         }
 
         public void SpawnUnit(Component sender, object data)
@@ -71,10 +99,16 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
 
             if (unitStatSo != null)
             {
-                var coolDown = unitStatSo.BuildTime;
-                var unitPrefab = unitStatSo.GetPrefab();
-                GameObject unitSpawned = Instantiate(unitPrefab, _spawnPosition, Quaternion.identity, _unitsContainer);
-                unitSpawned.tag = _unitTag;
+                _unitStatSos.Enqueue(unitStatSo);
+                if (_unitStatSos.Count >= 4)
+                {
+                    // send event to notify buttons to be disable 
+                    onSpawnQueueStatusChange.Raise(this, false);
+                }
+                else
+                {
+                    onSpawnQueueStatusChange.Raise(this, true);
+                }
             }
         }
     }

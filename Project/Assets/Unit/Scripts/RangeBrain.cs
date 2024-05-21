@@ -8,44 +8,71 @@ namespace Supinfo.Project.Unit.Scripts
     [CreateAssetMenu(menuName = "Brains/RangeBrain")]
     public class RangeBrain : UnitBrain
     {
-        
         public override void Think(Thinker thinker)
         {
             if (thinker is not UnitThinker unitThinker) return;
             unitThinker.TryGetComponent(out IUnitDetection detection);
             var tags = unitThinker.transform.tag.Split(",");
             
-            // puis Detection d'allies 
-            var target = detection?.Detect(unitThinker.Direction, 1, tags[1]=="Allies"?"Unit,Allies":"Unit,Enemies");
-            if (target) return;
-            
-            // Detection d'enemies d'abord (car c'est un archer, il ne pas avancer)
-            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitStatSo.Range, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
-            if (target)
+            // Detection d'enemies (proche) 
+            var target = detection?.Detect(unitThinker.Direction, 1, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
+            if (target is not null)
             {
-                Attack(unitThinker, target);
+                unitThinker.TryGetComponent(out IShooter shooter);
+                shooter?.Shoot(
+                    unitThinker.Damage,
+                    unitThinker.HitSpeed, 
+                    2, 
+                    target.transform, unitThinker.UnitType);
                 return;
+            }
+            
+            // Detection d'enemies (loin)
+            target = detection?.Detect(unitThinker.Direction, unitThinker.Range, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");
+            if (target is not null)
+            {
+                unitThinker.TryGetComponent(out IShooter shooter);
+                shooter?.Shoot(
+                    unitThinker.Damage,
+                    unitThinker.HitSpeed, 
+                    2, 
+                    target.transform, unitThinker.UnitType);
             }
             
             // Detection de chateau 
-            target = detection?.Detect(unitThinker.Direction, unitThinker.UnitStatSo.Range, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
-            if (target)
+            target = detection?.Detect(unitThinker.Direction, unitThinker.Range, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
+            if (target is not null)
             {
-                Attack(unitThinker, target);
-                return;
+                unitThinker.TryGetComponent(out IShooter shooter);
+                shooter?.Shoot(
+                    unitThinker.Damage,
+                    unitThinker.HitSpeed, 
+                    2, 
+                    target.transform, unitThinker.UnitType);
             }
+            
+            // Detection d'allies
+            target = detection?.Detect(unitThinker.Direction, 1, tags[1]=="Allies"?"Unit,Allies":"Unit,Enemies");
+            if (target is not null) return;
+            
+            // Detection de chateau (Proche)
+            target = detection?.Detect(unitThinker.Direction, 1, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");
+            if (target is not null) return;
             
             // Mouvement basic
             unitThinker.TryGetComponent(out IMovement movement);
-            movement?.Move(unitThinker.Direction, unitThinker.UnitStatSo.WalkSpeed);
+            movement?.Move(unitThinker.Direction, unitThinker.WalkSpeed);
         }
-        
+
         protected override void Attack(UnitThinker unitThinker, Collider2D target)
         {
-            var tags = unitThinker.transform.tag.Split(",");
-            
             unitThinker.TryGetComponent(out IShooter shooter);
-            shooter?.Shoot(unitThinker.UnitStatSo.Damage, tags[1]=="Allies"?"Unit,Allies":"Unit,Enemies", unitThinker.UnitStatSo.HitSpeed, tags[1]=="Allies"?Vector3.right : Vector3.left, 3);
+            shooter?.Shoot(
+                unitThinker.Damage,
+                unitThinker.HitSpeed, 
+                2, 
+                target.transform,
+                unitThinker.UnitType);
         }
     }
 }
