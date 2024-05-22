@@ -14,18 +14,38 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// </summary>
         [SerializeField]
         private UnitStatSo unitStatSo;
-    
+
+        private bool _isActive;
+        public bool IsActive
+        {
+            get => _isActive;
+            set
+            {
+                _isActive = value;
+                EnableButton();
+            }
+        }
+
         /// <summary>
         /// Event to be raised when the button is clicked.
         /// </summary>
-        [SerializeField] private GameEvent onClick;
+        [SerializeField] private GameEvent onSpawnUnit;
+        
+        [SerializeField]
+        private GameEvent onGoldChange;
 
-        private bool spawning;
-        private UnityEngine.UI.Button button;
+        private bool _canSpawn = true;
+        
+        private UnityEngine.UI.Button _button;
+
+        private float _goldCount;
+
+        private bool _queueStatus = true;
 
         private void Awake()
         {
-            button = transform.GetComponentInChildren<UnityEngine.UI.Button>();
+            _button = transform.GetComponentInChildren<UnityEngine.UI.Button>();
+            IsActive = true;
         }
 
         /// <summary>
@@ -34,7 +54,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// </summary>
         public void OnClick()
         {
-            if (!spawning)
+            if (_canSpawn && IsActive)
             {
                 StartCoroutine(SpawnWithCooldown());
             }
@@ -42,31 +62,41 @@ namespace Supinfo.Project.UI.Button.Scripts
 
         private IEnumerator SpawnWithCooldown()
         {
-            spawning = true;
+            _canSpawn = false;
             
-            EnableButton(false);
-
+            EnableButton();
+            
+            onSpawnUnit.Raise(this, unitStatSo);
+            
+            onGoldChange.Raise(this, - unitStatSo.Price);
+            
             yield return new WaitForSeconds(unitStatSo.BuildTime);
             
-            onClick.Raise(this, unitStatSo);
+            _canSpawn = true;
             
-            EnableButton(true);
-            
-            spawning = false;
+            EnableButton();
         }
 
         // function to change visual and enable the button
-        private void EnableButton(bool value)
+        private void EnableButton()
         {
-            if (button is null) return;
-            button.enabled = value;
+            if (_button is null) return;
+            if(!IsActive) return;
+            _button.enabled = _goldCount >= unitStatSo.Price && _queueStatus && _canSpawn;
         }
 
         public void OnSpawnQueueStatusChange(Component sender, object data)
         {
             if (data is not bool status) return;
-            
-            EnableButton(status);
+            _queueStatus = status;
+            EnableButton();
+        }
+
+        public void OnGoldCountChange(Component sender, object data)
+        {
+            if(data is not float goldCount) return;
+            _goldCount = goldCount;
+            EnableButton();
         }
     }
 

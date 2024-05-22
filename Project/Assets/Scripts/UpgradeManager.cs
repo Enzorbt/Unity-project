@@ -40,40 +40,40 @@ namespace Supinfo.Project.Scripts
             switch (upgradeType)
             {
                 case UpgradeType.MeleeAttack:
-                    meleeStatSo.Upgrade(upgradeType);
+                    meleeStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.MeleeHealth:
-                    meleeStatSo.Upgrade(upgradeType);
+                    meleeStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.RangeAttack:
-                    rangeStatSo.Upgrade(upgradeType);
+                    rangeStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.RangeRange:
-                    rangeStatSo.Upgrade(upgradeType);
+                    rangeStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.AntiArmorAttack:
-                    antiArmorStatSo.Upgrade(upgradeType);
+                    antiArmorStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.AntiArmorHealth:
-                    antiArmorStatSo.Upgrade(upgradeType);
+                    antiArmorStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.ArmorAttack:
-                    armorStatSo.Upgrade(upgradeType);
+                    armorStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.ArmorHealth:
-                    armorStatSo.Upgrade(upgradeType);
+                    armorStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.TurretAttack:
-                    turretStatSo.Upgrade(upgradeType);
+                    turretStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.TurretRange:
-                    turretStatSo.Upgrade(upgradeType);
+                    turretStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.GoldGiven:
-                    otherArmorStatSo.Upgrade(upgradeType);
-                    otherMeleeStatSo.Upgrade(upgradeType);
-                    otherRangeStatSo.Upgrade(upgradeType);
-                    otherAntiArmorStatSo.Upgrade(upgradeType);
+                    otherArmorStatSo?.Upgrade(upgradeType);
+                    otherMeleeStatSo?.Upgrade(upgradeType);
+                    otherRangeStatSo?.Upgrade(upgradeType);
+                    otherAntiArmorStatSo?.Upgrade(upgradeType);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
