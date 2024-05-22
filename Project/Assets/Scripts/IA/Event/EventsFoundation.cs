@@ -1,14 +1,14 @@
-using Interfaces.IA;
 using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
+using Supinfo.Project.Interfaces.IA;
 using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
 
-namespace Supinfo.Project.IA
+namespace IA.Event
 {
-    public class Foundation : MonoBehaviour, IFoundation
+    public class EventsFoundation : MonoBehaviour, IEventFoundation
     {
         [SerializeField] private GameEvent onLaunchCapacity;
         
@@ -25,9 +25,10 @@ namespace Supinfo.Project.IA
 
         public void UseCapacity(CapacitySo capacitySo)
         {
+            onLaunchCapacity(this, capacitySo);
             throw new System.NotImplementedException();
         }
-
+        
         public void UpgradeAge()
         {
             throw new System.NotImplementedException();

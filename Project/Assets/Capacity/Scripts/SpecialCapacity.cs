@@ -11,7 +11,6 @@ namespace Supinfo.Project.Capacity.Scripts
         private bool _running;
         public void LaunchCapacity(Component sender, object data)
         {
-            Debug.Log("Launching");
             if (data is not CapacitySo capacitySo) return;
 
             if (!_running)

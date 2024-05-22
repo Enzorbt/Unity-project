@@ -3,10 +3,9 @@ using ScriptableObjects.Unit;
 using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 
-namespace Interfaces.IA
+namespace Supinfo.Project.Interfaces.IA
 {
-    // Voir les autres action  
-    public interface IFoundation
+    public interface IEventFoundation
     {
         // SPAWN UNIT 
         public void SpawnUnit(UnitStatSo unitStatSo);
