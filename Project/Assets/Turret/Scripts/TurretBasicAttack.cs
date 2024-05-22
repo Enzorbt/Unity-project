@@ -34,8 +34,7 @@ namespace Supinfo.Project.Turret.Scripts
             newPosition.x += transform.position.x > 0 ? - scaledSpriteSize.x : scaledSpriteSize.x;
             
             // calcul de la rotation en fonction de la cible
-            var enticipationTarget = target.position + Vector3.right;
-            var angle = Mathf.Atan2(enticipationTarget.y - newPosition.y, enticipationTarget.x - newPosition.x) * Mathf.Rad2Deg;
+            var angle = Mathf.Atan2(target.position.y - newPosition.y, target.position.x - newPosition.x) * Mathf.Rad2Deg;
             var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             
             var instantiatedProjectile = Instantiate(projectile, newPosition, rotation, transform);

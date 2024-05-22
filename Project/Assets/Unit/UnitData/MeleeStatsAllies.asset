@@ -71,7 +71,7 @@ MonoBehaviour:
       order: 5
     upgradeStatModifiers: []
   buildTime:
-    baseValue: 1
+    baseValue: 5
     ageStatModifiers: []
     upgradeStatModifiers: []
   goldGiven:

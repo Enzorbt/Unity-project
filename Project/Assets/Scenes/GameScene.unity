@@ -429,9 +429,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2a5d22672fdd15f4c878c16c2056be01, type: 2}
     - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: onSpawnUnit
+      value: 
+      objectReference: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
+    - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: unitSpawnSo
       value: 
       objectReference: {fileID: 11400000, guid: 93da732afedeccb4e848b66e266320a5, type: 2}
+    - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
     - target: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_Name
       value: Button(range)
@@ -2612,6 +2620,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1096975741}
     m_Modifications:
+    - target: {fileID: 48198199676183310, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 48198199676183310, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 48198199676183310, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2128826344}
+    - target: {fileID: 48198199676183310, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 48198199676183310, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 48198199676183310, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Supinfo.Project.UI.Button.Scripts.SpawnButtonUIWithUnlock, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 48198199676183310, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1614255542848843416, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 80
@@ -2637,9 +2673,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: cef5983a8def2c14f9c025eddb6a516c, type: 2}
     - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: onSpawnUnit
+      value: 
+      objectReference: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
+    - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: unitSpawnSo
       value: 
       objectReference: {fileID: 11400000, guid: c046d2823ee914e4b9af1612e6610854, type: 2}
+    - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
     - target: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_Name
       value: Button(armor)
@@ -2736,6 +2780,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6929819026872426548, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929819026872426548, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2128826344}
+    - target: {fileID: 6929819026872426548, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929819026872426548, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnGoldCountChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929819026872426548, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Supinfo.Project.UI.Button.Scripts.SpawnButtonUIWithUnlock, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929819026872426548, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8631101323061961074, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_text
       value: 4
@@ -2748,6 +2816,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2128826340}
+    - targetCorrespondingSourceObject: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2128826344}
+    - targetCorrespondingSourceObject: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2128826343}
+    - targetCorrespondingSourceObject: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2128826342}
   m_SourcePrefab: {fileID: 100100000, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
 --- !u!1 &632469247
 GameObject:
@@ -2813,9 +2890,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b90020653a2fa7d49a7ab09e743ea76e, type: 2}
     - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: onSpawnUnit
+      value: 
+      objectReference: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
+    - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: unitSpawnSo
       value: 
       objectReference: {fileID: 11400000, guid: 3f3c5df5cda582440a3982bbb49b49e9, type: 2}
+    - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
     - target: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_Name
       value: Button(melee)
@@ -2946,7 +3031,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 1560278799}
   m_SourcePrefab: {fileID: 100100000, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
 --- !u!1001 &653734606
@@ -3713,6 +3798,7 @@ MonoBehaviour:
   onExpCountChange: {fileID: 11400000, guid: 98b1a138fb5d54b0b98703dbfab2030b, type: 2}
   experienceStatSo: {fileID: 11400000, guid: 62220f320043242e982ce4c6adab4b9c, type: 2}
   onXpMaxChange: {fileID: 11400000, guid: 0704108e72d86445099ab6d6319adc53, type: 2}
+  ExpMax: 0
 --- !u!1 &909262554
 GameObject:
   m_ObjectHideFlags: 0
@@ -7438,6 +7524,85 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2128826342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128826338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a0891eb06deb2406e9a7ae715307fe92, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2128826344}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Button.Scripts.SpawnButtonUIWithUnlock,
+          Assembly-CSharp
+        m_MethodName: OnAgeUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2128826343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128826338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fb331398eef5f4e009819eaac0515d31, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2128826344}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Button.Scripts.SpawnButtonUIWithUnlock,
+          Assembly-CSharp
+        m_MethodName: OnGoldCountChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2128826344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128826338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bcea74442074ff296d1c7d8d3696eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockCosts:
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  onGoldChange: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
 --- !u!1001 &2138597429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7471,9 +7636,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ad061516469483f44b24dadab6d420f9, type: 2}
     - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: onSpawnUnit
+      value: 
+      objectReference: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
+    - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: unitSpawnSo
       value: 
       objectReference: {fileID: 11400000, guid: 1b387c591f7f35f4fbe1dfbda9df3b72, type: 2}
+    - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
     - target: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_Name
       value: Button(antiArmor)

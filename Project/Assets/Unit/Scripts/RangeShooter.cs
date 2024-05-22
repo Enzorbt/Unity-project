@@ -36,6 +36,9 @@ namespace Supinfo.Project.Unit.Scripts
             
             var instantiatedProjectile = Instantiate(projectile, newPosition, Quaternion.identity, transform);
 
+            // set the layer
+            instantiatedProjectile.layer =  3;
+            
             // instantiate the projectile
             instantiatedProjectile.TryGetComponent(out ProjectileThinker projectileThinker);
             

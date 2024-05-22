@@ -51,7 +51,7 @@ namespace Supinfo.Project.UI.Scripts
         {
             if (data is not float max) return;
             _maxXp = max;
-            _xpText.text = "0/" + _maxXp;
+            StartCoroutine(AnimateXpBar(_xpBarSlider.value, 0 / max));
         }
 
         /// <summary>
