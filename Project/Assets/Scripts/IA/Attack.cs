@@ -1,5 +1,6 @@
 // Attack STRATEGIE 
 
+// VERIF PRIX / XP 
 
 
 

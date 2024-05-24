@@ -1,6 +1,6 @@
 // Defense STRATEGIE 
 
-
+// VERIF PRIX / XP 
 
 
 // BUY MAX TURRET 

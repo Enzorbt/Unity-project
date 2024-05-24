@@ -11,6 +11,7 @@ namespace IA.Event
         private int _indexSpawn;
         public int index;
 
+        // STATS SO UNIT
         [SerializeField] private UnitStatSo meleeStatSo;
         [SerializeField] private UnitStatSo rangeStatSo;
         [SerializeField] private UnitStatSo armorStatSo;
@@ -53,6 +54,8 @@ namespace IA.Event
    
     }
 }
+
+// VERIF PRIX / XP 
 
 
 // IA RANDOM 

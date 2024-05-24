@@ -16,6 +16,8 @@ namespace IA.Event
         
         [SerializeField] private GameEvent onSpawnTurret;
         
+        [SerializeField] private GameEvent onEnemiesUpgrade;
+        
 // Voir les autres action  
         public void SpawnUnit(UnitStatSo unitStatSo)
         {
@@ -25,7 +27,7 @@ namespace IA.Event
 
         public void UseCapacity(CapacitySo capacitySo)
         {
-            onLaunchCapacity(this, capacitySo);
+            onLaunchCapacity.Raise(this, capacitySo);
             throw new System.NotImplementedException();
         }
         
@@ -36,6 +38,7 @@ namespace IA.Event
 
         public void Upgrade(UpgradeType upgradeType)
         {
+            onEnemiesUpgrade.Raise(this, upgradeType);
             throw new System.NotImplementedException();
         }
 
