@@ -28,14 +28,23 @@ namespace Supinfo.Project.Unit.Scripts
             var sprite = projectile.GetComponentInChildren<SpriteRenderer>().sprite;
             var newPosition = transform.position;
             
+            // direction is initialized for calculation rotation
             var direction = new Vector3((target.position - newPosition).normalized.x, 0, 0);
-
+            
+            var rotation = direction.x > 0 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+            
             var scaledSpriteSize = projectile.transform.localScale * sprite.bounds.extents.x; 
             
             newPosition.x += direction.x > 0 ? - scaledSpriteSize.x : scaledSpriteSize.x;
             
-            var instantiatedProjectile = Instantiate(projectile, newPosition, Quaternion.identity, transform);
+            var instantiatedProjectile = Instantiate(projectile, newPosition, rotation);
 
+            // change direction to be forward
+            direction = Vector3.right;
+            
+            // set the layer
+            instantiatedProjectile.layer =  3;
+            
             // instantiate the projectile
             instantiatedProjectile.TryGetComponent(out ProjectileThinker projectileThinker);
             

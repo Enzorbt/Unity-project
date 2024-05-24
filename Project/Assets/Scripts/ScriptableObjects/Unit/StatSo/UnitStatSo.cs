@@ -116,7 +116,7 @@ namespace ScriptableObjects.Unit
         /// </summary>
         [Header("Price")] 
         [SerializeField] private Stat price;
-        public Stat Price => price;
+        public float Price => price.GetValue(_currentAge);
         
     }
 }

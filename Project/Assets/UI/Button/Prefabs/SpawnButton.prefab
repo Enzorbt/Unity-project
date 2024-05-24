@@ -142,6 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6419648924715369162}
   - component: {fileID: 4445359853512285006}
+  - component: {fileID: 6929819026872426548}
   m_Layer: 5
   m_Name: SpawnButton
   m_TagString: Untagged
@@ -182,8 +183,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 503969790bbbf4dcf8b94389cc12f2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 1671971147852743908, guid: b74b3119bc36f43679cecbda4bd92fa6, type: 3}
-  onClick: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
+  unitStatSo: {fileID: 0}
+  onSpawnUnit: {fileID: 0}
+  onGoldChange: {fileID: 0}
+--- !u!114 &6929819026872426548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470815005180612160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fb331398eef5f4e009819eaac0515d31, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4445359853512285006}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Button.Scripts.SpawnButtonUI,
+          Assembly-CSharp
+        m_MethodName: OnGoldCountChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6774200955941380444
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,21 +95,11 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
 
         public void SpawnUnit(Component sender, object data)
         {
-            UnitStatSo unitStatSo = data as UnitStatSo;
-
-            if (unitStatSo != null)
-            {
-                _unitStatSos.Enqueue(unitStatSo);
-                if (_unitStatSos.Count >= 4)
-                {
-                    // send event to notify buttons to be disable 
-                    onSpawnQueueStatusChange.Raise(this, false);
-                }
-                else
-                {
-                    onSpawnQueueStatusChange.Raise(this, true);
-                }
-            }
+            if (data is not UnitStatSo unitStatSo) return;
+            
+            _unitStatSos.Enqueue(unitStatSo);
+            // send event to notify buttons to be disable 
+            onSpawnQueueStatusChange.Raise(this, _unitStatSos.Count < 4);
         }
     }
 }

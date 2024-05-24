@@ -35,6 +35,11 @@ namespace Supinfo.Project.Projectiles.Scripts
             // Mouvement basic
             projectileThinker.TryGetComponent(out IMovement movement);
             movement?.Move(projectileThinker.Direction, projectileThinker.Speed);
+
+            if (projectileThinker.transform.position.y < -2.5f)
+            {
+                Destroy(projectileThinker.gameObject);
+            }
         }
 
         private static void Attack(ProjectileThinker projectileThinker, Collider2D target)
