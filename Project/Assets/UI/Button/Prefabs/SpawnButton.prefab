@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 6419648924715369162}
   - component: {fileID: 4445359853512285006}
   - component: {fileID: 6929819026872426548}
+  - component: {fileID: 1655222632062973299}
   m_Layer: 5
   m_Name: SpawnButton
   m_TagString: Untagged
@@ -206,6 +207,35 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Supinfo.Project.UI.Button.Scripts.SpawnButtonUI,
           Assembly-CSharp
         m_MethodName: OnGoldCountChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1655222632062973299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470815005180612160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: dacdc402123e94defbc9f31c4ec82254, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4445359853512285006}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Button.Scripts.SpawnButtonUI,
+          Assembly-CSharp
+        m_MethodName: OnGameSpeedChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

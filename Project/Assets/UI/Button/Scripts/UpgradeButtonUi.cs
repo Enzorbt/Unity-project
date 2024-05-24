@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Scripts.Managers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -27,6 +28,8 @@ namespace Supinfo.Project.UI.Button.Scripts
 
         [SerializeField] [Header("3 upgrade costs")]
         private List<float> upgradeCosts;
+
+        private float _goldCount;
 
         private void Awake()
         {
@@ -58,16 +61,25 @@ namespace Supinfo.Project.UI.Button.Scripts
         {
             if (data is not float goldCount) return;
             
+            _goldCount = goldCount;
+            
             // do nothing if all upgrades bought
             if (_count >= 3) return;
             
             // activate the button
-            SetActiveButton(goldCount >= upgradeCosts[_count]);
+            SetActiveButton(_goldCount >= upgradeCosts[_count]);
         }
 
         private void SetActiveButton(bool state)
         {
             gameObject.GetComponentInChildren<UnityEngine.UI.Button>().enabled = state;
+        }
+        
+        public void OnGameSpeedChange(Component sender, object data)
+        {
+            if (data is not GameSpeed gameSpeed) return;
+            
+            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _goldCount >= upgradeCosts[_count] && _count < 3);
         }
 
     }

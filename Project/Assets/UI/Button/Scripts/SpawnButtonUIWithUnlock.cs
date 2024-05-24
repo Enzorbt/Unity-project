@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Scripts.Managers;
 using UnityEngine;
 
 namespace Supinfo.Project.UI.Button.Scripts
@@ -20,6 +21,8 @@ namespace Supinfo.Project.UI.Button.Scripts
         private SpawnButtonUI _spawnButtonUI;
 
         private bool _bought;
+
+        private float _goldCount;
             
         private void Awake()
         {
@@ -36,9 +39,11 @@ namespace Supinfo.Project.UI.Button.Scripts
         public void OnGoldCountChange(Component sender, object data)
         {
             if(data is not float goldCount) return;
+            _goldCount = goldCount;
+            
             if (_bought) return;
-            EnableButton(goldCount >= unlockCosts[_age]);
-
+            
+            EnableButton(_goldCount >= unlockCosts[_age]);
         }
 
         public void OnClick()
@@ -64,6 +69,15 @@ namespace Supinfo.Project.UI.Button.Scripts
         {
             if (_button is null) return;
             _button.enabled = value;
+        }
+        
+        public void OnGameSpeedChange(Component sender, object data)
+        {
+            if (data is not GameSpeed gameSpeed) return;
+
+            if (_bought) return;
+            
+            EnableButton(gameSpeed == GameSpeed.Stop ? false : _goldCount >= unlockCosts[_age]);
         }
     }
 }
