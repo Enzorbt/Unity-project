@@ -18,6 +18,9 @@ namespace IA.Event
         
         [SerializeField] private GameEvent onEnemiesUpgrade;
         
+        [SerializeField] private GameEvent onAgeUpgrade;
+
+        
 // Voir les autres action  
         public void SpawnUnit(UnitStatSo unitStatSo)
         {
@@ -33,6 +36,7 @@ namespace IA.Event
         
         public void UpgradeAge()
         {
+            onAgeUpgrade.Raise(this, 0);
             throw new System.NotImplementedException();
         }
 
