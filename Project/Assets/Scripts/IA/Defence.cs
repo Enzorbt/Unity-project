@@ -1,5 +1,8 @@
 // Defense STRATEGIE 
 
+
+
+
 // BUY MAX TURRET 
 // EVOLV MORE SPEEDLY IN AGE 
 
@@ -11,3 +14,12 @@
 
 // CAPACITY : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION 
 
+using UnityEngine;
+
+namespace IA.Event
+{
+    public class Defence : MonoBehaviour
+    {
+        
+    }
+}      

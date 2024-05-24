@@ -1,5 +1,8 @@
 // Attack STRATEGIE 
 
+
+
+
 // BUY 0 TURRET 
 // EVOLV MORE SPEEDLY IN AGE 
 
@@ -10,3 +13,12 @@
 
 // CAPACITY : BUY GOLD AMELIORATION, UNIT armor / Range amelioration 
 
+using UnityEngine;
+
+namespace IA.Event
+{
+    public class Attack : MonoBehaviour
+    {
+
+    }
+}

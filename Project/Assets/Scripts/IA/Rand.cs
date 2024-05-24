@@ -1,12 +1,20 @@
+using ScriptableObjects.Unit;
+using UnityEngine;
+using Random = System.Random;
+
 namespace IA.Event
 {
-    public class Random
+    public class Rand
     {
         private EventsFoundation eventInstance = new EventsFoundation();
         Random aleatoire = new Random();
-        
         private int _indexSpawn;
         public int index;
+
+        [SerializeField] private UnitStatSo meleeStatSo;
+        [SerializeField] private UnitStatSo rangeStatSo;
+        [SerializeField] private UnitStatSo armorStatSo;
+        [SerializeField] private UnitStatSo antiArmorStatSo;
 
         private int getRand(int minValue, int maxValue)
         {
@@ -16,12 +24,29 @@ namespace IA.Event
         public void Spawn()
         {
             int minValue = 1;
-            int maxValue = 10;
+            int maxValue = 4;
             index = getRand(minValue, maxValue);
             switch (index)
             {
+                case 1 : 
+                    // SPAWN MELEE
+                    eventInstance.SpawnUnit(meleeStatSo);
+                    break;
+                case 2 : 
+                    // SPAWN RANGE 
+                    eventInstance.SpawnUnit(rangeStatSo);
+                    break;
+                case 3 : 
+                    // SPAWN ARMOR
+                    eventInstance.SpawnUnit(armorStatSo);
+                    break;
+                case 4 : 
+                    // SPAWN ARMOR
+                    eventInstance.SpawnUnit(antiArmorStatSo);    
+                    break;
                 default:
-                    // Your code here
+                    // SPAWN MELEE
+                    eventInstance.SpawnUnit(meleeStatSo);
                     break;
             }
         }

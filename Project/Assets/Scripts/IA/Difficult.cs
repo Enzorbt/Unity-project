@@ -1,4 +1,11 @@
 // Attack : Stratégie COUNTER + TANK (Armor + RANGE) 
+
+
+
+
+
+
+
 // Base : Acheté Deux tourelles
 // Amélioration : Acheté amélioration RANGE ET ARMOR EN PRIORITÉ, PUIS LE GOLD AMELIORATION puis les autres 
 // Quand +7 UNITÉ Adversaise USE CAPACITY IF POSSIBLE 
@@ -24,3 +31,13 @@
     // SI JOUEUR NE PLACE RIEN  
         // SPAWN ARMOR 
         // SPAWN RANGE         
+        
+using UnityEngine;
+
+namespace IA.Event
+{
+    public class Difficult : MonoBehaviour
+    {
+
+    }
+}        
