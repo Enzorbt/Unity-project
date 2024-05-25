@@ -407,6 +407,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 99006414}
+  - component: {fileID: 99006416}
+  - component: {fileID: 99006415}
+  - component: {fileID: 99006417}
   m_Layer: 5
   m_Name: TurretButton
   m_TagString: Untagged
@@ -434,6 +437,79 @@ RectTransform:
   m_AnchoredPosition: {x: -637.4, y: 240.1}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &99006415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99006413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: dacdc402123e94defbc9f31c4ec82254, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 99006416}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Button.Scripts.SpawnTurretButton,
+          Assembly-CSharp
+        m_MethodName: OnGameSpeedChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &99006416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99006413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d21367a4a3454fa812e6466ea3bcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSpawnTurret: {fileID: 11400000, guid: ce05383433a97e54e825fcbfb94b4435, type: 2}
+  onGoldChange: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+  turretStatSo: {fileID: 11400000, guid: 1693377c11a814f128bbf777937c8797, type: 2}
+--- !u!114 &99006417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99006413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fb331398eef5f4e009819eaac0515d31, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 99006416}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Button.Scripts.SpawnTurretButton,
+          Assembly-CSharp
+        m_MethodName: OnGoldCountChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &109050368 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 592243485740534398, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
@@ -527,13 +603,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: c777c32159d541ce8bdf8f036ce4def5, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 99006416}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Button.Scripts.SpawnTurretButton,
+          Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2994,6 +3071,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2128826342}
+    - targetCorrespondingSourceObject: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2128826347}
   m_SourcePrefab: {fileID: 100100000, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
 --- !u!1 &632469247
 GameObject:
@@ -4618,6 +4698,10 @@ PrefabInstance:
       propertyPath: turretPrefab
       value: 
       objectReference: {fileID: 8346566440712086298, guid: 54abae10a0c6cd94b822adb08c6e6623, type: 3}
+    - target: {fileID: 6523809192702075535, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: ce05383433a97e54e825fcbfb94b4435, type: 2}
     - target: {fileID: 8159974408950080524, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
       propertyPath: m_Name
       value: Castle1
@@ -5063,6 +5147,7 @@ Transform:
   m_Children:
   - {fileID: 963584095}
   - {fileID: 632469248}
+  - {fileID: 1223625927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1223624200
@@ -5107,6 +5192,80 @@ Transform:
   - {fileID: 940106617}
   m_Father: {fileID: 2088991549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1223625926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1223625927}
+  - component: {fileID: 1223625929}
+  - component: {fileID: 1223625928}
+  m_Layer: 0
+  m_Name: EndGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1223625927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223625926}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1150515911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1223625928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223625926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b67b2e27396560b4e8a6ed11bcc38c30, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1223625929}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Scripts.EndGameManager, Assembly-CSharp
+        m_MethodName: OnCastleDeath
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1223625929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223625926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa178ca6d4a241908a905950bc575321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winPanel: {fileID: 612738469}
 --- !u!1 &1253653306
 GameObject:
   m_ObjectHideFlags: 0
@@ -6920,6 +7079,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006586294}
   m_CullTransparentMesh: 1
+--- !u!114 &2032319938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6373652787784720674, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+  m_PrefabInstance: {fileID: 6031698437914056396}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c777c32159d541ce8bdf8f036ce4def5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2035055185
 GameObject:
   m_ObjectHideFlags: 0
@@ -7012,6 +7182,7 @@ GameObject:
   - component: {fileID: 2068541866}
   - component: {fileID: 2068541868}
   - component: {fileID: 2068541867}
+  - component: {fileID: 2068541869}
   m_Layer: 5
   m_Name: AgeUpgrade
   m_TagString: Untagged
@@ -7082,6 +7253,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2068541867}
         m_TargetAssemblyTypeName: Supinfo.Project.UI.Scripts.AgeUpgradeButton, Assembly-CSharp
         m_MethodName: OnCanEvolve
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2068541869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068541865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: dacdc402123e94defbc9f31c4ec82254, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2068541867}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Scripts.AgeUpgradeButton, Assembly-CSharp
+        m_MethodName: OnGameSpeedChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7856,6 +8055,35 @@ MonoBehaviour:
   - 100
   - 100
   onGoldChange: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+--- !u!114 &2128826347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128826338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: dacdc402123e94defbc9f31c4ec82254, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2128826344}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Button.Scripts.SpawnButtonUIWithUnlock,
+          Assembly-CSharp
+        m_MethodName: OnGameSpeedChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2138597429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8461,6 +8689,26 @@ PrefabInstance:
       propertyPath: turretPrefab
       value: 
       objectReference: {fileID: 8346566440712086298, guid: 54abae10a0c6cd94b822adb08c6e6623, type: 3}
+    - target: {fileID: 6523809192702075535, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: ce05383433a97e54e825fcbfb94b4435, type: 2}
+    - target: {fileID: 6523809192702075535, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2032319938}
+    - target: {fileID: 6523809192702075535, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawnTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 6523809192702075535, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpawnerTurret, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6523809192702075535, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8159974408950080524, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
       propertyPath: m_Name
       value: Castle0

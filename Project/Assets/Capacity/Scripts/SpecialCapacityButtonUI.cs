@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Scripts.Managers;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,6 +30,8 @@ namespace Supinfo.Project.Capacity.Scripts
 
         private Image _image;
 
+        private float _xpRatio;
+
         private void Awake()
         {
             SetActiveButton(false);
@@ -50,6 +53,8 @@ namespace Supinfo.Project.Capacity.Scripts
         {
             if (data is not float xpRatio) return;
             
+            _xpRatio = xpRatio;
+            
             // activate the button
             SetActiveButton(xpRatio >= cost);
         }
@@ -70,6 +75,13 @@ namespace Supinfo.Project.Capacity.Scripts
         public void OnAgeUpgrade(Component sender, object data)
         {
             _image.sprite = _capacitySo.Sprite;
+        }
+
+        public void OnGameSpeedChange(Component sender, object data)
+        {
+            if(data is not GameSpeed gameSpeed) return;
+            
+            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _xpRatio >= cost);
         }
     }
 }
