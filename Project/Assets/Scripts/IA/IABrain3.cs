@@ -1,23 +1,88 @@
 ﻿// Attack STRATEGIE 
 
-// VERIF PRIX / XP 
+// FINIR : 
+    // VERIF PRIX / XP 
+    // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
 
 
-
-// BUY 0 TURRET 
-// EVOLV MORE SPEEDLY IN AGE 
-
-// ALWAYS PUT MELEE UNIT 
-// WHEN PLAYER PLACE RESPOND AND PLACE UNIT RANDOMLY
-
-// WHEN THERE +10 UNIT ON FIELD USE CAPACITY 
-
-// CAPACITY : BUY GOLD AMELIORATION, UNIT armor / Range amelioration 
+using Common;
+using UnityEngine;
 
 namespace IA.Event
 {
-    public class IABrain3
+    public class IABrain3 : Brain
     {
-        
+        public override void Think(Thinker thinker)
+        {
+            if (thinker is not IAThinker) return;
+            
+            // DETECTION 
+            GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
+            
+            // SPAWN UNIT 
+            if (unitsAndAllies.Length != 0)
+            {
+                IAThinker.Spawn(0);
+                IAThinker.Spawn(0);
+                IAThinker.Spawn(1);
+
+            }
+            
+            // LANCE CAPACITE SPECIAL
+            if (unitsAndAllies.Length >= 7)
+            {
+                IAThinker.SpecialCapacity(1);
+            }
+            if (unitsAndAllies.Length == 10)
+            {
+                IAThinker.SpecialCapacity(0);
+            }
+            
+            // Comporetement Applicatif
+            var index = 0;
+
+            int setIndex(int pindex)
+            {
+                index = pindex;
+                return index;
+            }
+
+            if (IAThinker.Gold > 300)
+            {
+                if (index == 0)
+                {
+                    if (IAThinker.Spawn(IAThinker.getRand(0, 3)))
+                    {
+                        setIndex(0);
+                    }
+                    else
+                    {
+                        setIndex(1);
+                    }
+                }
+                else if (index == 1)
+                {
+                    if (IAThinker.AgeUpgrade())
+                    {
+                        setIndex(0);
+                    }
+                    else
+                    {
+                        setIndex(1);
+                    }
+                }
+                else if (index == 2)
+                {
+                    if (IAThinker.UnlockNewUnit())
+                    {
+                        setIndex(0);
+                    }
+                    else
+                    {
+                        setIndex(1);
+                    }
+                }
+            }
+        }
     }
 }
