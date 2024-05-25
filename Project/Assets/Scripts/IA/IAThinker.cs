@@ -12,8 +12,8 @@ namespace IA.Event
 {
     public abstract class IAThinker : Thinker
     {
-        protected static float Gold {get; set;}
-        protected static float Xp {get; set;}
+        protected internal static float Gold {get; set;}
+        protected internal static float Xp {get; set;}
         
         protected static int Age {get; set;}
         protected static int TurretNumber {get; set;}

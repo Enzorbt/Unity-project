@@ -1,4 +1,4 @@
-// Attack STRATEGIE 
+﻿// Attack STRATEGIE 
 
 // VERIF PRIX / XP 
 
@@ -14,12 +14,10 @@
 
 // CAPACITY : BUY GOLD AMELIORATION, UNIT armor / Range amelioration 
 
-using UnityEngine;
-
 namespace IA.Event
 {
-    public class Attack : MonoBehaviour
+    public class IABrain3
     {
-
+        
     }
 }

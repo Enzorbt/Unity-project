@@ -7,7 +7,7 @@ namespace IA.Event
     {
         public override void Think(Thinker thinker)
         {
-            if (thinker is not IAThinker iaThinker)return;
+            if (thinker is not IAThinker)return;
             switch (IAThinker.getRand(0,5))
             {
                 case 0:
