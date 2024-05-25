@@ -22,67 +22,7 @@ namespace IA.Event
         [SerializeField] private UnitStatSo armorStatSo;
         [SerializeField] private UnitStatSo antiArmorStatSo;
 
-        // STATS SO XP AGE 
-        [SerializeField] private ExperienceStatSo experienceStatSo;
-
-        // STATS SO Turret
-        [SerializeField] private  TurretStatSo turretStatSo;
-
-        // STATS SO SPECIAL CAPACITY
-        [SerializeField] private CapacitySo capacityFireSo;
-        
-        public bool UnlockNewUnit()
-        {
-            // AJOUTER VERIF ARGENT + LOGIQUE 
-            if (!IsUnlock)
-            {
-                IsUnlock = true;
-            }
-
-            return IsUnlock;
-        }
-        
-        public bool Turret()
-        {
-            if (Gold >= turretStatSo.Price)
-            {
-                eventInstance.SpawnTurret(turretStatSo);
-                TurretNumber++;
-                return true;
-            }
-
-            return false;
-        }
-        
-        public bool AgeUpgrade()
-        {
-            if (Xp >= experienceStatSo.ExperienceLevel[Age])
-            {
-                eventInstance.UpgradeAge();
-                Age++;
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool SpecialCapacity()
-        {
-            if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
-            {
-                eventInstance.UseCapacity(capacityFireSo);
-                return true;
-            }
-
-            return false;
-        }
-        
-        public void Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
-        {
-            eventInstance.Upgrade(upgradeType);
-        }
-        
-        public bool Spawn(UnitStatSo playerUnit)
+        public bool SpawnDifficult(UnitStatSo playerUnit)
         {
             // COUNTER (Unité forte contre celle que le joeur pose)
             if (playerUnit.Type == antiArmorStatSo.Type.StrongAgainst && Gold >= antiArmorStatSo.Price) // ARMOR

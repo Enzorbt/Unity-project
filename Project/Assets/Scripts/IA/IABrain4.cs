@@ -19,7 +19,7 @@ namespace IA.Event
             {
                 if (entry.Value < 3)
                 {
-                    iaThinker.Upgrade(entry.Key)
+                    iaThinker.Upgrade(entry.Key);
                 }
             }
         }
