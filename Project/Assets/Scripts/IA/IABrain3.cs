@@ -14,7 +14,7 @@ namespace IA.Event
     {
         public override void Think(Thinker thinker)
         {
-            if (thinker is not IAThinker) return;
+            if (thinker is not IAThinker iaThinker) return;
             
             // DETECTION 
             GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
@@ -22,20 +22,20 @@ namespace IA.Event
             // SPAWN UNIT 
             if (unitsAndAllies.Length != 0)
             {
-                IAThinker.Spawn(0);
-                IAThinker.Spawn(0);
-                IAThinker.Spawn(1);
+                iaThinker.Spawn(0);
+                iaThinker.Spawn(0);
+                iaThinker.Spawn(1);
 
             }
             
             // LANCE CAPACITE SPECIAL
             if (unitsAndAllies.Length >= 7)
             {
-                IAThinker.SpecialCapacity(1);
+                iaThinker.SpecialCapacity(1);
             }
             if (unitsAndAllies.Length == 10)
             {
-                IAThinker.SpecialCapacity(0);
+                iaThinker.SpecialCapacity(0);
             }
             
             // Comporetement Applicatif
@@ -47,11 +47,11 @@ namespace IA.Event
                 return index;
             }
 
-            if (IAThinker.Gold > 300)
+            if (iaThinker.Gold > 300)
             {
                 if (index == 0)
                 {
-                    if (IAThinker.Spawn(IAThinker.getRand(0, 3)))
+                    if (iaThinker.Spawn(iaThinker.getRand(0, 3)))
                     {
                         setIndex(0);
                     }
@@ -62,7 +62,7 @@ namespace IA.Event
                 }
                 else if (index == 1)
                 {
-                    if (IAThinker.AgeUpgrade())
+                    if (iaThinker.AgeUpgrade())
                     {
                         setIndex(0);
                     }
@@ -73,7 +73,7 @@ namespace IA.Event
                 }
                 else if (index == 2)
                 {
-                    if (IAThinker.UnlockNewUnit())
+                    if (iaThinker.UnlockNewUnit())
                     {
                         setIndex(0);
                     }

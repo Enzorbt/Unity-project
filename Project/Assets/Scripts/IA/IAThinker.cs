@@ -12,43 +12,43 @@ namespace IA.Event
 {
     public abstract class IAThinker : Thinker
     {
-        protected internal static float Gold {get; set;}
-        protected internal static float Xp {get; set;}
+        protected internal  float Gold {get; set;}
+        protected internal  float Xp {get; set;}
         
-        protected static int Age {get; set;}
-        protected static int TurretNumber {get; set;}
-        protected static bool IsUnlock {get; set;}
+        protected  int Age {get; set;}
+        protected  int TurretNumber {get; set;}
+        protected  bool IsUnlock {get; set;}
 
         public Dictionary<UpgradeType, int> UpgradeDict; // Unity
         
-        private static EventsFoundation eventInstance = new EventsFoundation();
-        static Random aleatoire = new Random();
+        private  EventsFoundation eventInstance = new EventsFoundation();
+         Random aleatoire = new Random();
         public int index;
         
         // STATS SO UNIT
-        [SerializeField] private static UnitStatSo meleeStatSo;
-        [SerializeField] private static UnitStatSo rangeStatSo;
-        [SerializeField] private static UnitStatSo armorStatSo;
-        [SerializeField] private static UnitStatSo antiArmorStatSo;
+        [SerializeField] private UnitStatSo meleeStatSo;
+        [SerializeField] private  UnitStatSo rangeStatSo;
+        [SerializeField] private  UnitStatSo armorStatSo;
+        [SerializeField] private  UnitStatSo antiArmorStatSo;
 
         // STATS SO XP AGE 
-        [SerializeField] private static ExperienceStatSo experienceStatSo;
+        [SerializeField] private  ExperienceStatSo experienceStatSo;
 
         // STATS SO Turret
-        [SerializeField] private static TurretStatSo turretStatSo;
+        [SerializeField] private  TurretStatSo turretStatSo;
 
         // STATS SO SPECIAL CAPACITY
-        [SerializeField] private static CapacitySo capacityFireSo;
-        [SerializeField] private static CapacitySo capacityFlashSo;
+        [SerializeField] private  CapacitySo capacityFireSo;
+        [SerializeField] private  CapacitySo capacityFlashSo;
         
         // RAND 
-        public static int getRand(int minValue, int maxValue)
+        public  int getRand(int minValue, int maxValue)
         {
             return aleatoire.Next(minValue, maxValue);
         }
         
         // AGE
-        public static bool AgeUpgrade()
+        public  bool AgeUpgrade()
         {
             if (Xp >= experienceStatSo.ExperienceLevel[Age])
             {
@@ -60,7 +60,7 @@ namespace IA.Event
         }
         
         // CAPACITY 
-        public static bool SpecialCapacity(int index)
+        public  bool SpecialCapacity(int index)
         {
             switch (index)
             {
@@ -83,7 +83,7 @@ namespace IA.Event
         }
         
         // SPAWN 
-        public static bool Spawn(int index)
+        public bool Spawn(int index)
         {
             switch (index)
             {
@@ -125,7 +125,7 @@ namespace IA.Event
         }
         
         // UNLOCK UNIT 
-        public static bool UnlockNewUnit()
+        public  bool UnlockNewUnit()
         {
             // AJOUTER VERIF ARGENT + LOGIQUE 
             if (!IsUnlock)
@@ -137,7 +137,7 @@ namespace IA.Event
         }
         
         // TURRET
-        public static bool Turret()
+        public  bool Turret()
         {
             if (Gold >= turretStatSo.Price)
             {
@@ -149,7 +149,7 @@ namespace IA.Event
         }
         
         // UPGRADE
-        public static void Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
+        public  void Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
         {
             eventInstance.Upgrade(upgradeType);
         }
