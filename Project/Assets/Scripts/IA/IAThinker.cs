@@ -7,6 +7,7 @@ using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using Supinfo.Project.Scripts.ScriptableObjects.Experience;
 using UnityEngine;
 using Random = System.Random;
+// Capacité Type
 
 namespace IA.Event
 {

@@ -3,6 +3,7 @@
 // FINIR : 
     // VERIF PRIX / XP 
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
+    // Capacité Type
 
 
 using Common;
@@ -28,14 +29,17 @@ namespace IA.Event
 
             }
             
+            // A tester
             // LANCE CAPACITE SPECIAL
-            if (unitsAndAllies.Length >= 7)
+            if (unitsAndAllies.Length >= 6)
             {
                 iaThinker.SpecialCapacity(1);
+                // Rembourse XP
             }
             if (unitsAndAllies.Length == 10)
             {
                 iaThinker.SpecialCapacity(0);
+                // Rembourse XP
             }
             
             // Comporetement Applicatif
@@ -51,7 +55,7 @@ namespace IA.Event
             {
                 if (index == 0)
                 {
-                    if (iaThinker.Spawn(iaThinker.getRand(0, 3)))
+                    if (!iaThinker.Spawn(iaThinker.getRand(0, 3)))
                     {
                         setIndex(0);
                     }
@@ -62,24 +66,24 @@ namespace IA.Event
                 }
                 else if (index == 1)
                 {
-                    if (iaThinker.AgeUpgrade())
+                    if (!iaThinker.AgeUpgrade())
                     {
-                        setIndex(0);
+                        setIndex(1);
                     }
                     else
                     {
-                        setIndex(1);
+                        setIndex(2);
                     }
                 }
                 else if (index == 2)
                 {
-                    if (iaThinker.UnlockNewUnit())
+                    if (!iaThinker.UnlockNewUnit())
                     {
-                        setIndex(0);
+                        setIndex(2);
                     }
                     else
                     {
-                        setIndex(1);
+                        setIndex(0);
                     }
                 }
             }

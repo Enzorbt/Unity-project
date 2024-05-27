@@ -1,5 +1,6 @@
 ﻿using Common;
 using Supinfo.Project.Scripts;
+// Capacité Type
 
 namespace IA.Event
 {

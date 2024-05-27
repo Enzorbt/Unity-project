@@ -3,6 +3,8 @@
 // FINIR : 
     // VERIF PRIX / XP 
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
+    // Capacité Type
+    // capacité 
 
 using Common;
 using UnityEngine;
@@ -44,7 +46,7 @@ namespace IA.Event
             {
                 if (index == 0)
                 {
-                    if (iaThinker.Turret())
+                    if (!iaThinker.Turret())
                     {
                         setIndex(0);
                     }
@@ -55,24 +57,24 @@ namespace IA.Event
                 }
                 else if (index == 1)
                 {
-                    if (iaThinker.AgeUpgrade())
+                    if (!iaThinker.AgeUpgrade())
                     {
-                        setIndex(0);
+                        setIndex(1);
                     }
                     else
                     {
-                        setIndex(1);
+                        setIndex(2);
                     }
                 }
                 else if (index == 2)
                 {
-                    if (iaThinker.UnlockNewUnit())
+                    if (!iaThinker.UnlockNewUnit())
                     {
-                        setIndex(0);
+                        setIndex(2);
                     }
                     else
                     {
-                        setIndex(1);
+                        setIndex(0);
                     }
                 }
             }
