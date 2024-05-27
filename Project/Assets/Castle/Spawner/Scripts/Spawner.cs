@@ -90,6 +90,8 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             unitHealth.GoldGiven = unitStatSo.GoldGiven;
             unitHealth.XpGiven = unitStatSo.ExperienceGiven;
 
+            onSpawnQueueStatusChange.Raise(this, _unitStatSos.Count < 4);
+
             _isSpawning = false;
         }
 
