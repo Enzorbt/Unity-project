@@ -24,15 +24,50 @@ namespace IA.Event
             GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
             
             // SPAWN UNIT 
+            iaThinker.UnlockNewUnit();
             iaThinker.SpawnDifficult(iaThinker.PlayerUnit);
             
             // CAPACITE
             if (unitsAndAllies.Length >= 7)
             {
-                iaThinker.SpecialCapacity(0);
+                iaThinker.SpecialCapacityDifficult(0);
                 // Rembourse XP
             }
+            
+            // Comporetement Applicatif
+            var index = 0;
 
+            int setIndex(int pindex)
+            {
+                index = pindex;
+                return index;
+            }
+            
+            if (iaThinker.Gold > 300)
+            {
+                if (index == 0)
+                {
+                    if (!iaThinker.Turret())
+                    {
+                        setIndex(0);
+                    }
+                    else
+                    {
+                        setIndex(1);
+                    }
+                }
+                else if (index == 1)
+                {
+                    if (!iaThinker.AgeUpgrade())
+                    {
+                        setIndex(1);
+                    }
+                    else
+                    {
+                        setIndex(0);
+                    }
+                }
+            }
             // foreach (KeyValuePair<UpgradeType, int> entry in iaThinker.UpgradeDict)
             // {
             //     if (entry.Value < 3)

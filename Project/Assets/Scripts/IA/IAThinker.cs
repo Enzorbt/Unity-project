@@ -62,7 +62,7 @@ namespace IA.Event
         }
         
         // CAPACITY 
-        public  bool SpecialCapacity(int index)
+        public bool SpecialCapacity(int index)
         {
             switch (index)
             {
@@ -77,6 +77,30 @@ namespace IA.Event
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
                     {
                         eventInstance.UseCapacity(capacityFlashSo);
+                        return true;
+                    }
+                    return false;   
+            }
+            return false;
+        }
+        
+        public bool SpecialCapacityDifficult(int index)
+        {
+            switch (index)
+            {
+                case 0: 
+                    if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
+                    {
+                        eventInstance.UseCapacity(capacityFireSo);
+                        Xp += (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
+                        return true;
+                    }
+                    return false;
+                case 1:
+                    if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
+                    {
+                        eventInstance.UseCapacity(capacityFlashSo);
+                        Xp += (experienceStatSo.ExperienceLevel[Age]*60)/100;
                         return true;
                     }
                     return false;   

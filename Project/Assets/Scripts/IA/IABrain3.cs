@@ -33,12 +33,12 @@ namespace IA.Event
             // LANCE CAPACITE SPECIAL
             if (unitsAndAllies.Length >= 6)
             {
-                iaThinker.SpecialCapacity(1);
+                iaThinker.SpecialCapacityDifficult(1);
                 // Rembourse XP
             }
             if (unitsAndAllies.Length == 10)
             {
-                iaThinker.SpecialCapacity(0);
+                iaThinker.SpecialCapacityDifficult(0);
                 // Rembourse XP
             }
             
