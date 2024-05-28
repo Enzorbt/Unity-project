@@ -16,31 +16,32 @@ namespace IA.Event
         protected internal  float Gold {get; set;}
         protected internal  float Xp {get; set;}
         
+        public UnitStatSo PlayerUnit { get; set; }
         protected  int Age {get; set;}
         protected  int TurretNumber {get; set;}
         protected  bool IsUnlock {get; set;}
 
         public Dictionary<UpgradeType, int> UpgradeDict; // Unity
-        
-        private  EventsFoundation eventInstance = new EventsFoundation();
+
+        public EventsFoundation eventInstance = new EventsFoundation();
          Random aleatoire = new Random();
         public int index;
         
         // STATS SO UNIT
-        [SerializeField] private UnitStatSo meleeStatSo;
-        [SerializeField] private  UnitStatSo rangeStatSo;
-        [SerializeField] private  UnitStatSo armorStatSo;
-        [SerializeField] private  UnitStatSo antiArmorStatSo;
+        [SerializeField] public UnitStatSo meleeStatSo;
+        [SerializeField] public  UnitStatSo rangeStatSo;
+        [SerializeField] public  UnitStatSo armorStatSo;
+        [SerializeField] public  UnitStatSo antiArmorStatSo;
 
         // STATS SO XP AGE 
-        [SerializeField] private  ExperienceStatSo experienceStatSo;
+        [SerializeField] public  ExperienceStatSo experienceStatSo;
 
         // STATS SO Turret
-        [SerializeField] private  TurretStatSo turretStatSo;
+        [SerializeField] public  TurretStatSo turretStatSo;
 
         // STATS SO SPECIAL CAPACITY
-        [SerializeField] private  CapacitySo capacityFireSo;
-        [SerializeField] private  CapacitySo capacityFlashSo;
+        [SerializeField] public  CapacitySo capacityFireSo;
+        [SerializeField] public  CapacitySo capacityFlashSo;
         
         // RAND 
         public  int getRand(int minValue, int maxValue)
@@ -153,6 +154,52 @@ namespace IA.Event
         public  void Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
         {
             eventInstance.Upgrade(upgradeType);
+        }
+        
+        // SPAWN FOR DIFFICULT 
+        public bool SpawnDifficult(UnitStatSo playerUnit)
+        {
+            // COUNTER (Unité forte contre celle que le joeur pose)
+            if (playerUnit.Type == antiArmorStatSo.Type.StrongAgainst && Gold >= antiArmorStatSo.Price) // ARMOR
+            {
+                eventInstance.SpawnUnit(antiArmorStatSo);
+                return true;
+            }
+            if (playerUnit.Type == rangeStatSo.Type.StrongAgainst && Gold >= rangeStatSo.Price) // ANTI ARMOR
+            {
+                eventInstance.SpawnUnit(rangeStatSo);
+                return true;
+            }
+            if (playerUnit.Type == meleeStatSo.Type.StrongAgainst && Gold >= meleeStatSo.Price) // RANGE
+            {
+                eventInstance.SpawnUnit(meleeStatSo);
+                return true;
+            }
+            if (playerUnit.Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price) // MELEE
+            {
+                eventInstance.SpawnUnit(armorStatSo);
+                return true;
+            }
+            
+            // SI LE JOUER NE PLACE TANK (ARMOR + 2 RANGE)
+            if (playerUnit == null)
+            {
+                float goldTank = armorStatSo.Price + (rangeStatSo.Price)*2;
+                if (Gold >= goldTank)
+                {
+                    eventInstance.SpawnUnit(armorStatSo);
+                    eventInstance.SpawnUnit(rangeStatSo);
+                    eventInstance.SpawnUnit(rangeStatSo);   
+                }
+                return true;
+            }
+
+            return false;
+        }
+        public void onAlliesSpawn(Component sender, object data)
+        {
+            if(data is not UnitStatSo unitStatSo) return;
+            PlayerUnit = unitStatSo;
         }
     }
 }
