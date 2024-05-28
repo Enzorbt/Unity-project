@@ -58,7 +58,7 @@ namespace Capacity.Scripts
                 if (!unit.TryGetComponent(out IDamageable damageable)) break;
                 if (Random.value < capacitySo.HitProbability)
                 {
-                    damageable.TakeDamage(capacitySo.Value, null);
+                    damageable.TakeDamage(capacitySo.Damage, null);
                 }
             }
             

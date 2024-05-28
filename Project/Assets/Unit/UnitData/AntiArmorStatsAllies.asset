@@ -196,3 +196,11 @@ MonoBehaviour:
       type: 0
       order: 5
     upgradeStatModifiers: []
+  sprite:
+  - {fileID: 21300000, guid: c0c2e9931dbaedf4eb8701d6ed9fab48, type: 3}
+  - {fileID: 21300000, guid: 70c986f306824514191d65974746cd6f, type: 3}
+  - {fileID: 21300000, guid: 21b079404c009fd499841a5a6321eb4d, type: 3}
+  - {fileID: 21300000, guid: 333a72752ab9f154393117f544cb1e1a, type: 3}
+  - {fileID: 21300000, guid: 0b8065f8b4172724c8e027939464fd03, type: 3}
+  - {fileID: 21300000, guid: afccf00126925b94bb719e69ad3f6446, type: 3}
+  - {fileID: 21300000, guid: ada6cf5b67537c542a16cfec760c6182, type: 3}
