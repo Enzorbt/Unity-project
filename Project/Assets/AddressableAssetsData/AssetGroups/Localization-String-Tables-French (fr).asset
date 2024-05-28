@@ -45,6 +45,55 @@ MonoBehaviour:
     - Locale-fr
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7d03313c12ea4485982d2cb3b9b4ac2
+    m_Address: MultiplayerModeTitle_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 732520f526ff34badaa5ae462c94f661
+    m_Address: PlayerModeTitle_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6ae2faadb54545169d8cae0bca89714
+    m_Address: SinglePlayerSubtitle_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 147f2c370a459424783f8c7eceb787c6
+    m_Address: OptionsMusic_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60e4742aca8c74ce9826b4eadc99b6f1
+    m_Address: SoundOptions_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b30b624b0242d47ea8ed9d148f6cf71b
+    m_Address: muteText_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf2649e1d0a7a405ea44c950178b5bbe
+    m_Address: languages_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 42a475adec807498c9d9e54f2363433b, type: 2}
   m_SchemaSet:
