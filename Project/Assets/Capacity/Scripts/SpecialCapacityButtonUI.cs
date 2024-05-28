@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Managers;
@@ -27,7 +28,7 @@ namespace Capacity.Events
         
         [Range(0,1)]
         [SerializeField] private float cost;
-
+        
         private Image _image;
 
         private float _xpRatio;
@@ -35,7 +36,9 @@ namespace Capacity.Events
         private void Awake()
         {
             SetActiveButton(false);
-            _image = GetComponentInChildren<Image>();
+            _image = GetComponentsInChildren<Image>()[1];
+            if (_image is null) return;
+            _image.sprite = _capacitySo.Sprite;
         }
 
 
@@ -74,6 +77,13 @@ namespace Capacity.Events
 
         public void OnAgeUpgrade(Component sender, object data)
         {
+            StartCoroutine(ChangeSprite());
+        }
+
+        private IEnumerator ChangeSprite()
+        {
+            yield return new WaitForSeconds(1f);
+            if (_image is null) yield break;
             _image.sprite = _capacitySo.Sprite;
         }
 

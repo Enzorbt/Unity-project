@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29750cd4f5fe4cfaa790eeaf3f6fb82b, type: 3}
   m_Name: Capacity2Allies
   m_EditorClassIdentifier: 
-  _value:
-    baseValue: 100
+  damage:
+    baseValue: 90
     ageStatModifiers: []
     upgradeStatModifiers: []
   _actionTime:

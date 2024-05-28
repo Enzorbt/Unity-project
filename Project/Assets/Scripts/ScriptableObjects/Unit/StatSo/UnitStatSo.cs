@@ -118,5 +118,12 @@ namespace ScriptableObjects.Unit
         [SerializeField] private Stat price;
         public float Price => price.GetValue(_currentAge);
         
+        /// <summary>
+        /// Basic sprites of the unit.
+        /// </summary>
+        [Header("Sprites (7, 1 per age)")] 
+        [SerializeField] private Sprite[] sprite;
+        public Sprite Sprite => sprite[_currentAge];
+        
     }
 }

@@ -5,6 +5,7 @@ using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Supinfo.Project.UI.Button.Scripts
 {
@@ -27,6 +28,8 @@ namespace Supinfo.Project.UI.Button.Scripts
             }
         }
 
+        private Image _image;
+
         /// <summary>
         /// Event to be raised when the button is clicked.
         /// </summary>
@@ -47,6 +50,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         {
             _button = transform.GetComponentInChildren<UnityEngine.UI.Button>();
             IsActive = true;
+            _image = GetComponentsInChildren<Image>()[1];
         }
 
         /// <summary>
@@ -106,6 +110,17 @@ namespace Supinfo.Project.UI.Button.Scripts
             if (data is not GameSpeed gameSpeed) return;
             
             EnableButton(gameSpeed == GameSpeed.Stop ? false : _goldCount >= unitStatSo.Price && _queueStatus && _canSpawn);
+        }
+
+        public void OnAgeUpgrade(Component sender, object data)
+        {
+            StartCoroutine(ChangeSprite());
+        }
+
+        private IEnumerator ChangeSprite()
+        {
+            yield return new WaitForSeconds(1f);
+            _image.sprite = unitStatSo.Sprite;
         }
     }
 

@@ -205,3 +205,11 @@ MonoBehaviour:
       type: 0
       order: 5
     upgradeStatModifiers: []
+  sprite:
+  - {fileID: 21300000, guid: 47a860e06dd0e8e448ed4a85f2ce9ec6, type: 3}
+  - {fileID: 21300000, guid: 24631ef3f2bb7a34f91f726866727711, type: 3}
+  - {fileID: 21300000, guid: cbfb6e0759c2440429e8d31a0300f0b9, type: 3}
+  - {fileID: 21300000, guid: 3dc026f6aa82a2a479b4175eefdb8d43, type: 3}
+  - {fileID: 21300000, guid: ac4c50e122369a443b665e78c4db1fef, type: 3}
+  - {fileID: 21300000, guid: c0d79061d58c5204595bbf893c5a87c2, type: 3}
+  - {fileID: 21300000, guid: b20df6a52229e53439d08d669716ba52, type: 3}
