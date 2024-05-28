@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 2052506863886948072}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.16531926}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5482964223391047253}
@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d0d4221c7830dfd40b388f4dc7fe7b73, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 796f8d0b209d38e40b41740be499630c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.4, y: 4.76}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6951821864377547167}
   - component: {fileID: -1278255880181997762}
   - component: {fileID: 3038471053519800622}
+  - component: {fileID: -7309273111792413769}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -158,3 +159,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 9031365976890039232, guid: 4db086e24358fa146ac035ff2d6f5b65, type: 3}
+--- !u!114 &-7309273111792413769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346566440712086298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a0891eb06deb2406e9a7ae715307fe92, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6951821864377547167}
+        m_TargetAssemblyTypeName: Supinfo.Project.Turret.Scripts.TurretThinker, Assembly-CSharp
+        m_MethodName: OnAgeUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
