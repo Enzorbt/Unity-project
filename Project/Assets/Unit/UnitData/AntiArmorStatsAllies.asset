@@ -16,32 +16,32 @@ MonoBehaviour:
     baseValue: 30
     ageStatModifiers:
     - value: 5
-      type: 100
+      type: 0
       order: 0
     - value: 5
-      type: 100
+      type: 0
       order: 1
     - value: 5
-      type: 100
+      type: 0
       order: 2
     - value: 5
-      type: 100
+      type: 0
       order: 3
     - value: 5
-      type: 100
+      type: 0
       order: 4
     - value: 5
-      type: 100
+      type: 0
       order: 5
     upgradeStatModifiers:
     - value: 5
-      type: 100
+      type: 0
       order: 0
     - value: 5
-      type: 100
+      type: 0
       order: 1
     - value: 5
-      type: 100
+      type: 0
       order: 2
   hitSpeed:
     baseValue: 3
@@ -61,13 +61,13 @@ MonoBehaviour:
       type: 0
       order: 2
     - value: 10
-      type: 200
+      type: 0
       order: 3
     - value: 20
-      type: 200
+      type: 0
       order: 4
     - value: 30
-      type: 200
+      type: 0
       order: 5
     upgradeStatModifiers: []
   buildTime:
@@ -78,53 +78,53 @@ MonoBehaviour:
     baseValue: 60
     ageStatModifiers:
     - value: 10
-      type: 200
+      type: 0
       order: 0
     - value: 10
-      type: 200
+      type: 0
       order: 1
     - value: 10
-      type: 200
+      type: 0
       order: 2
     - value: 10
-      type: 200
+      type: 0
       order: 3
     - value: 10
-      type: 200
+      type: 0
       order: 4
     - value: 10
-      type: 200
+      type: 0
       order: 5
     upgradeStatModifiers:
     - value: 10
-      type: 200
+      type: 0
       order: 0
     - value: 20
-      type: 200
+      type: 0
       order: 1
     - value: 30
-      type: 200
+      type: 0
       order: 2
   experienceGiven:
     baseValue: 300
     ageStatModifiers:
     - value: 15
-      type: 200
+      type: 0
       order: 0
     - value: 15
-      type: 200
+      type: 0
       order: 1
     - value: 15
-      type: 200
+      type: 0
       order: 2
     - value: 15
-      type: 200
+      type: 0
       order: 3
     - value: 15
-      type: 200
+      type: 0
       order: 4
     - value: 15
-      type: 200
+      type: 0
       order: 5
     upgradeStatModifiers: []
   unitType: {fileID: 11400000, guid: fa4c53ade78d6d54aac1ac2069307556, type: 2}
@@ -132,44 +132,44 @@ MonoBehaviour:
     baseValue: 175
     ageStatModifiers:
     - value: 75
-      type: 100
+      type: 0
       order: 0
     - value: 75
-      type: 100
+      type: 0
       order: 1
     - value: 75
-      type: 100
+      type: 0
       order: 2
     - value: 75
-      type: 100
+      type: 0
       order: 3
     - value: 75
-      type: 100
+      type: 0
       order: 4
     - value: 75
-      type: 100
+      type: 0
       order: 5
     upgradeStatModifiers: []
   walkSpeed:
     baseValue: 3
     ageStatModifiers:
     - value: 0
-      type: 100
+      type: 0
       order: 0
     - value: 1
-      type: 100
+      type: 0
       order: 1
     - value: 0
-      type: 100
+      type: 0
       order: 2
     - value: 1
-      type: 100
+      type: 0
       order: 3
     - value: 0
-      type: 100
+      type: 0
       order: 4
     - value: 1
-      type: 100
+      type: 0
       order: 5
     upgradeStatModifiers: []
   prefabs:
@@ -178,21 +178,21 @@ MonoBehaviour:
     baseValue: 200
     ageStatModifiers:
     - value: 10
-      type: 100
+      type: 0
       order: 0
     - value: 10
-      type: 100
+      type: 0
       order: 1
     - value: 10
-      type: 100
+      type: 0
       order: 2
     - value: 10
-      type: 100
+      type: 0
       order: 3
     - value: 10
-      type: 100
+      type: 0
       order: 4
     - value: 10
-      type: 100
+      type: 0
       order: 5
     upgradeStatModifiers: []
