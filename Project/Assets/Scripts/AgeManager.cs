@@ -30,6 +30,13 @@ namespace Supinfo.Project.Scripts
             {
                 unitStatSo.UpgradeAge();
             }
+            foreach (var capacitySo in capacitySosAllies)
+            {
+                capacitySo.UpgradeAge();
+            }
+            
+            baseStatSoAllies.UpgradeAge();
+            turretStatSoAllies.UpgradeAge();
         }
         
         public void UpgradeAgeEnemy(Component sender, object data)

@@ -1,4 +1,5 @@
-﻿using Supinfo.Project.ScriptableObjects.Base;
+﻿using System.Collections;
+using Supinfo.Project.ScriptableObjects.Base;
 using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
@@ -84,8 +85,15 @@ namespace Supinfo.Project.Castle.Scripts
             }
         }
 
-        private void OnAgeUpgrade(Component sender, object data)
+        public void OnAgeUpgrade(Component sender, object data)
         {
+            StartCoroutine(UpdateStatsWithDelay());
+        }
+
+        private IEnumerator UpdateStatsWithDelay()
+        {
+            yield return new WaitForSeconds(2f);
+            
             // update max heath and current health
             MaxHealth = baseStatSo.MaxHealth;
             CurHealth += MaxHealth;
@@ -93,6 +101,7 @@ namespace Supinfo.Project.Castle.Scripts
             // send data to listeners
             onBaseHealthRatioChange.Raise(this, CurHealth/MaxHealth);
             
+            Debug.Log(baseStatSo.Sprite);
             // update sprite
             _spriteRenderer.sprite = baseStatSo.Sprite;
         }

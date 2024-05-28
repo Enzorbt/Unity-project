@@ -18,7 +18,7 @@ namespace Supinfo.Project.Turret.Scripts
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
-        public void onAgeUpgrade(Component sender, object data)
+        public void OnAgeUpgrade(Component sender, object data)
         {
             // update the sprite (stats are always drone from the Turret Stats So)
             _spriteRenderer.sprite = TurretStatSo.Sprite;

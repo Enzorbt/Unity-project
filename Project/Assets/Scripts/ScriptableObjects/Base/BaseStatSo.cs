@@ -28,6 +28,7 @@ namespace Supinfo.Project.ScriptableObjects.Base
         public void UpgradeAge()
         {
             _currentAge++;
+            Debug.Log(_currentAge);
         }
     }
 }
