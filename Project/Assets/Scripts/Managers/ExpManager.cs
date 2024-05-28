@@ -26,20 +26,20 @@ namespace Supinfo.Project.Scripts.Managers
 
         private float _expCount;
 
-        public float ExpMax;
+        private float _expMax;
 
         private void Awake()
         {
             _age = 0;
             _expCount = 1000;
-            ExpMax = experienceStatSo.ExperienceLevel[_age];
+            _expMax = experienceStatSo.ExperienceLevel[_age];
         }
 
         private void Start()
         {
-            onXpMaxChange.Raise(this, ExpMax);
+            onXpMaxChange.Raise(this, _expMax);
             onExpCountChange.Raise(this, _expCount);
-            onExpRatioChange.Raise(this, _expCount/ExpMax);
+            onExpRatioChange.Raise(this, _expCount/_expMax);
         }
         
         // listener age upgrade
@@ -49,12 +49,12 @@ namespace Supinfo.Project.Scripts.Managers
             _expCount = 0;
             if (_age <= experienceStatSo.ExperienceLevel.Count)
             {
-                ExpMax = experienceStatSo.ExperienceLevel[_age];
+                _expMax = experienceStatSo.ExperienceLevel[_age];
             }
             
             // raise exp change for exp bar and capacity buttons
-            onExpRatioChange.Raise(this, _expCount / ExpMax);
-            onXpMaxChange.Raise(this, ExpMax);
+            onExpRatioChange.Raise(this, _expCount / _expMax);
+            onXpMaxChange.Raise(this, _expMax);
         }
         
         // listener exp recovery
@@ -65,19 +65,19 @@ namespace Supinfo.Project.Scripts.Managers
             
             // raise Can evolve event (for evolution button)
             if (data is not float expGain) return;
-            if (_expCount < ExpMax || expGain < 0)
+            if (_expCount < _expMax || expGain < 0)
             {
                 _expCount += expGain;
                 
             }
-            if (_expCount >= ExpMax)
+            if (_expCount >= _expMax)
             {
-                _expCount = ExpMax;
+                _expCount = _expMax;
             }
             // raise exp change for exp bar and capacity buttons
-            onExpRatioChange.Raise(this, _expCount / ExpMax);
+            onExpRatioChange.Raise(this, _expCount / _expMax);
             onExpCountChange.Raise(this, _expCount);
-            onCanEvolve.Raise(this, _expCount >= ExpMax);
+            onCanEvolve.Raise(this, _expCount >= _expMax);
         }
     }
 }

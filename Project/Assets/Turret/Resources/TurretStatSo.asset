@@ -30,10 +30,10 @@ MonoBehaviour:
     ageStatModifiers: []
     upgradeStatModifiers: []
   _sprites:
-  - {fileID: 21300000, guid: d0d4221c7830dfd40b388f4dc7fe7b73, type: 3}
-  - {fileID: 21300000, guid: d0d4221c7830dfd40b388f4dc7fe7b73, type: 3}
-  - {fileID: 21300000, guid: d0d4221c7830dfd40b388f4dc7fe7b73, type: 3}
-  - {fileID: 21300000, guid: d0d4221c7830dfd40b388f4dc7fe7b73, type: 3}
-  - {fileID: 21300000, guid: d0d4221c7830dfd40b388f4dc7fe7b73, type: 3}
-  - {fileID: 21300000, guid: d0d4221c7830dfd40b388f4dc7fe7b73, type: 3}
-  - {fileID: 21300000, guid: d0d4221c7830dfd40b388f4dc7fe7b73, type: 3}
+  - {fileID: 21300000, guid: 796f8d0b209d38e40b41740be499630c, type: 3}
+  - {fileID: 21300000, guid: d8430036b6d554448a14484e1384518c, type: 3}
+  - {fileID: 21300000, guid: 0ca528e051ba4584799e5c6a1040060d, type: 3}
+  - {fileID: 21300000, guid: bcea54337625b4e47a48f7f206e0d21d, type: 3}
+  - {fileID: 21300000, guid: b23b3a1ba754468409a037c21acc0cb9, type: 3}
+  - {fileID: 21300000, guid: 2e0fb022415947148a632dad097907e6, type: 3}
+  - {fileID: 21300000, guid: 234d2a17eb5681c489cd49f95cb0a915, type: 3}

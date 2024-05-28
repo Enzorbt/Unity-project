@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: e1cf5f929c5424ed5aecc177e8663da7
+  m_SerializeEntries:
+  - m_GUID: da8de4ef766474e5fbea979d1ad73281
+    m_Address: Assets/LocalSettings/Tables/TitleTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43819041f583342d283d1cf1fbf290fb
+    m_Address: Assets/LocalSettings/Tables/Options Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a262ddd9bbbb24f57855ceb79d45bad9
+    m_Address: Assets/LocalSettings/Tables/QuitButton Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6b999cb09c874f859ed727bd2f88b7e
+    m_Address: Assets/LocalSettings/Tables/SingleModeTitle Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25d7407aad36d43aa9f8216b0fdd048d
+    m_Address: Assets/LocalSettings/Tables/MultiplayerModeTitle Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d13d80ae5a04744c7b54a122735e8830
+    m_Address: Assets/LocalSettings/Tables/PlayerModeTitle Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0352d8bb4be3546efa4d650104f56bc8
+    m_Address: Assets/LocalSettings/Tables/SinglePlayerSubtitle Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d27c7b8ce4c484ba6b52f31ae4d16eac
+    m_Address: Assets/LocalSettings/Tables/OptionsMusic Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4a1049f9244d442f9721eff30b5ef02
+    m_Address: Assets/LocalSettings/Tables/SoundOptions Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12d41d5a3814840d59d878590ce6b835
+    m_Address: Assets/LocalSettings/Tables/muteText Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb6040c9a42464eedb0447d5edd64466
+    m_Address: Assets/LocalSettings/Tables/languages Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 42a475adec807498c9d9e54f2363433b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 48e3398e7b1b3486798959045d8f2ae9, type: 2}
+    - {fileID: 11400000, guid: fab458b8332eb4fb5bebf83a72a29488, type: 2}

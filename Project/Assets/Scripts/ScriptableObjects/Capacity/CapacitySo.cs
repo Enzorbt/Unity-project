@@ -1,16 +1,29 @@
-﻿using Supinfo.Project.Scripts.Common.Stats;
+﻿using System;
+using Supinfo.Project.Scripts.Common.Stats;
 using Supinfo.Project.Scripts.Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Supinfo.Project.Scripts.ScriptableObjects.Capacity
 {
+    public enum CapabilityType
+    {
+        Meteor,
+        Lightning
+    }
+    
     [CreateAssetMenu(menuName = "ScriptableObject/Capacity", order = 0)]
     public class CapacitySo : ScriptableObject, IAgeUpgradable
     {
-        private int _currentAge;
+        private int _currentAge = 0;
 
-        [SerializeField] private Stat _value;
-        public float Value => _value.GetValue(_currentAge);
+        private void OnEnable()
+        {
+            _currentAge = 0;
+        }
+
+        [SerializeField] private Stat damage;
+        public float Damage => damage.GetValue(_currentAge);
 
         [SerializeField] private Stat _actionTime;
         public float ActionTime => _actionTime.GetValue(_currentAge);
@@ -32,5 +45,13 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Capacity
         {
             _currentAge++;
         }
+        
+        [Header("Prefab")] [SerializeField]
+        private GameObject _prefab;
+        public GameObject Prefab => _prefab;
+        
+        [Header("Capacity type")] [SerializeField]
+        private CapabilityType capabilityType;
+        public CapabilityType CapabilityType => capabilityType;
     }
 }

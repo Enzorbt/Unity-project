@@ -37,7 +37,6 @@ namespace Supinfo.Project.Scripts.Common.Stats
             return _value;
         }
         
-        
         [SerializeField]
         private List<StatModifier> ageStatModifiers;
         
@@ -55,14 +54,14 @@ namespace Supinfo.Project.Scripts.Common.Stats
             float finalValue = baseValue;
 
             // if age or upgrades is greater than the number of modifiers in the list, set it to the max
-            if (age > ageStatModifiers.Count)
+            if (age >= ageStatModifiers.Count)
             {
-                age = ageStatModifiers.Count;
+                age = ageStatModifiers.Count - 1;
             }
 
-            if (upgrades > upgradeStatModifiers.Count)
+            if (upgrades >= upgradeStatModifiers.Count)
             {
-                upgrades = upgradeStatModifiers.Count;
+                upgrades = upgradeStatModifiers.Count - 1;
             }
             
             finalValue = CalculateValue(finalValue, ageStatModifiers, age);
@@ -80,7 +79,7 @@ namespace Supinfo.Project.Scripts.Common.Stats
             for (int i = 0; i < number; i++)
             {
                 StatModifier mod = list[i];
-
+                
                 if (mod.Type == StatModType.Flat)
                 {
                     tempValue += mod.Value;

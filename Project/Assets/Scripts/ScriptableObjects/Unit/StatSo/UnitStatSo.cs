@@ -108,7 +108,7 @@ namespace ScriptableObjects.Unit
 
         public GameObject GetPrefab ()
         {
-            return prefabs[_currentAge];
+            return prefabs[0]; // TODO: to change if different prefab or just one 
         }
         
         /// <summary>
@@ -117,6 +117,13 @@ namespace ScriptableObjects.Unit
         [Header("Price")] 
         [SerializeField] private Stat price;
         public float Price => price.GetValue(_currentAge);
+        
+        /// <summary>
+        /// Basic sprites of the unit.
+        /// </summary>
+        [Header("Sprites (7, 1 per age)")] 
+        [SerializeField] private Sprite[] sprite;
+        public Sprite Sprite => sprite[_currentAge];
         
     }
 }
