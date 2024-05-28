@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using ScriptableObjects.Unit;
 using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Unit.Scripts;
+using Supinfo.Project.Unit.Scripts.Health;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -68,26 +70,36 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             yield return new WaitForSeconds(coolDown);
             GameObject unitSpawned = Instantiate(unitPrefab, GetSpawnPoint(unitPrefab), Quaternion.identity, _unitsContainer);
             unitSpawned.tag = _unitTag;
+            
+            // give unit its stats
+            unitSpawned.TryGetComponent(out UnitThinker unitThinker);
+            
+            if (unitThinker is null) yield break;
+            
+            unitThinker.Damage = unitStatSo.Damage;
+            unitThinker.WalkSpeed = unitStatSo.WalkSpeed;
+            unitThinker.Range = unitStatSo.Range;
+            unitThinker.HitSpeed = unitStatSo.HitSpeed;
+            unitThinker.UnitType = unitStatSo.Type;
+            
+            unitSpawned.TryGetComponent(out UnitHealth unitHealth);
+            
+            if (unitHealth is null) yield break;
+            
+            unitHealth.MaxHealth = unitStatSo.MaxHealth;
+            unitHealth.GoldGiven = unitStatSo.GoldGiven;
+            unitHealth.XpGiven = unitStatSo.ExperienceGiven;
+
             _isSpawning = false;
         }
 
         public void SpawnUnit(Component sender, object data)
         {
-            UnitStatSo unitStatSo = data as UnitStatSo;
-
-            if (unitStatSo != null)
-            {
-                _unitStatSos.Enqueue(unitStatSo);
-                if (_unitStatSos.Count >= 4)
-                {
-                    // send event to notify buttons to be disable 
-                    onSpawnQueueStatusChange.Raise(this, false);
-                }
-                else
-                {
-                    onSpawnQueueStatusChange.Raise(this, true);
-                }
-            }
+            if (data is not UnitStatSo unitStatSo) return;
+            
+            _unitStatSos.Enqueue(unitStatSo);
+            // send event to notify buttons to be disable 
+            onSpawnQueueStatusChange.Raise(this, _unitStatSos.Count < 4);
         }
     }
 }

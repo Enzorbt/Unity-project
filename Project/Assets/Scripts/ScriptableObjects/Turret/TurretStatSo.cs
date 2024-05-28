@@ -13,14 +13,12 @@ namespace ScriptableObjects.Turret
         private int _currentAge;
         private int _currentAttackUpgrade;
         private int _currentRangeUpgrade;
-        private int _currentPriceUpgrade;
         
         private void OnEnable()
         {
             _currentAge = 0;
             _currentAttackUpgrade = 0;
             _currentRangeUpgrade = 0;
-            _currentPriceUpgrade = 0;
         }
         
         /// <summary>
@@ -39,7 +37,7 @@ namespace ScriptableObjects.Turret
         /// </summary>
         [Header("Price")] 
         [SerializeField] private Stat price;
-        public float Price => price.GetValue(_currentAge, _currentPriceUpgrade);
+        public float Price => price.GetValue(_currentAge);
 
         /// <summary>
         /// Damage dealt by the unit.
@@ -68,6 +66,10 @@ namespace ScriptableObjects.Turret
         [SerializeField] protected Stat range;
         public float Range => range.GetValue(_currentAge, _currentRangeUpgrade);
         
+        [Header("Sprites (7, 1 per age)")] [SerializeField]
+        private Sprite[] _sprites;
+        public Sprite Sprite => _sprites[_currentAge];
+        
         
         public void UpgradeAge()
         {
@@ -79,8 +81,10 @@ namespace ScriptableObjects.Turret
             switch (type)
             {
                 case UpgradeType.TurretAttack:
+                    _currentAttackUpgrade++;
                     break;
                 case UpgradeType.TurretRange:
+                    _currentRangeUpgrade++;
                     break;
                 default:
                     break;

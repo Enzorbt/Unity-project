@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Melee
   m_EditorClassIdentifier: 
   _name: 
-  _strongAgainst:
-  - {fileID: 11400000, guid: a5711b07048766645a7b564cbd147794, type: 2}
+  _strongAgainst: {fileID: 11400000, guid: a5711b07048766645a7b564cbd147794, type: 2}

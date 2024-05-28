@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62155c5430c14cbb8d78300c85114b94, type: 3}
+  m_Name: AgeMusicList
+  m_EditorClassIdentifier: 
+  ageMusics:
+  - {fileID: 8300000, guid: bd9d942039bc14d55b81d04690a2a160, type: 3}
+  - {fileID: 8300000, guid: c64cc420adabf4a6c98e4edb3c6354f8, type: 3}
+  - {fileID: 8300000, guid: 769c6a3b8e81f486e94d2321feedf529, type: 3}
+  - {fileID: 8300000, guid: 6cf2c2480c9aa4b88bcf38d3cb36dff5, type: 3}
+  - {fileID: 8300000, guid: deac751860aaf4202a61fbbd2c705299, type: 3}
+  - {fileID: 8300000, guid: 08737602b7da849edb7cfb1ec93d8ea6, type: 3}
+  - {fileID: 8300000, guid: 53366f81d722e4bec8ebc02b482ab3d2, type: 3}
+  menuMusic: {fileID: 8300000, guid: 2735e9ab5b50f43af9c1e168876d3d1f, type: 3}

@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Armor
   m_EditorClassIdentifier: 
   _name: 
-  _strongAgainst:
-  - {fileID: 11400000, guid: cf50e00632f00a94289305bc6f27ce8c, type: 2}
+  _strongAgainst: {fileID: 11400000, guid: cf50e00632f00a94289305bc6f27ce8c, type: 2}

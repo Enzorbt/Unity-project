@@ -24,7 +24,7 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.UnitTypes
         /// allowing certain unit types to have advantages over others.
         /// </summary>
         [Header("UnitTypes it is strong against")] 
-        [SerializeField] private UnitType[] _strongAgainst;
-        public UnitType[] StrongAgainst => _strongAgainst;
+        [SerializeField] private UnitType _strongAgainst;
+        public UnitType StrongAgainst => _strongAgainst;
     }
 }
