@@ -108,7 +108,7 @@ namespace ScriptableObjects.Unit
 
         public GameObject GetPrefab ()
         {
-            return prefabs[_currentAge];
+            return prefabs[0]; // TODO: to change if different prefab or just one 
         }
         
         /// <summary>

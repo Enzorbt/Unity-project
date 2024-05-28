@@ -22,7 +22,7 @@ namespace Supinfo.Project.Unit.Scripts
                 shooter?.Shoot(
                     unitThinker.Damage,
                     unitThinker.HitSpeed, 
-                    2, 
+                    unitThinker.WalkSpeed + 1, 
                     target.transform, unitThinker.UnitType);
                 return;
             }
@@ -35,7 +35,7 @@ namespace Supinfo.Project.Unit.Scripts
                 shooter?.Shoot(
                     unitThinker.Damage,
                     unitThinker.HitSpeed, 
-                    2, 
+                    unitThinker.WalkSpeed + 1, 
                     target.transform, unitThinker.UnitType);
             }
             
@@ -47,7 +47,7 @@ namespace Supinfo.Project.Unit.Scripts
                 shooter?.Shoot(
                     unitThinker.Damage,
                     unitThinker.HitSpeed, 
-                    2, 
+                    unitThinker.WalkSpeed + 1, 
                     target.transform, unitThinker.UnitType);
             }
             
@@ -70,7 +70,7 @@ namespace Supinfo.Project.Unit.Scripts
             shooter?.Shoot(
                 unitThinker.Damage,
                 unitThinker.HitSpeed, 
-                2, 
+                unitThinker.WalkSpeed + 1, 
                 target.transform,
                 unitThinker.UnitType);
         }
