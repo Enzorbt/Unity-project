@@ -16,21 +16,20 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker) yield break;
+            
             iaThinker.IsThinking = true;
 
             iaThinker.UnlockNewUnit();
-            // DETECTION 
-            GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
             
             // SPAWN UNIT 
-            if (unitsAndAllies.Length != 0)
+            if (iaThinker.DetectUnitsAndAllies() != 0)
             {
                 iaThinker.Spawn(2);
                 iaThinker.Spawn(1);
             }
             
             // LANCE CAPACITE SPECIAL
-            if (unitsAndAllies.Length >= 5)
+            if (iaThinker.DetectUnitsAndAllies() >= 5)
             {
                 iaThinker.SpecialCapacity(0, false);
             }
@@ -69,7 +68,9 @@ namespace IA.Event
                     }
                 }
             }
+            
             yield return new WaitForSeconds(delayTime);
+            
             iaThinker.IsThinking = false;
         }
     }

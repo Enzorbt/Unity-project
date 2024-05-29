@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Capacity1Allies
   m_EditorClassIdentifier: 
   damage:
-    baseValue: 100
+    baseValue: 200
     ageStatModifiers:
     - value: 100
       type: 0

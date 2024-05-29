@@ -10,7 +10,11 @@ namespace Supinfo.Project.Turret.Scripts
     public class TurretThinker : Thinker
     {
         [FormerlySerializedAs("turretAttackSo")] [SerializeField] private TurretStatSo turretStatSo;
-        public TurretStatSo TurretStatSo => turretStatSo;
+        public TurretStatSo TurretStatSo
+        {
+            get => turretStatSo;
+            set => turretStatSo = value;
+        }
 
         private SpriteRenderer _spriteRenderer;
 

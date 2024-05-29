@@ -587,8 +587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSpawnTurret: {fileID: 11400000, guid: ce05383433a97e54e825fcbfb94b4435, type: 2}
-  onGoldChange: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
-  turretStatSo: {fileID: 11400000, guid: 1693377c11a814f128bbf777937c8797, type: 2}
+  onGoldChange: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+  turretStatSo: {fileID: 11400000, guid: 0c3ed7e4b3568e54e95f32db0af147de, type: 2}
 --- !u!114 &99006417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3369,7 +3369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32be9a2f40004122bbf083ae8c9ba32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: 5997174a3ad344e458899ddb5d119014, type: 2}
+  brain: {fileID: 11400000, guid: fee867e3abd1eff409447eb89cdda28b, type: 2}
   index: 0
   meleeStatSo: {fileID: 11400000, guid: 26df139b3b7a6924892ed0625aabb770, type: 2}
   rangeStatSo: {fileID: 11400000, guid: 8d5c438434273ca4ba9134e2ff204c40, type: 2}
