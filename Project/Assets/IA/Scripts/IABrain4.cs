@@ -20,6 +20,7 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker) yield break;
+            iaThinker.IsThinking = true;
 
             // DETECTION 
             GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
@@ -77,6 +78,7 @@ namespace IA.Event
             //     }
             // }
             yield return new WaitForSeconds(delayTime);
+            iaThinker.IsThinking = false;
         }
     }
 }

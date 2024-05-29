@@ -14,8 +14,10 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker)yield break;
+            
+            iaThinker.IsThinking = true;
+            
             var index = iaThinker.getRand(0, 5);
-            Debug.Log(index);
             switch (index)
             {
                 case 0:
@@ -39,8 +41,10 @@ namespace IA.Event
                     // IAThinker.Upgrade(UpgradeType);
                     break;
             }
-
+            
             yield return new WaitForSeconds(delayTime);
+            
+            iaThinker.IsThinking = false;
         }
     }
 }
