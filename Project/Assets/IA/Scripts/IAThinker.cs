@@ -46,6 +46,8 @@ namespace IA.Event
 
         private void Awake()
         {
+            Gold = 2500;
+            Xp = 1000;
             _eventsFoundation = GetComponent<EventsFoundation>();
         }
 

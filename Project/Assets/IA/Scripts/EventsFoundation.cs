@@ -24,31 +24,26 @@ namespace IA.Event
         public void SpawnUnit(UnitStatSo unitStatSo)
         {
             onSpawnUnit.Raise(this, unitStatSo);
-            throw new System.NotImplementedException();
         }
 
         public void UseCapacity(CapacitySo capacitySo)
         {
             onLaunchCapacity.Raise(this, capacitySo);
-            throw new System.NotImplementedException();
         }
         
         public void UpgradeAge()
         {
             onAgeUpgrade.Raise(this, 0);
-            throw new System.NotImplementedException();
         }
 
         public void Upgrade(UpgradeType upgradeType)
         {
             onEnemiesUpgrade.Raise(this, upgradeType);
-            throw new System.NotImplementedException();
         }
 
         public void SpawnTurret(TurretStatSo turretStatSo)
         {
             onSpawnTurret.Raise(this, turretStatSo);
-            throw new System.NotImplementedException();
         }
     }
 }
