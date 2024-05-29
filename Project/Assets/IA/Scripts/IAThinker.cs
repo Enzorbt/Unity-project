@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Common;
 using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
+using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using Supinfo.Project.Scripts.ScriptableObjects.Experience;
@@ -12,7 +13,7 @@ using Random = System.Random;
 
 namespace IA.Event
 {
-    public class IAThinker : Thinker
+    public class IAThinker : ThinkerWithDelay
     {
         protected internal  float Gold {get; set;}
         protected internal  float Xp {get; set;}
@@ -230,6 +231,18 @@ namespace IA.Event
         {
             if(data is not UnitStatSo unitStatSo) return;
             PlayerUnit = unitStatSo;
+        }
+
+        public void onRecieveGold(Component sender, object data)
+        {
+            if(data is not float gold) return;
+            Gold += gold;
+        }
+        
+        public void onRecieveXp(Component sender, object data)
+        {
+            if(data is not float xp) return;
+            Xp += xp;
         }
     }
 }
