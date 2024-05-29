@@ -50,32 +50,14 @@ MonoBehaviour:
   targetTag: 
   range:
     baseValue: 1
-    ageStatModifiers:
-    - value: 0
-      type: 0
-      order: 0
-    - value: 0
-      type: 0
-      order: 1
-    - value: 0
-      type: 0
-      order: 2
-    - value: 10
-      type: 0
-      order: 3
-    - value: 20
-      type: 0
-      order: 4
-    - value: 30
-      type: 0
-      order: 5
+    ageStatModifiers: []
     upgradeStatModifiers: []
   buildTime:
-    baseValue: 5
+    baseValue: 0.7
     ageStatModifiers: []
     upgradeStatModifiers: []
   goldGiven:
-    baseValue: 40
+    baseValue: 75
     ageStatModifiers:
     - value: 10
       type: 0
@@ -106,7 +88,7 @@ MonoBehaviour:
       type: 0
       order: 2
   experienceGiven:
-    baseValue: 200
+    baseValue: 250
     ageStatModifiers:
     - value: 15
       type: 0

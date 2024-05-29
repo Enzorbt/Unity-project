@@ -13,19 +13,37 @@ MonoBehaviour:
   m_Name: Capacity2Allies
   m_EditorClassIdentifier: 
   damage:
-    baseValue: 90
-    ageStatModifiers: []
+    baseValue: 200
+    ageStatModifiers:
+    - value: 200
+      type: 0
+      order: 0
+    - value: 200
+      type: 0
+      order: 1
+    - value: 200
+      type: 0
+      order: 2
+    - value: 200
+      type: 0
+      order: 3
+    - value: 200
+      type: 0
+      order: 4
+    - value: 200
+      type: 0
+      order: 5
     upgradeStatModifiers: []
   _actionTime:
     baseValue: 1
     ageStatModifiers: []
     upgradeStatModifiers: []
   _hitProbability:
-    baseValue: 1
+    baseValue: 2
     ageStatModifiers: []
     upgradeStatModifiers: []
   _cooldown:
-    baseValue: 1
+    baseValue: 3
     ageStatModifiers: []
     upgradeStatModifiers: []
   _tag: Enemies
