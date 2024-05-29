@@ -17,9 +17,10 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker)yield break;
+            
             iaThinker.IsThinking = true;
+            
             iaThinker.UnlockNewUnit();
-
             
             // SPAWN UNIT 
             if (iaThinker.PlayerUnits.Count != 0)
@@ -27,6 +28,7 @@ namespace IA.Event
                 iaThinker.Spawn(0);
                 iaThinker.Spawn(0);
                 iaThinker.Spawn(1);
+                Debug.Log("Spawn");
 
             }
             

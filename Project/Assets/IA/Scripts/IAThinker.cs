@@ -52,6 +52,11 @@ namespace IA.Event
             _eventsFoundation = GetComponent<EventsFoundation>();
         }
 
+        private void Start()
+        {
+            PlayerUnits= new Queue<UnitStatSo>();
+        }
+
         // RAND 
         public  int getRand(int minValue, int maxValue)
         {
@@ -115,6 +120,7 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(meleeStatSo);
                         Gold -= meleeStatSo.Price;
+                        PlayerUnits.Dequeue();
                         return true;
                     }
                     return false;
@@ -124,6 +130,7 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(rangeStatSo);
                         Gold -= rangeStatSo.Price;
+                        PlayerUnits.Dequeue();
                         return true;
                     }
                     return false;
@@ -133,6 +140,7 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(armorStatSo);
                         Gold -= armorStatSo.Price;
+                        PlayerUnits.Dequeue();
                         return true;
                     }
                     return false;
@@ -142,6 +150,7 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(antiArmorStatSo);
                         Gold -= antiArmorStatSo.Price;
+                        PlayerUnits.Dequeue();
                         return true;
                     }
                     return false;
