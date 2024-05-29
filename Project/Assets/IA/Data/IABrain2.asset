@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a3996272d34b4a8cf869f5f0d322e0, type: 3}
   m_Name: IABrain2
   m_EditorClassIdentifier: 
-  delayTime: 2
+  delayTime: 0.5

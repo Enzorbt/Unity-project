@@ -49,7 +49,7 @@ MonoBehaviour:
     upgradeStatModifiers: []
   targetTag: 
   range:
-    baseValue: 5
+    baseValue: 7
     ageStatModifiers:
     - value: 1
       type: 0
