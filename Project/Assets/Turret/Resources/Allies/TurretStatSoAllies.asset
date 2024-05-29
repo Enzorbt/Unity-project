@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f4224707c245589683fd0ff95c5464, type: 3}
+  m_Name: TurretStatSoAllies
+  m_EditorClassIdentifier: 
+  prefabs: {fileID: 8346566440712086298, guid: 54abae10a0c6cd94b822adb08c6e6623, type: 3}
+  price:
+    baseValue: 2000
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  damage:
+    baseValue: 10
+    ageStatModifiers:
+    - value: 10
+      type: 0
+      order: 0
+    - value: 10
+      type: 0
+      order: 1
+    - value: 10
+      type: 0
+      order: 2
+    - value: 10
+      type: 0
+      order: 3
+    - value: 10
+      type: 0
+      order: 4
+    - value: 10
+      type: 0
+      order: 5
+    upgradeStatModifiers: []
+  hitSpeed:
+    baseValue: 1
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    - value: 1
+      type: 0
+      order: 1
+    - value: 0
+      type: 0
+      order: 2
+    - value: 1
+      type: 0
+      order: 3
+    - value: 0
+      type: 0
+      order: 4
+    - value: 1
+      type: 0
+      order: 5
+    upgradeStatModifiers: []
+  range:
+    baseValue: 5
+    ageStatModifiers:
+    - value: 1
+      type: 0
+      order: 0
+    - value: 1
+      type: 0
+      order: 1
+    - value: 1
+      type: 0
+      order: 2
+    - value: 1
+      type: 0
+      order: 3
+    - value: 1
+      type: 0
+      order: 4
+    - value: 1
+      type: 0
+      order: 5
+    upgradeStatModifiers: []
+  _sprites:
+  - {fileID: 21300000, guid: 796f8d0b209d38e40b41740be499630c, type: 3}
+  - {fileID: 21300000, guid: d8430036b6d554448a14484e1384518c, type: 3}
+  - {fileID: 21300000, guid: 0ca528e051ba4584799e5c6a1040060d, type: 3}
+  - {fileID: 21300000, guid: bcea54337625b4e47a48f7f206e0d21d, type: 3}
+  - {fileID: 21300000, guid: b23b3a1ba754468409a037c21acc0cb9, type: 3}
+  - {fileID: 21300000, guid: 2e0fb022415947148a632dad097907e6, type: 3}
+  - {fileID: 21300000, guid: 234d2a17eb5681c489cd49f95cb0a915, type: 3}
