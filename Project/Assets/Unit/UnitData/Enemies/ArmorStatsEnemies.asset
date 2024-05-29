@@ -173,7 +173,7 @@ MonoBehaviour:
       order: 5
     upgradeStatModifiers: []
   prefabs:
-  - {fileID: 4918686205561991012, guid: f0a552fc7ec004ce8824e14105f56ea4, type: 3}
+  - {fileID: 4918686205561991012, guid: 57c1aa9688b8c854e92cd2da1012a887, type: 3}
   price:
     baseValue: 600
     ageStatModifiers:

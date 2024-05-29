@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 68153942580603145}
   - component: {fileID: 7568718845160254322}
   m_Layer: 0
-  m_Name: MeleeUnit1
+  m_Name: MeleeUnit1Allies
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1651531720413543367}
-  onUnitDeathCoins: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+  onUnitDeathCoins: {fileID: 11400000, guid: 68c4aabd9866a9a41873c9573fe7099e, type: 2}
   onUnitDeathXp: {fileID: 11400000, guid: e2ebdb48bc152294983e78fa2b44f1df, type: 2}
 --- !u!114 &6359458530771199948
 MonoBehaviour:

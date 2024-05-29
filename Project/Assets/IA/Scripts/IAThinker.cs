@@ -227,19 +227,19 @@ namespace IA.Event
 
             return false;
         }
-        public void onAlliesSpawn(Component sender, object data)
+        public void OnAlliesSpawn(Component sender, object data)
         {
             if(data is not UnitStatSo unitStatSo) return;
             PlayerUnit = unitStatSo;
         }
 
-        public void onRecieveGold(Component sender, object data)
+        public void OnRecieveGold(Component sender, object data)
         {
             if(data is not float gold) return;
             Gold += gold;
         }
         
-        public void onRecieveXp(Component sender, object data)
+        public void OnRecieveXp(Component sender, object data)
         {
             if(data is not float xp) return;
             Xp += xp;

@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: unitStatSo
       value: 
       objectReference: {fileID: 11400000, guid: ad061516469483f44b24dadab6d420f9, type: 2}
+    - target: {fileID: 1776877459599816412, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: onUnitDeathCoins
+      value: 
+      objectReference: {fileID: 11400000, guid: 75b584ae7f81ee74da94ec80969c38e0, type: 2}
     - target: {fileID: 4371070662113245973, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -54,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: ad061516469483f44b24dadab6d420f9, type: 2}
     - target: {fileID: 7094864365306331561, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_Name
-      value: AntiArmorUnit1
+      value: AntiArmorUnitEnemies
       objectReference: {fileID: 0}
     - target: {fileID: 8827721182540866462, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_LocalPosition.x

@@ -495,6 +495,10 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -817,7 +821,7 @@ PrefabInstance:
     - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: onGoldChange
       value: 
-      objectReference: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     - target: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_Name
       value: Button(range)
@@ -1157,6 +1161,10 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1523,6 +1531,10 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2631,7 +2643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f43774b1e8447fba5f976320748a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGoldChange: {fileID: 0}
+  onGoldChange: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
 --- !u!114 &516782949 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 194036574691145683, guid: 9233eba7556063d4dba69c9bae17d92a, type: 3}
@@ -2950,6 +2962,10 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3136,7 +3152,7 @@ PrefabInstance:
     - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: onGoldChange
       value: 
-      objectReference: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     - target: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_Name
       value: Button(armor)
@@ -3375,10 +3391,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 0}
+  gameEvent: {fileID: 11400000, guid: e2ebdb48bc152294983e78fa2b44f1df, type: 2}
   response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 630116413}
+        m_TargetAssemblyTypeName: IA.Event.IAThinker, Assembly-CSharp
+        m_MethodName: OnRecieveXp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &630116415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3391,10 +3419,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+  gameEvent: {fileID: 11400000, guid: 68c4aabd9866a9a41873c9573fe7099e, type: 2}
   response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 630116413}
+        m_TargetAssemblyTypeName: IA.Event.IAThinker, Assembly-CSharp
+        m_MethodName: OnRecieveGold
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &630116416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3410,7 +3450,19 @@ MonoBehaviour:
   gameEvent: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
   response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 630116413}
+        m_TargetAssemblyTypeName: IA.Event.IAThinker, Assembly-CSharp
+        m_MethodName: OnAlliesSpawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &632469247
 GameObject:
   m_ObjectHideFlags: 0
@@ -3497,7 +3549,7 @@ PrefabInstance:
     - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: onGoldChange
       value: 
-      objectReference: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     - target: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_Name
       value: Button(melee)
@@ -3785,6 +3837,10 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4372,7 +4428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: e2ebdb48bc152294983e78fa2b44f1df, type: 2}
+  gameEvent: {fileID: 11400000, guid: 8c4cce962529bd644aaddb4403621165, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -5001,6 +5057,10 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6972,7 +7032,7 @@ PrefabInstance:
     - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
       propertyPath: onGoldChange
       value: 
-      objectReference: {fileID: 11400000, guid: e2ebdb48bc152294983e78fa2b44f1df, type: 2}
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     - target: {fileID: 7972513543616498501, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
       propertyPath: gameEvent
       value: 
@@ -7529,6 +7589,10 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8400,6 +8464,10 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8891,6 +8959,10 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8907,6 +8979,7 @@ GameObject:
   - component: {fileID: 1954219965}
   - component: {fileID: 1954219967}
   - component: {fileID: 1954219966}
+  - component: {fileID: 1954219968}
   m_Layer: 0
   m_Name: goldManager
   m_TagString: Untagged
@@ -8941,7 +9014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+  gameEvent: {fileID: 11400000, guid: 75b584ae7f81ee74da94ec80969c38e0, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -8970,6 +9043,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGoldCountChange: {fileID: 11400000, guid: fb331398eef5f4e009819eaac0515d31, type: 2}
+--- !u!114 &1954219968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954219964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1954219967}
+        m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.GoldManager, Assembly-CSharp
+        m_MethodName: OnGoldChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2006586294
 GameObject:
   m_ObjectHideFlags: 0
@@ -10197,7 +10298,7 @@ PrefabInstance:
     - target: {fileID: 4445359853512285006, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: onGoldChange
       value: 
-      objectReference: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     - target: {fileID: 4470815005180612160, guid: 606a56aa520a84e178d52e56de712f7a, type: 3}
       propertyPath: m_Name
       value: Button(antiArmor)
@@ -10698,6 +10799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: meleeAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: onGoldChange
+      value: 
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
