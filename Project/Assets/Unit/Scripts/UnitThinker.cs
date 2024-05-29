@@ -22,5 +22,18 @@ namespace Supinfo.Project.Unit.Scripts
         {
             Direction = transform.position.x > 0 ? Vector3.left : Vector3.right;
         }
+
+        private void Start()
+        {
+            if (gameObject.tag == "Unit,Enemies")
+            {
+                SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+                
+                if (spriteRenderer != null)
+                {
+                    spriteRenderer.flipX = !spriteRenderer.flipX;
+                }
+            }
+        }
     }
 }
