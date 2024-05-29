@@ -22,12 +22,15 @@ namespace IA.Event
             if (thinker is not IAThinker iaThinker) yield break;
             iaThinker.IsThinking = true;
             
-            // SPAWN UNIT 
+            // UNLOCK UNIT 
             iaThinker.UnlockNewUnit();
+            Debug.Log("UNLOCK" + iaThinker.IsUnlock);
+            
+            // SPAWN UNIT 
             iaThinker.SpawnDifficult();
             
             // CAPACITE
-            if (iaThinker.PlayerUnits.Count >= 7)
+            if (iaThinker.DetectUnitsAndAllies() >= 7)
             {
                 iaThinker.SpecialCapacity(0, true);
                 // Rembourse XP

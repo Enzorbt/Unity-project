@@ -80,7 +80,7 @@ MonoBehaviour:
       type: 0
       order: 2
   buildTime:
-    baseValue: 0.4
+    baseValue: 0.8
     ageStatModifiers: []
     upgradeStatModifiers: []
   goldGiven:

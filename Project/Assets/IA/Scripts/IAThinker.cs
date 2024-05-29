@@ -21,7 +21,7 @@ namespace IA.Event
         public Queue<UnitStatSo> PlayerUnits { get; set; }
         protected  int Age {get; set;}
         protected  int TurretNumber {get; set;}
-        protected  bool IsUnlock {get; set;}
+        public bool IsUnlock {get; set;}
 
         public Dictionary<UpgradeType, int> UpgradeDict; // Unity
 
@@ -62,7 +62,14 @@ namespace IA.Event
         {
             return aleatoire.Next(minValue, maxValue);
         }
-        
+
+        // DETECTION
+        public int DetectUnitsAndAllies()
+        {
+            var unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit,Allies");
+            return unitsAndAllies.Length;
+        }
+
         // AGE
         public bool AgeUpgrade()
         {
@@ -120,7 +127,6 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(meleeStatSo);
                         Gold -= meleeStatSo.Price;
-                        PlayerUnits.Dequeue();
                         return true;
                     }
                     return false;
@@ -130,7 +136,6 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(rangeStatSo);
                         Gold -= rangeStatSo.Price;
-                        PlayerUnits.Dequeue();
                         return true;
                     }
                     return false;
@@ -140,7 +145,6 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(armorStatSo);
                         Gold -= armorStatSo.Price;
-                        PlayerUnits.Dequeue();
                         return true;
                     }
                     return false;
@@ -150,7 +154,6 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(antiArmorStatSo);
                         Gold -= antiArmorStatSo.Price;
-                        PlayerUnits.Dequeue();
                         return true;
                     }
                     return false;

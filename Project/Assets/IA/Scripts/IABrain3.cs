@@ -23,22 +23,26 @@ namespace IA.Event
             iaThinker.UnlockNewUnit();
             
             // SPAWN UNIT 
-            if (iaThinker.PlayerUnits.Count != 0)
-            {
+            if (iaThinker.DetectUnitsAndAllies() != 0)
+            {                
+                iaThinker.Spawn(3);
+
+            }
+            
+            if (iaThinker.DetectUnitsAndAllies() == 3)
+            {                
                 iaThinker.Spawn(0);
                 iaThinker.Spawn(0);
                 iaThinker.Spawn(1);
-                Debug.Log("Spawn");
-
             }
             
             // A tester
             // LANCE CAPACITE SPECIAL
-            if (iaThinker.PlayerUnits.Count >= 6)
+            if (iaThinker.DetectUnitsAndAllies() >= 6)
             {
                 iaThinker.SpecialCapacity(1, true);
             }
-            if (iaThinker.PlayerUnits.Count == 10)
+            if (iaThinker.DetectUnitsAndAllies() == 10)
             {
                 iaThinker.SpecialCapacity(0, true);
             }

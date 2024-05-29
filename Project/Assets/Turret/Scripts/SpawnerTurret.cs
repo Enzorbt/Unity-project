@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using ScriptableObjects.Turret;
+using Supinfo.Project.Turret.Scripts;
 
 public class SpawnerTurret : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class SpawnerTurret : MonoBehaviour
             var newSpawnPosition = new Vector3(spawnPosition.transform.position.x, yPosition, _spawnNumber);
             var spawnedTurret = Instantiate(turretStatSo.Prefab, newSpawnPosition, Quaternion.identity);
             var tags = transform.tag.Split(',');
+
+            spawnedTurret.TryGetComponent(out TurretThinker turretThinker);
+            turretThinker.TurretStatSo = turretStatSo;
             
             // update turret sprite
             var spriteRenderer = spawnedTurret.GetComponentInChildren<SpriteRenderer>();
