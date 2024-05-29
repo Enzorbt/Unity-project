@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Supinfo.Project.Scripts.ScriptableObjects.Music
@@ -12,10 +13,14 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Music
         [SerializeField]
         private AudioClip menuMusic;
         public AudioClip MenuMusic => menuMusic;
-        
 
         private int currentAge;
-        
+
+        private void OnEnable()
+        {
+            currentAge = 0;
+        }
+
         public AudioClip GetCurrentAgeMusic()
         {
             if (currentAge >= 0 && currentAge < ageMusics.Length)
@@ -32,5 +37,6 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Music
                 currentAge++;
             }
         }
+        
     }
 }
