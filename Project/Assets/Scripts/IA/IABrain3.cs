@@ -1,7 +1,6 @@
-﻿// Attack STRATEGIE 
+// Attack STRATEGIE 
 
 // FINIR : 
-    // VERIF PRIX / XP 
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
     // Capacité Type
 
@@ -33,13 +32,11 @@ namespace IA.Event
             // LANCE CAPACITE SPECIAL
             if (unitsAndAllies.Length >= 6)
             {
-                iaThinker.SpecialCapacityDifficult(1);
-                // Rembourse XP
+                iaThinker.SpecialCapacity(1, true);
             }
             if (unitsAndAllies.Length == 10)
             {
-                iaThinker.SpecialCapacityDifficult(0);
-                // Rembourse XP
+                iaThinker.SpecialCapacity(0, true);
             }
             
             // Comporetement Applicatif

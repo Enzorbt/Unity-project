@@ -8,7 +8,6 @@ using UnityEngine;
     // LOGIQUE 
     // ALWAY KEEP MONEY FOR BUYING MELEE TO DEFENCE 
 
-    // VERIF PRIX / XP 
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
     // Capacité Type
 
@@ -30,7 +29,7 @@ namespace IA.Event
             // CAPACITE
             if (unitsAndAllies.Length >= 7)
             {
-                iaThinker.SpecialCapacityDifficult(0);
+                iaThinker.SpecialCapacity(0, true);
                 // Rembourse XP
             }
             

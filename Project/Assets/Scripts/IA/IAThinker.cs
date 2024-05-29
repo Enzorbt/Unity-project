@@ -50,7 +50,7 @@ namespace IA.Event
         }
         
         // AGE
-        public  bool AgeUpgrade()
+        public bool AgeUpgrade()
         {
             if (Xp >= experienceStatSo.ExperienceLevel[Age])
             {
@@ -62,7 +62,7 @@ namespace IA.Event
         }
         
         // CAPACITY 
-        public bool SpecialCapacity(int index)
+        public bool SpecialCapacity(int index, bool buff)
         {
             switch (index)
             {
@@ -70,6 +70,10 @@ namespace IA.Event
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
                     {
                         eventInstance.UseCapacity(capacityFireSo);
+                        if (buff = true)
+                        {
+                            Xp += (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
+                        }
                         return true;
                     }
                     return false;
@@ -77,34 +81,14 @@ namespace IA.Event
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
                     {
                         eventInstance.UseCapacity(capacityFlashSo);
+                        if (buff = true)
+                        {
+                            Xp += (experienceStatSo.ExperienceLevel[Age]*60)/100;
+                        }
                         return true;
                     }
                     return false;   
-            }
-            return false;
-        }
-        
-        public bool SpecialCapacityDifficult(int index)
-        {
-            switch (index)
-            {
-                case 0: 
-                    if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
-                    {
-                        eventInstance.UseCapacity(capacityFireSo);
-                        Xp += (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
-                        return true;
-                    }
-                    return false;
-                case 1:
-                    if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
-                    {
-                        eventInstance.UseCapacity(capacityFlashSo);
-                        Xp += (experienceStatSo.ExperienceLevel[Age]*60)/100;
-                        return true;
-                    }
-                    return false;   
-            }
+            } 
             return false;
         }
         
@@ -205,7 +189,7 @@ namespace IA.Event
                 return true;
             }
             
-            // SI LE JOUER NE PLACE TANK (ARMOR + 2 RANGE)
+            // SI LE JOUER NE PLACE RIEN TANK (ARMOR + 2 RANGE)
             if (playerUnit == null)
             {
                 float goldTank = armorStatSo.Price + (rangeStatSo.Price)*2;

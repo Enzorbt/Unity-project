@@ -1,6 +1,7 @@
-﻿using Common;
+using Common;
 using Supinfo.Project.Scripts;
 // Capacité Type
+// UPGRADE 
 
 namespace IA.Event
 {
@@ -15,7 +16,7 @@ namespace IA.Event
                     iaThinker.AgeUpgrade();
                     break;
                 case 1:
-                    iaThinker.SpecialCapacity(iaThinker.getRand(0, 1));
+                    iaThinker.SpecialCapacity(iaThinker.getRand(0, 1), false);
                     break;
                 case 2:
                     iaThinker.Spawn(iaThinker.getRand(0, 3));

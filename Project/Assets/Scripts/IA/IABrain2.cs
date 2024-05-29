@@ -1,10 +1,8 @@
-﻿// Defense STRATEGIE 
+// Defense STRATEGIE 
 
 // FINIR : 
-    // VERIF PRIX / XP 
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
     // Capacité Type
-    // capacité 
 
 using Common;
 using UnityEngine;
@@ -30,7 +28,7 @@ namespace IA.Event
             // LANCE CAPACITE SPECIAL
             if (unitsAndAllies.Length >= 5)
             {
-                iaThinker.SpecialCapacity(0);
+                iaThinker.SpecialCapacity(0, false);
             }
 
             // Comporetement Applicatif
