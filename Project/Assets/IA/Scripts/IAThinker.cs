@@ -126,7 +126,7 @@ namespace IA.Event
                     return false;
                 case 2 : 
                     // SPAWN ARMOR
-                    if (Gold >= armorStatSo.Price)
+                    if (Gold >= armorStatSo.Price && IsUnlock)
                     {
                         _eventsFoundation.SpawnUnit(armorStatSo);
                         Gold -= armorStatSo.Price;
@@ -151,9 +151,10 @@ namespace IA.Event
         public  bool UnlockNewUnit()
         {
             // AJOUTER VERIF ARGENT + LOGIQUE 
-            if (!IsUnlock)
+            if (!IsUnlock && Gold >= 100)
             {
                 IsUnlock = true;
+                Gold -= 100;
             }
 
             return IsUnlock;
@@ -200,7 +201,7 @@ namespace IA.Event
                 Gold -= meleeStatSo.Price;
                 return true;
             }
-            if (playerUnit.Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price) // MELEE
+            if (playerUnit.Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price && IsUnlock) // MELEE
             {
                 _eventsFoundation.SpawnUnit(armorStatSo);
                 Gold -= armorStatSo.Price;
@@ -211,7 +212,7 @@ namespace IA.Event
             if (playerUnit == null)
             {
                 float goldTank = armorStatSo.Price + (rangeStatSo.Price)*2;
-                if (Gold >= goldTank)
+                if (Gold >= goldTank && IsUnlock)
                 {
                     _eventsFoundation.SpawnUnit(armorStatSo);
                     _eventsFoundation.SpawnUnit(rangeStatSo);

@@ -15,6 +15,7 @@ namespace IA.Event
         {
             if (thinker is not IAThinker iaThinker) return;
 
+            iaThinker.UnlockNewUnit();
             // DETECTION 
             GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
             
@@ -58,17 +59,6 @@ namespace IA.Event
                     if (!iaThinker.AgeUpgrade())
                     {
                         setIndex(1);
-                    }
-                    else
-                    {
-                        setIndex(2);
-                    }
-                }
-                else if (index == 2)
-                {
-                    if (!iaThinker.UnlockNewUnit())
-                    {
-                        setIndex(2);
                     }
                     else
                     {
