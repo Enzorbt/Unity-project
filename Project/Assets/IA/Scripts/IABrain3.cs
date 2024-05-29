@@ -19,11 +19,10 @@ namespace IA.Event
             if (thinker is not IAThinker iaThinker)yield break;
             iaThinker.IsThinking = true;
             iaThinker.UnlockNewUnit();
-            // DETECTION 
-            GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
+
             
             // SPAWN UNIT 
-            if (unitsAndAllies.Length != 0)
+            if (iaThinker.PlayerUnits.Count != 0)
             {
                 iaThinker.Spawn(0);
                 iaThinker.Spawn(0);
@@ -33,11 +32,11 @@ namespace IA.Event
             
             // A tester
             // LANCE CAPACITE SPECIAL
-            if (unitsAndAllies.Length >= 6)
+            if (iaThinker.PlayerUnits.Count >= 6)
             {
                 iaThinker.SpecialCapacity(1, true);
             }
-            if (unitsAndAllies.Length == 10)
+            if (iaThinker.PlayerUnits.Count == 10)
             {
                 iaThinker.SpecialCapacity(0, true);
             }

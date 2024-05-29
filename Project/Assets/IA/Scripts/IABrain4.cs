@@ -21,16 +21,13 @@ namespace IA.Event
         {
             if (thinker is not IAThinker iaThinker) yield break;
             iaThinker.IsThinking = true;
-
-            // DETECTION 
-            GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
             
             // SPAWN UNIT 
             iaThinker.UnlockNewUnit();
             iaThinker.SpawnDifficult();
             
             // CAPACITE
-            if (unitsAndAllies.Length >= 7)
+            if (iaThinker.PlayerUnits.Count >= 7)
             {
                 iaThinker.SpecialCapacity(0, true);
                 // Rembourse XP
