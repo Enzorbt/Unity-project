@@ -1,35 +1,38 @@
-// Defense STRATEGIE 
-
-// FINIR : 
-    // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
-
+using System.Collections.Generic;
 using Common;
+using ScriptableObjects.Unit;
+using Supinfo.Project.Scripts;
 using UnityEngine;
+
+// FINIR 
+    // LOGIQUE 
+    // ALWAY KEEP MONEY FOR BUYING MELEE TO DEFENCE 
+
+    // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
 
 namespace IA.Event
 {
-    public class IABrain2 : Brain
+    [CreateAssetMenu(menuName = "Brains/IABrain4")]
+    public class IABrain4 : Brain
     {
         public override void Think(Thinker thinker)
         {
-            if (thinker is not IAThinker iaThinker) return;
+            if (thinker is not IAThinker iaThinker)return;
 
             // DETECTION 
             GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
             
             // SPAWN UNIT 
-            if (unitsAndAllies.Length != 0)
+            iaThinker.UnlockNewUnit();
+            iaThinker.SpawnDifficult(iaThinker.PlayerUnit);
+            
+            // CAPACITE
+            if (unitsAndAllies.Length >= 7)
             {
-                iaThinker.Spawn(2);
-                iaThinker.Spawn(1);
+                iaThinker.SpecialCapacity(0, true);
+                // Rembourse XP
             }
             
-            // LANCE CAPACITE SPECIAL
-            if (unitsAndAllies.Length >= 5)
-            {
-                iaThinker.SpecialCapacity(0, false);
-            }
-
             // Comporetement Applicatif
             var index = 0;
 
@@ -38,7 +41,7 @@ namespace IA.Event
                 index = pindex;
                 return index;
             }
-
+            
             if (iaThinker.Gold > 300)
             {
                 if (index == 0)
@@ -60,21 +63,17 @@ namespace IA.Event
                     }
                     else
                     {
-                        setIndex(2);
-                    }
-                }
-                else if (index == 2)
-                {
-                    if (!iaThinker.UnlockNewUnit())
-                    {
-                        setIndex(2);
-                    }
-                    else
-                    {
                         setIndex(0);
                     }
                 }
             }
+            // foreach (KeyValuePair<UpgradeType, int> entry in iaThinker.UpgradeDict)
+            // {
+            //     if (entry.Value < 3)
+            //     {
+            //         iaThinker.Upgrade(entry.Key);
+            //     }
+            // }
         }
     }
 }

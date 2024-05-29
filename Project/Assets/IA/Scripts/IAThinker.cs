@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Common;
 using ScriptableObjects.Turret;
@@ -11,7 +12,7 @@ using Random = System.Random;
 
 namespace IA.Event
 {
-    public abstract class IAThinker : Thinker
+    public class IAThinker : Thinker
     {
         protected internal  float Gold {get; set;}
         protected internal  float Xp {get; set;}
@@ -23,8 +24,8 @@ namespace IA.Event
 
         public Dictionary<UpgradeType, int> UpgradeDict; // Unity
 
-        public EventsFoundation eventInstance = new EventsFoundation();
-         Random aleatoire = new Random();
+        private EventsFoundation _eventsFoundation;
+        private Random aleatoire = new Random();
         public int index;
         
         // STATS SO UNIT
@@ -42,7 +43,12 @@ namespace IA.Event
         // STATS SO SPECIAL CAPACITY
         [SerializeField] public  CapacitySo capacityFireSo;
         [SerializeField] public  CapacitySo capacityFlashSo;
-        
+
+        private void Awake()
+        {
+            _eventsFoundation = GetComponent<EventsFoundation>();
+        }
+
         // RAND 
         public  int getRand(int minValue, int maxValue)
         {
@@ -54,7 +60,7 @@ namespace IA.Event
         {
             if (Xp >= experienceStatSo.ExperienceLevel[Age])
             {
-                eventInstance.UpgradeAge();
+                _eventsFoundation.UpgradeAge();
                 Age++;
                 return true;
             }
@@ -69,7 +75,7 @@ namespace IA.Event
                 case 0: 
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
                     {
-                        eventInstance.UseCapacity(capacityFireSo);
+                        _eventsFoundation.UseCapacity(capacityFireSo);
                         if (buff = true)
                         {
                             Xp += (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
@@ -80,7 +86,7 @@ namespace IA.Event
                 case 1:
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
                     {
-                        eventInstance.UseCapacity(capacityFlashSo);
+                        _eventsFoundation.UseCapacity(capacityFlashSo);
                         if (buff = true)
                         {
                             Xp += (experienceStatSo.ExperienceLevel[Age]*60)/100;
@@ -101,7 +107,7 @@ namespace IA.Event
                     // SPAWN MELEE
                     if (Gold >= meleeStatSo.Price)
                     {
-                        eventInstance.SpawnUnit(meleeStatSo);
+                        _eventsFoundation.SpawnUnit(meleeStatSo);
                         return true;
                     }
                     return false;
@@ -109,7 +115,7 @@ namespace IA.Event
                     // SPAWN RANGE 
                     if (Gold >= rangeStatSo.Price)
                     {
-                        eventInstance.SpawnUnit(rangeStatSo);
+                        _eventsFoundation.SpawnUnit(rangeStatSo);
                         return true;
                     }
                     return false;
@@ -117,7 +123,7 @@ namespace IA.Event
                     // SPAWN ARMOR
                     if (Gold >= armorStatSo.Price)
                     {
-                        eventInstance.SpawnUnit(armorStatSo);
+                        _eventsFoundation.SpawnUnit(armorStatSo);
                         return true;
                     }
                     return false;
@@ -125,7 +131,7 @@ namespace IA.Event
                     // SPAWN ANTI-ARMOR
                     if (Gold >= antiArmorStatSo.Price)
                     {
-                        eventInstance.SpawnUnit(antiArmorStatSo);
+                        _eventsFoundation.SpawnUnit(antiArmorStatSo);
                         return true;
                     }
                     return false;
@@ -151,7 +157,7 @@ namespace IA.Event
         {
             if (Gold >= turretStatSo.Price)
             {
-                eventInstance.SpawnTurret(turretStatSo);
+                _eventsFoundation.SpawnTurret(turretStatSo);
                 TurretNumber++;
                 return true;
             }
@@ -161,7 +167,7 @@ namespace IA.Event
         // UPGRADE
         public  void Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
         {
-            eventInstance.Upgrade(upgradeType);
+            _eventsFoundation.Upgrade(upgradeType);
         }
         
         // SPAWN FOR DIFFICULT 
@@ -170,22 +176,22 @@ namespace IA.Event
             // COUNTER (Unité forte contre celle que le joeur pose)
             if (playerUnit.Type == antiArmorStatSo.Type.StrongAgainst && Gold >= antiArmorStatSo.Price) // ARMOR
             {
-                eventInstance.SpawnUnit(antiArmorStatSo);
+                _eventsFoundation.SpawnUnit(antiArmorStatSo);
                 return true;
             }
             if (playerUnit.Type == rangeStatSo.Type.StrongAgainst && Gold >= rangeStatSo.Price) // ANTI ARMOR
             {
-                eventInstance.SpawnUnit(rangeStatSo);
+                _eventsFoundation.SpawnUnit(rangeStatSo);
                 return true;
             }
             if (playerUnit.Type == meleeStatSo.Type.StrongAgainst && Gold >= meleeStatSo.Price) // RANGE
             {
-                eventInstance.SpawnUnit(meleeStatSo);
+                _eventsFoundation.SpawnUnit(meleeStatSo);
                 return true;
             }
             if (playerUnit.Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price) // MELEE
             {
-                eventInstance.SpawnUnit(armorStatSo);
+                _eventsFoundation.SpawnUnit(armorStatSo);
                 return true;
             }
             
@@ -195,9 +201,9 @@ namespace IA.Event
                 float goldTank = armorStatSo.Price + (rangeStatSo.Price)*2;
                 if (Gold >= goldTank)
                 {
-                    eventInstance.SpawnUnit(armorStatSo);
-                    eventInstance.SpawnUnit(rangeStatSo);
-                    eventInstance.SpawnUnit(rangeStatSo);   
+                    _eventsFoundation.SpawnUnit(armorStatSo);
+                    _eventsFoundation.SpawnUnit(rangeStatSo);
+                    _eventsFoundation.SpawnUnit(rangeStatSo);   
                 }
                 return true;
             }

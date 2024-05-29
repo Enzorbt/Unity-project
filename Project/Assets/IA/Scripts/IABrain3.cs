@@ -1,35 +1,42 @@
-using System.Collections.Generic;
-using Common;
-using ScriptableObjects.Unit;
-using Supinfo.Project.Scripts;
-using UnityEngine;
+// Attack STRATEGIE 
 
-// FINIR 
-    // LOGIQUE 
-    // ALWAY KEEP MONEY FOR BUYING MELEE TO DEFENCE 
-
+// FINIR : 
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
+
+
+using Common;
+using UnityEngine;
 
 namespace IA.Event
 {
-    public class IABrain4 : Brain
+    [CreateAssetMenu(menuName = "Brains/IABrain3")]
+    public class IABrain3 : Brain
     {
         public override void Think(Thinker thinker)
         {
-            if (thinker is not IAThinker iaThinker)return;
-
+            if (thinker is not IAThinker iaThinker) return;
+            
             // DETECTION 
             GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
             
             // SPAWN UNIT 
-            iaThinker.UnlockNewUnit();
-            iaThinker.SpawnDifficult(iaThinker.PlayerUnit);
+            if (unitsAndAllies.Length != 0)
+            {
+                iaThinker.Spawn(0);
+                iaThinker.Spawn(0);
+                iaThinker.Spawn(1);
+
+            }
             
-            // CAPACITE
-            if (unitsAndAllies.Length >= 7)
+            // A tester
+            // LANCE CAPACITE SPECIAL
+            if (unitsAndAllies.Length >= 6)
+            {
+                iaThinker.SpecialCapacity(1, true);
+            }
+            if (unitsAndAllies.Length == 10)
             {
                 iaThinker.SpecialCapacity(0, true);
-                // Rembourse XP
             }
             
             // Comporetement Applicatif
@@ -40,12 +47,12 @@ namespace IA.Event
                 index = pindex;
                 return index;
             }
-            
+
             if (iaThinker.Gold > 300)
             {
                 if (index == 0)
                 {
-                    if (!iaThinker.Turret())
+                    if (!iaThinker.Spawn(iaThinker.getRand(0, 3)))
                     {
                         setIndex(0);
                     }
@@ -62,17 +69,21 @@ namespace IA.Event
                     }
                     else
                     {
+                        setIndex(2);
+                    }
+                }
+                else if (index == 2)
+                {
+                    if (!iaThinker.UnlockNewUnit())
+                    {
+                        setIndex(2);
+                    }
+                    else
+                    {
                         setIndex(0);
                     }
                 }
             }
-            // foreach (KeyValuePair<UpgradeType, int> entry in iaThinker.UpgradeDict)
-            // {
-            //     if (entry.Value < 3)
-            //     {
-            //         iaThinker.Upgrade(entry.Key);
-            //     }
-            // }
         }
     }
 }

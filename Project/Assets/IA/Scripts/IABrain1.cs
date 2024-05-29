@@ -1,9 +1,12 @@
 using Common;
 using Supinfo.Project.Scripts;
+using UnityEngine;
+
 // UPGRADE 
 
 namespace IA.Event
 {
+    [CreateAssetMenu(menuName = "Brains/IABrain1")]
     public class IABrain1 : Brain
     {
         public override void Think(Thinker thinker)

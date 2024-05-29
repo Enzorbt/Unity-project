@@ -1,43 +1,36 @@
-// Attack STRATEGIE 
+// Defense STRATEGIE 
 
 // FINIR : 
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
-
 
 using Common;
 using UnityEngine;
 
 namespace IA.Event
 {
-    public class IABrain3 : Brain
+    [CreateAssetMenu(menuName = "Brains/IABrain2")]
+    public class IABrain2 : Brain
     {
         public override void Think(Thinker thinker)
         {
             if (thinker is not IAThinker iaThinker) return;
-            
+
             // DETECTION 
             GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
             
             // SPAWN UNIT 
             if (unitsAndAllies.Length != 0)
             {
-                iaThinker.Spawn(0);
-                iaThinker.Spawn(0);
+                iaThinker.Spawn(2);
                 iaThinker.Spawn(1);
-
             }
             
-            // A tester
             // LANCE CAPACITE SPECIAL
-            if (unitsAndAllies.Length >= 6)
+            if (unitsAndAllies.Length >= 5)
             {
-                iaThinker.SpecialCapacity(1, true);
+                iaThinker.SpecialCapacity(0, false);
             }
-            if (unitsAndAllies.Length == 10)
-            {
-                iaThinker.SpecialCapacity(0, true);
-            }
-            
+
             // Comporetement Applicatif
             var index = 0;
 
@@ -51,7 +44,7 @@ namespace IA.Event
             {
                 if (index == 0)
                 {
-                    if (!iaThinker.Spawn(iaThinker.getRand(0, 3)))
+                    if (!iaThinker.Turret())
                     {
                         setIndex(0);
                     }
