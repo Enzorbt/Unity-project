@@ -76,7 +76,7 @@ namespace IA.Event
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
                     {
                         _eventsFoundation.UseCapacity(capacityFireSo);
-                        if (buff = true)
+                        if (buff)
                         {
                             Xp += (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
                         }
@@ -87,7 +87,7 @@ namespace IA.Event
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
                     {
                         _eventsFoundation.UseCapacity(capacityFlashSo);
-                        if (buff = true)
+                        if (buff)
                         {
                             Xp += (experienceStatSo.ExperienceLevel[Age]*60)/100;
                         }
