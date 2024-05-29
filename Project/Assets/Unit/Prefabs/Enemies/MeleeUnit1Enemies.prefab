@@ -562,7 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1651531720413543367}
   onUnitDeathCoins: {fileID: 11400000, guid: 75b584ae7f81ee74da94ec80969c38e0, type: 2}
-  onUnitDeathXp: {fileID: 11400000, guid: e2ebdb48bc152294983e78fa2b44f1df, type: 2}
+  onUnitDeathXp: {fileID: 11400000, guid: 8c4cce962529bd644aaddb4403621165, type: 2}
 --- !u!114 &6359458530771199948
 MonoBehaviour:
   m_ObjectHideFlags: 0
