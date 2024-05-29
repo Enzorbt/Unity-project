@@ -1,4 +1,6 @@
+using System.Collections;
 using Common;
+using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
 using UnityEngine;
 
@@ -7,12 +9,14 @@ using UnityEngine;
 namespace IA.Event
 {
     [CreateAssetMenu(menuName = "Brains/IABrain1")]
-    public class IABrain1 : Brain
+    public class IABrain1 : BrainWithDelay
     {
-        public override void Think(Thinker thinker)
+        public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
-            if (thinker is not IAThinker iaThinker)return;
-            switch (iaThinker.getRand(0,5))
+            if (thinker is not IAThinker iaThinker)yield break;
+            var index = iaThinker.getRand(0, 5);
+            Debug.Log(index);
+            switch (index)
             {
                 case 0:
                     iaThinker.AgeUpgrade();
@@ -32,10 +36,11 @@ namespace IA.Event
                     iaThinker.Turret();
                     break;
                 case 5:
-                    // Régler le ploblème capacité
                     // IAThinker.Upgrade(UpgradeType);
                     break;
             }
+
+            yield return new WaitForSeconds(delayTime);
         }
     }
 }

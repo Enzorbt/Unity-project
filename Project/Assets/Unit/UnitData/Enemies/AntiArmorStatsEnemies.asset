@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d121ed7724f24539b910a69beea357ff, type: 3}
+  m_Name: AntiArmorStatsEnemies
+  m_EditorClassIdentifier: 
+  damage:
+    baseValue: 30
+    ageStatModifiers:
+    - value: 5
+      type: 0
+      order: 0
+    - value: 5
+      type: 0
+      order: 1
+    - value: 5
+      type: 0
+      order: 2
+    - value: 5
+      type: 0
+      order: 3
+    - value: 5
+      type: 0
+      order: 4
+    - value: 5
+      type: 0
+      order: 5
+    upgradeStatModifiers:
+    - value: 5
+      type: 0
+      order: 0
+    - value: 5
+      type: 0
+      order: 1
+    - value: 5
+      type: 0
+      order: 2
+  hitSpeed:
+    baseValue: 3
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  targetTag: 
+  range:
+    baseValue: 1
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  buildTime:
+    baseValue: 1.5
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  goldGiven:
+    baseValue: 70
+    ageStatModifiers:
+    - value: 10
+      type: 0
+      order: 0
+    - value: 10
+      type: 0
+      order: 1
+    - value: 10
+      type: 0
+      order: 2
+    - value: 10
+      type: 0
+      order: 3
+    - value: 10
+      type: 0
+      order: 4
+    - value: 10
+      type: 0
+      order: 5
+    upgradeStatModifiers:
+    - value: 10
+      type: 0
+      order: 0
+    - value: 20
+      type: 0
+      order: 1
+    - value: 30
+      type: 0
+      order: 2
+  experienceGiven:
+    baseValue: 320
+    ageStatModifiers:
+    - value: 15
+      type: 0
+      order: 0
+    - value: 15
+      type: 0
+      order: 1
+    - value: 15
+      type: 0
+      order: 2
+    - value: 15
+      type: 0
+      order: 3
+    - value: 15
+      type: 0
+      order: 4
+    - value: 15
+      type: 0
+      order: 5
+    upgradeStatModifiers: []
+  unitType: {fileID: 11400000, guid: fa4c53ade78d6d54aac1ac2069307556, type: 2}
+  maxHealth:
+    baseValue: 175
+    ageStatModifiers:
+    - value: 75
+      type: 0
+      order: 0
+    - value: 75
+      type: 0
+      order: 1
+    - value: 75
+      type: 0
+      order: 2
+    - value: 75
+      type: 0
+      order: 3
+    - value: 75
+      type: 0
+      order: 4
+    - value: 75
+      type: 0
+      order: 5
+    upgradeStatModifiers: []
+  walkSpeed:
+    baseValue: 3
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    - value: 1
+      type: 0
+      order: 1
+    - value: 0
+      type: 0
+      order: 2
+    - value: 1
+      type: 0
+      order: 3
+    - value: 0
+      type: 0
+      order: 4
+    - value: 1
+      type: 0
+      order: 5
+    upgradeStatModifiers: []
+  prefabs:
+  - {fileID: 3205478704301574675, guid: 5534d408c1fa0104bb9cf91580c17468, type: 3}
+  price:
+    baseValue: 200
+    ageStatModifiers:
+    - value: 10
+      type: 0
+      order: 0
+    - value: 10
+      type: 0
+      order: 1
+    - value: 10
+      type: 0
+      order: 2
+    - value: 10
+      type: 0
+      order: 3
+    - value: 10
+      type: 0
+      order: 4
+    - value: 10
+      type: 0
+      order: 5
+    upgradeStatModifiers: []
+  sprite:
+  - {fileID: 21300000, guid: c0c2e9931dbaedf4eb8701d6ed9fab48, type: 3}
+  - {fileID: 21300000, guid: 70c986f306824514191d65974746cd6f, type: 3}
+  - {fileID: 21300000, guid: 21b079404c009fd499841a5a6321eb4d, type: 3}
+  - {fileID: 21300000, guid: 333a72752ab9f154393117f544cb1e1a, type: 3}
+  - {fileID: 21300000, guid: 0b8065f8b4172724c8e027939464fd03, type: 3}
+  - {fileID: 21300000, guid: afccf00126925b94bb719e69ad3f6446, type: 3}
+  - {fileID: 21300000, guid: ada6cf5b67537c542a16cfec760c6182, type: 3}

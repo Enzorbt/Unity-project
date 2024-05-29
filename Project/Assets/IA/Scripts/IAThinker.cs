@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Common;
 using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
+using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using Supinfo.Project.Scripts.ScriptableObjects.Experience;
@@ -12,7 +13,7 @@ using Random = System.Random;
 
 namespace IA.Event
 {
-    public class IAThinker : Thinker
+    public class IAThinker : ThinkerWithDelay
     {
         protected internal  float Gold {get; set;}
         protected internal  float Xp {get; set;}
@@ -46,6 +47,8 @@ namespace IA.Event
 
         private void Awake()
         {
+            Gold = 2500;
+            Xp = 1000;
             _eventsFoundation = GetComponent<EventsFoundation>();
         }
 
@@ -126,7 +129,7 @@ namespace IA.Event
                     return false;
                 case 2 : 
                     // SPAWN ARMOR
-                    if (Gold >= armorStatSo.Price)
+                    if (Gold >= armorStatSo.Price && IsUnlock)
                     {
                         _eventsFoundation.SpawnUnit(armorStatSo);
                         Gold -= armorStatSo.Price;
@@ -151,9 +154,10 @@ namespace IA.Event
         public  bool UnlockNewUnit()
         {
             // AJOUTER VERIF ARGENT + LOGIQUE 
-            if (!IsUnlock)
+            if (!IsUnlock && Gold >= 100)
             {
                 IsUnlock = true;
+                Gold -= 100;
             }
 
             return IsUnlock;
@@ -200,7 +204,7 @@ namespace IA.Event
                 Gold -= meleeStatSo.Price;
                 return true;
             }
-            if (playerUnit.Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price) // MELEE
+            if (playerUnit.Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price && IsUnlock) // MELEE
             {
                 _eventsFoundation.SpawnUnit(armorStatSo);
                 Gold -= armorStatSo.Price;
@@ -211,7 +215,7 @@ namespace IA.Event
             if (playerUnit == null)
             {
                 float goldTank = armorStatSo.Price + (rangeStatSo.Price)*2;
-                if (Gold >= goldTank)
+                if (Gold >= goldTank && IsUnlock)
                 {
                     _eventsFoundation.SpawnUnit(armorStatSo);
                     _eventsFoundation.SpawnUnit(rangeStatSo);
@@ -223,10 +227,22 @@ namespace IA.Event
 
             return false;
         }
-        public void onAlliesSpawn(Component sender, object data)
+        public void OnAlliesSpawn(Component sender, object data)
         {
             if(data is not UnitStatSo unitStatSo) return;
             PlayerUnit = unitStatSo;
+        }
+
+        public void OnRecieveGold(Component sender, object data)
+        {
+            if(data is not float gold) return;
+            Gold += gold;
+        }
+        
+        public void OnRecieveXp(Component sender, object data)
+        {
+            if(data is not float xp) return;
+            Xp += xp;
         }
     }
 }

@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using Common;
 using ScriptableObjects.Unit;
+using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
 using UnityEngine;
 
@@ -13,11 +15,11 @@ using UnityEngine;
 namespace IA.Event
 {
     [CreateAssetMenu(menuName = "Brains/IABrain4")]
-    public class IABrain4 : Brain
+    public class IABrain4 : BrainWithDelay
     {
-        public override void Think(Thinker thinker)
+        public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
-            if (thinker is not IAThinker iaThinker)return;
+            if (thinker is not IAThinker iaThinker) yield break;
 
             // DETECTION 
             GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
@@ -74,6 +76,7 @@ namespace IA.Event
             //         iaThinker.Upgrade(entry.Key);
             //     }
             // }
+            yield return new WaitForSeconds(delayTime);
         }
     }
 }

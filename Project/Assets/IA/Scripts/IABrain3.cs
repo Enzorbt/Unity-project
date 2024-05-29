@@ -4,18 +4,20 @@
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
 
 
-using Common;
+    using System.Collections;
+    using Common;
+using Supinfo.Project.Common;
 using UnityEngine;
 
 namespace IA.Event
 {
     [CreateAssetMenu(menuName = "Brains/IABrain3")]
-    public class IABrain3 : Brain
+    public class IABrain3 : BrainWithDelay
     {
-        public override void Think(Thinker thinker)
+        public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
-            if (thinker is not IAThinker iaThinker) return;
-            
+            if (thinker is not IAThinker iaThinker)yield break;
+            iaThinker.UnlockNewUnit();
             // DETECTION 
             GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
             
@@ -69,21 +71,11 @@ namespace IA.Event
                     }
                     else
                     {
-                        setIndex(2);
-                    }
-                }
-                else if (index == 2)
-                {
-                    if (!iaThinker.UnlockNewUnit())
-                    {
-                        setIndex(2);
-                    }
-                    else
-                    {
                         setIndex(0);
                     }
                 }
             }
+            yield return new WaitForSeconds(delayTime);
         }
     }
 }
