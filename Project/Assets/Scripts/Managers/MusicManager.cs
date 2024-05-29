@@ -40,7 +40,7 @@ namespace Supinfo.Project.Scripts.Managers
 
         public void UpgradeAge(Component sender, object data)
         {
-            currentAge++;
+            musicListSo.UpgradeAge();
             PlayMusicForCurrentAge();
         }
 
@@ -52,7 +52,7 @@ namespace Supinfo.Project.Scripts.Managers
                     audioSourceMusic.clip = musicListSo.MenuMusic;
                     break;
                 case SceneName.game:
-                    audioSourceMusic.clip = musicListSo.AgeMusics;
+                    audioSourceMusic.clip = musicListSo.GetCurrentAgeMusic();
                     break;
             }
             audioSourceMusic.Play();
@@ -106,7 +106,6 @@ namespace Supinfo.Project.Scripts.Managers
                 {
                     audioSourceMusic.clip = easterEggMusic;
                 }
-
                 isEasterEggMusicPlaying = !isEasterEggMusicPlaying;
                 audioSourceMusic.Play();
             }
