@@ -7,7 +7,7 @@ using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Capacity.Events
+namespace Supinfo.Project.Capacity.Scripts
 {
     public class SpecialCapacityButtonUI : MonoBehaviour
     {

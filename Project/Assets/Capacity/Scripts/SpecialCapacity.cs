@@ -1,11 +1,11 @@
 using System.Collections;
-using Interfaces.Capacity;
+using Supinfo.Project.Interfaces.Capacity;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Capacity.Scripts
+namespace Supinfo.Project.Capacity.Scripts
 {
     public class SpecialCapacity : MonoBehaviour, ICapacity
     {
