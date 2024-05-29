@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Scripts.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,8 @@ namespace Supinfo.Project.UI.Scripts
         private List<string> ages;
             
         private int currentAgeIndex = 0;
+
+        private bool _canEvolve;
         
         private void Awake()
         {
@@ -41,12 +44,14 @@ namespace Supinfo.Project.UI.Scripts
         public void OnCanEvolve(Component sender, object data)
         {
             if (data is not bool value) return;
-            EnableButton(value);
-            
+            _canEvolve = value;
+            EnableButton(_canEvolve);
         }
+        
         public void OnClick()
         {
             onAgeUpgrade.Raise(this, 2);
+            
             EnableButton(false);
 
             // Incrémenter l'index de l'âge actuel et vérifier les limites
@@ -57,7 +62,7 @@ namespace Supinfo.Project.UI.Scripts
             }
         }
 
-        public void EnableButton(bool value)
+        private void EnableButton(bool value)
         {
             var button = transform.GetComponentInChildren<UnityEngine.UI.Button>();
             if (button is null) return;
@@ -72,6 +77,13 @@ namespace Supinfo.Project.UI.Scripts
             {
                 ageText.text = ages[currentAgeIndex];
             }
+        }
+        
+        public void OnGameSpeedChange(Component sender, object data)
+        {
+            if (data is not GameSpeed gameSpeed) return;
+            
+            EnableButton(gameSpeed == GameSpeed.Stop ? false : _canEvolve);
         }
     }
 }

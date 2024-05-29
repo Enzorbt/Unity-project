@@ -1,0 +1,25 @@
+using ScriptableObjects.Turret;
+using ScriptableObjects.Unit;
+using Supinfo.Project.Scripts;
+using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
+
+namespace Supinfo.Project.Interfaces.IA
+{
+    public interface IEventFoundation
+    {
+        // SPAWN UNIT 
+        public void SpawnUnit(UnitStatSo unitStatSo);
+        
+        // GET AMELIORATION 
+        public void Upgrade(UpgradeType upgradeType);
+        
+        // BUY TURRET EMPLACEMENT 
+        public void SpawnTurret(TurretStatSo turretStatSo);
+        
+        // USE CAPACITY 
+        public void UseCapacity(CapacitySo capacitySo);
+        
+        // UPGRADE AGE 
+        public void UpgradeAge();
+    }
+}

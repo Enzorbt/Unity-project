@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Common;
 using ScriptableObjects.Turret;
 using UnityEngine;
@@ -18,9 +19,16 @@ namespace Supinfo.Project.Turret.Scripts
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
-        public void onAgeUpgrade(Component sender, object data)
+        public void OnAgeUpgrade(Component sender, object data)
         {
             // update the sprite (stats are always drone from the Turret Stats So)
+            StartCoroutine(ChangeSprite());
+            
+        }
+
+        private IEnumerator ChangeSprite()
+        {
+            yield return new WaitForSeconds(1f);
             _spriteRenderer.sprite = TurretStatSo.Sprite;
         }
     }

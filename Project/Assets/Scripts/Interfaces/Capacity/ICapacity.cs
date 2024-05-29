@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Interfaces.Capacity
+namespace Supinfo.Project.Interfaces.Capacity
 {
     public interface ICapacity
     {

@@ -12,26 +12,35 @@ namespace Supinfo.Project.Scripts.Managers
 
     public class MusicManager : MonoBehaviour
     {
-        [FormerlySerializedAs("musicList")] public MusicListSo musicListSo;
-        private AudioSource _audioSource;
+        [FormerlySerializedAs("musicList")] 
+        public MusicListSo musicListSo;
+
+        [SerializeField]
+        private AudioSource audioSourceMusic;
+
+        [SerializeField]
+        private AudioSource audioSourceSound;
+
         private int currentAge = 0;
+        private AudioClip originalMainMenuMusic;
+        private bool isEasterEggMusicPlaying = false;
 
         [SerializeField]
         private SceneName sceneName;
 
         private void Awake()
         {
-            _audioSource = GetComponentInChildren<AudioSource>();
+            originalMainMenuMusic = musicListSo.MenuMusic;
             PlayMusicForCurrentAge();
-            _audioSource.volume = PlayerPrefs.GetFloat("volume");
-            _audioSource.mute = PlayerPrefs.GetInt("isMuted") > 0;
-            _audioSource.volume = PlayerPrefs.GetFloat("soundVolume");
-            _audioSource.mute = PlayerPrefs.GetInt("isSoundMuted") > 0;
+            audioSourceMusic.volume = PlayerPrefs.GetFloat("volume");
+            audioSourceMusic.mute = PlayerPrefs.GetInt("isMuted") > 0;
+            audioSourceSound.volume = PlayerPrefs.GetFloat("soundVolume");
+            audioSourceSound.mute = PlayerPrefs.GetInt("isSoundMuted") > 0;
         }
 
         public void UpgradeAge(Component sender, object data)
         {
-            currentAge++;
+            musicListSo.UpgradeAge();
             PlayMusicForCurrentAge();
         }
 
@@ -40,41 +49,66 @@ namespace Supinfo.Project.Scripts.Managers
             switch (sceneName)
             {
                 case SceneName.mainMenu:
-                    _audioSource.clip = musicListSo.MenuMusic;
+                    audioSourceMusic.clip = musicListSo.MenuMusic;
                     break;
                 case SceneName.game:
-                    _audioSource.clip = musicListSo.AgeMusics;
+                    audioSourceMusic.clip = musicListSo.GetCurrentAgeMusic();
                     break;
             }
-            _audioSource.Play();
+            audioSourceMusic.Play();
         }
-        
+
         public void onMusicVolumeChange(Component sender, object data)
         {
             if (data is not float volume) return;
-            _audioSource.volume = volume;
+            audioSourceMusic.volume = volume;
             PlayerPrefs.SetFloat("volume", volume);
         }
 
         public void onMusicVolumeMute(Component sender, object data)
         {
             if (data is not bool isMuted) return;
-            _audioSource.mute = isMuted;
+            audioSourceMusic.mute = isMuted;
             PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
         }
-        
+
         public void onSoundVolumeChange(Component sender, object data)
         {
             if (data is not float soundVolume) return;
-            _audioSource.volume = soundVolume;
+            audioSourceSound.volume = soundVolume;
             PlayerPrefs.SetFloat("soundVolume", soundVolume);
         }
 
         public void onSoundVolumeMute(Component sender, object data)
         {
             if (data is not bool isSoundMuted) return;
-            _audioSource.mute = isSoundMuted;
+            audioSourceSound.mute = isSoundMuted;
             PlayerPrefs.SetInt("isSoundMuted", isSoundMuted ? 1 : 0);
+        }
+
+        public void onPlayButtonClickSound(Component sender, object data)
+        {
+            if (data is AudioClip buttonClip && audioSourceSound != null)
+            {
+                audioSourceSound.PlayOneShot(buttonClip);
+            }
+        }
+        
+        public void ToggleMainMenuMusic(AudioClip easterEggMusic)
+        {
+            if (sceneName == SceneName.mainMenu && audioSourceMusic != null)
+            {
+                if (isEasterEggMusicPlaying)
+                {
+                    audioSourceMusic.clip = originalMainMenuMusic;
+                }
+                else
+                {
+                    audioSourceMusic.clip = easterEggMusic;
+                }
+                isEasterEggMusicPlaying = !isEasterEggMusicPlaying;
+                audioSourceMusic.Play();
+            }
         }
     }
 }

@@ -1,11 +1,13 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Scripts.Managers;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Capacity.Events
+namespace Supinfo.Project.Capacity.Scripts
 {
     public class SpecialCapacityButtonUI : MonoBehaviour
     {
@@ -26,13 +28,17 @@ namespace Capacity.Events
         
         [Range(0,1)]
         [SerializeField] private float cost;
-
+        
         private Image _image;
+
+        private float _xpRatio;
 
         private void Awake()
         {
             SetActiveButton(false);
-            _image = GetComponentInChildren<Image>();
+            _image = GetComponentsInChildren<Image>()[1];
+            if (_image is null) return;
+            _image.sprite = _capacitySo.Sprite;
         }
 
 
@@ -49,6 +55,8 @@ namespace Capacity.Events
         public void OnXpRatioChange(Component sender, object data)
         {
             if (data is not float xpRatio) return;
+            
+            _xpRatio = xpRatio;
             
             // activate the button
             SetActiveButton(xpRatio >= cost);
@@ -69,7 +77,21 @@ namespace Capacity.Events
 
         public void OnAgeUpgrade(Component sender, object data)
         {
+            StartCoroutine(ChangeSprite());
+        }
+
+        private IEnumerator ChangeSprite()
+        {
+            yield return new WaitForSeconds(1f);
+            if (_image is null) yield break;
             _image.sprite = _capacitySo.Sprite;
+        }
+
+        public void OnGameSpeedChange(Component sender, object data)
+        {
+            if(data is not GameSpeed gameSpeed) return;
+            
+            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _xpRatio >= cost);
         }
     }
 }

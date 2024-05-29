@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29750cd4f5fe4cfaa790eeaf3f6fb82b, type: 3}
+  m_Name: Capacity1Allies
+  m_EditorClassIdentifier: 
+  damage:
+    baseValue: 100
+    ageStatModifiers:
+    - value: 100
+      type: 0
+      order: 0
+    - value: 100
+      type: 0
+      order: 1
+    - value: 100
+      type: 0
+      order: 2
+    - value: 100
+      type: 0
+      order: 3
+    - value: 100
+      type: 0
+      order: 4
+    - value: 100
+      type: 0
+      order: 5
+    upgradeStatModifiers: []
+  _actionTime:
+    baseValue: 1
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  _hitProbability:
+    baseValue: 0.5
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  _cooldown:
+    baseValue: 2
+    ageStatModifiers: []
+    upgradeStatModifiers: []
+  _tag: Enemies
+  _sprites:
+  - {fileID: 21300000, guid: 78c444bc604a61849aa827398065dbd1, type: 3}
+  - {fileID: 21300000, guid: 7c6b7b30e8486d942bfd66d9014ec3d9, type: 3}
+  - {fileID: 21300000, guid: ec957d97e8bf73c4880e8f20531284c2, type: 3}
+  - {fileID: 21300000, guid: c84e6e8e35fbe20438aae5bbeb7904f6, type: 3}
+  - {fileID: 21300000, guid: 2063f5894cd2b1f409369efaa9f8af20, type: 3}
+  - {fileID: 21300000, guid: 457140bcfcfa9134298d19aac3a5d864, type: 3}
+  - {fileID: 21300000, guid: b02007efc76268346823ee67f2203176, type: 3}
+  _prefab: {fileID: 2394929925109827313, guid: c611627dbf460b244bf73cb07c5c0464, type: 3}
+  capabilityType: 0
