@@ -27,7 +27,7 @@ namespace IA.Event
             
             // SPAWN UNIT 
             iaThinker.UnlockNewUnit();
-            iaThinker.SpawnDifficult(iaThinker.PlayerUnit);
+            iaThinker.SpawnDifficult();
             
             // CAPACITE
             if (unitsAndAllies.Length >= 7)

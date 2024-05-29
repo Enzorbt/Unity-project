@@ -18,7 +18,7 @@ namespace IA.Event
         protected internal  float Gold {get; set;}
         protected internal  float Xp {get; set;}
         
-        public UnitStatSo PlayerUnit { get; set; }
+        public Queue<UnitStatSo> PlayerUnits { get; set; }
         protected  int Age {get; set;}
         protected  int TurretNumber {get; set;}
         protected  bool IsUnlock {get; set;}
@@ -183,36 +183,40 @@ namespace IA.Event
         }
         
         // SPAWN FOR DIFFICULT 
-        public bool SpawnDifficult(UnitStatSo playerUnit)
+        public bool SpawnDifficult()
         {
             // COUNTER (Unité forte contre celle que le joeur pose)
-            if (playerUnit.Type == antiArmorStatSo.Type.StrongAgainst && Gold >= antiArmorStatSo.Price) // ARMOR
+            if (PlayerUnits.Peek().Type == antiArmorStatSo.Type.StrongAgainst && Gold >= antiArmorStatSo.Price) // ARMOR
             {
                 _eventsFoundation.SpawnUnit(antiArmorStatSo);
+                PlayerUnits.Dequeue();
                 Gold -= antiArmorStatSo.Price;
                 return true;
             }
-            if (playerUnit.Type == rangeStatSo.Type.StrongAgainst && Gold >= rangeStatSo.Price) // ANTI ARMOR
+            if (PlayerUnits.Peek().Type == rangeStatSo.Type.StrongAgainst && Gold >= rangeStatSo.Price) // ANTI ARMOR
             {
                 _eventsFoundation.SpawnUnit(rangeStatSo);
+                PlayerUnits.Dequeue();
                 Gold -= rangeStatSo.Price;
                 return true;
             }
-            if (playerUnit.Type == meleeStatSo.Type.StrongAgainst && Gold >= meleeStatSo.Price) // RANGE
+            if (PlayerUnits.Peek().Type == meleeStatSo.Type.StrongAgainst && Gold >= meleeStatSo.Price) // RANGE
             {
                 _eventsFoundation.SpawnUnit(meleeStatSo);
+                PlayerUnits.Dequeue();
                 Gold -= meleeStatSo.Price;
                 return true;
             }
-            if (playerUnit.Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price && IsUnlock) // MELEE
+            if (PlayerUnits.Peek().Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price && IsUnlock) // MELEE
             {
                 _eventsFoundation.SpawnUnit(armorStatSo);
+                PlayerUnits.Dequeue();
                 Gold -= armorStatSo.Price;
                 return true;
             }
             
             // SI LE JOUER NE PLACE RIEN TANK (ARMOR + 2 RANGE)
-            if (playerUnit == null)
+            if (!PlayerUnits.Peek())
             {
                 float goldTank = armorStatSo.Price + (rangeStatSo.Price)*2;
                 if (Gold >= goldTank && IsUnlock)
@@ -230,7 +234,7 @@ namespace IA.Event
         public void OnAlliesSpawn(Component sender, object data)
         {
             if(data is not UnitStatSo unitStatSo) return;
-            PlayerUnit = unitStatSo;
+            PlayerUnits.Enqueue(unitStatSo);
         }
 
         public void OnRecieveGold(Component sender, object data)
