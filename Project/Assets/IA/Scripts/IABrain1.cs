@@ -39,7 +39,6 @@ namespace IA.Event
                     // IAThinker.Upgrade(UpgradeType);
                     break;
             }
-
             yield return new WaitForSeconds(delayTime);
         }
     }
