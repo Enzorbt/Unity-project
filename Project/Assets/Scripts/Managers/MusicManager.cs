@@ -14,20 +14,23 @@ namespace Supinfo.Project.Scripts.Managers
     {
         [FormerlySerializedAs("musicList")] 
         public MusicListSo musicListSo;
-        
+
         [SerializeField]
         private AudioSource audioSourceMusic;
-        
+
         [SerializeField]
         private AudioSource audioSourceSound;
 
         private int currentAge = 0;
+        private AudioClip originalMainMenuMusic;
+        private bool isEasterEggMusicPlaying = false;
 
         [SerializeField]
         private SceneName sceneName;
 
         private void Awake()
         {
+            originalMainMenuMusic = musicListSo.MenuMusic;
             PlayMusicForCurrentAge();
             audioSourceMusic.volume = PlayerPrefs.GetFloat("volume");
             audioSourceMusic.mute = PlayerPrefs.GetInt("isMuted") > 0;
@@ -37,7 +40,7 @@ namespace Supinfo.Project.Scripts.Managers
 
         public void UpgradeAge(Component sender, object data)
         {
-            currentAge++;
+            musicListSo.UpgradeAge();
             PlayMusicForCurrentAge();
         }
 
@@ -49,18 +52,10 @@ namespace Supinfo.Project.Scripts.Managers
                     audioSourceMusic.clip = musicListSo.MenuMusic;
                     break;
                 case SceneName.game:
-                    audioSourceMusic.clip = musicListSo.AgeMusics;
+                    audioSourceMusic.clip = musicListSo.GetCurrentAgeMusic();
                     break;
             }
             audioSourceMusic.Play();
-        }
-        
-        public void onPlayButtonClickSound(Component sender, object data)
-        {
-            if (data is AudioClip buttonClip && audioSourceSound != null)
-            {
-                audioSourceSound.PlayOneShot(buttonClip);
-            }
         }
 
         public void onMusicVolumeChange(Component sender, object data)
@@ -76,7 +71,7 @@ namespace Supinfo.Project.Scripts.Managers
             audioSourceMusic.mute = isMuted;
             PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
         }
-        
+
         public void onSoundVolumeChange(Component sender, object data)
         {
             if (data is not float soundVolume) return;
@@ -89,6 +84,31 @@ namespace Supinfo.Project.Scripts.Managers
             if (data is not bool isSoundMuted) return;
             audioSourceSound.mute = isSoundMuted;
             PlayerPrefs.SetInt("isSoundMuted", isSoundMuted ? 1 : 0);
+        }
+
+        public void onPlayButtonClickSound(Component sender, object data)
+        {
+            if (data is AudioClip buttonClip && audioSourceSound != null)
+            {
+                audioSourceSound.PlayOneShot(buttonClip);
+            }
+        }
+        
+        public void ToggleMainMenuMusic(AudioClip easterEggMusic)
+        {
+            if (sceneName == SceneName.mainMenu && audioSourceMusic != null)
+            {
+                if (isEasterEggMusicPlaying)
+                {
+                    audioSourceMusic.clip = originalMainMenuMusic;
+                }
+                else
+                {
+                    audioSourceMusic.clip = easterEggMusic;
+                }
+                isEasterEggMusicPlaying = !isEasterEggMusicPlaying;
+                audioSourceMusic.Play();
+            }
         }
     }
 }

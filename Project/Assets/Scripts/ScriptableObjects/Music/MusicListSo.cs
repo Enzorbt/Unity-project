@@ -16,9 +16,21 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Music
 
         private int currentAge;
         
-        public void UpgradeAge(Component sender, object data)
+        public AudioClip GetCurrentAgeMusic()
         {
-            currentAge++;
+            if (currentAge >= 0 && currentAge < ageMusics.Length)
+            {
+                return ageMusics[currentAge];
+            }
+            return null;
+        }
+
+        public void UpgradeAge()
+        {
+            if (currentAge < ageMusics.Length - 1)
+            {
+                currentAge++;
+            }
         }
     }
 }
