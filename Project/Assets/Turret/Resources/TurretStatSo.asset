@@ -14,20 +14,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs: {fileID: 8346566440712086298, guid: 54abae10a0c6cd94b822adb08c6e6623, type: 3}
   price:
-    baseValue: 1000
+    baseValue: 2000
     ageStatModifiers: []
     upgradeStatModifiers: []
   damage:
     baseValue: 10
-    ageStatModifiers: []
+    ageStatModifiers:
+    - value: 10
+      type: 0
+      order: 0
+    - value: 10
+      type: 0
+      order: 1
+    - value: 10
+      type: 0
+      order: 2
+    - value: 10
+      type: 0
+      order: 3
+    - value: 10
+      type: 0
+      order: 4
+    - value: 10
+      type: 0
+      order: 5
     upgradeStatModifiers: []
   hitSpeed:
     baseValue: 1
-    ageStatModifiers: []
+    ageStatModifiers:
+    - value: 0
+      type: 0
+      order: 0
+    - value: 1
+      type: 0
+      order: 1
+    - value: 0
+      type: 0
+      order: 2
+    - value: 1
+      type: 0
+      order: 3
+    - value: 0
+      type: 0
+      order: 4
+    - value: 1
+      type: 0
+      order: 5
     upgradeStatModifiers: []
   range:
-    baseValue: 10
-    ageStatModifiers: []
+    baseValue: 5
+    ageStatModifiers:
+    - value: 1
+      type: 0
+      order: 0
+    - value: 1
+      type: 0
+      order: 1
+    - value: 1
+      type: 0
+      order: 2
+    - value: 1
+      type: 0
+      order: 3
+    - value: 1
+      type: 0
+      order: 4
+    - value: 1
+      type: 0
+      order: 5
     upgradeStatModifiers: []
   _sprites:
   - {fileID: 21300000, guid: 796f8d0b209d38e40b41740be499630c, type: 3}

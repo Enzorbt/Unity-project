@@ -14,7 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage:
     baseValue: 100
-    ageStatModifiers: []
+    ageStatModifiers:
+    - value: 100
+      type: 0
+      order: 0
+    - value: 100
+      type: 0
+      order: 1
+    - value: 100
+      type: 0
+      order: 2
+    - value: 100
+      type: 0
+      order: 3
+    - value: 100
+      type: 0
+      order: 4
+    - value: 100
+      type: 0
+      order: 5
     upgradeStatModifiers: []
   _actionTime:
     baseValue: 1
@@ -25,7 +43,7 @@ MonoBehaviour:
     ageStatModifiers: []
     upgradeStatModifiers: []
   _cooldown:
-    baseValue: 1
+    baseValue: 2
     ageStatModifiers: []
     upgradeStatModifiers: []
   _tag: Enemies
