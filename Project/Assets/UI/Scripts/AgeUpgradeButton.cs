@@ -47,9 +47,11 @@ namespace Supinfo.Project.UI.Scripts
             _canEvolve = value;
             EnableButton(_canEvolve);
         }
+        
         public void OnClick()
         {
             onAgeUpgrade.Raise(this, 2);
+            
             EnableButton(false);
 
             // Incrémenter l'index de l'âge actuel et vérifier les limites
