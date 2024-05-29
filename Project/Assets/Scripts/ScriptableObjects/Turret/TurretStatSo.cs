@@ -24,20 +24,16 @@ namespace ScriptableObjects.Turret
         /// <summary>
         /// Prefab for the unit
         /// </summary>
-        [Header("Prefabs - needs at least 1, max 7")] 
-        [SerializeField] private GameObject[] prefabs;
-
-        public GameObject GetPrefab ()
-        {
-            return prefabs[_currentAge];
-        }
+        [Header("Prefab")] 
+        [SerializeField] private GameObject prefabs;
+        public GameObject Prefab => prefabs;
         
         /// <summary>
         /// Purchase price of the unit.
         /// </summary>
         [Header("Price")] 
         [SerializeField] private Stat price;
-        public float Price => price.GetValue(_currentAge);
+        public float Price => price.GetValue();
 
         /// <summary>
         /// Damage dealt by the unit.
@@ -51,13 +47,7 @@ namespace ScriptableObjects.Turret
         /// </summary>
         [Header("Hit Speed (Attack cooldown)")]
         [SerializeField] protected Stat hitSpeed;
-        public float HitSpeed => hitSpeed.GetValue(_currentAge, 0);
-        
-        /// <summary>
-        /// The target type of the unit
-        /// </summary>
-        [SerializeField] private string targetTag;
-        public string TargetTag => targetTag; 
+        public float HitSpeed => hitSpeed.GetValue(_currentAge);
         
         /// <summary>
         /// Attack range of the unit.

@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace Supinfo.Project.Scripts.ScriptableObjects.Capacity
 {
+    public enum CapabilityType
+    {
+        Meteor,
+        Lightning
+    }
+    
     [CreateAssetMenu(menuName = "ScriptableObject/Capacity", order = 0)]
     public class CapacitySo : ScriptableObject, IAgeUpgradable
     {
@@ -32,5 +38,13 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Capacity
         {
             _currentAge++;
         }
+        
+        [Header("Prefab")] [SerializeField]
+        private GameObject _prefab;
+        public GameObject Prefab => _prefab;
+        
+        [Header("Capacity type")] [SerializeField]
+        private CapabilityType capabilityType;
+        public CapabilityType CapabilityType => capabilityType;
     }
 }

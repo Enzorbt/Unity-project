@@ -1,38 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using ScriptableObjects.Turret;
 
 public class SpawnerTurret : MonoBehaviour
 {
-    public GameObject turretPrefab;
     public GameObject spawnPosition;
     private int _spawnNumber;
     private int _spawnLimit = 4;
     private List<GameObject> _spawnedTurrets = new List<GameObject>();
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (CanSpawn())
-            { 
-                SpawnTurret();
-            }
-        }
-    }
     
     private bool CanSpawn()
     {
         return _spawnNumber < _spawnLimit;
     }
 
-    void SpawnTurret()
+    public void SpawnTurret(Component sender, object data)
     {
-        if (turretPrefab != null)
+        if (data is not TurretStatSo turretStatSo) return;
+        if (!CanSpawn()) return;
+        
+        if (turretStatSo.Prefab != null)
         {
-            float yPosition = spawnPosition.transform.position.y + _spawnNumber * 0.9f; 
-            Vector3 newSpawnPosition = new Vector3(spawnPosition.transform.position.x, yPosition, spawnPosition.transform.position.z);
-            GameObject spawnedTurret = Instantiate(turretPrefab, newSpawnPosition, Quaternion.identity);
-            string[] tags = transform.tag.Split(',');
+            var yPosition = spawnPosition.transform.position.y + _spawnNumber * 0.9f; 
+            var newSpawnPosition = new Vector3(spawnPosition.transform.position.x, yPosition, _spawnNumber);
+            var spawnedTurret = Instantiate(turretStatSo.Prefab, newSpawnPosition, Quaternion.identity);
+            var tags = transform.tag.Split(',');
             spawnedTurret.tag = "Turret," + tags[1];
             _spawnedTurrets.Add(spawnedTurret);
             _spawnNumber++;
