@@ -16,9 +16,6 @@ namespace Supinfo.Project.Interfaces.IA
         // BUY TURRET EMPLACEMENT 
         public void SpawnTurret(TurretStatSo turretStatSo);
         
-        // BUY TURRET 
-        public void BuyTurret();
-        
         // USE CAPACITY 
         public void UseCapacity(CapacitySo capacitySo);
         

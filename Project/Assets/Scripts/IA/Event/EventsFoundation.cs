@@ -21,7 +21,6 @@ namespace IA.Event
         [SerializeField] private GameEvent onAgeUpgrade;
 
         
-// Voir les autres action  
         public void SpawnUnit(UnitStatSo unitStatSo)
         {
             onSpawnUnit.Raise(this, unitStatSo);
@@ -49,11 +48,6 @@ namespace IA.Event
         public void SpawnTurret(TurretStatSo turretStatSo)
         {
             onSpawnTurret.Raise(this, turretStatSo);
-            throw new System.NotImplementedException();
-        }
-
-        public void BuyTurret()
-        {
             throw new System.NotImplementedException();
         }
     }
