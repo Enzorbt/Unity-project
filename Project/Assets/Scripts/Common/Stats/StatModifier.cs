@@ -12,9 +12,9 @@ namespace Supinfo.Project.Scripts.Common.Stats
     [Serializable]
     public enum StatModType
     {
-        Flat = 100,
-        PercentAdd = 200,
-        PercentMult = 300,
+        Flat,
+        PercentAdd,
+        PercentMult,
     }
     
     /// <summary>
@@ -28,47 +28,25 @@ namespace Supinfo.Project.Scripts.Common.Stats
         /// The value of the stat modification.
         /// </summary>
         [SerializeField] private int value;
-        public float Value { get; }
+
+        public float Value => value;
 
         /// <summary>
         /// The type of stat modification, defined in StatModType.
         /// </summary>
         [SerializeField] private StatModType type;
-        public StatModType Type { get; }
+        public StatModType Type => type;
         
         /// <summary>
         /// The order in which this modifier is applied among other modifiers.
         /// </summary>
         [SerializeField] private int order;
-        public int Order { get; }
+        public int Order => order;
 
         /// <summary>
         /// The source of this modifier, can be used to identify where the modification comes from.
         /// </summary>
         private object source;
         public object Source { get; }
-        
-        /// <summary>
-        /// Constructor for creating a StatModifier with specified value, type, order, and source.
-        /// </summary>
-        /// <param name="value">The modification value.</param>
-        /// <param name="type">The type of modification.</param>
-        /// <param name="order">The order of application.</param>
-        /// <param name="source">The source of the modifier (optional).</param>
-        public StatModifier(float value, StatModType type, int order, object source = null)
-        {
-            Value = value;
-            Type = type;
-            Order = order;
-            Source = source;
-        }
-        
-        /// <summary>
-        /// Constructor for creating a StatModifier with specified value, type, and source, using the type's enum value as the order.
-        /// </summary>
-        /// <param name="value">The modification value.</param>
-        /// <param name="type">The type of modification.</param>
-        /// <param name="source">The source of the modifier.</param>
-        public StatModifier(float value, StatModType type, object source) : this(value, type, (int)type, source) { }
     }
 }

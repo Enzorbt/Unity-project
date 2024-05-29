@@ -38,11 +38,10 @@ namespace Capacity.Scripts
                     var posX = leftMostPoint.transform.position.x + Random.value * length;
                     var pos = new Vector3(posX, rightMostPoint.transform.position.y);
                     var instantiatedObject = Instantiate(capacitySo.Prefab, pos, Quaternion.identity);
-                    
-                    if (instantiatedObject.TryGetComponent(out SpriteRenderer spriteRenderer))
-                    {
-                        spriteRenderer.sprite = capacitySo.Sprite;
-                    }
+
+                    var spriteRenderer = instantiatedObject.GetComponentInChildren<SpriteRenderer>();
+                    if (spriteRenderer is null) break;
+                    spriteRenderer.sprite = capacitySo.Sprite;
                 }
             }
             // capacity 2 (with just a lighting symbol)
@@ -59,7 +58,7 @@ namespace Capacity.Scripts
                 if (!unit.TryGetComponent(out IDamageable damageable)) break;
                 if (Random.value < capacitySo.HitProbability)
                 {
-                    damageable.TakeDamage(capacitySo.Value, null);
+                    damageable.TakeDamage(capacitySo.Damage, null);
                 }
             }
             
