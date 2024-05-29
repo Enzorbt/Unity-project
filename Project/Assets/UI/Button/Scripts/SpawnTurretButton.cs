@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using ScriptableObjects.Turret;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Managers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Supinfo.Project.UI.Button.Scripts
 {
@@ -16,10 +18,13 @@ namespace Supinfo.Project.UI.Button.Scripts
         private int _spawnNumber;
         private UnityEngine.UI.Button _button;
         private float _goldCount;
+        private Image _image;
+
 
         private void Awake()
         {
             _button = GetComponentInChildren<UnityEngine.UI.Button>();
+            _image = GetComponentsInChildren<Image>()[1];
         }
 
         public void OnClick()
@@ -47,6 +52,17 @@ namespace Supinfo.Project.UI.Button.Scripts
             if(data is not float goldCount) return;
             _goldCount = goldCount;
             EnableButton(_spawnNumber <= 4 && _goldCount >= turretStatSo.Price);
+        }
+        
+        public void OnAgeUpgrade(Component sender, object data)
+        {
+            StartCoroutine(ChangeSprite());
+        }
+
+        private IEnumerator ChangeSprite()
+        {
+            yield return new WaitForSeconds(1f);
+            _image.sprite = turretStatSo.Sprite;
         }
     }
 }

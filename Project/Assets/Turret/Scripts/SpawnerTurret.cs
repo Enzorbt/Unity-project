@@ -25,6 +25,11 @@ public class SpawnerTurret : MonoBehaviour
             var newSpawnPosition = new Vector3(spawnPosition.transform.position.x, yPosition, _spawnNumber);
             var spawnedTurret = Instantiate(turretStatSo.Prefab, newSpawnPosition, Quaternion.identity);
             var tags = transform.tag.Split(',');
+            
+            // update turret sprite
+            var spriteRenderer = spawnedTurret.GetComponentInChildren<SpriteRenderer>();
+            spriteRenderer.sprite = turretStatSo.Sprite;
+            
             spawnedTurret.tag = "Turret," + tags[1];
             _spawnedTurrets.Add(spawnedTurret);
             _spawnNumber++;
