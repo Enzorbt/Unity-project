@@ -62,6 +62,7 @@ namespace IA.Event
             {
                 _eventsFoundation.UpgradeAge();
                 Age++;
+                Xp -= experienceStatSo.ExperienceLevel[Age];
                 return true;
             }
             return false;
@@ -76,9 +77,10 @@ namespace IA.Event
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
                     {
                         _eventsFoundation.UseCapacity(capacityFireSo);
+                        Xp -= (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
                         if (buff)
                         {
-                            Xp += (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
+                            Xp += (experienceStatSo.ExperienceLevel[Age] * 15) / 100;
                         }
                         return true;
                     }
@@ -87,9 +89,10 @@ namespace IA.Event
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
                     {
                         _eventsFoundation.UseCapacity(capacityFlashSo);
+                        Xp -= (experienceStatSo.ExperienceLevel[Age] * 60) / 100;
                         if (buff)
                         {
-                            Xp += (experienceStatSo.ExperienceLevel[Age]*60)/100;
+                            Xp += (experienceStatSo.ExperienceLevel[Age]*30)/100;
                         }
                         return true;
                     }
@@ -108,6 +111,7 @@ namespace IA.Event
                     if (Gold >= meleeStatSo.Price)
                     {
                         _eventsFoundation.SpawnUnit(meleeStatSo);
+                        Gold -= meleeStatSo.Price;
                         return true;
                     }
                     return false;
@@ -116,6 +120,7 @@ namespace IA.Event
                     if (Gold >= rangeStatSo.Price)
                     {
                         _eventsFoundation.SpawnUnit(rangeStatSo);
+                        Gold -= rangeStatSo.Price;
                         return true;
                     }
                     return false;
@@ -124,6 +129,7 @@ namespace IA.Event
                     if (Gold >= armorStatSo.Price)
                     {
                         _eventsFoundation.SpawnUnit(armorStatSo);
+                        Gold -= armorStatSo.Price;
                         return true;
                     }
                     return false;
@@ -132,6 +138,7 @@ namespace IA.Event
                     if (Gold >= antiArmorStatSo.Price)
                     {
                         _eventsFoundation.SpawnUnit(antiArmorStatSo);
+                        Gold -= antiArmorStatSo.Price;
                         return true;
                     }
                     return false;
@@ -158,6 +165,7 @@ namespace IA.Event
             if (Gold >= turretStatSo.Price)
             {
                 _eventsFoundation.SpawnTurret(turretStatSo);
+                Gold -= turretStatSo.Price;
                 TurretNumber++;
                 return true;
             }
@@ -177,21 +185,25 @@ namespace IA.Event
             if (playerUnit.Type == antiArmorStatSo.Type.StrongAgainst && Gold >= antiArmorStatSo.Price) // ARMOR
             {
                 _eventsFoundation.SpawnUnit(antiArmorStatSo);
+                Gold -= antiArmorStatSo.Price;
                 return true;
             }
             if (playerUnit.Type == rangeStatSo.Type.StrongAgainst && Gold >= rangeStatSo.Price) // ANTI ARMOR
             {
                 _eventsFoundation.SpawnUnit(rangeStatSo);
+                Gold -= rangeStatSo.Price;
                 return true;
             }
             if (playerUnit.Type == meleeStatSo.Type.StrongAgainst && Gold >= meleeStatSo.Price) // RANGE
             {
                 _eventsFoundation.SpawnUnit(meleeStatSo);
+                Gold -= meleeStatSo.Price;
                 return true;
             }
             if (playerUnit.Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price) // MELEE
             {
                 _eventsFoundation.SpawnUnit(armorStatSo);
+                Gold -= armorStatSo.Price;
                 return true;
             }
             
@@ -203,7 +215,8 @@ namespace IA.Event
                 {
                     _eventsFoundation.SpawnUnit(armorStatSo);
                     _eventsFoundation.SpawnUnit(rangeStatSo);
-                    _eventsFoundation.SpawnUnit(rangeStatSo);   
+                    _eventsFoundation.SpawnUnit(rangeStatSo);
+                    Gold -= goldTank;
                 }
                 return true;
             }
