@@ -3297,6 +3297,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 630116411}
+  - component: {fileID: 630116413}
+  - component: {fileID: 630116412}
+  - component: {fileID: 630116416}
+  - component: {fileID: 630116415}
+  - component: {fileID: 630116414}
   m_Layer: 0
   m_Name: IA
   m_TagString: Untagged
@@ -3319,6 +3324,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &630116412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630116410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1e06efa28a4c629d8dff0f6bb0769a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onLaunchCapacity: {fileID: 11400000, guid: ce78477a069b746b5bc273c5960e130f, type: 2}
+  onSpawnUnit: {fileID: 11400000, guid: 347d2f195fa88bb408d7dd64d7a81952, type: 2}
+  onSpawnTurret: {fileID: 11400000, guid: 711cf421716db1047ab024a341828bf1, type: 2}
+  onEnemiesUpgrade: {fileID: 11400000, guid: b8bde1994cd4b6e42bd35f06fc9ef009, type: 2}
+  onAgeUpgrade: {fileID: 11400000, guid: 9d531a91269cfbf4084322c18c8f4308, type: 2}
+--- !u!114 &630116413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630116410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32be9a2f40004122bbf083ae8c9ba32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: 5997174a3ad344e458899ddb5d119014, type: 2}
+  index: 0
+  meleeStatSo: {fileID: 11400000, guid: 26df139b3b7a6924892ed0625aabb770, type: 2}
+  rangeStatSo: {fileID: 11400000, guid: 8d5c438434273ca4ba9134e2ff204c40, type: 2}
+  armorStatSo: {fileID: 11400000, guid: 12c1f36c5036d834b8d41d8bf5d6aedb, type: 2}
+  antiArmorStatSo: {fileID: 11400000, guid: 414033fe394d126448370ee81579b5ec, type: 2}
+  experienceStatSo: {fileID: 11400000, guid: 62220f320043242e982ce4c6adab4b9c, type: 2}
+  turretStatSo: {fileID: 11400000, guid: ad70e3e74cacbed4ab460e4c902ffea2, type: 2}
+  capacityFireSo: {fileID: 11400000, guid: 34f92208f20e3e042b51cba3190fbd29, type: 2}
+  capacityFlashSo: {fileID: 11400000, guid: 1aca4ed9f2c9b0e47b312152cf56e236, type: 2}
+--- !u!114 &630116414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630116410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 0}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &630116415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630116410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 6a5b0f8bff0764b38a7177fe44e90f05, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &630116416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630116410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8200f7c62b8574dea9e45e814bb96980, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &632469247
 GameObject:
   m_ObjectHideFlags: 0
