@@ -9,7 +9,6 @@ using UnityEngine;
     // ALWAY KEEP MONEY FOR BUYING MELEE TO DEFENCE 
 
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
-    // Capacité Type
 
 namespace IA.Event
 {

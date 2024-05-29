@@ -1,6 +1,5 @@
 using Common;
 using Supinfo.Project.Scripts;
-// Capacité Type
 // UPGRADE 
 
 namespace IA.Event

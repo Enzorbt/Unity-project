@@ -2,7 +2,6 @@
 
 // FINIR : 
     // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
-    // Capacité Type
 
 using Common;
 using UnityEngine;
