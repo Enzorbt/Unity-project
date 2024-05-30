@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f4224707c245589683fd0ff95c5464, type: 3}
   m_Name: TurretStatSoEnemies
   m_EditorClassIdentifier: 
-  prefabs: {fileID: 8346566440712086298, guid: 54abae10a0c6cd94b822adb08c6e6623, type: 3}
+  prefabs: {fileID: 8346566440712086298, guid: 0523e96c76d235c43a01158c99b00afa, type: 3}
   price:
     baseValue: 2000
     ageStatModifiers: []
