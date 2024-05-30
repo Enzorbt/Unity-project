@@ -3542,6 +3542,7 @@ MonoBehaviour:
   turretStatSo: {fileID: 11400000, guid: ad70e3e74cacbed4ab460e4c902ffea2, type: 2}
   capacityFireSo: {fileID: 11400000, guid: 34f92208f20e3e042b51cba3190fbd29, type: 2}
   capacityFlashSo: {fileID: 11400000, guid: 1aca4ed9f2c9b0e47b312152cf56e236, type: 2}
+  upgradePricesSo: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
 --- !u!114 &630116414
 MonoBehaviour:
   m_ObjectHideFlags: 0
