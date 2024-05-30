@@ -1,6 +1,3 @@
-// Capacité Type
-
-using System;
 using System.Collections.Generic;
 using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
@@ -123,7 +120,7 @@ namespace IA.Event
             return unitsAndAllies.Length;
         }
 
-        // AGE
+        // UPGRADE AGE
         public bool AgeUpgrade()
         {
             if (Xp >= experienceStatSo.ExperienceLevel[Age])
@@ -137,7 +134,7 @@ namespace IA.Event
             return false;
         }
         
-        // CAPACITY 
+        // LAUNCH CAPACITY 
         public bool SpecialCapacity(CapacityChoice capacityChoice, bool buff)
         {
             switch (capacityChoice)
@@ -170,7 +167,7 @@ namespace IA.Event
             return false;
         }
         
-        // SPAWN 
+        // SPAWN UNIT
         public bool Spawn(UnitChoice unitChoice)
         {
             switch (unitChoice)
@@ -242,7 +239,7 @@ namespace IA.Event
         }
         
         // UPGRADE
-        public bool Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
+        public bool Upgrade(UpgradeType upgradeType)
         {
             switch (upgradeType)
             {
