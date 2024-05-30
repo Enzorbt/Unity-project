@@ -1,12 +1,8 @@
-// Defense STRATEGIE 
+// Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
 
-// FINIR : 
-    // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
-
-    using System.Collections;
-    using Common;
-    using Supinfo.Project.Common;
-    using UnityEngine;
+using System.Collections;
+using Supinfo.Project.Common;
+using UnityEngine;
 
 namespace IA.Event
 {
@@ -16,60 +12,67 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker) yield break;
+            Debug.Log("Xp : " + iaThinker.Xp);
+            Debug.Log("Gold : " +iaThinker.Gold);
             iaThinker.IsThinking = true;
 
-            iaThinker.UnlockNewUnit();
-            // DETECTION 
-            GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
+            iaThinker.AgeUpgrade();
+            
+            if (!iaThinker.IsUnlock)
+            {
+                iaThinker.UnlockNewUnit();
+            }
             
             // SPAWN UNIT 
-            if (unitsAndAllies.Length != 0)
+            if (iaThinker.DetectUnitsAndAllies() != 0)
             {
-                iaThinker.Spawn(2);
-                iaThinker.Spawn(1);
+                iaThinker.Spawn(UnitChoice.armor);
+                iaThinker.Spawn(UnitChoice.range);
             }
             
-            // LANCE CAPACITE SPECIAL
-            if (unitsAndAllies.Length >= 5)
-            {
-                iaThinker.SpecialCapacity(0, false);
-            }
+            // // LANCE CAPACITE SPECIAL
+            // if (iaThinker.DetectUnitsAndAllies() >= 5)
+            // {
+            //     iaThinker.SpecialCapacity(CapacityChoice.fire, false);
+            // }
 
             // Comporetement Applicatif
-            var index = 0;
+            var actionChoice = ActionChoice.age;
 
-            int setIndex(int pindex)
+            ActionChoice setAction(ActionChoice pactionChoice)
             {
-                index = pindex;
-                return index;
+                actionChoice = pactionChoice;
+                return actionChoice;
             }
 
             if (iaThinker.Gold > 300)
             {
-                if (index == 0)
+                if (actionChoice == ActionChoice.turret)
                 {
                     if (!iaThinker.Turret())
                     {
-                        setIndex(0);
+                        setAction(ActionChoice.turret);
                     }
                     else
                     {
-                        setIndex(1);
+                        setAction(ActionChoice.age);
                     }
                 }
-                else if (index == 1)
+                else if (actionChoice == ActionChoice.age)
                 {
                     if (!iaThinker.AgeUpgrade())
                     {
-                        setIndex(1);
+                        setAction(ActionChoice.age);
                     }
                     else
                     {
-                        setIndex(0);
+                        setAction(ActionChoice.turret);
                     }
                 }
             }
+            
             yield return new WaitForSeconds(delayTime);
+            iaThinker.Gold += 5; 
             iaThinker.IsThinking = false;
         }
     }

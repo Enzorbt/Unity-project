@@ -1,11 +1,7 @@
-// Attack STRATEGIE 
-
-// FINIR : 
-    // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
+// Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
 
 
-    using System.Collections;
-    using Common;
+using System.Collections;
 using Supinfo.Project.Common;
 using UnityEngine;
 
@@ -17,66 +13,74 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker)yield break;
+            Debug.Log("Xp : " + iaThinker.Xp);
+            Debug.Log("Gold : " +iaThinker.Gold);         
             iaThinker.IsThinking = true;
-            iaThinker.UnlockNewUnit();
-            // DETECTION 
-            GameObject[] unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit, Allies");
+            
+            if (!iaThinker.IsUnlock)
+            {
+                iaThinker.UnlockNewUnit();
+            }
             
             // SPAWN UNIT 
-            if (unitsAndAllies.Length != 0)
-            {
-                iaThinker.Spawn(0);
-                iaThinker.Spawn(0);
-                iaThinker.Spawn(1);
-
+            if (iaThinker.DetectUnitsAndAllies() != 0)
+            {                
+                iaThinker.Spawn(UnitChoice.antiarmor);
             }
             
-            // A tester
-            // LANCE CAPACITE SPECIAL
-            if (unitsAndAllies.Length >= 6)
-            {
-                iaThinker.SpecialCapacity(1, true);
+            if (iaThinker.DetectUnitsAndAllies() == 3)
+            {                
+                iaThinker.Spawn(UnitChoice.melee);
+                iaThinker.Spawn(UnitChoice.melee);
+                iaThinker.Spawn(UnitChoice.range);
             }
-            if (unitsAndAllies.Length == 10)
+            
+            // LANCE CAPACITE SPECIAL
+            if (iaThinker.DetectUnitsAndAllies() >= 6)
             {
-                iaThinker.SpecialCapacity(0, true);
+                iaThinker.SpecialCapacity(CapacityChoice.lightning, true);
+            }
+            if (iaThinker.DetectUnitsAndAllies() == 10)
+            {
+                iaThinker.SpecialCapacity(CapacityChoice.fire, true);
             }
             
             // Comporetement Applicatif
-            var index = 0;
+            var actionChoice = ActionChoice.age;
 
-            int setIndex(int pindex)
+            ActionChoice setAction(ActionChoice pactionChoice)
             {
-                index = pindex;
-                return index;
+                actionChoice = pactionChoice;
+                return actionChoice;
             }
-
+            
             if (iaThinker.Gold > 300)
             {
-                if (index == 0)
+                if (actionChoice == ActionChoice.spawn)
                 {
-                    if (!iaThinker.Spawn(iaThinker.getRand(0, 3)))
+                    if (!iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3)))
                     {
-                        setIndex(0);
+                        setAction(ActionChoice.spawn);
                     }
                     else
                     {
-                        setIndex(1);
+                        setAction(ActionChoice.age);
                     }
                 }
-                else if (index == 1)
+                else if (actionChoice == ActionChoice.age)
                 {
                     if (!iaThinker.AgeUpgrade())
                     {
-                        setIndex(1);
+                        setAction(ActionChoice.age);
                     }
                     else
                     {
-                        setIndex(0);
+                        setAction(ActionChoice.spawn);
                     }
                 }
             }
             yield return new WaitForSeconds(delayTime);
+            iaThinker.Gold += 5; 
             iaThinker.IsThinking = false;
         }
     }

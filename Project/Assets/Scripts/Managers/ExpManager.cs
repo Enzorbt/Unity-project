@@ -41,20 +41,31 @@ namespace Supinfo.Project.Scripts.Managers
             onExpCountChange.Raise(this, _expCount);
             onExpRatioChange.Raise(this, _expCount/_expMax);
         }
-        
+
+        private void Update()
+        {
+            if ( Input.GetKeyDown(KeyCode.X))
+            {
+                ReceiveExp(this, 500f);
+            }
+        }
+
         // listener age upgrade
         public void UpgradeAge(Component sender, object data)
         {
+            _expCount -= experienceStatSo.ExperienceLevel[_age];
+            
             _age++;
-            _expCount = 0;
+            
             if (_age <= experienceStatSo.ExperienceLevel.Count)
             {
                 _expMax = experienceStatSo.ExperienceLevel[_age];
             }
             
             // raise exp change for exp bar and capacity buttons
-            onExpRatioChange.Raise(this, _expCount / _expMax);
             onXpMaxChange.Raise(this, _expMax);
+            onExpRatioChange.Raise(this, _expCount / _expMax);
+            
         }
         
         // listener exp recovery
@@ -65,15 +76,9 @@ namespace Supinfo.Project.Scripts.Managers
             
             // raise Can evolve event (for evolution button)
             if (data is not float expGain) return;
-            if (_expCount < _expMax || expGain < 0)
-            {
-                _expCount += expGain;
-                
-            }
-            if (_expCount >= _expMax)
-            {
-                _expCount = _expMax;
-            }
+            
+            _expCount += expGain;
+            
             // raise exp change for exp bar and capacity buttons
             onExpRatioChange.Raise(this, _expCount / _expMax);
             onExpCountChange.Raise(this, _expCount);

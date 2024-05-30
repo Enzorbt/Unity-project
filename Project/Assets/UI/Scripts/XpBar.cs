@@ -14,6 +14,7 @@ namespace Supinfo.Project.UI.Scripts
         private Slider _xpBarSlider;
         private float _maxXp;
         private TextMeshProUGUI _xpText;
+        private float _ratio;
 
         /// <summary>
         /// The speed at which the XP bar moves to the target value.
@@ -37,11 +38,13 @@ namespace Supinfo.Project.UI.Scripts
         {
             if (data is not float ratio) return;
 
+            _ratio = ratio;
+            
             // Stop any ongoing interpolation
             StopAllCoroutines();
 
             // Start a new interpolation to the new target value
-            StartCoroutine(AnimateXpBar(_xpBarSlider.value, ratio));
+            StartCoroutine(AnimateXpBar(_xpBarSlider.value, _ratio));
         }
 
         /// <summary>
@@ -51,7 +54,6 @@ namespace Supinfo.Project.UI.Scripts
         {
             if (data is not float max) return;
             _maxXp = max;
-            StartCoroutine(AnimateXpBar(_xpBarSlider.value, 0 / max));
         }
 
         /// <summary>
@@ -80,10 +82,10 @@ namespace Supinfo.Project.UI.Scripts
         /// <summary>
         /// Updates the XP text based on the current XP value.
         /// </summary>
-        /// <param name="xpValue">The current XP value of the XP bar.</param>
-        private void UpdateXpText(float xpValue)
+        /// <param name="xpRatio">The current XP value of the XP bar.</param>
+        private void UpdateXpText(float xpRatio)
         {
-            var xpCount = xpValue * _maxXp;
+            var xpCount = xpRatio * _maxXp;
             _xpText.text = (int)xpCount + "/" + _maxXp;
         }
     }

@@ -1,6 +1,7 @@
+// Capacité Type
+
 using System;
 using System.Collections.Generic;
-using Common;
 using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
 using Supinfo.Project.Common;
@@ -9,25 +10,73 @@ using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using Supinfo.Project.Scripts.ScriptableObjects.Experience;
 using UnityEngine;
 using Random = System.Random;
-// Capacité Type
 
 namespace IA.Event
 {
+    public enum UnitChoice
+    {
+        melee,
+        range,
+        armor,
+        antiarmor
+    };
+
+    public enum ActionChoice
+    {
+        spawn,
+        capacity,
+        age,
+        upgrade, 
+        unlock,
+        turret,
+    };
+    
+    public enum CapacityChoice
+    {
+        fire, 
+        lightning,
+    };
+    
     public class IAThinker : ThinkerWithDelay
     {
-        protected internal  float Gold {get; set;}
-        protected internal  float Xp {get; set;}
+        protected internal float Gold
+        {
+            get => _gold;
+            set
+            {
+                _gold = value;
+                if (_gold < value)
+                {
+                    _gold = 0;
+                }
+            }
+        }
+        private float _gold;
+
+        protected internal float Xp
+        {
+            get => _xp;
+            set
+            {
+                _xp = value;
+                if (_xp < value)
+                {
+                    _xp = 0;
+                }
+            }
+        }
+        private float _xp;
+
         
-        public UnitStatSo PlayerUnit { get; set; }
+        public Queue<UnitStatSo> PlayerUnits { get; set; }
         protected  int Age {get; set;}
         protected  int TurretNumber {get; set;}
-        protected  bool IsUnlock {get; set;}
-
-        public Dictionary<UpgradeType, int> UpgradeDict; // Unity
+        public bool IsUnlock {get; set;}
+        
+        public Dictionary<UpgradeType, int> UpgradeDict;
 
         private EventsFoundation _eventsFoundation;
         private Random aleatoire = new Random();
-        public int index;
         
         // STATS SO UNIT
         [SerializeField] public UnitStatSo meleeStatSo;
@@ -52,50 +101,63 @@ namespace IA.Event
             _eventsFoundation = GetComponent<EventsFoundation>();
         }
 
+        private void Start()
+        {
+            PlayerUnits= new Queue<UnitStatSo>();
+        }
+
         // RAND 
         public  int getRand(int minValue, int maxValue)
         {
             return aleatoire.Next(minValue, maxValue);
         }
-        
+
+        // DETECTION
+        public int DetectUnitsAndAllies()
+        {
+            var unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit,Allies");
+            return unitsAndAllies.Length;
+        }
+
         // AGE
         public bool AgeUpgrade()
         {
             if (Xp >= experienceStatSo.ExperienceLevel[Age])
             {
                 _eventsFoundation.UpgradeAge();
-                Age++;
+                IsUnlock = false;
                 Xp -= experienceStatSo.ExperienceLevel[Age];
+                Age++;
                 return true;
             }
             return false;
         }
         
         // CAPACITY 
-        public bool SpecialCapacity(int index, bool buff)
+        public bool SpecialCapacity(CapacityChoice capacityChoice, bool buff)
         {
-            switch (index)
+            switch (capacityChoice)
             {
-                case 0: 
+                case CapacityChoice.fire: 
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
                     {
                         _eventsFoundation.UseCapacity(capacityFireSo);
                         Xp -= (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
                         if (buff)
                         {
-                            Xp += (experienceStatSo.ExperienceLevel[Age] * 15) / 100;
+                            Xp += (experienceStatSo.ExperienceLevel[Age] * 20) / 100;
                         }
                         return true;
                     }
                     return false;
-                case 1:
+                case CapacityChoice.lightning:
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
                     {
                         _eventsFoundation.UseCapacity(capacityFlashSo);
                         Xp -= (experienceStatSo.ExperienceLevel[Age] * 60) / 100;
                         if (buff)
                         {
-                            Xp += (experienceStatSo.ExperienceLevel[Age]*30)/100;
+                            Xp += (experienceStatSo.ExperienceLevel[Age]*40)/100;
                         }
                         return true;
                     }
@@ -105,11 +167,11 @@ namespace IA.Event
         }
         
         // SPAWN 
-        public bool Spawn(int index)
+        public bool Spawn(UnitChoice unitChoice)
         {
-            switch (index)
+            switch (unitChoice)
             {
-                case 0 : 
+                case UnitChoice.melee : 
                     // SPAWN MELEE
                     if (Gold >= meleeStatSo.Price)
                     {
@@ -118,7 +180,7 @@ namespace IA.Event
                         return true;
                     }
                     return false;
-                case 1 : 
+                case UnitChoice.range : 
                     // SPAWN RANGE 
                     if (Gold >= rangeStatSo.Price)
                     {
@@ -127,7 +189,7 @@ namespace IA.Event
                         return true;
                     }
                     return false;
-                case 2 : 
+                case UnitChoice.armor : 
                     // SPAWN ARMOR
                     if (Gold >= armorStatSo.Price && IsUnlock)
                     {
@@ -136,7 +198,7 @@ namespace IA.Event
                         return true;
                     }
                     return false;
-                case 3 : 
+                case UnitChoice.antiarmor : 
                     // SPAWN ANTI-ARMOR
                     if (Gold >= antiArmorStatSo.Price)
                     {
@@ -153,7 +215,6 @@ namespace IA.Event
         // UNLOCK UNIT 
         public  bool UnlockNewUnit()
         {
-            // AJOUTER VERIF ARGENT + LOGIQUE 
             if (!IsUnlock && Gold >= 100)
             {
                 IsUnlock = true;
@@ -182,55 +243,10 @@ namespace IA.Event
             _eventsFoundation.Upgrade(upgradeType);
         }
         
-        // SPAWN FOR DIFFICULT 
-        public bool SpawnDifficult(UnitStatSo playerUnit)
-        {
-            // COUNTER (Unité forte contre celle que le joeur pose)
-            if (playerUnit.Type == antiArmorStatSo.Type.StrongAgainst && Gold >= antiArmorStatSo.Price) // ARMOR
-            {
-                _eventsFoundation.SpawnUnit(antiArmorStatSo);
-                Gold -= antiArmorStatSo.Price;
-                return true;
-            }
-            if (playerUnit.Type == rangeStatSo.Type.StrongAgainst && Gold >= rangeStatSo.Price) // ANTI ARMOR
-            {
-                _eventsFoundation.SpawnUnit(rangeStatSo);
-                Gold -= rangeStatSo.Price;
-                return true;
-            }
-            if (playerUnit.Type == meleeStatSo.Type.StrongAgainst && Gold >= meleeStatSo.Price) // RANGE
-            {
-                _eventsFoundation.SpawnUnit(meleeStatSo);
-                Gold -= meleeStatSo.Price;
-                return true;
-            }
-            if (playerUnit.Type == armorStatSo.Type.StrongAgainst && Gold >= armorStatSo.Price && IsUnlock) // MELEE
-            {
-                _eventsFoundation.SpawnUnit(armorStatSo);
-                Gold -= armorStatSo.Price;
-                return true;
-            }
-            
-            // SI LE JOUER NE PLACE RIEN TANK (ARMOR + 2 RANGE)
-            if (playerUnit == null)
-            {
-                float goldTank = armorStatSo.Price + (rangeStatSo.Price)*2;
-                if (Gold >= goldTank && IsUnlock)
-                {
-                    _eventsFoundation.SpawnUnit(armorStatSo);
-                    _eventsFoundation.SpawnUnit(rangeStatSo);
-                    _eventsFoundation.SpawnUnit(rangeStatSo);
-                    Gold -= goldTank;
-                }
-                return true;
-            }
-
-            return false;
-        }
         public void OnAlliesSpawn(Component sender, object data)
         {
             if(data is not UnitStatSo unitStatSo) return;
-            PlayerUnit = unitStatSo;
+            PlayerUnits.Enqueue(unitStatSo);
         }
 
         public void OnRecieveGold(Component sender, object data)
