@@ -14,6 +14,7 @@ namespace IA.Event
             if (thinker is not IAThinker iaThinker) yield break;
             Debug.Log("Xp : " + iaThinker.Xp);
             Debug.Log("Gold : " +iaThinker.Gold);
+            
             iaThinker.IsThinking = true;
 
             iaThinker.AgeUpgrade();
@@ -30,11 +31,11 @@ namespace IA.Event
                 iaThinker.Spawn(UnitChoice.range);
             }
             
-            // // LANCE CAPACITE SPECIAL
-            // if (iaThinker.DetectUnitsAndAllies() >= 5)
-            // {
-            //     iaThinker.SpecialCapacity(CapacityChoice.fire, false);
-            // }
+            // LANCE CAPACITE SPECIAL
+            if (iaThinker.DetectUnitsAndAllies() >= 5)
+            {
+                iaThinker.SpecialCapacity(CapacityChoice.fire, false);
+            }
 
             // Comporetement Applicatif
             var actionChoice = ActionChoice.age;
@@ -63,6 +64,17 @@ namespace IA.Event
                     if (!iaThinker.AgeUpgrade())
                     {
                         setAction(ActionChoice.age);
+                    }
+                    else
+                    {
+                        setAction(ActionChoice.upgrade);
+                    }
+                }
+                else if (actionChoice == ActionChoice.upgrade)
+                {
+                    if (!iaThinker.AgeUpgrade())
+                    {
+                        setAction(ActionChoice.upgrade);
                     }
                     else
                     {

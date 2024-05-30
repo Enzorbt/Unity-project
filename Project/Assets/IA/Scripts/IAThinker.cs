@@ -20,7 +20,7 @@ namespace IA.Event
         armor,
         antiarmor
     };
-
+    
     public enum ActionChoice
     {
         spawn,
@@ -225,7 +225,7 @@ namespace IA.Event
         }
         
         // TURRET
-        public  bool Turret()
+        public bool Turret()
         {
             if (Gold >= turretStatSo.Price)
             {
@@ -238,9 +238,89 @@ namespace IA.Event
         }
         
         // UPGRADE
-        public  void Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
+        public bool Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
         {
-            _eventsFoundation.Upgrade(upgradeType);
+            switch (upgradeType)
+            {
+                case UpgradeType.MeleeAttack :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.MeleeAttack);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.MeleeHealth :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.MeleeHealth);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.RangeAttack :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.RangeAttack);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.RangeRange :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.RangeRange);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.AntiArmorAttack :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.AntiArmorAttack);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.AntiArmorHealth :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.AntiArmorHealth);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.ArmorAttack :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.ArmorAttack);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.ArmorHealth :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.ArmorHealth);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.TurretAttack :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.TurretAttack);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.TurretRange :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.TurretRange);
+                        return true;
+                    }
+                    return false;
+                case UpgradeType.GoldGiven :
+                    if (Gold >= 100)
+                    {
+                        _eventsFoundation.Upgrade(UpgradeType.GoldGiven);
+                        return true;
+                    }
+                    return false;
+            }
+            return false;
         }
         
         public void OnAlliesSpawn(Component sender, object data)
