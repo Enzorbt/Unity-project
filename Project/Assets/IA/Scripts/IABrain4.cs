@@ -12,13 +12,15 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker) yield break;
+            Debug.Log("Xp : " + iaThinker.Xp);
+            Debug.Log("Gold : " +iaThinker.Gold);
             iaThinker.IsThinking = true;
-            
+
+            iaThinker.AgeUpgrade();
             // UNLOCK UNIT 
             if (!iaThinker.IsUnlock)
             {
                 iaThinker.UnlockNewUnit();
-                Debug.Log("UNLOCK");
             }
             
             // SPAWN UNIT 
@@ -26,33 +28,28 @@ namespace IA.Event
 
             if (iaThinker.PlayerUnits.Count != 0)
             {
-                Debug.Log("START");
                 if (iaThinker.PlayerUnits.Peek().Type == iaThinker.antiArmorStatSo.Type.StrongAgainst) // ARMOR && iaThinker.Gold >= iaThinker.antiArmorStatSo.Price
                 {
                     iaThinker.Spawn(UnitChoice.antiarmor);
                     // iaThinker.Gold -= iaThinker.antiArmorStatSo.Price;
-                    Debug.Log("ANTI-ARMOR");
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.rangeStatSo.Type.StrongAgainst) // ANTI ARMOR && iaThinker.Gold >= iaThinker.rangeStatSo.Price
                 {
                     iaThinker.Spawn(UnitChoice.range);
                     // iaThinker.Gold -= iaThinker.rangeStatSo.Price;
-                    Debug.Log("RANGE");
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.meleeStatSo.Type.StrongAgainst) // RANGE && iaThinker.Gold >= iaThinker.meleeStatSo.Price
                 {
                     iaThinker.Spawn(UnitChoice.melee);
                     // iaThinker.Gold -= iaThinker.meleeStatSo.Price;
-                    Debug.Log("MELEE");
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.armorStatSo.Type.StrongAgainst) // MELEE && iaThinker.Gold >= iaThinker.armorStatSo.Price && iaThinker.IsUnlock
                 {
                     iaThinker.Spawn(UnitChoice.armor);
                     // iaThinker.Gold -= iaThinker.armorStatSo.Price;
-                    Debug.Log("ARMOR");
                     iaThinker.PlayerUnits.Dequeue();
                 }   
             }
@@ -68,7 +65,6 @@ namespace IA.Event
                     iaThinker.Spawn(UnitChoice.armor);
                     iaThinker.Spawn(UnitChoice.range);
                     // iaThinker.Gold -= goldTank;
-                    Debug.Log("SPAWN RIEN");
                 }
             }
             
@@ -77,7 +73,6 @@ namespace IA.Event
             if (iaThinker.DetectUnitsAndAllies() >= 7)
             {
                 iaThinker.SpecialCapacity(CapacityChoice.fire, true);
-                Debug.Log("CAPACITY");
             }
             
             // Comporetement Applicatif
@@ -100,7 +95,6 @@ namespace IA.Event
                     else
                     {
                         setAction(ActionChoice.age);
-                        Debug.Log("TURRET");
                     }
                 }
                 else if (actionChoice == ActionChoice.age)
@@ -112,7 +106,6 @@ namespace IA.Event
                     else
                     {
                         setAction(ActionChoice.turret);
-                        Debug.Log("AGE");
                     }
                 }
             }

@@ -12,13 +12,15 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker) yield break;
-            
+            Debug.Log("Xp : " + iaThinker.Xp);
+            Debug.Log("Gold : " +iaThinker.Gold);
             iaThinker.IsThinking = true;
 
+            iaThinker.AgeUpgrade();
+            
             if (!iaThinker.IsUnlock)
             {
                 iaThinker.UnlockNewUnit();
-                Debug.Log("UNLOCK");
             }
             
             // SPAWN UNIT 
@@ -26,15 +28,13 @@ namespace IA.Event
             {
                 iaThinker.Spawn(UnitChoice.armor);
                 iaThinker.Spawn(UnitChoice.range);
-                Debug.Log("SPAWN");
             }
             
-            // LANCE CAPACITE SPECIAL
-            if (iaThinker.DetectUnitsAndAllies() >= 5)
-            {
-                iaThinker.SpecialCapacity(CapacityChoice.fire, false);
-                Debug.Log("CAPACITE");
-            }
+            // // LANCE CAPACITE SPECIAL
+            // if (iaThinker.DetectUnitsAndAllies() >= 5)
+            // {
+            //     iaThinker.SpecialCapacity(CapacityChoice.fire, false);
+            // }
 
             // Comporetement Applicatif
             var actionChoice = ActionChoice.age;
@@ -56,7 +56,6 @@ namespace IA.Event
                     else
                     {
                         setAction(ActionChoice.age);
-                        Debug.Log("TURRET");
                     }
                 }
                 else if (actionChoice == ActionChoice.age)
@@ -68,7 +67,6 @@ namespace IA.Event
                     else
                     {
                         setAction(ActionChoice.turret);
-                        Debug.Log("AGE");
                     }
                 }
             }

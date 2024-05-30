@@ -13,21 +13,19 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker)yield break;
-            
+            Debug.Log("Xp : " + iaThinker.Xp);
+            Debug.Log("Gold : " +iaThinker.Gold);         
             iaThinker.IsThinking = true;
             
             if (!iaThinker.IsUnlock)
             {
                 iaThinker.UnlockNewUnit();
-                Debug.Log("UNLOCK");
             }
             
             // SPAWN UNIT 
             if (iaThinker.DetectUnitsAndAllies() != 0)
             {                
                 iaThinker.Spawn(UnitChoice.antiarmor);
-                Debug.Log("SPAWN");
-
             }
             
             if (iaThinker.DetectUnitsAndAllies() == 3)
@@ -35,19 +33,16 @@ namespace IA.Event
                 iaThinker.Spawn(UnitChoice.melee);
                 iaThinker.Spawn(UnitChoice.melee);
                 iaThinker.Spawn(UnitChoice.range);
-                Debug.Log("SPAWN");
             }
             
             // LANCE CAPACITE SPECIAL
             if (iaThinker.DetectUnitsAndAllies() >= 6)
             {
                 iaThinker.SpecialCapacity(CapacityChoice.lightning, true);
-                Debug.Log("CAPACITY 2");
             }
             if (iaThinker.DetectUnitsAndAllies() == 10)
             {
                 iaThinker.SpecialCapacity(CapacityChoice.fire, true);
-                Debug.Log("CAPACITY 1");
             }
             
             // Comporetement Applicatif
@@ -70,7 +65,6 @@ namespace IA.Event
                     else
                     {
                         setAction(ActionChoice.age);
-                        Debug.Log("SPAWN");
                     }
                 }
                 else if (actionChoice == ActionChoice.age)
@@ -82,7 +76,6 @@ namespace IA.Event
                     else
                     {
                         setAction(ActionChoice.spawn);
-                        Debug.Log("AGE");
                     }
                 }
             }
