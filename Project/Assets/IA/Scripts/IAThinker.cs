@@ -252,7 +252,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.MeleeAttack, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.MeleeHealth :
                     for (int index = 1; index <= 3;)
@@ -263,7 +264,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.MeleeHealth, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.RangeAttack :
                     for (int index = 1; index <= 3;)
@@ -274,7 +276,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.RangeAttack, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.RangeRange :
                     for (int index = 1; index <= 3;)
@@ -285,7 +288,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.RangeRange, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.AntiArmorAttack :
                     for (int index = 1; index <= 3;)
@@ -296,7 +300,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.AntiArmorAttack, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.AntiArmorHealth :
                     for (int index = 1; index <= 3;)
@@ -307,7 +312,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.AntiArmorHealth, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.ArmorAttack :
                     for (int index = 1; index <= 3;)
@@ -318,7 +324,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.ArmorAttack, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.ArmorHealth :
                     for (int index = 1; index <= 3;)
@@ -329,7 +336,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.ArmorHealth, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.TurretAttack :
                     for (int index = 1; index <= 3;)
@@ -340,7 +348,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.TurretAttack, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.TurretRange :
                     for (int index = 1; index <= 3;)
@@ -351,7 +360,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.TurretRange, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
                 case UpgradeType.GoldGiven :
                     for (int index = 1; index <= 3;)
@@ -362,7 +372,8 @@ namespace IA.Event
                             Gold -= upgradePricesSo.GetPrice(UpgradeType.GoldGiven, index);
                             index++;
                             return true;
-                        }                    }                    
+                        }                    
+                    }                    
                     return false;
             }
             return false;
