@@ -12,7 +12,8 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker)yield break;
-            
+            Debug.Log("Xp : " + iaThinker.Xp);
+            Debug.Log("Gold : " +iaThinker.Gold);       
             iaThinker.IsThinking = true;
             
             var actionChoice = (ActionChoice)iaThinker.getRand(0, 5);
@@ -20,23 +21,18 @@ namespace IA.Event
             {
                 case ActionChoice.age:
                     iaThinker.AgeUpgrade();
-                    Debug.Log("AGE");
                     break;
                 case ActionChoice.capacity:
                     iaThinker.SpecialCapacity((CapacityChoice)iaThinker.getRand(0, 1), false);
-                    Debug.Log("SPECIAL");
                     break;
                 case ActionChoice.spawn:
                     iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3));
-                    Debug.Log("SPAWN");
                     break;
                 case ActionChoice.unlock:
                     iaThinker.UnlockNewUnit();
-                    Debug.Log("UNLOCK");
                     break;
                 case ActionChoice.turret:
                     iaThinker.Turret();
-                    Debug.Log("TURRET");
                     break;
                 case ActionChoice.upgrade:
                     // IAThinker.Upgrade(UpgradeType);

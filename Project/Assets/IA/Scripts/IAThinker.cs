@@ -1,5 +1,6 @@
 // Capacité Type
 
+using System;
 using System.Collections.Generic;
 using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
@@ -38,8 +39,34 @@ namespace IA.Event
     
     public class IAThinker : ThinkerWithDelay
     {
-        protected internal  float Gold {get; set;}
-        protected internal  float Xp {get; set;}
+        protected internal float Gold
+        {
+            get => _gold;
+            set
+            {
+                _gold = value;
+                if (_gold < value)
+                {
+                    _gold = 0;
+                }
+            }
+        }
+        private float _gold;
+
+        protected internal float Xp
+        {
+            get => _xp;
+            set
+            {
+                _xp = value;
+                if (_xp < value)
+                {
+                    _xp = 0;
+                }
+            }
+        }
+        private float _xp;
+
         
         public Queue<UnitStatSo> PlayerUnits { get; set; }
         protected  int Age {get; set;}
@@ -98,9 +125,9 @@ namespace IA.Event
             if (Xp >= experienceStatSo.ExperienceLevel[Age])
             {
                 _eventsFoundation.UpgradeAge();
-                Age++;
                 IsUnlock = false;
                 Xp -= experienceStatSo.ExperienceLevel[Age];
+                Age++;
                 return true;
             }
             return false;
