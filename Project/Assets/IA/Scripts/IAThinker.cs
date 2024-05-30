@@ -219,10 +219,10 @@ namespace IA.Event
         // UNLOCK UNIT 
         public  bool UnlockNewUnit()
         {
-            if (!IsUnlock && Gold >= 100)
+            if (!IsUnlock && Gold >= 300)
             {
                 IsUnlock = true;
-                Gold -= 100;
+                Gold -= 300;
             }
 
             return IsUnlock;
@@ -252,6 +252,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.MeleeAttack,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.MeleeAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.MeleeAttack, index);
                             index++;
                             return true;
                         }                    }                    
@@ -262,6 +263,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.MeleeHealth,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.MeleeHealth);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.MeleeHealth, index);
                             index++;
                             return true;
                         }                    }                    
@@ -272,6 +274,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.RangeAttack,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.RangeAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.RangeAttack, index);
                             index++;
                             return true;
                         }                    }                    
@@ -282,6 +285,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.RangeRange,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.RangeRange);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.RangeRange, index);
                             index++;
                             return true;
                         }                    }                    
@@ -292,6 +296,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.AntiArmorAttack,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.AntiArmorAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.AntiArmorAttack, index);
                             index++;
                             return true;
                         }                    }                    
@@ -302,6 +307,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.AntiArmorHealth,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.AntiArmorHealth);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.AntiArmorHealth, index);
                             index++;
                             return true;
                         }                    }                    
@@ -312,6 +318,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.ArmorAttack,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.ArmorAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.ArmorAttack, index);
                             index++;
                             return true;
                         }                    }                    
@@ -322,6 +329,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.ArmorHealth,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.ArmorHealth);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.ArmorHealth, index);
                             index++;
                             return true;
                         }                    }                    
@@ -332,6 +340,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.TurretAttack,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.TurretAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.TurretAttack, index);
                             index++;
                             return true;
                         }                    }                    
@@ -342,6 +351,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.TurretRange,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.TurretRange);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.TurretRange, index);
                             index++;
                             return true;
                         }                    }                    
@@ -352,6 +362,7 @@ namespace IA.Event
                         if (Gold >= upgradePricesSo.GetPrice(UpgradeType.GoldGiven,index))
                         {
                             _eventsFoundation.Upgrade(UpgradeType.GoldGiven);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.GoldGiven, index);
                             index++;
                             return true;
                         }                    }                    

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs: {fileID: 8346566440712086298, guid: 54abae10a0c6cd94b822adb08c6e6623, type: 3}
   price:
-    baseValue: 2000
+    baseValue: 1350
     ageStatModifiers: []
     upgradeStatModifiers: []
   damage:
