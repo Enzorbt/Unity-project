@@ -13,46 +13,46 @@ MonoBehaviour:
   m_Name: UpgradePrices
   m_EditorClassIdentifier: 
   meleeAttackPrices:
-  - 100
-  - 100
-  - 100
+  - 300
+  - 1700
+  - 3500
   meleeHealthPrices:
-  - 100
-  - 100
-  - 100
+  - 300
+  - 1700
+  - 3500
   armorAttackPrices:
-  - 100
-  - 100
-  - 100
+  - 300
+  - 1700
+  - 3500
   armorHealthPrices:
-  - 100
-  - 100
-  - 100
+  - 300
+  - 1700
+  - 3500
   antiArmorAttackPrices:
-  - 100
-  - 100
-  - 100
+  - 400
+  - 800
+  - 2600
   antiArmorHealthPrices:
-  - 100
-  - 100
-  - 100
+  - 300
+  - 1700
+  - 3500
   rangeAttackPrices:
-  - 100
-  - 100
-  - 100
+  - 300
+  - 1500
+  - 3500
   rangeRangePrices:
-  - 100
-  - 100
-  - 100
+  - 300
+  - 700
+  - 1500
   turretAttackPrices:
-  - 100
-  - 100
-  - 100
+  - 300
+  - 1700
+  - 3500
   turretRangePrices:
-  - 100
-  - 100
-  - 100
+  - 300
+  - 1700
+  - 3500
   goldGivenPrices:
-  - 100
-  - 100
-  - 100
+  - 500
+  - 1100
+  - 2000
