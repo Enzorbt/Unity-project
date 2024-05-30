@@ -36,7 +36,7 @@ namespace Supinfo.Project.Projectiles.Scripts
             projectileThinker.TryGetComponent(out IMovement movement);
             movement?.Move(projectileThinker.Direction, projectileThinker.Speed);
 
-            if (projectileThinker.transform.position.y < -2.5f)
+            if (projectileThinker.transform.position.y < -4f)
             {
                 Destroy(projectileThinker.gameObject);
             }
