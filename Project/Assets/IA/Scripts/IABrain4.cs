@@ -32,25 +32,21 @@ namespace IA.Event
                 if (iaThinker.PlayerUnits.Peek().Type == iaThinker.antiArmorStatSo.Type.StrongAgainst) // ARMOR
                 {
                     iaThinker.Spawn(UnitChoice.antiarmor);
-                    iaThinker.Gold -= iaThinker.antiArmorStatSo.Price;
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.rangeStatSo.Type.StrongAgainst) // ANTI ARMOR
                 {
                     iaThinker.Spawn(UnitChoice.range);
-                    iaThinker.Gold -= iaThinker.rangeStatSo.Price;
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.meleeStatSo.Type.StrongAgainst) // RANGE
                 {
                     iaThinker.Spawn(UnitChoice.melee);
-                    iaThinker.Gold -= iaThinker.meleeStatSo.Price;
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.armorStatSo.Type.StrongAgainst) // MELEE
                 {
                     iaThinker.Spawn(UnitChoice.armor);
-                    iaThinker.Gold -= iaThinker.armorStatSo.Price;
                     iaThinker.PlayerUnits.Dequeue();
                 }   
             }
@@ -59,12 +55,11 @@ namespace IA.Event
             
             if (iaThinker.DetectUnitsAndAllies() == 0)
             {
-                float goldTank = iaThinker.armorStatSo.Price + iaThinker.rangeStatSo.Price;
-                if (iaThinker.Gold >= goldTank && iaThinker.IsUnlock)
+                if (iaThinker.IsUnlock)
                 {
                     iaThinker.Spawn(UnitChoice.armor);
                     iaThinker.Spawn(UnitChoice.range);
-                    iaThinker.Gold -= goldTank;
+                    iaThinker.Spawn(UnitChoice.range);
                 }
             }
             
