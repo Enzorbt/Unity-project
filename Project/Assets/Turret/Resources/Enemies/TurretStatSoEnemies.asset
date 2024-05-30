@@ -62,7 +62,7 @@ MonoBehaviour:
       order: 5
     upgradeStatModifiers: []
   range:
-    baseValue: 10
+    baseValue: 15
     ageStatModifiers:
     - value: 1
       type: 0
