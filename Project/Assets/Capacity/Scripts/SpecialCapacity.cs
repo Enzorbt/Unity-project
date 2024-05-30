@@ -42,6 +42,7 @@ namespace Supinfo.Project.Capacity.Scripts
                     var spriteRenderer = instantiatedObject.GetComponentInChildren<SpriteRenderer>();
                     if (spriteRenderer is null) break;
                     spriteRenderer.sprite = capacitySo.Sprite;
+                    yield return new WaitForSeconds(0.1f);
                 }
             }
             // capacity 2 (with just a lighting symbol)
