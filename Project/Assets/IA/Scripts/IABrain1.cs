@@ -41,7 +41,8 @@ namespace IA.Event
                     // IAThinker.Upgrade(UpgradeType);
                     break;
             }
-            
+
+            iaThinker.Gold += 5; 
             yield return new WaitForSeconds(delayTime);
             
             iaThinker.IsThinking = false;

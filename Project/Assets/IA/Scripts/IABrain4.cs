@@ -78,6 +78,7 @@ namespace IA.Event
             //     }
             // }
             yield return new WaitForSeconds(delayTime);
+            iaThinker.Gold += 5; 
             iaThinker.IsThinking = false;
         }
     }
