@@ -41,7 +41,15 @@ namespace Supinfo.Project.Scripts.Managers
             onExpCountChange.Raise(this, _expCount);
             onExpRatioChange.Raise(this, _expCount/_expMax);
         }
-        
+
+        private void Update()
+        {
+            if ( Input.GetKeyDown(KeyCode.X))
+            {
+                ReceiveExp(this, 500f);
+            }
+        }
+
         // listener age upgrade
         public void UpgradeAge(Component sender, object data)
         {
