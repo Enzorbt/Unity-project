@@ -29,18 +29,15 @@ namespace Supinfo.Project.Unit.Scripts
             var newPosition = transform.position;
             
             // direction is initialized for calculation rotation
-            var direction = new Vector3((target.position - newPosition).normalized.x, 0, 0);
+            var detectionDirection = new Vector3((target.position - newPosition).normalized.x, 0, 0);
             
-            var rotation = direction.x > 0 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+            var rotation = detectionDirection.x > 0 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
             
             var scaledSpriteSize = projectile.transform.localScale * sprite.bounds.extents.x; 
             
-            newPosition.x += direction.x > 0 ? - scaledSpriteSize.x : scaledSpriteSize.x;
+            newPosition.x += detectionDirection.x > 0 ? - scaledSpriteSize.x : scaledSpriteSize.x;
             
             var instantiatedProjectile = Instantiate(projectile, newPosition, rotation);
-
-            // change direction to be forward
-            direction = Vector3.right;
             
             // set the layer
             instantiatedProjectile.layer =  3;
@@ -53,7 +50,8 @@ namespace Supinfo.Project.Unit.Scripts
             
             if (projectileThinker is null) yield break;
             
-            projectileThinker.Direction = direction;
+            projectileThinker.Direction = Vector3.right;
+            projectileThinker.DetectionDirection = detectionDirection;
             projectileThinker.Damage = amount;
             projectileThinker.Speed = speed;
             projectileThinker.UnitType = attackerType;

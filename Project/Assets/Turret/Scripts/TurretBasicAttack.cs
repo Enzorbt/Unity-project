@@ -37,6 +37,10 @@ namespace Supinfo.Project.Turret.Scripts
             var angle = Mathf.Atan2(target.position.y - newPosition.y, target.position.x - newPosition.x) * Mathf.Rad2Deg;
             var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             
+            var angleInRadians = angle * Mathf.Deg2Rad;
+
+            var detectionDirection = new Vector3(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians), 0f);
+            
             var instantiatedProjectile = Instantiate(projectile, newPosition, rotation, transform);
             
             // instantiate the projectile
@@ -48,6 +52,7 @@ namespace Supinfo.Project.Turret.Scripts
             if (projectileThinker is null) yield break;
 
             projectileThinker.Direction = Vector3.right;
+            projectileThinker.DetectionDirection = detectionDirection;
             projectileThinker.Damage = amount;
             projectileThinker.Speed = speed;
             projectileThinker.UnitType = attackerType;
