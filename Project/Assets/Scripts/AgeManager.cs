@@ -46,6 +46,13 @@ namespace Supinfo.Project.Scripts
             {
                 unitStatSo.UpgradeAge();
             }
+            foreach (var capacitySo in capacitySosEnemies)
+            {
+                capacitySo.UpgradeAge();
+            }
+            
+            baseStatSoEnemies.UpgradeAge();
+            turretStatSoEnemies.UpgradeAge();
         }
     }
 }
