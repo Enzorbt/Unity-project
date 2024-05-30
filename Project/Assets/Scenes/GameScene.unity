@@ -3491,7 +3491,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1819913868}
   m_Father: {fileID: 1150515911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &641193429
@@ -7223,15 +7224,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cef5983a8def2c14f9c025eddb6a516c, type: 2}
   - {fileID: 11400000, guid: b90020653a2fa7d49a7ab09e743ea76e, type: 2}
   - {fileID: 11400000, guid: 2a5d22672fdd15f4c878c16c2056be01, type: 2}
-  statSosEnemies: []
+  statSosEnemies:
+  - {fileID: 11400000, guid: 26df139b3b7a6924892ed0625aabb770, type: 2}
+  - {fileID: 11400000, guid: 8d5c438434273ca4ba9134e2ff204c40, type: 2}
+  - {fileID: 11400000, guid: 414033fe394d126448370ee81579b5ec, type: 2}
+  - {fileID: 11400000, guid: 12c1f36c5036d834b8d41d8bf5d6aedb, type: 2}
   capacitySosAllies:
   - {fileID: 11400000, guid: 285ff7750282b7446b5b73b4749c937f, type: 2}
   - {fileID: 11400000, guid: 0b9262cdf1849e64ea41ac08f4b4b160, type: 2}
   capacitySosEnemies: []
   baseStatSoAllies: {fileID: 11400000, guid: 0a2d757d93918704db672f9fc85121c9, type: 2}
   baseStatSoEnemies: {fileID: 11400000, guid: deda89dff20581e4399e437626a1306a, type: 2}
-  turretStatSoAllies: {fileID: 11400000, guid: 1693377c11a814f128bbf777937c8797, type: 2}
-  turretStatSoEnemies: {fileID: 0}
+  turretStatSoAllies: {fileID: 11400000, guid: 0c3ed7e4b3568e54e95f32db0af147de, type: 2}
+  turretStatSoEnemies: {fileID: 11400000, guid: ad70e3e74cacbed4ab460e4c902ffea2, type: 2}
 --- !u!1 &1455082629
 GameObject:
   m_ObjectHideFlags: 0
@@ -8026,11 +8031,11 @@ MonoBehaviour:
   antiArmorStatSo: {fileID: 11400000, guid: ad061516469483f44b24dadab6d420f9, type: 2}
   armorStatSo: {fileID: 11400000, guid: cef5983a8def2c14f9c025eddb6a516c, type: 2}
   rangeStatSo: {fileID: 11400000, guid: 2a5d22672fdd15f4c878c16c2056be01, type: 2}
-  turretStatSo: {fileID: 11400000, guid: 1693377c11a814f128bbf777937c8797, type: 2}
-  otherMeleeStatSo: {fileID: 0}
-  otherAntiArmorStatSo: {fileID: 0}
-  otherArmorStatSo: {fileID: 0}
-  otherRangeStatSo: {fileID: 0}
+  turretStatSo: {fileID: 11400000, guid: 0c3ed7e4b3568e54e95f32db0af147de, type: 2}
+  otherMeleeStatSo: {fileID: 11400000, guid: 26df139b3b7a6924892ed0625aabb770, type: 2}
+  otherAntiArmorStatSo: {fileID: 11400000, guid: 414033fe394d126448370ee81579b5ec, type: 2}
+  otherArmorStatSo: {fileID: 11400000, guid: 12c1f36c5036d834b8d41d8bf5d6aedb, type: 2}
+  otherRangeStatSo: {fileID: 11400000, guid: 8d5c438434273ca4ba9134e2ff204c40, type: 2}
 --- !u!1 &1732707335
 GameObject:
   m_ObjectHideFlags: 0
@@ -8320,6 +8325,88 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1819913867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819913868}
+  - component: {fileID: 1819913870}
+  - component: {fileID: 1819913869}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819913868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819913867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 632469248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1819913869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819913867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b8bde1994cd4b6e42bd35f06fc9ef009, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1819913870}
+        m_TargetAssemblyTypeName: Supinfo.Project.Scripts.UpgradeManager, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1819913870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819913867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0941a9878bc46a78459535e988d28de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeStatSo: {fileID: 11400000, guid: 26df139b3b7a6924892ed0625aabb770, type: 2}
+  antiArmorStatSo: {fileID: 11400000, guid: 414033fe394d126448370ee81579b5ec, type: 2}
+  armorStatSo: {fileID: 11400000, guid: 12c1f36c5036d834b8d41d8bf5d6aedb, type: 2}
+  rangeStatSo: {fileID: 11400000, guid: 8d5c438434273ca4ba9134e2ff204c40, type: 2}
+  turretStatSo: {fileID: 11400000, guid: ad70e3e74cacbed4ab460e4c902ffea2, type: 2}
+  otherMeleeStatSo: {fileID: 11400000, guid: b90020653a2fa7d49a7ab09e743ea76e, type: 2}
+  otherAntiArmorStatSo: {fileID: 11400000, guid: ad061516469483f44b24dadab6d420f9, type: 2}
+  otherArmorStatSo: {fileID: 11400000, guid: cef5983a8def2c14f9c025eddb6a516c, type: 2}
+  otherRangeStatSo: {fileID: 11400000, guid: 2a5d22672fdd15f4c878c16c2056be01, type: 2}
 --- !u!1001 &1825118915
 PrefabInstance:
   m_ObjectHideFlags: 0
