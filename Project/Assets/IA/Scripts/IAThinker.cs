@@ -12,6 +12,30 @@ using Random = System.Random;
 
 namespace IA.Event
 {
+    public enum UnitChoice
+    {
+        melee,
+        range,
+        armor,
+        antiarmor
+    };
+
+    public enum ActionChoice
+    {
+        spawn,
+        capacity,
+        age,
+        upgrade, 
+        unlock,
+        turret,
+    };
+    
+    public enum CapacityChoice
+    {
+        fire, 
+        lightning,
+    };
+    
     public class IAThinker : ThinkerWithDelay
     {
         protected internal  float Gold {get; set;}
@@ -21,12 +45,11 @@ namespace IA.Event
         protected  int Age {get; set;}
         protected  int TurretNumber {get; set;}
         public bool IsUnlock {get; set;}
-
+        
         public Dictionary<UpgradeType, int> UpgradeDict;
 
         private EventsFoundation _eventsFoundation;
         private Random aleatoire = new Random();
-        public int index;
         
         // STATS SO UNIT
         [SerializeField] public UnitStatSo meleeStatSo;
@@ -84,11 +107,11 @@ namespace IA.Event
         }
         
         // CAPACITY 
-        public bool SpecialCapacity(int index, bool buff)
+        public bool SpecialCapacity(CapacityChoice capacityChoice, bool buff)
         {
-            switch (index)
+            switch (capacityChoice)
             {
-                case 0: 
+                case CapacityChoice.fire: 
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
                     {
                         _eventsFoundation.UseCapacity(capacityFireSo);
@@ -100,7 +123,7 @@ namespace IA.Event
                         return true;
                     }
                     return false;
-                case 1:
+                case CapacityChoice.lightning:
                     if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
                     {
                         _eventsFoundation.UseCapacity(capacityFlashSo);
@@ -117,11 +140,11 @@ namespace IA.Event
         }
         
         // SPAWN 
-        public bool Spawn(int index)
+        public bool Spawn(UnitChoice unitChoice)
         {
-            switch (index)
+            switch (unitChoice)
             {
-                case 0 : 
+                case UnitChoice.melee : 
                     // SPAWN MELEE
                     if (Gold >= meleeStatSo.Price)
                     {
@@ -130,7 +153,7 @@ namespace IA.Event
                         return true;
                     }
                     return false;
-                case 1 : 
+                case UnitChoice.range : 
                     // SPAWN RANGE 
                     if (Gold >= rangeStatSo.Price)
                     {
@@ -139,7 +162,7 @@ namespace IA.Event
                         return true;
                     }
                     return false;
-                case 2 : 
+                case UnitChoice.armor : 
                     // SPAWN ARMOR
                     if (Gold >= armorStatSo.Price && IsUnlock)
                     {
@@ -148,7 +171,7 @@ namespace IA.Event
                         return true;
                     }
                     return false;
-                case 3 : 
+                case UnitChoice.antiarmor : 
                     // SPAWN ANTI-ARMOR
                     if (Gold >= antiArmorStatSo.Price)
                     {

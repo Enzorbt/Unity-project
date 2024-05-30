@@ -16,68 +16,72 @@ namespace IA.Event
             
             iaThinker.IsThinking = true;
             
-            iaThinker.UnlockNewUnit();
+            if (!iaThinker.IsUnlock)
+            {
+                iaThinker.UnlockNewUnit();
+                Debug.Log("UNLOCK");
+            }
             
             // SPAWN UNIT 
             if (iaThinker.DetectUnitsAndAllies() != 0)
             {                
-                iaThinker.Spawn(3);
+                iaThinker.Spawn(UnitChoice.antiarmor);
                 Debug.Log("SPAWN");
 
             }
             
             if (iaThinker.DetectUnitsAndAllies() == 3)
             {                
-                iaThinker.Spawn(0);
-                iaThinker.Spawn(0);
-                iaThinker.Spawn(1);
+                iaThinker.Spawn(UnitChoice.melee);
+                iaThinker.Spawn(UnitChoice.melee);
+                iaThinker.Spawn(UnitChoice.range);
                 Debug.Log("SPAWN");
             }
             
             // LANCE CAPACITE SPECIAL
             if (iaThinker.DetectUnitsAndAllies() >= 6)
             {
-                iaThinker.SpecialCapacity(1, true);
-                Debug.Log("CAPACITY 1");
+                iaThinker.SpecialCapacity(CapacityChoice.lightning, true);
+                Debug.Log("CAPACITY 2");
             }
             if (iaThinker.DetectUnitsAndAllies() == 10)
             {
-                iaThinker.SpecialCapacity(0, true);
-                Debug.Log("CAPACITY 2");
+                iaThinker.SpecialCapacity(CapacityChoice.fire, true);
+                Debug.Log("CAPACITY 1");
             }
             
             // Comporetement Applicatif
-            var index = 0;
+            var actionChoice = ActionChoice.age;
 
-            int setIndex(int pindex)
+            ActionChoice setAction(ActionChoice pactionChoice)
             {
-                index = pindex;
-                return index;
+                actionChoice = pactionChoice;
+                return actionChoice;
             }
-
+            
             if (iaThinker.Gold > 300)
             {
-                if (index == 0)
+                if (actionChoice == ActionChoice.spawn)
                 {
-                    if (!iaThinker.Spawn(iaThinker.getRand(0, 3)))
+                    if (!iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3)))
                     {
-                        setIndex(0);
+                        setAction(ActionChoice.spawn);
                     }
                     else
                     {
-                        setIndex(1);
+                        setAction(ActionChoice.age);
                         Debug.Log("SPAWN");
                     }
                 }
-                else if (index == 1)
+                else if (actionChoice == ActionChoice.age)
                 {
                     if (!iaThinker.AgeUpgrade())
                     {
-                        setIndex(1);
+                        setAction(ActionChoice.age);
                     }
                     else
                     {
-                        setIndex(0);
+                        setAction(ActionChoice.spawn);
                         Debug.Log("AGE");
                     }
                 }

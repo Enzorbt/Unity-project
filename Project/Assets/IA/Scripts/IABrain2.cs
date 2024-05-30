@@ -15,55 +15,59 @@ namespace IA.Event
             
             iaThinker.IsThinking = true;
 
-            iaThinker.UnlockNewUnit();
+            if (!iaThinker.IsUnlock)
+            {
+                iaThinker.UnlockNewUnit();
+                Debug.Log("UNLOCK");
+            }
             
             // SPAWN UNIT 
             if (iaThinker.DetectUnitsAndAllies() != 0)
             {
-                iaThinker.Spawn(2);
-                iaThinker.Spawn(1);
+                iaThinker.Spawn(UnitChoice.armor);
+                iaThinker.Spawn(UnitChoice.range);
                 Debug.Log("SPAWN");
             }
             
             // LANCE CAPACITE SPECIAL
             if (iaThinker.DetectUnitsAndAllies() >= 5)
             {
-                iaThinker.SpecialCapacity(0, false);
+                iaThinker.SpecialCapacity(CapacityChoice.fire, false);
                 Debug.Log("CAPACITE");
             }
 
             // Comporetement Applicatif
-            var index = 0;
+            var actionChoice = ActionChoice.age;
 
-            int setIndex(int pindex)
+            ActionChoice setAction(ActionChoice pactionChoice)
             {
-                index = pindex;
-                return index;
+                actionChoice = pactionChoice;
+                return actionChoice;
             }
 
             if (iaThinker.Gold > 300)
             {
-                if (index == 0)
+                if (actionChoice == ActionChoice.turret)
                 {
                     if (!iaThinker.Turret())
                     {
-                        setIndex(0);
+                        setAction(ActionChoice.turret);
                     }
                     else
                     {
-                        setIndex(1);
+                        setAction(ActionChoice.age);
                         Debug.Log("TURRET");
                     }
                 }
-                else if (index == 1)
+                else if (actionChoice == ActionChoice.age)
                 {
                     if (!iaThinker.AgeUpgrade())
                     {
-                        setIndex(1);
+                        setAction(ActionChoice.age);
                     }
                     else
                     {
-                        setIndex(0);
+                        setAction(ActionChoice.turret);
                         Debug.Log("AGE");
                     }
                 }
