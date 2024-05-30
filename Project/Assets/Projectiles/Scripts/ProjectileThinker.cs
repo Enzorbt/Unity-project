@@ -15,5 +15,6 @@ namespace Supinfo.Project.Projectiles.Scripts
         
         public UnitType UnitType { get; set; }
         
+        public Vector3 DetectionDirection { get; set; }
     }
 }
