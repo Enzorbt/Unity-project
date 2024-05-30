@@ -29,45 +29,44 @@ namespace IA.Event
                 Debug.Log("START");
                 if (iaThinker.PlayerUnits.Peek().Type == iaThinker.antiArmorStatSo.Type.StrongAgainst) // ARMOR && iaThinker.Gold >= iaThinker.antiArmorStatSo.Price
                 {
-                    iaThinker.Spawn(3);
+                    iaThinker.Spawn(UnitChoice.antiarmor);
                     // iaThinker.Gold -= iaThinker.antiArmorStatSo.Price;
                     Debug.Log("ANTI-ARMOR");
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.rangeStatSo.Type.StrongAgainst) // ANTI ARMOR && iaThinker.Gold >= iaThinker.rangeStatSo.Price
                 {
-                    iaThinker.Spawn(1);
+                    iaThinker.Spawn(UnitChoice.range);
                     // iaThinker.Gold -= iaThinker.rangeStatSo.Price;
                     Debug.Log("RANGE");
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.meleeStatSo.Type.StrongAgainst) // RANGE && iaThinker.Gold >= iaThinker.meleeStatSo.Price
                 {
-                    iaThinker.Spawn(0);
+                    iaThinker.Spawn(UnitChoice.melee);
                     // iaThinker.Gold -= iaThinker.meleeStatSo.Price;
                     Debug.Log("MELEE");
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.armorStatSo.Type.StrongAgainst) // MELEE && iaThinker.Gold >= iaThinker.armorStatSo.Price && iaThinker.IsUnlock
                 {
-                    iaThinker.Spawn(2);
+                    iaThinker.Spawn(UnitChoice.armor);
                     // iaThinker.Gold -= iaThinker.armorStatSo.Price;
                     Debug.Log("ARMOR");
                     iaThinker.PlayerUnits.Dequeue();
                 }   
             }
             
-            // SI LE JOUER NE PLACE RIEN TANK (ARMOR + 2 RANGE)
+            // SI LE JOUER NE PLACE RIEN TANK (ARMOR + RANGE)
             
             if (iaThinker.DetectUnitsAndAllies() == 0)
             {
                 Debug.Log(iaThinker.Gold);
-                float goldTank = iaThinker.armorStatSo.Price + (iaThinker.rangeStatSo.Price) * 2;
+                float goldTank = iaThinker.armorStatSo.Price + iaThinker.rangeStatSo.Price;
                 if (iaThinker.Gold >= goldTank && iaThinker.IsUnlock)
                 {
-                    iaThinker.Spawn(2);
-                    iaThinker.Spawn(1);
-                    iaThinker.Spawn(1);
+                    iaThinker.Spawn(UnitChoice.armor);
+                    iaThinker.Spawn(UnitChoice.range);
                     // iaThinker.Gold -= goldTank;
                     Debug.Log("SPAWN RIEN");
                 }
@@ -77,42 +76,42 @@ namespace IA.Event
             // CAPACITE
             if (iaThinker.DetectUnitsAndAllies() >= 7)
             {
-                iaThinker.SpecialCapacity(0, true);
+                iaThinker.SpecialCapacity(CapacityChoice.fire, true);
                 Debug.Log("CAPACITY");
             }
             
             // Comporetement Applicatif
-            var index = 0;
+            var actionChoice = ActionChoice.age;
 
-            int setIndex(int pindex)
+            ActionChoice setAction(ActionChoice pactionChoice)
             {
-                index = pindex;
-                return index;
+                actionChoice = pactionChoice;
+                return actionChoice;
             }
             
             if (iaThinker.Gold > 300)
             {
-                if (index == 0)
+                if (actionChoice == ActionChoice.turret)
                 {
-                    // if (!iaThinker.Turret())
-                    // {
-                    //     setIndex(0);
-                    // }
-                    // else
-                    // {
-                    //     setIndex(1);
-                    //     Debug.Log("TURRET");
-                    // }
-                }
-                else if (index == 1)
-                {
-                    if (!iaThinker.AgeUpgrade())
+                    if (!iaThinker.Turret())
                     {
-                        setIndex(1);
+                        setAction(ActionChoice.turret);
                     }
                     else
                     {
-                        setIndex(0);
+                        setAction(ActionChoice.age);
+                        Debug.Log("TURRET");
+                    }
+                }
+                else if (actionChoice == ActionChoice.age)
+                {
+                    if (!iaThinker.AgeUpgrade())
+                    {
+                        setAction(ActionChoice.age);
+                    }
+                    else
+                    {
+                        setAction(ActionChoice.turret);
                         Debug.Log("AGE");
                     }
                 }

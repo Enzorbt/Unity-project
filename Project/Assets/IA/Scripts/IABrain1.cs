@@ -15,30 +15,30 @@ namespace IA.Event
             
             iaThinker.IsThinking = true;
             
-            var index = iaThinker.getRand(0, 5);
-            switch (index)
+            var actionChoice = (ActionChoice)iaThinker.getRand(0, 5);
+            switch (actionChoice)
             {
-                case 0:
+                case ActionChoice.age:
                     iaThinker.AgeUpgrade();
                     Debug.Log("AGE");
                     break;
-                case 1:
-                    iaThinker.SpecialCapacity(iaThinker.getRand(0, 1), false);
+                case ActionChoice.capacity:
+                    iaThinker.SpecialCapacity((CapacityChoice)iaThinker.getRand(0, 1), false);
                     Debug.Log("SPECIAL");
                     break;
-                case 2:
-                    iaThinker.Spawn(iaThinker.getRand(0, 3));
+                case ActionChoice.spawn:
+                    iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3));
                     Debug.Log("SPAWN");
                     break;
-                case 3:
+                case ActionChoice.unlock:
                     iaThinker.UnlockNewUnit();
                     Debug.Log("UNLOCK");
                     break;
-                case 4:
+                case ActionChoice.turret:
                     iaThinker.Turret();
                     Debug.Log("TURRET");
                     break;
-                case 5:
+                case ActionChoice.upgrade:
                     // IAThinker.Upgrade(UpgradeType);
                     break;
             }
