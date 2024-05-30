@@ -8,6 +8,7 @@ using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using Supinfo.Project.Scripts.ScriptableObjects.Experience;
+using Supinfo.Project.Scripts.ScriptableObjects.Upgrades;
 using UnityEngine;
 using Random = System.Random;
 
@@ -80,20 +81,23 @@ namespace IA.Event
         
         // STATS SO UNIT
         [SerializeField] public UnitStatSo meleeStatSo;
-        [SerializeField] public  UnitStatSo rangeStatSo;
-        [SerializeField] public  UnitStatSo armorStatSo;
-        [SerializeField] public  UnitStatSo antiArmorStatSo;
+        [SerializeField] public UnitStatSo rangeStatSo;
+        [SerializeField] public UnitStatSo armorStatSo;
+        [SerializeField] public UnitStatSo antiArmorStatSo;
 
         // STATS SO XP AGE 
-        [SerializeField] public  ExperienceStatSo experienceStatSo;
+        [SerializeField] public ExperienceStatSo experienceStatSo;
 
         // STATS SO Turret
-        [SerializeField] public  TurretStatSo turretStatSo;
+        [SerializeField] public TurretStatSo turretStatSo;
 
         // STATS SO SPECIAL CAPACITY
-        [SerializeField] public  CapacitySo capacityFireSo;
-        [SerializeField] public  CapacitySo capacityFlashSo;
+        [SerializeField] public CapacitySo capacityFireSo;
+        [SerializeField] public CapacitySo capacityFlashSo;
 
+        // STATS SO UPGRADE
+        [SerializeField] public UpgradePricesSo upgradePricesSo;
+        
         private void Awake()
         {
             Gold = 2500;
