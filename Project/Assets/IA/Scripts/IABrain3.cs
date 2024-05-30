@@ -1,11 +1,7 @@
-// Attack STRATEGIE 
-
-// FINIR : 
-    // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
+// Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
 
 
-    using System.Collections;
-    using Common;
+using System.Collections;
 using Supinfo.Project.Common;
 using UnityEngine;
 
@@ -36,7 +32,6 @@ namespace IA.Event
                 iaThinker.Spawn(1);
             }
             
-            // A tester
             // LANCE CAPACITE SPECIAL
             if (iaThinker.DetectUnitsAndAllies() >= 6)
             {

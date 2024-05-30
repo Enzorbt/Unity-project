@@ -1,16 +1,8 @@
+// Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
+
 using System.Collections;
-using System.Collections.Generic;
-using Common;
-using ScriptableObjects.Unit;
 using Supinfo.Project.Common;
-using Supinfo.Project.Scripts;
 using UnityEngine;
-
-// FINIR 
-    // LOGIQUE 
-    // ALWAY KEEP MONEY FOR BUYING MELEE TO DEFENCE 
-
-    // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
 
 namespace IA.Event
 {
@@ -33,7 +25,6 @@ namespace IA.Event
             if (iaThinker.DetectUnitsAndAllies() >= 7)
             {
                 iaThinker.SpecialCapacity(0, true);
-                // Rembourse XP
             }
             
             // Comporetement Applicatif

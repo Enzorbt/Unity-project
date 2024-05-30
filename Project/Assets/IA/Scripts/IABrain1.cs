@@ -1,10 +1,8 @@
-using System.Collections;
-using Common;
-using Supinfo.Project.Common;
-using Supinfo.Project.Scripts;
-using UnityEngine;
-
 // UPGRADE 
+
+using System.Collections;
+using Supinfo.Project.Common;
+using UnityEngine;
 
 namespace IA.Event
 {

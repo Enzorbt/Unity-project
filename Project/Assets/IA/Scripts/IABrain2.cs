@@ -1,12 +1,8 @@
-// Defense STRATEGIE 
+// Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
 
-// FINIR : 
-    // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
-
-    using System.Collections;
-    using Common;
-    using Supinfo.Project.Common;
-    using UnityEngine;
+using System.Collections;
+using Supinfo.Project.Common;
+using UnityEngine;
 
 namespace IA.Event
 {

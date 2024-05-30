@@ -1,6 +1,6 @@
-using System;
+// Capacité Type
+
 using System.Collections.Generic;
-using Common;
 using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
 using Supinfo.Project.Common;
@@ -9,7 +9,6 @@ using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using Supinfo.Project.Scripts.ScriptableObjects.Experience;
 using UnityEngine;
 using Random = System.Random;
-// Capacité Type
 
 namespace IA.Event
 {
@@ -23,7 +22,7 @@ namespace IA.Event
         protected  int TurretNumber {get; set;}
         public bool IsUnlock {get; set;}
 
-        public Dictionary<UpgradeType, int> UpgradeDict; // Unity
+        public Dictionary<UpgradeType, int> UpgradeDict;
 
         private EventsFoundation _eventsFoundation;
         private Random aleatoire = new Random();
@@ -95,7 +94,7 @@ namespace IA.Event
                         Xp -= (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
                         if (buff)
                         {
-                            Xp += (experienceStatSo.ExperienceLevel[Age] * 15) / 100;
+                            Xp += (experienceStatSo.ExperienceLevel[Age] * 20) / 100;
                         }
                         return true;
                     }
@@ -107,7 +106,7 @@ namespace IA.Event
                         Xp -= (experienceStatSo.ExperienceLevel[Age] * 60) / 100;
                         if (buff)
                         {
-                            Xp += (experienceStatSo.ExperienceLevel[Age]*30)/100;
+                            Xp += (experienceStatSo.ExperienceLevel[Age]*40)/100;
                         }
                         return true;
                     }
@@ -165,7 +164,6 @@ namespace IA.Event
         // UNLOCK UNIT 
         public  bool UnlockNewUnit()
         {
-            // AJOUTER VERIF ARGENT + LOGIQUE 
             if (!IsUnlock && Gold >= 100)
             {
                 IsUnlock = true;
