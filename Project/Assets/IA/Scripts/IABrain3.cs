@@ -13,34 +13,38 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker)yield break;
-            Debug.Log("Xp : " + iaThinker.Xp);
-            Debug.Log("Gold : " +iaThinker.Gold);         
             iaThinker.IsThinking = true;
             
+            // AGE UPGRADE
+            iaThinker.AgeUpgrade();
+
+            // UNLOCK UNIT
             if (!iaThinker.IsUnlock)
             {
                 iaThinker.UnlockNewUnit();
             }
             
             // SPAWN UNIT 
-            if (iaThinker.DetectUnitsAndAllies() != 0)
+            if (iaThinker.DetectUnitsAndAllies() != 0) // SPAWN PAR DEFAULT
             {                
                 iaThinker.Spawn(UnitChoice.antiarmor);
             }
             
-            if (iaThinker.DetectUnitsAndAllies() == 3)
+            if (iaThinker.DetectUnitsAndAllies() == 3) // REPONCE AU JOUEUR
             {                
                 iaThinker.Spawn(UnitChoice.melee);
                 iaThinker.Spawn(UnitChoice.melee);
                 iaThinker.Spawn(UnitChoice.range);
             }
             
-            // LANCE CAPACITE SPECIAL
-            if (iaThinker.DetectUnitsAndAllies() >= 6)
+            
+            // LAUCH CAPACITY
+            if (iaThinker.DetectUnitsAndAllies() >= 6) // LANCE ECLAIRE SI +6 UNITE ADVAIRSE
             {
                 iaThinker.SpecialCapacity(CapacityChoice.lightning, true);
             }
-            if (iaThinker.DetectUnitsAndAllies() == 10)
+            
+            if (iaThinker.DetectUnitsAndAllies() == 10) // LANCE BOULE DE FEUX SI 10 UNITE ADVAIRSE
             {
                 iaThinker.SpecialCapacity(CapacityChoice.fire, true);
             }
@@ -56,7 +60,7 @@ namespace IA.Event
             
             if (iaThinker.Gold > 300)
             {
-                if (actionChoice == ActionChoice.spawn)
+                if (actionChoice == ActionChoice.spawn) // SPAWN RANDOM
                 {
                     if (!iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3)))
                     {
@@ -67,11 +71,11 @@ namespace IA.Event
                         setAction(ActionChoice.age);
                     }
                 }
-                else if (actionChoice == ActionChoice.age)
+                else if (actionChoice == ActionChoice.upgrade) // UPGRADE
                 {
                     if (!iaThinker.AgeUpgrade())
                     {
-                        setAction(ActionChoice.age);
+                        setAction(ActionChoice.upgrade);
                     }
                     else
                     {
@@ -80,7 +84,9 @@ namespace IA.Event
                 }
             }
             yield return new WaitForSeconds(delayTime);
+            
             iaThinker.Gold += 5; 
+            
             iaThinker.IsThinking = false;
         }
     }
