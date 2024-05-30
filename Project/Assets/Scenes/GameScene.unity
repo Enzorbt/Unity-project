@@ -2166,6 +2166,10 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1596231602822983347, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
+      propertyPath: onXpChange
+      value: 
+      objectReference: {fileID: 11400000, guid: 8c4cce962529bd644aaddb4403621165, type: 2}
+    - target: {fileID: 1596231602822983347, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
       propertyPath: _capacitySo
       value: 
       objectReference: {fileID: 11400000, guid: 0b9262cdf1849e64ea41ac08f4b4b160, type: 2}
@@ -9284,6 +9288,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGoldCountChange: {fileID: 11400000, guid: fb331398eef5f4e009819eaac0515d31, type: 2}
+  goldGain: 5
+  goldGainCooldown: 2
 --- !u!114 &1954219968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10752,6 +10758,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1596231602822983347, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
+      propertyPath: onXpChange
+      value: 
+      objectReference: {fileID: 11400000, guid: 8c4cce962529bd644aaddb4403621165, type: 2}
     - target: {fileID: 5241116987115444180, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
       propertyPath: m_Type
       value: 0
