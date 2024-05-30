@@ -1,16 +1,8 @@
+// Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
+
 using System.Collections;
-using System.Collections.Generic;
-using Common;
-using ScriptableObjects.Unit;
 using Supinfo.Project.Common;
-using Supinfo.Project.Scripts;
 using UnityEngine;
-
-// FINIR 
-    // LOGIQUE 
-    // ALWAY KEEP MONEY FOR BUYING MELEE TO DEFENCE 
-
-    // Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
 
 namespace IA.Event
 {
@@ -24,16 +16,65 @@ namespace IA.Event
             
             // UNLOCK UNIT 
             iaThinker.UnlockNewUnit();
-            Debug.Log("UNLOCK" + iaThinker.IsUnlock);
+            Debug.Log("UNLOCK");
             
             // SPAWN UNIT 
-            iaThinker.SpawnDifficult();
+            // COUNTER (Unité forte contre celle que le joueur pose)
+            
+            
+            // SI LE JOUER NE PLACE RIEN TANK (ARMOR + 2 RANGE)
+            if (iaThinker.DetectUnitsAndAllies() == 0)
+            {
+                Debug.Log(iaThinker.Gold);
+                float goldTank = iaThinker.armorStatSo.Price + (iaThinker.rangeStatSo.Price)*2;
+                if (iaThinker.Gold >= goldTank && iaThinker.IsUnlock)
+                {
+                    iaThinker.Spawn(2);
+                    iaThinker.Spawn(1);
+                    iaThinker.Spawn(1);
+                    iaThinker.Gold -= goldTank;
+                    Debug.Log("SPAWN RIEN");
+                }
+            }
+
+            if (iaThinker.PlayerUnits.Count != 0)
+            {
+                Debug.Log("START");
+                if (iaThinker.PlayerUnits.Peek().Type == iaThinker.antiArmorStatSo.Type.StrongAgainst && iaThinker.Gold >= iaThinker.antiArmorStatSo.Price) // ARMOR
+                {
+                    iaThinker.Spawn(3);
+                    iaThinker.Gold -= iaThinker.antiArmorStatSo.Price;
+                    Debug.Log("ANTI-ARMOR");
+                    iaThinker.PlayerUnits.Dequeue();
+                }
+                else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.rangeStatSo.Type.StrongAgainst && iaThinker.Gold >= iaThinker.rangeStatSo.Price) // ANTI ARMOR
+                {
+                    iaThinker.Spawn(1);
+                    iaThinker.Gold -= iaThinker.rangeStatSo.Price;
+                    Debug.Log("RANGE");
+                    iaThinker.PlayerUnits.Dequeue();
+                }
+                else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.meleeStatSo.Type.StrongAgainst && iaThinker.Gold >= iaThinker.meleeStatSo.Price) // RANGE
+                {
+                    iaThinker.Spawn(0);
+                    iaThinker.Gold -= iaThinker.meleeStatSo.Price;
+                    Debug.Log("MELEE");
+                    iaThinker.PlayerUnits.Dequeue();
+                }
+                else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.armorStatSo.Type.StrongAgainst && iaThinker.Gold >= iaThinker.armorStatSo.Price && iaThinker.IsUnlock) // MELEE
+                {
+                    iaThinker.Spawn(2);
+                    iaThinker.Gold -= iaThinker.armorStatSo.Price;
+                    Debug.Log("ARMOR");
+                    iaThinker.PlayerUnits.Dequeue();
+                }   
+            }
             
             // CAPACITE
             if (iaThinker.DetectUnitsAndAllies() >= 7)
             {
                 iaThinker.SpecialCapacity(0, true);
-                // Rembourse XP
+                Debug.Log("CAPACITY");
             }
             
             // Comporetement Applicatif
@@ -56,6 +97,7 @@ namespace IA.Event
                     else
                     {
                         setIndex(1);
+                        Debug.Log("TURRET");
                     }
                 }
                 else if (index == 1)
@@ -67,6 +109,7 @@ namespace IA.Event
                     else
                     {
                         setIndex(0);
+                        Debug.Log("AGE");
                     }
                 }
             }
@@ -78,6 +121,7 @@ namespace IA.Event
             //     }
             // }
             yield return new WaitForSeconds(delayTime);
+            iaThinker.Gold += 5; 
             iaThinker.IsThinking = false;
         }
     }

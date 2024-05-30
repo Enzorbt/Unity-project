@@ -3369,7 +3369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32be9a2f40004122bbf083ae8c9ba32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: fee867e3abd1eff409447eb89cdda28b, type: 2}
+  brain: {fileID: 11400000, guid: 520cdd1772c4320478d614b0a478f877, type: 2}
   index: 0
   meleeStatSo: {fileID: 11400000, guid: 26df139b3b7a6924892ed0625aabb770, type: 2}
   rangeStatSo: {fileID: 11400000, guid: 8d5c438434273ca4ba9134e2ff204c40, type: 2}
