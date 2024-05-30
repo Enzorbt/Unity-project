@@ -2,6 +2,8 @@
 
 using System.Collections;
 using Supinfo.Project.Common;
+using Supinfo.Project.Scripts;
+using Supinfo.Project.Scripts.ScriptableObjects.Upgrades;
 using UnityEngine;
 
 namespace IA.Event
@@ -14,6 +16,7 @@ namespace IA.Event
             if (thinker is not IAThinker iaThinker) yield break;
             Debug.Log("Xp : " + iaThinker.Xp);
             Debug.Log("Gold : " +iaThinker.Gold);
+            
             iaThinker.IsThinking = true;
 
             iaThinker.AgeUpgrade();
@@ -30,11 +33,11 @@ namespace IA.Event
                 iaThinker.Spawn(UnitChoice.range);
             }
             
-            // // LANCE CAPACITE SPECIAL
-            // if (iaThinker.DetectUnitsAndAllies() >= 5)
-            // {
-            //     iaThinker.SpecialCapacity(CapacityChoice.fire, false);
-            // }
+            // LANCE CAPACITE SPECIAL
+            if (iaThinker.DetectUnitsAndAllies() >= 5)
+            {
+                iaThinker.SpecialCapacity(CapacityChoice.fire, false);
+            }
 
             // Comporetement Applicatif
             var actionChoice = ActionChoice.age;
@@ -55,22 +58,66 @@ namespace IA.Event
                     }
                     else
                     {
-                        setAction(ActionChoice.age);
+                        setAction(ActionChoice.upgrade);
                     }
                 }
-                else if (actionChoice == ActionChoice.age)
+                else if (actionChoice == ActionChoice.upgrade)
                 {
-                    if (!iaThinker.AgeUpgrade())
+                    var upgradeIndex = iaThinker.getRand(0,6);
+                    switch (upgradeIndex)
                     {
-                        setAction(ActionChoice.age);
+                        case 0:
+                            for (int index = 1; index <= 3;)
+                            {
+                                iaThinker.Upgrade(UpgradeType.GoldGiven);
+                                index++;
+                            }
+                            break;
+                        case 1:
+                            for (int index = 1; index <= 3;)
+                            {
+                                iaThinker.Upgrade(UpgradeType.TurretAttack);
+                                index++;
+                            } 
+                            break;
+                        case 2:
+                            for (int index = 1; index <= 3;)
+                            {
+                                iaThinker.Upgrade(UpgradeType.TurretRange);
+                                index++;
+                            } 
+                            break;
+                        case 3:
+                            for (int index = 1; index <= 3;)
+                            {
+                                iaThinker.Upgrade(UpgradeType.ArmorAttack);
+                                index++;
+                            } 
+                            break;
+                        case 4:
+                            for (int index = 1; index <= 3;)
+                            {
+                                iaThinker.Upgrade(UpgradeType.ArmorHealth);
+                                index++;
+                            } 
+                            break;
+                        case 5:
+                            for (int index = 1; index <= 3;)
+                            {
+                                iaThinker.Upgrade(UpgradeType.RangeAttack);
+                                index++;
+                            } 
+                            break;
+                        case 6:
+                            for (int index = 1; index <= 3;)
+                            {
+                                iaThinker.Upgrade(UpgradeType.RangeRange);
+                                index++;
+                            } 
+                            break;
                     }
-                    else
-                    {
-                        setAction(ActionChoice.turret);
-                    }
-                }
+                }                    
             }
-            
             yield return new WaitForSeconds(delayTime);
             iaThinker.Gold += 5; 
             iaThinker.IsThinking = false;

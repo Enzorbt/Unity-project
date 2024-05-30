@@ -17,14 +17,14 @@ namespace Supinfo.Project.Projectiles.Scripts
             
             // enemy detection
             projectileThinker.TryGetComponent(out IUnitDetection detection);
-            var target = detection?.Detect(projectileThinker.Direction, 0.1f, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");            // damage enemy if in range (distance)
+            var target = detection?.Detect(projectileThinker.DetectionDirection, 0.1f, tags[1]=="Allies"?"Unit,Enemies":"Unit,Allies");            // damage enemy if in range (distance)
             
             if (target is not null)
             {
                 Attack(projectileThinker, target);
                 return;
             }
-            target = detection?.Detect(projectileThinker.Direction, 0.1f, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");            // damage enemy if in range (distance)
+            target = detection?.Detect(projectileThinker.DetectionDirection, 0.1f, tags[1]=="Allies"?"Castle,Enemies":"Castle,Allies");            // damage enemy if in range (distance)
             
             if (target is not null)
             {

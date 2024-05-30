@@ -8,6 +8,7 @@ using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using Supinfo.Project.Scripts.ScriptableObjects.Experience;
+using Supinfo.Project.Scripts.ScriptableObjects.Upgrades;
 using UnityEngine;
 using Random = System.Random;
 
@@ -20,7 +21,7 @@ namespace IA.Event
         armor,
         antiarmor
     };
-
+    
     public enum ActionChoice
     {
         spawn,
@@ -80,20 +81,23 @@ namespace IA.Event
         
         // STATS SO UNIT
         [SerializeField] public UnitStatSo meleeStatSo;
-        [SerializeField] public  UnitStatSo rangeStatSo;
-        [SerializeField] public  UnitStatSo armorStatSo;
-        [SerializeField] public  UnitStatSo antiArmorStatSo;
+        [SerializeField] public UnitStatSo rangeStatSo;
+        [SerializeField] public UnitStatSo armorStatSo;
+        [SerializeField] public UnitStatSo antiArmorStatSo;
 
         // STATS SO XP AGE 
-        [SerializeField] public  ExperienceStatSo experienceStatSo;
+        [SerializeField] public ExperienceStatSo experienceStatSo;
 
         // STATS SO Turret
-        [SerializeField] public  TurretStatSo turretStatSo;
+        [SerializeField] public TurretStatSo turretStatSo;
 
         // STATS SO SPECIAL CAPACITY
-        [SerializeField] public  CapacitySo capacityFireSo;
-        [SerializeField] public  CapacitySo capacityFlashSo;
+        [SerializeField] public CapacitySo capacityFireSo;
+        [SerializeField] public CapacitySo capacityFlashSo;
 
+        // STATS SO UPGRADE
+        [SerializeField] public UpgradePricesSo upgradePricesSo;
+        
         private void Awake()
         {
             Gold = 2500;
@@ -215,17 +219,17 @@ namespace IA.Event
         // UNLOCK UNIT 
         public  bool UnlockNewUnit()
         {
-            if (!IsUnlock && Gold >= 100)
+            if (!IsUnlock && Gold >= 300)
             {
                 IsUnlock = true;
-                Gold -= 100;
+                Gold -= 300;
             }
 
             return IsUnlock;
         }
         
         // TURRET
-        public  bool Turret()
+        public bool Turret()
         {
             if (Gold >= turretStatSo.Price)
             {
@@ -238,9 +242,133 @@ namespace IA.Event
         }
         
         // UPGRADE
-        public  void Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
+        public bool Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
         {
-            _eventsFoundation.Upgrade(upgradeType);
+            switch (upgradeType)
+            {
+                case UpgradeType.MeleeAttack :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.MeleeAttack,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.MeleeAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.MeleeAttack, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.MeleeHealth :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.MeleeHealth,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.MeleeHealth);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.MeleeHealth, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.RangeAttack :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.RangeAttack,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.RangeAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.RangeAttack, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.RangeRange :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.RangeRange,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.RangeRange);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.RangeRange, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.AntiArmorAttack :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.AntiArmorAttack,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.AntiArmorAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.AntiArmorAttack, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.AntiArmorHealth :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.AntiArmorHealth,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.AntiArmorHealth);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.AntiArmorHealth, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.ArmorAttack :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.ArmorAttack,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.ArmorAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.ArmorAttack, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.ArmorHealth :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.ArmorHealth,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.ArmorHealth);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.ArmorHealth, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.TurretAttack :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.TurretAttack,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.TurretAttack);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.TurretAttack, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.TurretRange :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.TurretRange,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.TurretRange);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.TurretRange, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+                case UpgradeType.GoldGiven :
+                    for (int index = 1; index <= 3;)
+                    {
+                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.GoldGiven,index))
+                        {
+                            _eventsFoundation.Upgrade(UpgradeType.GoldGiven);
+                            Gold -= upgradePricesSo.GetPrice(UpgradeType.GoldGiven, index);
+                            index++;
+                            return true;
+                        }                    }                    
+                    return false;
+            }
+            return false;
         }
         
         public void OnAlliesSpawn(Component sender, object data)
