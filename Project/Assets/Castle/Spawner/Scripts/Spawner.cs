@@ -89,6 +89,7 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             unitHealth.MaxHealth = unitStatSo.MaxHealth;
             unitHealth.GoldGiven = unitStatSo.GoldGiven;
             unitHealth.XpGiven = unitStatSo.ExperienceGiven;
+            unitHealth.UnitType = unitStatSo.Type;
 
             onSpawnQueueStatusChange.Raise(this, _unitStatSos.Count < 4);
 
