@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Managers;
+using Supinfo.Project.Scripts.ScriptableObjects.Upgrades;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -26,8 +27,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         [SerializeField]
         private UpgradeType upgradeType;
 
-        [SerializeField] [Header("3 upgrade costs")]
-        private List<float> upgradeCosts;
+        [SerializeField] private UpgradePricesSo upgradePricesSo;
 
         private float _goldCount;
 
@@ -46,7 +46,7 @@ namespace Supinfo.Project.UI.Button.Scripts
 
             if (onGoldChange is null) return;
             
-            onGoldChange.Raise(this, - upgradeCosts[_count]);
+            onGoldChange.Raise(this, - upgradePricesSo.GetPrice(upgradeType, _count));
             
             medals[_count].gameObject.SetActive(true);
             _count++;
@@ -67,7 +67,7 @@ namespace Supinfo.Project.UI.Button.Scripts
             if (_count >= 3) return;
             
             // activate the button
-            SetActiveButton(_goldCount >= upgradeCosts[_count]);
+            SetActiveButton(_goldCount >= upgradePricesSo.GetPrice(upgradeType, _count));
         }
 
         private void SetActiveButton(bool state)
@@ -79,7 +79,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         {
             if (data is not GameSpeed gameSpeed) return;
             
-            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _goldCount >= upgradeCosts[_count] && _count < 3);
+            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _goldCount >= upgradePricesSo.GetPrice(upgradeType, _count) && _count < 3);
         }
 
     }
