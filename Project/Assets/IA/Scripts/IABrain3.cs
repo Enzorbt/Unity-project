@@ -16,7 +16,11 @@ namespace IA.Event
             
             iaThinker.IsThinking = true;
             
-            iaThinker.UnlockNewUnit();
+            if (!iaThinker.IsUnlock)
+            {
+                iaThinker.UnlockNewUnit();
+                Debug.Log("UNLOCK");
+            }
             
             // SPAWN UNIT 
             if (iaThinker.DetectUnitsAndAllies() != 0)
