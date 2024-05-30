@@ -242,7 +242,7 @@ namespace IA.Event
         }
         
         // UPGRADE
-        public bool Upgrade(UpgradeType upgradeType) // METTRE VERIFICATION DES PRIX (SCRIPTBLE OBJECT)
+        public bool Upgrade(UpgradeType upgradeType)
         {
             switch (upgradeType)
             {

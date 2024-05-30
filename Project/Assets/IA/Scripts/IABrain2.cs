@@ -14,31 +14,35 @@ namespace IA.Event
         public override IEnumerator ThinkWithDelay(ThinkerWithDelay thinker)
         {
             if (thinker is not IAThinker iaThinker) yield break;
-            Debug.Log("Xp : " + iaThinker.Xp);
-            Debug.Log("Gold : " +iaThinker.Gold);
             
             iaThinker.IsThinking = true;
 
+            // AGE UPGRADE
             iaThinker.AgeUpgrade();
             
+            
+            // UNLOCK UNIT
             if (!iaThinker.IsUnlock)
             {
                 iaThinker.UnlockNewUnit();
             }
             
-            // SPAWN UNIT 
+            
+            // SPAWN UNIT (TANK STRATEGY)
             if (iaThinker.DetectUnitsAndAllies() != 0)
             {
                 iaThinker.Spawn(UnitChoice.armor);
                 iaThinker.Spawn(UnitChoice.range);
             }
             
-            // LANCE CAPACITE SPECIAL
+            
+            // LAUCH CAPACITY
             if (iaThinker.DetectUnitsAndAllies() >= 5)
             {
                 iaThinker.SpecialCapacity(CapacityChoice.fire, false);
             }
 
+            
             // Comporetement Applicatif
             var actionChoice = ActionChoice.age;
 
@@ -50,7 +54,7 @@ namespace IA.Event
 
             if (iaThinker.Gold > 300)
             {
-                if (actionChoice == ActionChoice.turret)
+                if (actionChoice == ActionChoice.turret) // TURRET
                 {
                     if (!iaThinker.Turret())
                     {
@@ -61,7 +65,7 @@ namespace IA.Event
                         setAction(ActionChoice.upgrade);
                     }
                 }
-                else if (actionChoice == ActionChoice.upgrade)
+                else if (actionChoice == ActionChoice.upgrade) // UPGRADE
                 {
                     var upgradeIndex = iaThinker.getRand(0,6);
                     switch (upgradeIndex)
