@@ -9,12 +9,7 @@ namespace Supinfo.Project.Turret.Scripts
 {
     public class TurretThinker : Thinker
     {
-        [FormerlySerializedAs("turretAttackSo")] [SerializeField] private TurretStatSo turretStatSo;
-        public TurretStatSo TurretStatSo
-        {
-            get => turretStatSo;
-            set => turretStatSo = value;
-        }
+        public TurretStatSo TurretStatSo{get; set;}
 
         private SpriteRenderer _spriteRenderer;
 
@@ -27,7 +22,6 @@ namespace Supinfo.Project.Turret.Scripts
         {
             // update the sprite (stats are always drone from the Turret Stats So)
             StartCoroutine(ChangeSprite());
-            
         }
 
         private IEnumerator ChangeSprite()

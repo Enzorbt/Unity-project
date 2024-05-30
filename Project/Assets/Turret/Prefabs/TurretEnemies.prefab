@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3038471053519800622}
   - component: {fileID: -7309273111792413769}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: TurretEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: bdebd8b76674a1140bbf5424b4680510, type: 2}
-  turretStatSo: {fileID: 11400000, guid: 1693377c11a814f128bbf777937c8797, type: 2}
 --- !u!114 &-1278255880181997762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: a0891eb06deb2406e9a7ae715307fe92, type: 2}
+  gameEvent: {fileID: 11400000, guid: 9d531a91269cfbf4084322c18c8f4308, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
