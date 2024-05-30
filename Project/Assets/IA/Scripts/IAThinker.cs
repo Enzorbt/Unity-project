@@ -22,8 +22,6 @@ namespace IA.Event
         protected  int TurretNumber {get; set;}
         public bool IsUnlock {get; set;}
         
-        public bool SpawnState {get; set;}
-
         public Dictionary<UpgradeType, int> UpgradeDict;
 
         private EventsFoundation _eventsFoundation;
