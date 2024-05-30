@@ -9,6 +9,15 @@ namespace Supinfo.Project.Common
         [SerializeField]
         private BrainWithDelay brain;
 
+        public BrainWithDelay Brain
+        {
+            get => brain;
+            set
+            {
+                brain = value;
+            }
+        }
+
         private void FixedUpdate()
         {
             if (!IsThinking)

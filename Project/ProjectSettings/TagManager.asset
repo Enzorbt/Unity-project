@@ -17,6 +17,7 @@ TagManager:
   - Spawner,Enemies
   - Projectile,Allies
   - Projectile,Enemies
+  - IA
   layers:
   - Default
   - TransparentFX
