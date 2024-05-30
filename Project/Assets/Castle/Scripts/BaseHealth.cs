@@ -95,13 +95,13 @@ namespace Supinfo.Project.Castle.Scripts
             yield return new WaitForSeconds(2f);
             
             // update max heath and current health
+            var healthToAdd = baseStatSo.MaxHealth - MaxHealth;
             MaxHealth = baseStatSo.MaxHealth;
-            CurHealth += MaxHealth;
+            CurHealth += healthToAdd;
             
             // send data to listeners
             onBaseHealthRatioChange.Raise(this, CurHealth/MaxHealth);
             
-            Debug.Log(baseStatSo.Sprite);
             // update sprite
             _spriteRenderer.sprite = baseStatSo.Sprite;
         }
