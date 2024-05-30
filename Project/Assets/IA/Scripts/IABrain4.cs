@@ -16,25 +16,26 @@ namespace IA.Event
             
             // UNLOCK UNIT 
             iaThinker.UnlockNewUnit();
+            Debug.Log("UNLOCK");
             
             // SPAWN UNIT 
             // COUNTER (Unité forte contre celle que le joueur pose)
             
             
             // SI LE JOUER NE PLACE RIEN TANK (ARMOR + 2 RANGE)
-            // if (iaThinker.DetectUnitsAndAllies() == 0)
-            // {
-            //     Debug.Log(iaThinker.Gold);
-            //     float goldTank = iaThinker.armorStatSo.Price + (iaThinker.rangeStatSo.Price)*2;
-            //     if (iaThinker.Gold >= goldTank && iaThinker.IsUnlock)
-            //     {
-            //         iaThinker.Spawn(2);
-            //         iaThinker.Spawn(1);
-            //         iaThinker.Spawn(1);
-            //         iaThinker.Gold -= goldTank;
-            //         Debug.Log("SPAWN RIEN");
-            //     }
-            // }
+            if (iaThinker.DetectUnitsAndAllies() == 0)
+            {
+                Debug.Log(iaThinker.Gold);
+                float goldTank = iaThinker.armorStatSo.Price + (iaThinker.rangeStatSo.Price)*2;
+                if (iaThinker.Gold >= goldTank && iaThinker.IsUnlock)
+                {
+                    iaThinker.Spawn(2);
+                    iaThinker.Spawn(1);
+                    iaThinker.Spawn(1);
+                    iaThinker.Gold -= goldTank;
+                    Debug.Log("SPAWN RIEN");
+                }
+            }
 
             if (iaThinker.PlayerUnits.Count != 0)
             {
@@ -73,6 +74,7 @@ namespace IA.Event
             if (iaThinker.DetectUnitsAndAllies() >= 7)
             {
                 iaThinker.SpecialCapacity(0, true);
+                Debug.Log("CAPACITY");
             }
             
             // Comporetement Applicatif
@@ -88,14 +90,15 @@ namespace IA.Event
             {
                 if (index == 0)
                 {
-                    // if (!iaThinker.Turret())
-                    // {
-                    //     setIndex(0);
-                    // }
-                    // else
-                    // {
-                    //     setIndex(1);
-                    // }
+                    if (!iaThinker.Turret())
+                    {
+                        setIndex(0);
+                    }
+                    else
+                    {
+                        setIndex(1);
+                        Debug.Log("TURRET");
+                    }
                 }
                 else if (index == 1)
                 {
@@ -106,6 +109,7 @@ namespace IA.Event
                     else
                     {
                         setIndex(0);
+                        Debug.Log("AGE");
                     }
                 }
             }

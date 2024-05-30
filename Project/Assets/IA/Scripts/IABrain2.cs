@@ -22,12 +22,14 @@ namespace IA.Event
             {
                 iaThinker.Spawn(2);
                 iaThinker.Spawn(1);
+                Debug.Log("SPAWN");
             }
             
             // LANCE CAPACITE SPECIAL
             if (iaThinker.DetectUnitsAndAllies() >= 5)
             {
                 iaThinker.SpecialCapacity(0, false);
+                Debug.Log("CAPACITE");
             }
 
             // Comporetement Applicatif
@@ -50,6 +52,7 @@ namespace IA.Event
                     else
                     {
                         setIndex(1);
+                        Debug.Log("TURRET");
                     }
                 }
                 else if (index == 1)
@@ -61,6 +64,7 @@ namespace IA.Event
                     else
                     {
                         setIndex(0);
+                        Debug.Log("AGE");
                     }
                 }
             }

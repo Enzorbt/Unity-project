@@ -22,6 +22,7 @@ namespace IA.Event
             if (iaThinker.DetectUnitsAndAllies() != 0)
             {                
                 iaThinker.Spawn(3);
+                Debug.Log("SPAWN");
 
             }
             
@@ -30,16 +31,19 @@ namespace IA.Event
                 iaThinker.Spawn(0);
                 iaThinker.Spawn(0);
                 iaThinker.Spawn(1);
+                Debug.Log("SPAWN");
             }
             
             // LANCE CAPACITE SPECIAL
             if (iaThinker.DetectUnitsAndAllies() >= 6)
             {
                 iaThinker.SpecialCapacity(1, true);
+                Debug.Log("CAPACITY 1");
             }
             if (iaThinker.DetectUnitsAndAllies() == 10)
             {
                 iaThinker.SpecialCapacity(0, true);
+                Debug.Log("CAPACITY 2");
             }
             
             // Comporetement Applicatif
@@ -62,6 +66,7 @@ namespace IA.Event
                     else
                     {
                         setIndex(1);
+                        Debug.Log("SPAWN");
                     }
                 }
                 else if (index == 1)
@@ -73,6 +78,7 @@ namespace IA.Event
                     else
                     {
                         setIndex(0);
+                        Debug.Log("AGE");
                     }
                 }
             }

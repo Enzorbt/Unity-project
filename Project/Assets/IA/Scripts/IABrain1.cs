@@ -20,20 +20,23 @@ namespace IA.Event
             {
                 case 0:
                     iaThinker.AgeUpgrade();
+                    Debug.Log("AGE");
                     break;
                 case 1:
                     iaThinker.SpecialCapacity(iaThinker.getRand(0, 1), false);
+                    Debug.Log("SPECIAL");
                     break;
                 case 2:
                     iaThinker.Spawn(iaThinker.getRand(0, 3));
+                    Debug.Log("SPAWN");
                     break;
                 case 3:
-                {
                     iaThinker.UnlockNewUnit();
-                }
+                    Debug.Log("UNLOCK");
                     break;
                 case 4:
                     iaThinker.Turret();
+                    Debug.Log("TURRET");
                     break;
                 case 5:
                     // IAThinker.Upgrade(UpgradeType);
