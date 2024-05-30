@@ -507,6 +507,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1173,6 +1177,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1543,6 +1551,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3036,6 +3048,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3989,6 +4005,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5217,6 +5237,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7191,7 +7215,11 @@ PrefabInstance:
     - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
       propertyPath: onGoldChange
       value: 
-      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+      objectReference: {fileID: 11400000, guid: 8c4cce962529bd644aaddb4403621165, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     - target: {fileID: 7972513543616498501, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
       propertyPath: gameEvent
       value: 
@@ -7758,6 +7786,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8715,6 +8747,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9238,6 +9274,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11101,6 +11141,10 @@ PrefabInstance:
       propertyPath: onGoldChange
       value: 
       objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
+    - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
+      propertyPath: upgradePricesSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cd6eda6bd87a244fba7f9bc2cc8927d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
