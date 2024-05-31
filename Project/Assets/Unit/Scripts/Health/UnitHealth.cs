@@ -43,13 +43,6 @@ namespace Supinfo.Project.Unit.Scripts.Health
         /// <summary>
         /// Update is called once per frame. Here it's used to test damage reception on a key press.
         /// </summary>
-        void Update()
-        {
-            if( Input.GetKeyDown( KeyCode.Space ) )
-            {
-                TakeDamage(10, null);
-            }
-        }
 
         /// <summary>
         /// Applies damage to the unit and updates the health bar.
