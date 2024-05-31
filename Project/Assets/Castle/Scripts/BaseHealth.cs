@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Supinfo.Project.ScriptableObjects.Base;
 using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
@@ -58,6 +59,14 @@ namespace Supinfo.Project.Castle.Scripts
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
+        private void Update()
+        {
+            if( Input.GetKeyDown( KeyCode.Space ) )
+            {
+                TakeDamage(100, null);
+            }
+        }
+
         /// <summary>
         /// Implementation of the IDamageable interface.
         /// Applies damage to the base, updates its health, and triggers events based on health changes or destruction.
@@ -84,6 +93,7 @@ namespace Supinfo.Project.Castle.Scripts
                 CurHealth = 0;
             }
         }
+        
 
         public void OnAgeUpgrade(Component sender, object data)
         {
