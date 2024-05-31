@@ -45,7 +45,7 @@ namespace IA.Event
             
             if (iaThinker.Action == ActionChoice.turret) // TURRET
             {
-                if (!iaThinker.Turret())
+                if (iaThinker.TurretNumber <= 4 && !iaThinker.Turret())
                 {
                     iaThinker.Action = ActionChoice.turret;
                 }
