@@ -65,62 +65,62 @@ namespace IA.Event
                         setAction(ActionChoice.upgrade);
                     }
                 }
-                else if (actionChoice == ActionChoice.upgrade) // UPGRADE
-                {
-                    var upgradeIndex = iaThinker.getRand(0,6);
-                    switch (upgradeIndex)
-                    {
-                        case 0:
-                            for (int index = 1; index <= 3;)
-                            {
-                                iaThinker.Upgrade(UpgradeType.GoldGiven);
-                                index++;
-                            }
-                            break;
-                        case 1:
-                            for (int index = 1; index <= 3;)
-                            {
-                                iaThinker.Upgrade(UpgradeType.TurretAttack);
-                                index++;
-                            } 
-                            break;
-                        case 2:
-                            for (int index = 1; index <= 3;)
-                            {
-                                iaThinker.Upgrade(UpgradeType.TurretRange);
-                                index++;
-                            } 
-                            break;
-                        case 3:
-                            for (int index = 1; index <= 3;)
-                            {
-                                iaThinker.Upgrade(UpgradeType.ArmorAttack);
-                                index++;
-                            } 
-                            break;
-                        case 4:
-                            for (int index = 1; index <= 3;)
-                            {
-                                iaThinker.Upgrade(UpgradeType.ArmorHealth);
-                                index++;
-                            } 
-                            break;
-                        case 5:
-                            for (int index = 1; index <= 3;)
-                            {
-                                iaThinker.Upgrade(UpgradeType.RangeAttack);
-                                index++;
-                            } 
-                            break;
-                        case 6:
-                            for (int index = 1; index <= 3;)
-                            {
-                                iaThinker.Upgrade(UpgradeType.RangeRange);
-                                index++;
-                            } 
-                            break;
-                    }
-                }                    
+                // else if (actionChoice == ActionChoice.upgrade) // UPGRADE
+                // {
+                    // var upgradeIndex = iaThinker.getRand(0,6);
+                    // switch (upgradeIndex)
+                    // {
+                    //     case 0:
+                    //         for (int index = 1; index <= 3;)
+                    //         {
+                    //             iaThinker.Upgrade(UpgradeType.GoldGiven);
+                    //             index++;
+                    //         }
+                    //         break;
+                    //     case 1:
+                    //         for (int index = 1; index <= 3;)
+                    //         {
+                    //             iaThinker.Upgrade(UpgradeType.TurretAttack);
+                    //             index++;
+                    //         } 
+                    //         break;
+                    //     case 2:
+                    //         for (int index = 1; index <= 3;)
+                    //         {
+                    //             iaThinker.Upgrade(UpgradeType.TurretRange);
+                    //             index++;
+                    //         } 
+                    //         break;
+                    //     case 3:
+                    //         for (int index = 1; index <= 3;)
+                    //         {
+                    //             iaThinker.Upgrade(UpgradeType.ArmorAttack);
+                    //             index++;
+                    //         } 
+                    //         break;
+                    //     case 4:
+                    //         for (int index = 1; index <= 3;)
+                    //         {
+                    //             iaThinker.Upgrade(UpgradeType.ArmorHealth);
+                    //             index++;
+                    //         } 
+                    //         break;
+                    //     case 5:
+                    //         for (int index = 1; index <= 3;)
+                    //         {
+                    //             iaThinker.Upgrade(UpgradeType.RangeAttack);
+                    //             index++;
+                    //         } 
+                    //         break;
+                    //     case 6:
+                    //         for (int index = 1; index <= 3;)
+                    //         {
+                    //             iaThinker.Upgrade(UpgradeType.RangeRange);
+                    //             index++;
+                    //         } 
+                    //         break;
+                    // }
+                // }                    
             }
             yield return new WaitForSeconds(delayTime);
             iaThinker.Gold += 5; 
