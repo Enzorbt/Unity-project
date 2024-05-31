@@ -18,6 +18,10 @@ TagManager:
   - Projectile,Allies
   - Projectile,Enemies
   - IA
+  - QueueImage0
+  - QueueImage1
+  - QueueImage2
+  - QueueImage3
   layers:
   - Default
   - TransparentFX
