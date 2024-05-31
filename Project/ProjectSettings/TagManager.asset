@@ -22,6 +22,7 @@ TagManager:
   - QueueImage1
   - QueueImage2
   - QueueImage3
+  - LightingSymbol
   layers:
   - Default
   - TransparentFX
