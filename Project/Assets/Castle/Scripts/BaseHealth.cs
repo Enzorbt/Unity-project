@@ -59,14 +59,6 @@ namespace Supinfo.Project.Castle.Scripts
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
-        private void Update()
-        {
-            if( Input.GetKeyDown( KeyCode.Space ) )
-            {
-                TakeDamage(100, null);
-            }
-        }
-
         /// <summary>
         /// Implementation of the IDamageable interface.
         /// Applies damage to the base, updates its health, and triggers events based on health changes or destruction.

@@ -1,5 +1,4 @@
-﻿using System;
-using Supinfo.Project.Scripts.Events;
+﻿using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,7 +37,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         {
             gameObject.GetComponentInChildren<UnityEngine.UI.Button>().enabled = state;
             
-            _image.color = state ? Color.white : Color.black;
+            _image.color = state ? Color.white : Color.grey;
         }
     }
 }
