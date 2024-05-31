@@ -1,5 +1,3 @@
-// Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
-
 using System.Collections;
 using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
