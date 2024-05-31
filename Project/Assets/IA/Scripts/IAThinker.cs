@@ -115,8 +115,6 @@ namespace IA.Event
             {
                 upgradeDictionary.Add((UpgradeType)index, 0);
             }
-
-            // Action = ActionChoice.turret;
         }
 
         private void Start()
