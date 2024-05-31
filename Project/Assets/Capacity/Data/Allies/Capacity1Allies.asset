@@ -55,5 +55,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2063f5894cd2b1f409369efaa9f8af20, type: 3}
   - {fileID: 21300000, guid: 457140bcfcfa9134298d19aac3a5d864, type: 3}
   - {fileID: 21300000, guid: b02007efc76268346823ee67f2203176, type: 3}
+  controllers:
+  - {fileID: 9100000, guid: 2932ab151367b224485069583e68f1fd, type: 2}
+  - {fileID: 9100000, guid: 2415277d0311412489a088bffa836f14, type: 2}
+  - {fileID: 9100000, guid: 40067dc1a38c66145ba6ec76d07993c0, type: 2}
+  - {fileID: 9100000, guid: 16249523b340ca94e9e151d446df1f52, type: 2}
+  - {fileID: 9100000, guid: 983f5276af3f61d40a07f74e9a868522, type: 2}
+  - {fileID: 9100000, guid: 6b12c3171e9d48e4b86460f2b4a83ac2, type: 2}
+  - {fileID: 9100000, guid: 3d3e014576ebad04799e1fb4c5a10cba, type: 2}
   _prefab: {fileID: 2394929925109827313, guid: c611627dbf460b244bf73cb07c5c0464, type: 3}
   capabilityType: 0
