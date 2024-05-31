@@ -879,7 +879,6 @@ GameObject:
   - component: {fileID: 96638625}
   - component: {fileID: 96638624}
   - component: {fileID: 96638623}
-  - component: {fileID: 96638626}
   - component: {fileID: 96638627}
   m_Layer: 5
   m_Name: Button
@@ -953,9 +952,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 96638626}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 1679800854}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Scripts.IAButton, Assembly-CSharp
+        m_MethodName: MakeIAChoice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1015,18 +1014,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96638621}
   m_CullTransparentMesh: 1
---- !u!114 &96638626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96638621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 988a154ab69b4065ab32cfc8c6b6e327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &96638627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,7 +1704,6 @@ GameObject:
   - component: {fileID: 378693808}
   - component: {fileID: 378693807}
   - component: {fileID: 378693806}
-  - component: {fileID: 378693809}
   - component: {fileID: 378693810}
   m_Layer: 5
   m_Name: Button
@@ -1791,9 +1777,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 378693809}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 704186547}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Scripts.IAButton, Assembly-CSharp
+        m_MethodName: MakeIAChoice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1853,18 +1839,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378693804}
   m_CullTransparentMesh: 1
---- !u!114 &378693809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378693804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 988a154ab69b4065ab32cfc8c6b6e327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &378693810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2885,6 +2859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 606301930}
+  - component: {fileID: 606301931}
   m_Layer: 5
   m_Name: AIlvl3
   m_TagString: Untagged
@@ -2912,6 +2887,20 @@ RectTransform:
   m_AnchoredPosition: {x: 2.9999633, y: -187.60085}
   m_SizeDelta: {x: 519.1365, y: 140.3015}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &606301931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606301929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6e439109fc4e23aebd2aff4adc8d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onIAChoice: {fileID: 11400000, guid: 552a02606295e574395f819d697710e6, type: 2}
+  iaChoice: 2
 --- !u!1 &608318710
 GameObject:
   m_ObjectHideFlags: 0
@@ -4001,6 +3990,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 704186546}
+  - component: {fileID: 704186547}
   m_Layer: 5
   m_Name: AIlvl2
   m_TagString: Untagged
@@ -4028,6 +4018,20 @@ RectTransform:
   m_AnchoredPosition: {x: 2.9999633, y: -47.30184}
   m_SizeDelta: {x: 519.1365, y: 140.3015}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &704186547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704186545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6e439109fc4e23aebd2aff4adc8d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onIAChoice: {fileID: 11400000, guid: 552a02606295e574395f819d697710e6, type: 2}
+  iaChoice: 1
 --- !u!1 &737718141
 GameObject:
   m_ObjectHideFlags: 0
@@ -7265,6 +7269,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562305091}
   m_CullTransparentMesh: 1
+--- !u!1 &1576084410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1576084411}
+  - component: {fileID: 1576084413}
+  - component: {fileID: 1576084412}
+  m_Layer: 0
+  m_Name: IAManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1576084411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576084410}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 930.68286, y: 603.7955, z: -3.2413025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1576084412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576084410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 552a02606295e574395f819d697710e6, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1576084413}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Scripts.IAManager, Assembly-CSharp
+        m_MethodName: OnIAChoice
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1576084413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576084410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f09c8fad6f4cc28eaa1ad04c4e9613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomIA: {fileID: 11400000, guid: 5997174a3ad344e458899ddb5d119014, type: 2}
+  easyIA: {fileID: 11400000, guid: fee867e3abd1eff409447eb89cdda28b, type: 2}
+  mediumIA: {fileID: 11400000, guid: 4d7279c1ebf75ae4a8bc8513b97145cf, type: 2}
+  hardIA: {fileID: 11400000, guid: 520cdd1772c4320478d614b0a478f877, type: 2}
 --- !u!1 &1580095098
 GameObject:
   m_ObjectHideFlags: 0
@@ -7682,6 +7763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1679800853}
+  - component: {fileID: 1679800854}
   m_Layer: 5
   m_Name: AIlvl1
   m_TagString: Untagged
@@ -7709,6 +7791,20 @@ RectTransform:
   m_AnchoredPosition: {x: 3, y: 93}
   m_SizeDelta: {x: 519.1365, y: 140.3015}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1679800854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679800852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6e439109fc4e23aebd2aff4adc8d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onIAChoice: {fileID: 11400000, guid: 552a02606295e574395f819d697710e6, type: 2}
+  iaChoice: 0
 --- !u!1 &1734877734
 GameObject:
   m_ObjectHideFlags: 0
@@ -8752,7 +8848,6 @@ GameObject:
   - component: {fileID: 1959688114}
   - component: {fileID: 1959688113}
   - component: {fileID: 1959688112}
-  - component: {fileID: 1959688115}
   - component: {fileID: 1959688116}
   m_Layer: 5
   m_Name: Button
@@ -8826,9 +8921,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1959688115}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 606301931}
+        m_TargetAssemblyTypeName: Supinfo.Project.UI.Scripts.IAButton, Assembly-CSharp
+        m_MethodName: MakeIAChoice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8888,18 +8983,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959688110}
   m_CullTransparentMesh: 1
---- !u!114 &1959688115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959688110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 988a154ab69b4065ab32cfc8c6b6e327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1959688116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10725,3 +10808,4 @@ SceneRoots:
   - {fileID: 30692404}
   - {fileID: 1949631104}
   - {fileID: 47535251}
+  - {fileID: 1576084411}

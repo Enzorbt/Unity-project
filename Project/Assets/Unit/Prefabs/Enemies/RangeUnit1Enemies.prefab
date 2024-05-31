@@ -39,7 +39,7 @@ PrefabInstance:
     - target: {fileID: 4371070662113245973, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 47a860e06dd0e8e448ed4a85f2ce9ec6, type: 3}
+      objectReference: {fileID: 21300000, guid: ec126b9395996174da6497d507e9d475, type: 3}
     - target: {fileID: 4371070662113245973, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeUnit1Enemies
       objectReference: {fileID: 0}
+    - target: {fileID: 7568718845160254322, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 37737c1637e0eef4b97edfd689cd5076, type: 2}
     - target: {fileID: 8827721182540866462, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

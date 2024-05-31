@@ -9,14 +9,22 @@ namespace Supinfo.Project.Unit.Scripts
 {
     public class RangeShooter : MonoBehaviour, IShooter
     {
+        private Animator _animator;
+        
         [SerializeField] private GameObject projectile;
         
         private bool _canShoot = true;
+
+        private void Start()
+        {
+            _animator = GetComponent<Animator>();
+        }
 
         public void Shoot(float amount, float cooldown, float speed, Transform target, UnitType attackerType)
         {
             if (!_canShoot) return;
             StartCoroutine(ShootWithCooldown(amount, cooldown, speed, target, attackerType));
+            //_animator.SetBool("attack", true);
         }
 
         public IEnumerator ShootWithCooldown(float amount, float cooldown, float speed, Transform target, UnitType attackerType)
@@ -58,9 +66,10 @@ namespace Supinfo.Project.Unit.Scripts
             projectileThinker.tag = "Projectile," + gameObject.tag.Split(",")[1];
             
             instantiatedProjectile.SetActive(true);
-
+            _animator.SetBool("attack", true);
             // wait for cooldown
             yield return new WaitForSeconds(cooldown);
+            _animator.SetBool("attack", false);
 
             _canShoot = true;
         }

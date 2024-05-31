@@ -81,6 +81,12 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             unitThinker.Range = unitStatSo.Range;
             unitThinker.HitSpeed = unitStatSo.HitSpeed;
             unitThinker.UnitType = unitStatSo.Type;
+
+            unitSpawned.TryGetComponent(out SpriteRenderer spriteRenderer);
+            
+            if (spriteRenderer is null) yield break;
+
+            spriteRenderer.sprite = unitStatSo.Sprite;
             
             unitSpawned.TryGetComponent(out UnitHealth unitHealth);
             
@@ -89,6 +95,13 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             unitHealth.MaxHealth = unitStatSo.MaxHealth;
             unitHealth.GoldGiven = unitStatSo.GoldGiven;
             unitHealth.XpGiven = unitStatSo.ExperienceGiven;
+            unitHealth.UnitType = unitStatSo.Type;
+            
+            unitSpawned.TryGetComponent(out Animator animator);
+
+            if (animator is null) yield break;
+
+            animator.runtimeAnimatorController = unitStatSo.Controllers;
 
             onSpawnQueueStatusChange.Raise(this, _unitStatSos.Count < 4);
 
