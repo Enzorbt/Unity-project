@@ -69,8 +69,8 @@ namespace IA.Event
         public int UpgradeCounter { get; set; }
         
         public Queue<UnitStatSo> PlayerUnits { get; set; }
-        protected  int Age {get; set;}
-        protected  int TurretNumber {get; set;}
+        private int Age {get; set;}
+        public  int TurretNumber {get; set;}
         public bool IsUnlock {get; set;}
         
         public Dictionary<UpgradeType, int> UpgradeDict;
@@ -261,7 +261,7 @@ namespace IA.Event
         // TURRET
         public bool Turret()
         {
-            if (Gold >= turretStatSo.Price)
+            if (Gold >= turretStatSo.Price && TurretNumber <= 4)
             {
                 _eventsFoundation.SpawnTurret(turretStatSo);
                 Gold -= turretStatSo.Price;
