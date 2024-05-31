@@ -9,15 +9,16 @@ namespace Supinfo.Project.UI.Button.Scripts
     public class GameSpeedButtonUI : MonoBehaviour
     {
         [SerializeField] private GameSpeed gameSpeed;
-
         [SerializeField] private GameEvent onGameSpeedChange;
-        [SerializeField] private Sprite spriteOn;
-        [SerializeField] private Sprite spriteOff;
         private Image _image;
 
         private void Awake()
         {
             _image = GetComponentInChildren<Image>();
+            if (gameSpeed == GameSpeed.Play)
+            {
+                SetActiveButton(false);
+            }
         }
 
         public void OnClick()
@@ -36,7 +37,8 @@ namespace Supinfo.Project.UI.Button.Scripts
         private void SetActiveButton(bool state)
         {
             gameObject.GetComponentInChildren<UnityEngine.UI.Button>().enabled = state;
-            _image.sprite = state ? spriteOn : spriteOff;
+            
+            _image.color = state ? Color.white : Color.black;
         }
     }
 }
