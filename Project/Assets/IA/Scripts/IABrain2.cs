@@ -53,7 +53,7 @@ namespace IA.Event
                 iaThinker.TurretCounter = 0;
             }
             
-            if (iaThinker.UpgradeCounter > 5) // UPGRADE
+            if (iaThinker.UpgradeCounter > 5 && iaThinker.Gold > 1000) // UPGRADE
             {
                 var upgrade = (UpgradeType)iaThinker.getRand(0, 10);
                 iaThinker.Upgrade(upgrade);

@@ -29,7 +29,8 @@ namespace IA.Event
             // SPAWN PAR DEFAULT
             if (iaThinker.DetectUnitsAndAllies() == 0 && iaThinker.DetectUnitsAndEnemies() == 0 && iaThinker.SpawnCounter > 10)
             {                
-                iaThinker.Spawn(UnitChoice.antiarmor, true);
+                iaThinker.Spawn(UnitChoice.melee, true);
+                iaThinker.Spawn(UnitChoice.melee, true);
                 iaThinker.SpawnCounter = 0;
             }
             
@@ -61,7 +62,7 @@ namespace IA.Event
                 iaThinker.TurretCounter = 0;
             }
             
-            if (iaThinker.UpgradeCounter > 5) // UPGRADE
+            if (iaThinker.UpgradeCounter > 5 && iaThinker.Gold > 1000) // UPGRADE
             {
                 var upgrade = (UpgradeType)iaThinker.getRand(0, 10);
                 iaThinker.Upgrade(upgrade);

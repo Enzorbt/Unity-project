@@ -14,7 +14,7 @@ namespace IA.Event
             iaThinker.IsThinking = true;
                         
             // AGE UPGRADE
-            if (iaThinker.AgeCounter > 30)
+            if (iaThinker.AgeCounter > 15)
             {
                 iaThinker.AgeUpgrade();
                 iaThinker.AgeCounter = 0;
@@ -92,7 +92,7 @@ namespace IA.Event
                 iaThinker.TurretCounter = 0;
             }
             
-            if (iaThinker.UpgradeCounter > 5) // UPGRADE
+            if (iaThinker.UpgradeCounter > 5 && iaThinker.Gold > 1000) // UPGRADE
             {
                 var upgrade = (UpgradeType)iaThinker.getRand(0, 10);
                 iaThinker.Upgrade(upgrade);
