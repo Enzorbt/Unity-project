@@ -17,9 +17,9 @@ namespace Supinfo.Project.Common
 
         private void FixedUpdate()
         {
-            if (!IsThinking && Brain is not null)
+            if (!IsThinking && brain is not null)
             {
-                StartCoroutine(Brain.ThinkWithDelay(this));
+                StartCoroutine(brain.ThinkWithDelay(this));
             }
         }
     }
