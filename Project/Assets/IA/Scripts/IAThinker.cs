@@ -65,6 +65,7 @@ namespace IA.Event
         }
         private float _xp;
 
+        public int SpawnCounter;
         
         public Queue<UnitStatSo> PlayerUnits { get; set; }
         protected  int Age {get; set;}

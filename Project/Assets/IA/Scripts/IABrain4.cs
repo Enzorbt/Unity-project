@@ -28,7 +28,7 @@ namespace IA.Event
             
             // COUNTER (Unité forte contre celle que le joueur pose)
 
-            if (iaThinker.PlayerUnits.Count >= 0)
+            if (iaThinker.PlayerUnits.Count > 0)
             {
                 if (iaThinker.PlayerUnits.Peek().Type == iaThinker.antiArmorStatSo.Type.StrongAgainst) // ARMOR
                 {
@@ -54,15 +54,17 @@ namespace IA.Event
             
             // SI LE JOUEUR NE PLACE RIEN TANK (ARMOR + RANGE)
             
-            // if (iaThinker.DetectUnitsAndAllies() == 0)
-            // {
-            //     if (iaThinker.IsUnlock)
-            //     {
-            //         iaThinker.Spawn(UnitChoice.armor, true);
-            //         iaThinker.Spawn(UnitChoice.range, true);
-            //         iaThinker.Spawn(UnitChoice.range, true);
-            //     }
-            // }
+            if (iaThinker.DetectUnitsAndAllies() == 0 && iaThinker.SpawnCounter == 7)
+            {
+                if (iaThinker.IsUnlock)
+                {
+                    iaThinker.Spawn(UnitChoice.armor, true);
+                    iaThinker.Spawn(UnitChoice.range, true);
+                    iaThinker.Spawn(UnitChoice.range, true);
+                }
+
+                iaThinker.SpawnCounter = 0;
+            }
             
             // LAUCH CAPACITY
             if (iaThinker.DetectUnitsAndAllies() >= 7)
@@ -107,6 +109,8 @@ namespace IA.Event
             }
             
             yield return new WaitForSeconds(delayTime);
+
+            iaThinker.SpawnCounter++;
             
             iaThinker.Gold += 5; 
             
