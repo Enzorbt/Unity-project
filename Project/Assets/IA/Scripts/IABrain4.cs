@@ -25,44 +25,44 @@ namespace IA.Event
             
             
             // SPAWN UNIT 
-                // COUNTER (Unité forte contre celle que le joueur pose)
+            
+            // COUNTER (Unité forte contre celle que le joueur pose)
 
-            if (iaThinker.PlayerUnits.Count != 0)
+            if (iaThinker.PlayerUnits.Count >= 0)
             {
                 if (iaThinker.PlayerUnits.Peek().Type == iaThinker.antiArmorStatSo.Type.StrongAgainst) // ARMOR
                 {
-                    iaThinker.Spawn(UnitChoice.antiarmor);
+                    iaThinker.Spawn(UnitChoice.antiarmor, true);
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.rangeStatSo.Type.StrongAgainst) // ANTI ARMOR
                 {
-                    iaThinker.Spawn(UnitChoice.range);
+                    iaThinker.Spawn(UnitChoice.range, true);
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.meleeStatSo.Type.StrongAgainst) // RANGE
                 {
-                    iaThinker.Spawn(UnitChoice.melee);
+                    iaThinker.Spawn(UnitChoice.melee, true);
                     iaThinker.PlayerUnits.Dequeue();
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.armorStatSo.Type.StrongAgainst) // MELEE
                 {
-                    iaThinker.Spawn(UnitChoice.armor);
+                    iaThinker.Spawn(UnitChoice.armor, true);
                     iaThinker.PlayerUnits.Dequeue();
                 }   
             }
             
-            // SI LE JOUEuR NE PLACE RIEN TANK (ARMOR + RANGE)
+            // SI LE JOUEUR NE PLACE RIEN TANK (ARMOR + RANGE)
             
-            if (iaThinker.DetectUnitsAndAllies() == 0)
-            {
-                if (iaThinker.IsUnlock)
-                {
-                    iaThinker.Spawn(UnitChoice.armor);
-                    iaThinker.Spawn(UnitChoice.range);
-                    iaThinker.Spawn(UnitChoice.range);
-                }
-            }
-            
+            // if (iaThinker.DetectUnitsAndAllies() == 0)
+            // {
+            //     if (iaThinker.IsUnlock)
+            //     {
+            //         iaThinker.Spawn(UnitChoice.armor, true);
+            //         iaThinker.Spawn(UnitChoice.range, true);
+            //         iaThinker.Spawn(UnitChoice.range, true);
+            //     }
+            // }
             
             // LAUCH CAPACITY
             if (iaThinker.DetectUnitsAndAllies() >= 7)

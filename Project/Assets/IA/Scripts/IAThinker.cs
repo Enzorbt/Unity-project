@@ -168,7 +168,7 @@ namespace IA.Event
         }
         
         // SPAWN UNIT
-        public bool Spawn(UnitChoice unitChoice)
+        public bool Spawn(UnitChoice unitChoice, bool buff)
         {
             switch (unitChoice)
             {
@@ -180,6 +180,11 @@ namespace IA.Event
                         Gold -= meleeStatSo.Price;
                         return true;
                     }
+                    if (buff == true)
+                    {
+                        _eventsFoundation.SpawnUnit(meleeStatSo);
+                        return true;
+                    }
                     return false;
                 case UnitChoice.range : 
                     // SPAWN RANGE 
@@ -187,6 +192,11 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(rangeStatSo);
                         Gold -= rangeStatSo.Price;
+                        return true;
+                    }
+                    if (buff == true)
+                    {
+                        _eventsFoundation.SpawnUnit(rangeStatSo);
                         return true;
                     }
                     return false;
@@ -198,6 +208,11 @@ namespace IA.Event
                         Gold -= armorStatSo.Price;
                         return true;
                     }
+                    if (buff == true)
+                    {
+                        _eventsFoundation.SpawnUnit(armorStatSo);
+                        return true;
+                    }
                     return false;
                 case UnitChoice.antiarmor : 
                     // SPAWN ANTI-ARMOR
@@ -205,6 +220,11 @@ namespace IA.Event
                     {
                         _eventsFoundation.SpawnUnit(antiArmorStatSo);
                         Gold -= antiArmorStatSo.Price;
+                        return true;
+                    }
+                    if (buff == true)
+                    {
+                        _eventsFoundation.SpawnUnit(antiArmorStatSo);
                         return true;
                     }
                     return false;

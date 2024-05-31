@@ -25,7 +25,7 @@ namespace IA.Event
                     iaThinker.SpecialCapacity((CapacityChoice)iaThinker.getRand(0, 1), false);
                     break;
                 case ActionChoice.spawn: // SPAWN UNIT
-                    iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3));
+                    iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3), false);
                     break;
                 case ActionChoice.unlock: // UNLOCK UNIT
                     iaThinker.UnlockNewUnit();

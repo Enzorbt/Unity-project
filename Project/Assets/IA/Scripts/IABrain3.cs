@@ -27,14 +27,14 @@ namespace IA.Event
             // SPAWN UNIT 
             if (iaThinker.DetectUnitsAndAllies() != 0) // SPAWN PAR DEFAULT
             {                
-                iaThinker.Spawn(UnitChoice.antiarmor);
+                iaThinker.Spawn(UnitChoice.antiarmor, true);
             }
             
             if (iaThinker.DetectUnitsAndAllies() == 3) // REPONCE AU JOUEUR
             {                
-                iaThinker.Spawn(UnitChoice.melee);
-                iaThinker.Spawn(UnitChoice.melee);
-                iaThinker.Spawn(UnitChoice.range);
+                iaThinker.Spawn(UnitChoice.melee, false);
+                iaThinker.Spawn(UnitChoice.melee, false);
+                iaThinker.Spawn(UnitChoice.range, false);
             }
             
             
@@ -62,7 +62,7 @@ namespace IA.Event
             {
                 if (actionChoice == ActionChoice.spawn) // SPAWN RANDOM
                 {
-                    if (!iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3)))
+                    if (!iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3), true))
                     {
                         setAction(ActionChoice.spawn);
                     }

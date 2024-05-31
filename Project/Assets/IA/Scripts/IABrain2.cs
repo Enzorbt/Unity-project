@@ -31,8 +31,8 @@ namespace IA.Event
             // SPAWN UNIT (TANK STRATEGY)
             if (iaThinker.DetectUnitsAndAllies() != 0)
             {
-                iaThinker.Spawn(UnitChoice.armor);
-                iaThinker.Spawn(UnitChoice.range);
+                iaThinker.Spawn(UnitChoice.armor, false);
+                iaThinker.Spawn(UnitChoice.range, false);
             }
             
             
