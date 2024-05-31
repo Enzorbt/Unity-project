@@ -57,7 +57,14 @@ namespace IA.Event
             if (iaThinker.Action == ActionChoice.upgrade) // UPGRADE
             {
                 var upgrade = (UpgradeType)iaThinker.getRand(0, 10);
-                iaThinker.Upgrade(upgrade);
+                if (!iaThinker.Upgrade(upgrade))
+                {
+                    iaThinker.Action = ActionChoice.upgrade;
+                }
+                else
+                {
+                    iaThinker.Action = ActionChoice.turret;
+                }
             }
             
             yield return new WaitForSeconds(delayTime);
