@@ -12,17 +12,14 @@ namespace Supinfo.Project.Common
         public BrainWithDelay Brain
         {
             get => brain;
-            set
-            {
-                brain = value;
-            }
+            set => brain = value;
         }
 
         private void FixedUpdate()
         {
-            if (!IsThinking)
+            if (!IsThinking && Brain is not null)
             {
-                StartCoroutine(brain.ThinkWithDelay(this));
+                StartCoroutine(Brain.ThinkWithDelay(this));
             }
         }
     }

@@ -61,8 +61,6 @@ namespace Supinfo.Project.UI.Scripts
             Debug.Log("thinker found");
 
             thinker.Brain = _iaChoice;
-            
-            Destroy(gameObject);
         }
     }
 }
