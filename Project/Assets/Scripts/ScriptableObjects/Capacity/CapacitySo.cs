@@ -41,6 +41,11 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.Capacity
         private Sprite[] _sprites;
         public Sprite Sprite => _sprites[_currentAge];
 
+        [Header("Animator Controller (7, 1 per age")] [SerializeField]
+        private RuntimeAnimatorController[] controllers;
+
+        public RuntimeAnimatorController Controllers => controllers[_currentAge];
+
         public void UpgradeAge()
         {
             _currentAge++;
