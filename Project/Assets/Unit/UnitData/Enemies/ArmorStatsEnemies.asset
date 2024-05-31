@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmorStatsEnemies
   m_EditorClassIdentifier: 
   damage:
-    baseValue: 25
+    baseValue: 20
     ageStatModifiers:
     - value: 5
       type: 0
