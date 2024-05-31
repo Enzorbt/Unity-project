@@ -3447,6 +3447,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5882899159539281035, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1795940000}
+    - targetCorrespondingSourceObject: {fileID: 5882899159539281035, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1795940004}
   m_SourcePrefab: {fileID: 100100000, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
 --- !u!224 &410372160 stripped
 RectTransform:
@@ -7652,6 +7655,7 @@ MonoBehaviour:
   leftMostPoint: {fileID: 237490495}
   rightMostPoint: {fileID: 1508315730}
   lightningSymbolHolder: {fileID: 1416294305}
+  onSpecialCapacityStatusChange: {fileID: 11400000, guid: ce9c187835463124ea1c4c1b7fe0f434, type: 2}
 --- !u!4 &935100706
 Transform:
   m_ObjectHideFlags: 0
@@ -12645,6 +12649,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1795940004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795939995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ce9c187835463124ea1c4c1b7fe0f434, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1795939996}
+        m_TargetAssemblyTypeName: Supinfo.Project.Capacity.Scripts.SpecialCapacityButtonUI,
+          Assembly-CSharp
+        m_MethodName: OnSpecialCapacityStatusChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1811704618
 GameObject:
   m_ObjectHideFlags: 0
@@ -15910,6 +15943,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5882899159539281035, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6419648924417006824}
+    - targetCorrespondingSourceObject: {fileID: 5882899159539281035, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6419648924417006828}
   m_SourcePrefab: {fileID: 100100000, guid: 4a9bb99928a4e48caa0981ac0f6e8d0c, type: 3}
 --- !u!1001 &5255161064248714259
 PrefabInstance:
@@ -16449,6 +16485,35 @@ MonoBehaviour:
       - m_Target: {fileID: 6419648924417006820}
         m_TargetAssemblyTypeName: Capacity.Events.SpecialCapacityButtonUI, Assembly-CSharp
         m_MethodName: OnAgeUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6419648924417006828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124973535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ce9c187835463124ea1c4c1b7fe0f434, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6419648924417006820}
+        m_TargetAssemblyTypeName: Supinfo.Project.Capacity.Scripts.SpecialCapacityButtonUI,
+          Assembly-CSharp
+        m_MethodName: OnSpecialCapacityStatusChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

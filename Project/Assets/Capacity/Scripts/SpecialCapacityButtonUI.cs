@@ -33,6 +33,8 @@ namespace Supinfo.Project.Capacity.Scripts
 
         private float _xpRatio;
 
+        private bool _canUse = true;
+
         private void Awake()
         {
             SetActiveButton(false);
@@ -59,7 +61,7 @@ namespace Supinfo.Project.Capacity.Scripts
             _xpRatio = xpRatio;
             
             // activate the button
-            SetActiveButton(_xpRatio >= cost);
+            SetActiveButton(_xpRatio >= cost && _canUse);
         }
 
         private void SetActiveButton(bool state)
@@ -91,7 +93,14 @@ namespace Supinfo.Project.Capacity.Scripts
         {
             if(data is not GameSpeed gameSpeed) return;
             
-            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _xpRatio >= cost);
+            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _xpRatio >= cost && _canUse);
+        }
+
+        public void OnSpecialCapacityStatusChange(Component sender, object data)
+        {
+            if(data is not bool status) return;
+            _canUse = status;
+            SetActiveButton(_xpRatio >= cost && _canUse);
         }
     }
 }
