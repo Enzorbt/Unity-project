@@ -10982,7 +10982,7 @@ PrefabInstance:
     - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
       propertyPath: onGoldChange
       value: 
-      objectReference: {fileID: 11400000, guid: 8c4cce962529bd644aaddb4403621165, type: 2}
+      objectReference: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
     - target: {fileID: 7481618438395930878, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
       propertyPath: upgradePricesSo
       value: 
@@ -10990,7 +10990,7 @@ PrefabInstance:
     - target: {fileID: 7972513543616498501, guid: be1b0bbbe9dbf4099be5e0497ae323aa, type: 3}
       propertyPath: gameEvent
       value: 
-      objectReference: {fileID: 11400000, guid: 98b1a138fb5d54b0b98703dbfab2030b, type: 2}
+      objectReference: {fileID: 11400000, guid: fb331398eef5f4e009819eaac0515d31, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
