@@ -204,3 +204,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7310bc5d9eb413e4ba05697218c47fc7, type: 3}
   - {fileID: 21300000, guid: 4ed682aa6bb020e45baccdee9ec7a792, type: 3}
   - {fileID: 21300000, guid: bc1ade15caab9484f9ea9a2f4722f3aa, type: 3}
+  controllers:
+  - {fileID: 9100000, guid: 0e95480df09af804fa7793d216ecf9ab, type: 2}
+  - {fileID: 9100000, guid: 3d117d03a44608e4ea8cd04d35d06a2c, type: 2}
+  - {fileID: 9100000, guid: 5a6c812f888ffbc49959bd670ae66ffb, type: 2}
+  - {fileID: 9100000, guid: 0c3381f479ce7fd448b00c2299fc93b6, type: 2}
+  - {fileID: 9100000, guid: d589bb1a570f61a4da51f0d9ea7c6152, type: 2}
+  - {fileID: 9100000, guid: c1313bce716bda8479140b4eb3c687d4, type: 2}
+  - {fileID: 9100000, guid: d1d593932ffca94469e20f9942b545ae, type: 2}

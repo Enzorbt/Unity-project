@@ -2,6 +2,7 @@
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.Interfaces.Upgrades;
 using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace ScriptableObjects.Unit
@@ -124,6 +125,12 @@ namespace ScriptableObjects.Unit
         [Header("Sprites (7, 1 per age)")] 
         [SerializeField] private Sprite[] sprite;
         public Sprite Sprite => sprite[_currentAge];
-        
+
+        /// <summary>
+        /// Animations of the unit.
+        /// </summary>
+        [Header("Animator Controller (7, 1 per age)")] 
+        [SerializeField] private RuntimeAnimatorController[] controllers;
+        public RuntimeAnimatorController Controllers => controllers[_currentAge];
     }
 }
