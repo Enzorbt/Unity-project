@@ -68,6 +68,10 @@ namespace IA.Event
         public int SpawnCounter { get; set; }
         public int UpgradeCounter { get; set; }
         
+        public int AgeCounter { get; set; }
+
+        public int TurretCounter { get; set; }
+
         public Queue<UnitStatSo> PlayerUnits { get; set; }
         private int Age {get; set;}
         public  int TurretNumber {get; set;}
@@ -111,8 +115,6 @@ namespace IA.Event
             {
                 upgradeDictionary.Add((UpgradeType)index, 0);
             }
-
-            Action = ActionChoice.turret;
         }
 
         private void Start()
@@ -131,6 +133,12 @@ namespace IA.Event
         {
             var unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit,Allies");
             return unitsAndAllies.Length;
+        }
+        
+        public int DetectUnitsAndEnemies()
+        {
+            var unitsAndEnemies = GameObject.FindGameObjectsWithTag("Unit,Enemies");
+            return unitsAndEnemies.Length;
         }
 
         // UPGRADE AGE
@@ -279,7 +287,6 @@ namespace IA.Event
                 Gold -= upgradePricesSo.GetPrice(upgradeType, upgradeDictionary[upgradeType]);
                 upgradeDictionary[upgradeType]++;
                 _eventsFoundation.Upgrade(upgradeType);
-                Debug.Log("upgraded " + upgradeType);
                 return true;
             }        
             return false;

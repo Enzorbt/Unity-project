@@ -16,9 +16,13 @@ namespace IA.Event
             if (thinker is not IAThinker iaThinker) yield break;
             
             iaThinker.IsThinking = true;
-
+            
             // AGE UPGRADE
-            iaThinker.AgeUpgrade();
+            if (iaThinker.AgeCounter > 30)
+            {
+                iaThinker.AgeUpgrade();
+                iaThinker.AgeCounter = 0;
+            }
             
             // UNLOCK UNIT
             if (!iaThinker.IsUnlock)
@@ -28,14 +32,16 @@ namespace IA.Event
             
             
             // SPAWN UNIT (TANK STRATEGY)
-            if (iaThinker.DetectUnitsAndAllies() != 0)
+            if (iaThinker.DetectUnitsAndAllies() > 0 && iaThinker.DetectUnitsAndEnemies() < 2 && iaThinker.SpawnCounter > 15)
             {
-                iaThinker.Spawn(UnitChoice.armor, false);
-                iaThinker.Spawn(UnitChoice.range, false);
+                iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3), false);
+                iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3), false);
+                iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3), true);
+                iaThinker.SpawnCounter = 0;
             }
             
             
-            // LAUCH CAPACITY
+            // LAUNCH CAPACITY
             if (iaThinker.DetectUnitsAndAllies() >= 5)
             {
                 iaThinker.SpecialCapacity(CapacityChoice.fire, false);
@@ -43,33 +49,28 @@ namespace IA.Event
             
             // Comporetement Applicatif
             
-            if (iaThinker.Action == ActionChoice.turret) // TURRET
+            if (iaThinker.TurretCounter > 7) // TURRET
             {
-                if (iaThinker.TurretNumber <= 4 && !iaThinker.Turret())
-                {
-                    iaThinker.Action = ActionChoice.turret;
-                }
-                else
-                {
-                    iaThinker.Action = ActionChoice.upgrade;
-                }
+                iaThinker.Turret();
+                iaThinker.TurretCounter = 0;
             }
-            if (iaThinker.Action == ActionChoice.upgrade) // UPGRADE
+            
+            if (iaThinker.UpgradeCounter > 5) // UPGRADE
             {
                 var upgrade = (UpgradeType)iaThinker.getRand(0, 10);
-                if (!iaThinker.Upgrade(upgrade))
-                {
-                    iaThinker.Action = ActionChoice.upgrade;
-                }
-                else
-                {
-                    iaThinker.Action = ActionChoice.turret;
-                }
+                iaThinker.Upgrade(upgrade);
+                iaThinker.UpgradeCounter = 0;
             }
             
             yield return new WaitForSeconds(delayTime);
-            iaThinker.Gold += 5; 
+            
             iaThinker.IsThinking = false;
+            
+            iaThinker.AgeCounter++;
+            iaThinker.SpawnCounter++;
+            iaThinker.UpgradeCounter++;
+            iaThinker.TurretCounter++;
+            iaThinker.Gold += 5; 
             
         }
     }
