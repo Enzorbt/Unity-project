@@ -1,3 +1,5 @@
+// Class / Variables / Decrire dans les functions
+
 using System.Collections.Generic;
 using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
@@ -105,6 +107,9 @@ namespace IA.Event
         // STATS SO UPGRADE
         [SerializeField] public UpgradePricesSo upgradePricesSo;
         
+        /// <summary>
+        /// Call Function before Start.
+        /// </summary>
         private void Awake()
         {
             Gold = 2500;
@@ -117,24 +122,41 @@ namespace IA.Event
             }
         }
 
+        /// <summary>
+        /// Call Function When Script is instanciate.
+        /// </summary>
         private void Start()
         {
             PlayerUnits= new Queue<UnitStatSo>();
         }
 
         // RAND 
-        public  int getRand(int minValue, int maxValue)
+        /// <summary>
+        /// Return and "Random" Value Between two value.
+        /// </summary>
+        /// <param name="minValue">Minimum value chosen.</param>
+        /// <param name="maxValue">Maximum value chosen.</param>
+        /// <returns> The random value chosen.</returns>
+        public int getRand(int minValue, int maxValue)
         {
             return aleatoire.Next(minValue, maxValue);
         }
 
         // DETECTION
+        /// <summary>
+        /// Function which detect unit allies, with tag and return the number of it (length).
+        /// </summary>
+        /// <returns>The length off the game object list.</returns>
         public int DetectUnitsAndAllies()
         {
             var unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit,Allies");
             return unitsAndAllies.Length;
         }
         
+        /// <summary>
+        /// Function which detect unit enemies, with tag and return the number of it (length).
+        /// </summary>
+        /// <returns>The length off the game object list.</returns>
         public int DetectUnitsAndEnemies()
         {
             var unitsAndEnemies = GameObject.FindGameObjectsWithTag("Unit,Enemies");
@@ -142,6 +164,10 @@ namespace IA.Event
         }
 
         // UPGRADE AGE
+        /// <summary>
+        /// Upgrade and buy manager (gold subtraction) the next age, call the event for this action.
+        /// </summary>
+        /// <returns>True if is possible and false if is impossible.</returns>
         public bool AgeUpgrade()
         {
             if (Xp >= experienceStatSo.ExperienceLevel[Age])
@@ -156,6 +182,12 @@ namespace IA.Event
         }
         
         // LAUNCH CAPACITY 
+        /// <summary>
+        /// Launch capacity by calling the event with capacity type and and buy manager (gold subtraction).
+        /// </summary>
+        /// <param name="capacityChoice">The type of capacity to use.</param>
+        /// <param name="buff">If the price is a little bit reimbursed.</param>
+        /// <returns>True if is possible and false if is impossible.</returns>
         public bool SpecialCapacity(CapacityChoice capacityChoice, bool buff)
         {
             switch (capacityChoice)
@@ -189,6 +221,12 @@ namespace IA.Event
         }
         
         // SPAWN UNIT
+        /// <summary>
+        /// Spawn unit by calling the event with unit type and buy manager (gold subtraction).
+        /// </summary>
+        /// <param name="unitChoice">The choice of type of the unit.</param>
+        /// <param name="buff">If the price is reimbursed.</param>
+        /// <returns>True if is possible and false if is impossible.</returns>
         public bool Spawn(UnitChoice unitChoice, bool buff)
         {
             switch (unitChoice)
@@ -255,6 +293,10 @@ namespace IA.Event
         }
         
         // UNLOCK UNIT 
+        /// <summary>
+        /// Unlock unit by calling the event and buy manager (gold subtraction).
+        /// </summary>
+        /// <returns>True if is possible and false if is impossible.</returns>
         public  bool UnlockNewUnit()
         {
             if (!IsUnlock && Gold >= 300)
@@ -267,6 +309,10 @@ namespace IA.Event
         }
         
         // TURRET
+        /// <summary>
+        /// Spawn turret by calling the event and buy manager (gold subtraction).
+        /// </summary>
+        /// <returns>True if is possible and false if is impossible.</returns>
         public bool Turret()
         {
             if (Gold >= turretStatSo.Price && TurretNumber <= 4)
@@ -280,6 +326,11 @@ namespace IA.Event
         }
         
         // UPGRADE
+        /// <summary>
+        /// Upgrade unit stats by calling the event with upgrade type and buy manager (gold subtraction).
+        /// </summary>
+        /// <param name="upgradeType">The choice of type of the upgrade.</param>
+        /// <returns>True if is possible and false if is impossible.</returns>
         public bool Upgrade(UpgradeType upgradeType)
         {
             if (upgradeDictionary[upgradeType] < 3 && upgradePricesSo.GetPrice(upgradeType, upgradeDictionary[upgradeType]) >= Gold)
@@ -292,18 +343,33 @@ namespace IA.Event
             return false;
         }
         
+        /// <summary>
+        /// Game event listener function called when the event OnAlliesSpawn is triggered (linked to a GameEventListener component).
+        /// </summary>
+        /// <param name="sender">The sender of the game event.</param>
+        /// <param name="data">The data being transferred.</param>
         public void OnAlliesSpawn(Component sender, object data)
         {
             if(data is not UnitStatSo unitStatSo) return;
             PlayerUnits.Enqueue(unitStatSo);
         }
 
+        /// <summary>
+        /// Game event listener function called when the event OnRecieveGold is triggered (linked to a GameEventListener component).
+        /// </summary>
+        /// <param name="sender">The sender of the game event.</param>
+        /// <param name="data">The data being transferred.</param>
         public void OnRecieveGold(Component sender, object data)
         {
             if(data is not float gold) return;
             Gold += gold;
         }
         
+        /// <summary>
+        /// Game event listener function called when the event OnRecieveXp is triggered (linked to a GameEventListener component).
+        /// </summary>
+        /// <param name="sender">The sender of the game event.</param>
+        /// <param name="data">The data being transferred.</param>
         public void OnRecieveXp(Component sender, object data)
         {
             if(data is not float xp) return;
