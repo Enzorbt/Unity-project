@@ -59,7 +59,7 @@ namespace Supinfo.Project.Capacity.Scripts
             _xpRatio = xpRatio;
             
             // activate the button
-            SetActiveButton(xpRatio >= cost);
+            SetActiveButton(_xpRatio >= cost);
         }
 
         private void SetActiveButton(bool state)
