@@ -53,6 +53,12 @@ namespace Supinfo.Project.Capacity.Scripts
                     var spriteRenderer = instantiatedObject.GetComponentInChildren<SpriteRenderer>();
                     if (spriteRenderer is null) break;
                     spriteRenderer.sprite = capacitySo.Sprite;
+                    
+                    var animator = instantiatedObject.GetComponentInChildren<Animator>();
+                    if (animator is null) break;
+                        
+                    animator.runtimeAnimatorController = capacitySo.Controllers;
+                    
                     yield return new WaitForSeconds(0.1f);
                 }
             }
