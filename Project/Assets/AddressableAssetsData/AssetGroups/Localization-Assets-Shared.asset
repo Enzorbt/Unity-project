@@ -72,6 +72,31 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2861aeaae569e49cdbea30fe5c270f03
+    m_Address: Assets/LocalSettings/Tables/WIP Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4061a367cdfd348748802a626e0325ba
+    m_Address: Assets/LocalSettings/Tables/Random Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e75868e6fcda3441cb1312383d9b6a8b
+    m_Address: Assets/LocalSettings/Tables/Easy Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 622d88145aa8b4c308700a84b8fca4fb
+    m_Address: Assets/LocalSettings/Tables/medium Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d43d5dc35d1864b93821409df718b46f
+    m_Address: Assets/LocalSettings/Tables/Hard Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 42a475adec807498c9d9e54f2363433b, type: 2}
   m_SchemaSet:

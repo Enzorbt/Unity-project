@@ -3,6 +3,7 @@
 using System.Collections;
 using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace IA.Event
@@ -34,7 +35,12 @@ namespace IA.Event
                     iaThinker.Turret();
                     break;
                 case ActionChoice.upgrade: // UPGRADE
-                    // iaThinker.Upgrade((UpgradeType)iaThinker.getRand(0, 1));
+                    if (iaThinker.UpgradeCounter > 2)
+                    {
+                        iaThinker.Upgrade((UpgradeType)iaThinker.getRand(0, 10));
+                        iaThinker.UpgradeCounter = 0;
+                    }
+                    iaThinker.UpgradeCounter++;
                     break;
             }
 

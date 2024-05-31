@@ -65,17 +65,26 @@ namespace IA.Event
         }
         private float _xp;
 
-        public int SpawnCounter;
+        public int SpawnCounter { get; set; }
+        public int UpgradeCounter { get; set; }
         
+        public int AgeCounter { get; set; }
+
+        public int TurretCounter { get; set; }
+
         public Queue<UnitStatSo> PlayerUnits { get; set; }
-        protected  int Age {get; set;}
-        protected  int TurretNumber {get; set;}
+        private int Age {get; set;}
+        public  int TurretNumber {get; set;}
         public bool IsUnlock {get; set;}
         
         public Dictionary<UpgradeType, int> UpgradeDict;
 
         private EventsFoundation _eventsFoundation;
         private Random aleatoire = new Random();
+
+        private Dictionary<UpgradeType, int> upgradeDictionary = new Dictionary<UpgradeType, int>();
+        
+        public ActionChoice Action { get; set; }
         
         // STATS SO UNIT
         [SerializeField] public UnitStatSo meleeStatSo;
@@ -101,6 +110,11 @@ namespace IA.Event
             Gold = 2500;
             Xp = 1000;
             _eventsFoundation = GetComponent<EventsFoundation>();
+
+            for (int index = 0; index < 10; index++)
+            {
+                upgradeDictionary.Add((UpgradeType)index, 0);
+            }
         }
 
         private void Start()
@@ -119,6 +133,12 @@ namespace IA.Event
         {
             var unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit,Allies");
             return unitsAndAllies.Length;
+        }
+        
+        public int DetectUnitsAndEnemies()
+        {
+            var unitsAndEnemies = GameObject.FindGameObjectsWithTag("Unit,Enemies");
+            return unitsAndEnemies.Length;
         }
 
         // UPGRADE AGE
@@ -249,7 +269,7 @@ namespace IA.Event
         // TURRET
         public bool Turret()
         {
-            if (Gold >= turretStatSo.Price)
+            if (Gold >= turretStatSo.Price && TurretNumber <= 4)
             {
                 _eventsFoundation.SpawnTurret(turretStatSo);
                 Gold -= turretStatSo.Price;
@@ -262,141 +282,13 @@ namespace IA.Event
         // UPGRADE
         public bool Upgrade(UpgradeType upgradeType)
         {
-            switch (upgradeType)
+            if (upgradeDictionary[upgradeType] < 3 && upgradePricesSo.GetPrice(upgradeType, upgradeDictionary[upgradeType]) >= Gold)
             {
-                case UpgradeType.MeleeAttack :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.MeleeAttack,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.MeleeAttack);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.MeleeAttack, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.MeleeHealth :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.MeleeHealth,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.MeleeHealth);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.MeleeHealth, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.RangeAttack :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.RangeAttack,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.RangeAttack);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.RangeAttack, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.RangeRange :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.RangeRange,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.RangeRange);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.RangeRange, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.AntiArmorAttack :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.AntiArmorAttack,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.AntiArmorAttack);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.AntiArmorAttack, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.AntiArmorHealth :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.AntiArmorHealth,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.AntiArmorHealth);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.AntiArmorHealth, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.ArmorAttack :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.ArmorAttack,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.ArmorAttack);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.ArmorAttack, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.ArmorHealth :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.ArmorHealth,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.ArmorHealth);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.ArmorHealth, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.TurretAttack :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.TurretAttack,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.TurretAttack);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.TurretAttack, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.TurretRange :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.TurretRange,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.TurretRange);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.TurretRange, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-                case UpgradeType.GoldGiven :
-                    for (int index = 1; index <= 3;)
-                    {
-                        if (Gold >= upgradePricesSo.GetPrice(UpgradeType.GoldGiven,index))
-                        {
-                            _eventsFoundation.Upgrade(UpgradeType.GoldGiven);
-                            Gold -= upgradePricesSo.GetPrice(UpgradeType.GoldGiven, index);
-                            index++;
-                            return true;
-                        }                    
-                    }                    
-                    return false;
-            }
+                Gold -= upgradePricesSo.GetPrice(upgradeType, upgradeDictionary[upgradeType]);
+                upgradeDictionary[upgradeType]++;
+                _eventsFoundation.Upgrade(upgradeType);
+                return true;
+            }        
             return false;
         }
         
