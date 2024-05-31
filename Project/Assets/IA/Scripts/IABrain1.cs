@@ -1,5 +1,3 @@
-// UPGRADE 
-
 using System.Collections;
 using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
