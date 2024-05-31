@@ -17,9 +17,10 @@ namespace IA.Event
             iaThinker.IsThinking = true;
             
             // AGE UPGRADE
-            if (iaThinker.AgeCounter > 10)
+            if (iaThinker.AgeCounter > 30)
             {
                 iaThinker.AgeUpgrade();
+                iaThinker.AgeCounter = 0;
             }
             
             // UNLOCK UNIT

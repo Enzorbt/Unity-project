@@ -287,7 +287,6 @@ namespace IA.Event
                 Gold -= upgradePricesSo.GetPrice(upgradeType, upgradeDictionary[upgradeType]);
                 upgradeDictionary[upgradeType]++;
                 _eventsFoundation.Upgrade(upgradeType);
-                Debug.Log("upgraded " + upgradeType);
                 return true;
             }        
             return false;
