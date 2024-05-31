@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using Supinfo.Project.Interfaces.Capacity;
+using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Supinfo.Project.Capacity.Scripts
 {
@@ -12,8 +15,15 @@ namespace Supinfo.Project.Capacity.Scripts
         [SerializeField] private GameObject leftMostPoint;
         [SerializeField] private GameObject rightMostPoint;
         [SerializeField] private GameObject lightningSymbolHolder;
+        [SerializeField] private GameEvent onSpecialCapacityStatusChange;
         
         private bool _running;
+
+        private void Start()
+        {
+            onSpecialCapacityStatusChange.Raise(this, true);
+        }
+
         public void LaunchCapacity(Component sender, object data)
         {
             if (data is not CapacitySo capacitySo) return;
@@ -26,6 +36,7 @@ namespace Supinfo.Project.Capacity.Scripts
 
         private IEnumerator CapacityDelayed(CapacitySo capacitySo)
         {
+            onSpecialCapacityStatusChange.Raise(this, false);
             _running = true;
             
             // launch animation
@@ -66,6 +77,7 @@ namespace Supinfo.Project.Capacity.Scripts
             yield return new WaitForSeconds(capacitySo.Cooldown);
             
             _running = false;
+            onSpecialCapacityStatusChange.Raise(this, true);
         }
 
         private IEnumerator LightningAnim()
