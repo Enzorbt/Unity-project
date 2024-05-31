@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using ScriptableObjects.Unit;
 using Supinfo.Project.Scripts.Events;
+using Supinfo.Project.Scripts.Managers;
 using Supinfo.Project.Unit.Scripts;
 using Supinfo.Project.Unit.Scripts.Health;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Supinfo.Project.Castle.Spawner.Scripts
 {
@@ -29,12 +32,26 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
         private Queue<UnitStatSo> _unitStatSos;
         private Vector3 _spawnPoint;
 
+        private List<Image> _images = new List<Image>();
+
+        [SerializeField] private Sprite noneSprite;
+
+        [SerializeField]
+        private BaseIdentifier baseId;
+
         private void Start()
         {
             _unitStatSos = new Queue<UnitStatSo>();
             _unitTag = "Unit," + gameObject.tag.Split(",")[1];
             _unitsContainer = transform.parent.transform.Find("Units").transform;
             _spawnPoint = transform.Find("SpawnPoint").transform.position;
+
+            // queue managment (for allies only)
+            if (baseId == BaseIdentifier.BaseEnemies) return;
+            for (int i = 0; i < 4; i++)
+            {
+                _images.Add(GameObject.FindGameObjectWithTag("QueueImage" + i).GetComponent<Image>());
+            }
         }
 
         private void Update()
@@ -62,12 +79,17 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
         {
             _isSpawning = true;
             
-            var unitStatSo = _unitStatSos.Dequeue();
+            var coolDown = _unitStatSos.Peek().BuildTime;
+            yield return new WaitForSeconds(coolDown);
             
-            var coolDown = unitStatSo.BuildTime;
+            var unitStatSo = _unitStatSos.Dequeue();
+            if (baseId == BaseIdentifier.BaseAllies)
+            {
+                UpdateQueueUI();
+            }
+            
             var unitPrefab = unitStatSo.GetPrefab();
             
-            yield return new WaitForSeconds(coolDown);
             GameObject unitSpawned = Instantiate(unitPrefab, GetSpawnPoint(unitPrefab), Quaternion.identity, _unitsContainer);
             unitSpawned.tag = _unitTag;
             
@@ -108,11 +130,29 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             _isSpawning = false;
         }
 
+        private void UpdateQueueUI()
+        {
+            Debug.Log("Sprites to none");
+            foreach (var image in _images)
+            {
+                image.sprite = noneSprite;
+            }
+            for (int i = 0; i < _unitStatSos.Count; i++)
+            {
+                Debug.Log("changing sprite" + i);
+                _images[i].sprite = _unitStatSos.ElementAt(i).Sprite;
+            }
+        }
+
         public void SpawnUnit(Component sender, object data)
         {
             if (data is not UnitStatSo unitStatSo) return;
             
             _unitStatSos.Enqueue(unitStatSo);
+            if (baseId == BaseIdentifier.BaseAllies)
+            {
+                UpdateQueueUI();
+            }
             // send event to notify buttons to be disable 
             onSpawnQueueStatusChange.Raise(this, _unitStatSos.Count < 4);
         }
