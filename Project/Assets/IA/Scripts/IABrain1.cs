@@ -34,7 +34,7 @@ namespace IA.Event
                     iaThinker.Turret();
                     break;
                 case ActionChoice.upgrade: // UPGRADE
-                    iaThinker.Upgrade((UpgradeType)iaThinker.getRand(0, 1));
+                    // iaThinker.Upgrade((UpgradeType)iaThinker.getRand(0, 1));
                     break;
             }
 
