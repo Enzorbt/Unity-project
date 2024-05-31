@@ -201,7 +201,7 @@ namespace IA.Event
                         Gold -= meleeStatSo.Price;
                         return true;
                     }
-                    if (buff == true)
+                    if (buff)
                     {
                         _eventsFoundation.SpawnUnit(meleeStatSo);
                         return true;
@@ -215,7 +215,7 @@ namespace IA.Event
                         Gold -= rangeStatSo.Price;
                         return true;
                     }
-                    if (buff == true)
+                    if (buff)
                     {
                         _eventsFoundation.SpawnUnit(rangeStatSo);
                         return true;
@@ -229,7 +229,7 @@ namespace IA.Event
                         Gold -= armorStatSo.Price;
                         return true;
                     }
-                    if (buff == true)
+                    if (buff)
                     {
                         _eventsFoundation.SpawnUnit(armorStatSo);
                         return true;
@@ -243,7 +243,7 @@ namespace IA.Event
                         Gold -= antiArmorStatSo.Price;
                         return true;
                     }
-                    if (buff == true)
+                    if (buff)
                     {
                         _eventsFoundation.SpawnUnit(antiArmorStatSo);
                         return true;

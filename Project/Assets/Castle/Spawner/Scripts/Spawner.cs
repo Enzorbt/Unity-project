@@ -33,9 +33,7 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
         private Vector3 _spawnPoint;
 
         private List<Image> _images = new List<Image>();
-
-        [SerializeField] private Sprite noneSprite;
-
+        
         [SerializeField]
         private BaseIdentifier baseId;
 
@@ -46,11 +44,12 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             _unitsContainer = transform.parent.transform.Find("Units").transform;
             _spawnPoint = transform.Find("SpawnPoint").transform.position;
 
-            // queue managment (for allies only)
+            // queue management (for allies only)
             if (baseId == BaseIdentifier.BaseEnemies) return;
             for (int i = 0; i < 4; i++)
             {
                 _images.Add(GameObject.FindGameObjectWithTag("QueueImage" + i).GetComponent<Image>());
+                _images[i].enabled = false;
             }
         }
 
@@ -132,14 +131,15 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
 
         private void UpdateQueueUI()
         {
-            Debug.Log("Sprites to none");
+            // disable all sprites
             foreach (var image in _images)
             {
-                image.sprite = noneSprite;
+                image.enabled = false;
             }
+            // enable the one that need to show up
             for (int i = 0; i < _unitStatSos.Count; i++)
             {
-                Debug.Log("changing sprite" + i);
+                _images[i].enabled = true;
                 _images[i].sprite = _unitStatSos.ElementAt(i).Sprite;
             }
         }

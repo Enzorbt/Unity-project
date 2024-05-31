@@ -1,5 +1,3 @@
-// Amelioration : BUY GOLD AMELIORATION, TURRET, ARMOR AND RANGE AMELLIORATION
-
 using System.Collections;
 using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
@@ -70,9 +68,8 @@ namespace IA.Event
                     iaThinker.Spawn(UnitChoice.armor, true);
                     iaThinker.Spawn(UnitChoice.range, true);
                     iaThinker.Spawn(UnitChoice.range, true);
+                    iaThinker.SpawnCounter = 0;
                 }
-            
-                iaThinker.SpawnCounter = 0;
             }
             
             
