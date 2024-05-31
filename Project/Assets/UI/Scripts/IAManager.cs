@@ -49,7 +49,7 @@ namespace Supinfo.Project.UI.Scripts
                     throw new ArgumentOutOfRangeException();
             }
             
-            SceneManager.LoadSceneAsync(1);
+            SceneManager.LoadScene(1);
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
