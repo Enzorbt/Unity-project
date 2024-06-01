@@ -61,21 +61,19 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
         public IEnumerator AttackWithCooldown(float amount, IDamageable target, float cooldown, UnitType attackerType)
         {
             _canAttack = true;
-
+            
             // Perform the attack on the target
             target.TakeDamage(amount, attackerType);
+                
 
             // Set the attack animation
-            _animator.SetBool("attack", true);
+            _animator.SetTrigger("attack");
 
             // Wait for the cooldown duration
             onPlaySound?.Raise(this, attackSound);
             
             yield return new WaitForSeconds(cooldown);
-
-            // Reset the attack animation
-            _animator.SetBool("attack", false);
-
+            
             _canAttack = false;
         }
     }

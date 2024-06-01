@@ -31,7 +31,7 @@ namespace Supinfo.Project.Unit.Scripts
         public void Move(Vector3 direction, float speed)
         {
             // Set the walk animation
-            _animator.SetBool("walk", true);
+            _animator.SetTrigger("walk");
 
             // Move the unit
             transform.Translate(speed * Time.deltaTime * direction);

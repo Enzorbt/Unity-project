@@ -38,9 +38,6 @@ namespace Supinfo.Project.Unit.Scripts
             // Iterate through the hits
             foreach (var hit in hits)
             {
-                // Set the walk animation
-                _animator.SetBool("walk", false);
-                
                 // If there is no collider, break out of the loop
                 if (hit.collider is null) break;
 
