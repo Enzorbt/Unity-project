@@ -7,24 +7,49 @@ using UnityEngine.UI;
 
 namespace Supinfo.Project.UI.Button.Scripts
 {
+    /// <summary>
+    /// Handles the functionality of a spawn button with an unlock feature.
+    /// </summary>
     public class SpawnButtonUIWithUnlock : MonoBehaviour
     {
-        [SerializeField]
-        private List<float> unlockCosts;
+        /// <summary>
+        /// The costs required to unlock the button for each age.
+        /// </summary>
+        [SerializeField] private List<float> unlockCosts;
 
-        [SerializeField]
-        private GameEvent onGoldChange;
+        /// <summary>
+        /// Event triggered when the gold count changes.
+        /// </summary>
+        [SerializeField] private GameEvent onGoldChange;
         
+        /// <summary>
+        /// The current age.
+        /// </summary>
         private int _age;
         
+        /// <summary>
+        /// Reference to the button component.
+        /// </summary>
         private UnityEngine.UI.Button _button;
 
+        /// <summary>
+        /// Reference to the spawn button UI component.
+        /// </summary>
         private SpawnButtonUI _spawnButtonUI;
 
+        /// <summary>
+        /// Indicates whether the button has been bought.
+        /// </summary>
         private bool _bought;
 
+        /// <summary>
+        /// The current amount of gold.
+        /// </summary>
         private float _goldCount;
 
+        /// <summary>
+        /// Reference to the image component.
+        /// </summary>
         public Image _image;
             
         private void Awake()
@@ -41,6 +66,9 @@ namespace Supinfo.Project.UI.Button.Scripts
             _image.enabled = true;
         }
 
+        /// <summary>
+        /// Handles the event when the gold count changes.
+        /// </summary>
         public void OnGoldCountChange(Component sender, object data)
         {
             if(data is not float goldCount) return;
@@ -50,7 +78,7 @@ namespace Supinfo.Project.UI.Button.Scripts
             
             EnableButton(_goldCount >= unlockCosts[_age]);
         }
-
+        
         public void OnClick()
         {
             if (_bought) return;
@@ -63,6 +91,9 @@ namespace Supinfo.Project.UI.Button.Scripts
             _bought = true;
         }
 
+        /// <summary>
+        /// Handles the event when the age upgrades.
+        /// </summary>
         public void OnAgeUpgrade(Component sender, object data)
         {
             _age++;
@@ -78,6 +109,9 @@ namespace Supinfo.Project.UI.Button.Scripts
             _button.enabled = value;
         }
         
+        /// <summary>
+        /// Handles the event when the game speed changes.
+        /// </summary>
         public void OnGameSpeedChange(Component sender, object data)
         {
             if (data is not GameSpeed gameSpeed) return;

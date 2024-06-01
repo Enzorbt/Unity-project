@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +5,9 @@ using System.Collections;
 
 namespace Supinfo.Project.UI.Scripts
 {
+    /// <summary>
+    /// This class manages the XP bar in the game UI.
+    /// </summary>
     public class XpBar : MonoBehaviour
     {
         /// <summary>
@@ -28,6 +30,7 @@ namespace Supinfo.Project.UI.Scripts
         private void Awake()
         {
             _xpBarSlider = GetComponentInChildren<Slider>();
+            
             _xpText = GetComponentInChildren<TextMeshProUGUI>();
         }
 
@@ -39,7 +42,7 @@ namespace Supinfo.Project.UI.Scripts
             if (data is not float ratio) return;
 
             _ratio = ratio;
-            
+
             // Stop any ongoing interpolation
             StopAllCoroutines();
 
