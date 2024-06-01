@@ -89,6 +89,7 @@ namespace Supinfo.Project.UI.Button.Scripts
             if (_canSpawn && IsActive)
             {
                 StartCoroutine(SpawnWithCooldown());
+                StartCoroutine(CooldownImageAnimation());
             }
         }
 
@@ -102,25 +103,29 @@ namespace Supinfo.Project.UI.Button.Scripts
             onSpawnUnit.Raise(this, unitStatSo);
             onGoldChange.Raise(this, -unitStatSo.Price);
 
-            if (cooldownImage != null)
-            {
-                float elapsedTime = 0f;
-                float cooldownDuration = unitStatSo.BuildTime;
-
-                while (elapsedTime < cooldownDuration)
-                {
-                    elapsedTime += Time.deltaTime;
-                    cooldownImage.fillAmount = elapsedTime / cooldownDuration;
-                    yield return null;
-                }
-
-                cooldownImage.fillAmount = 0f;
-            }
-
             yield return new WaitForSeconds(unitStatSo.BuildTime);
 
             _canSpawn = true;
             EnableButton(_goldCount >= unitStatSo.Price && _queueStatus && _canSpawn);
+        }
+        
+        /// <summary>
+        /// Coroutine for playing the animation with cooldown image.
+        /// </summary>
+        private IEnumerator CooldownImageAnimation()
+        {
+            if (cooldownImage is null) yield break;
+            var cooldownDuration = unitStatSo.BuildTime;
+            var elapsedTime = 0f;
+
+            while (elapsedTime < cooldownDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                cooldownImage.fillAmount = elapsedTime / cooldownDuration;
+                yield return null;
+            }
+
+            cooldownImage.fillAmount = 0f;
         }
 
         /// <summary>
