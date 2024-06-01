@@ -7,12 +7,17 @@ using Supinfo.Project.Scripts.Managers;
 
 namespace Supinfo.Project.UI.Button.Scripts
 {
+    /// <summary>
+    /// The SpawnButtonUI class manages the UI button for spawning units.
+    /// </summary>
     public class SpawnButtonUI : MonoBehaviour
     {
-        [SerializeField]
-        private UnitStatSo unitStatSo;
-
+        [SerializeField] private UnitStatSo unitStatSo;
         private bool _isActive;
+        
+        /// <summary>
+        /// Indicates whether the button is active or not.
+        /// </summary>
         public bool IsActive
         {
             get => _isActive;
@@ -23,17 +28,46 @@ namespace Supinfo.Project.UI.Button.Scripts
             }
         }
 
+        /// <summary>
+        /// Reference to the image component for this button.
+        /// </summary>
         private Image _image;
-
+        
+        /// <summary>
+        /// Event triggered when a unit is spawned.
+        /// </summary>
         [SerializeField] private GameEvent onSpawnUnit;
+        
+        /// <summary>
+        /// Event triggered when the gold count changes.
+        /// </summary>
         [SerializeField] private GameEvent onGoldChange;
-
+        
+        /// <summary>
+        /// Indicates whether the button can currently spawn units.
+        /// </summary>
         private bool _canSpawn = true;
+        
+        /// <summary>
+        /// Reference to the button component.
+        /// </summary>
         private UnityEngine.UI.Button _button;
+        
+        /// <summary>
+        /// The current amount of gold.
+        /// </summary>
         private float _goldCount;
+        
+        /// <summary>
+        /// Indicates the status of the spawn queue.
+        /// </summary>
         private bool _queueStatus = true;
         
+        /// <summary>
+        /// Reference to the image component representing the cooldown.
+        /// </summary>
         [SerializeField] private Image cooldownImage;
+
 
         private void Awake()
         {
@@ -49,7 +83,7 @@ namespace Supinfo.Project.UI.Button.Scripts
                 cooldownImage.fillAmount = 0f;
             }
         }
-
+        
         public void OnClick()
         {
             if (_canSpawn && IsActive)
@@ -58,6 +92,9 @@ namespace Supinfo.Project.UI.Button.Scripts
             }
         }
 
+        /// <summary>
+        /// Coroutine for spawning units with cooldown.
+        /// </summary>
         private IEnumerator SpawnWithCooldown()
         {
             _canSpawn = false;
@@ -86,6 +123,10 @@ namespace Supinfo.Project.UI.Button.Scripts
             EnableButton(_goldCount >= unitStatSo.Price && _queueStatus && _canSpawn);
         }
 
+        /// <summary>
+        /// Enables or disables the button based on the specified value.
+        /// </summary>
+        /// <param name="value">The value indicating whether the button should be enabled.</param>
         private void EnableButton(bool value)
         {
             if (_button == null) return;
@@ -93,6 +134,9 @@ namespace Supinfo.Project.UI.Button.Scripts
             _button.enabled = value;
         }
 
+        /// <summary>
+        /// Handles the spawn queue status change event.
+        /// </summary>
         public void OnSpawnQueueStatusChange(Component sender, object data)
         {
             if (data is not bool status) return;
@@ -100,6 +144,9 @@ namespace Supinfo.Project.UI.Button.Scripts
             EnableButton(_goldCount >= unitStatSo.Price && _queueStatus && _canSpawn);
         }
 
+        /// <summary>
+        /// Handles the gold count change event.
+        /// </summary>
         public void OnGoldCountChange(Component sender, object data)
         {
             if (data is not float goldCount) return;
@@ -107,17 +154,26 @@ namespace Supinfo.Project.UI.Button.Scripts
             EnableButton(_goldCount >= unitStatSo.Price && _queueStatus && _canSpawn);
         }
 
+        /// <summary>
+        /// Handles the game speed change event.
+        /// </summary>
         public void OnGameSpeedChange(Component sender, object data)
         {
             if (data is not GameSpeed gameSpeed) return;
             EnableButton(gameSpeed == GameSpeed.Stop ? false : _goldCount >= unitStatSo.Price && _queueStatus && _canSpawn);
         }
 
+        /// <summary>
+        /// Handles the age upgrade event.
+        /// </summary>
         public void OnAgeUpgrade(Component sender, object data)
         {
             StartCoroutine(ChangeSprite());
         }
 
+        /// <summary>
+        /// Coroutine for changing the sprite.
+        /// </summary>
         private IEnumerator ChangeSprite()
         {
             yield return new WaitForSeconds(1f);
