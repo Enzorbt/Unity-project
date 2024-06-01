@@ -142,11 +142,23 @@ namespace IA.Event
         // Retrieve So Stats directly from Unity (drag & drop).
         
         /// <summary>
-        /// STATS SO UNIT 
+        /// STATS SO OF MELEE UNIT 
         /// </summary>
         [SerializeField] public UnitStatSo meleeStatSo;
+        
+        /// <summary>
+        /// STATS SO OF RANGE UNIT 
+        /// </summary>
         [SerializeField] public UnitStatSo rangeStatSo;
+        
+        /// <summary>
+        /// STATS SO OF ARMOR UNIT 
+        /// </summary>
         [SerializeField] public UnitStatSo armorStatSo;
+        
+        /// <summary>
+        /// STATS SO OF ANTI ARMOR UNIT 
+        /// </summary>
         [SerializeField] public UnitStatSo antiArmorStatSo;
 
         /// <summary>
@@ -160,9 +172,13 @@ namespace IA.Event
         [SerializeField] public TurretStatSo turretStatSo;
 
         /// <summary>
-        /// STATS SO SPECIAL CAPACITY
+        /// STATS SO OF FIRE SPECIAL CAPACITY 
         /// </summary>
         [SerializeField] public CapacitySo capacityFireSo;
+        
+        /// <summary>
+        /// STATS SO OF FIRE SPECIAL CAPACITY 
+        /// </summary>
         [SerializeField] public CapacitySo capacityFlashSo;
 
         /// <summary>
@@ -409,7 +425,7 @@ namespace IA.Event
         /// Game event listener function called when the event OnAlliesSpawn is triggered (linked to a GameEventListener component).
         /// </summary>
         /// <param name="sender">The sender of the game event.</param>
-        /// <param name="data">The data being transferred.</param>
+        /// <param name="data">The data being transferred. List of adverse unit.</param>
         public void OnAlliesSpawn(Component sender, object data)
         {
             if(data is not UnitStatSo unitStatSo) return;
@@ -421,7 +437,7 @@ namespace IA.Event
         /// Get the win gold from the game (unit enemies death...).
         /// </summary>
         /// <param name="sender">The sender of the game event.</param>
-        /// <param name="data">The data being transferred.</param>
+        /// <param name="data">The data being transferred (Gold).</param>
         public void OnRecieveGold(Component sender, object data)
         {
             if(data is not float gold) return; // If the data receive is not gold return
@@ -433,7 +449,7 @@ namespace IA.Event
         /// Get the win XP from the game (unit enemies death...).
         /// </summary>
         /// <param name="sender">The sender of the game event.</param>
-        /// <param name="data">The data being transferred.</param>
+        /// <param name="data">The data being transferred (XP).</param>
         public void OnRecieveXp(Component sender, object data)
         {
             if(data is not float xp) return; // If the data receive is not XP return
