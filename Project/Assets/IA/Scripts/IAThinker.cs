@@ -1,5 +1,3 @@
-// Class / Variables / Decrire dans les functions
-
 using System.Collections.Generic;
 using ScriptableObjects.Turret;
 using ScriptableObjects.Unit;
@@ -13,7 +11,7 @@ using Random = System.Random;
 
 namespace IA.Event
 {
-    public enum UnitChoice
+    public enum UnitChoice // Enumeration for unit types, IA unit choices.
     {
         melee,
         range,
@@ -21,7 +19,7 @@ namespace IA.Event
         antiarmor
     };
     
-    public enum ActionChoice
+    public enum ActionChoice // Enumeration for action choices.
     {
         spawn,
         capacity,
@@ -31,18 +29,25 @@ namespace IA.Event
         turret,
     };
     
-    public enum CapacityChoice
+    public enum CapacityChoice // Enumeration for capacity types, hence capacity choices.
     {
         fire, 
         lightning,
     };
     
+    /// <summary>
+    /// Class tha contains all the method, to run the IA, by calling some game event.
+    /// </summary>
     public class IAThinker : ThinkerWithDelay
     {
+        // Call other class / script.
+        private EventsFoundation _eventsFoundation; // Calls the EventsFoundation class, which manages game events for the AI.
+        private Random aleatoire = new Random(); // Calls the native Random class.
+        
         protected internal float Gold
         {
             get => _gold;
-            set
+            set // If gold is negative, it will be reset to 0.
             {
                 _gold = value;
                 if (_gold < value)
@@ -55,7 +60,7 @@ namespace IA.Event
 
         protected internal float Xp
         {
-            get => _xp;
+            get => _xp; // If the XP is negative, it will be reset to 0.
             set
             {
                 _xp = value;
@@ -66,27 +71,22 @@ namespace IA.Event
             }
         }
         private float _xp;
-
-        public int SpawnCounter { get; set; }
-        public int UpgradeCounter { get; set; }
         
-        public int AgeCounter { get; set; }
-
-        public int TurretCounter { get; set; }
-
-        public Queue<UnitStatSo> PlayerUnits { get; set; }
-        private int Age {get; set;}
-        public  int TurretNumber {get; set;}
-        public bool IsUnlock {get; set;}
+        private int Age {get; set;} // Age variable for AI scripts.
+        public  int TurretNumber {get; set;} // Variable number of AI script turrets.
+        public bool IsUnlock {get; set;} // Locked unit verification variable for AI scripts.
+        public int SpawnCounter { get; set; } // Spawn counteur lets you manage spawn action times. 
+        public int UpgradeCounter { get; set; } // Upgrade counter allows you to manage the timing of improvement actions. 
         
-        public Dictionary<UpgradeType, int> UpgradeDict;
+        public int AgeCounter { get; set; } // Age counter allows you to manage the times of actions for the passage to higher ages. 
 
-        private EventsFoundation _eventsFoundation;
-        private Random aleatoire = new Random();
+        public int TurretCounter { get; set; } // Turret counter to manage turret spawn action times. 
 
-        private Dictionary<UpgradeType, int> upgradeDictionary = new Dictionary<UpgradeType, int>();
+        public Queue<UnitStatSo> PlayerUnits { get; set; } // Queue of allied units, used to find out the type of opposing units.
         
-        public ActionChoice Action { get; set; }
+        private Dictionary<UpgradeType, int> upgradeDictionary = new Dictionary<UpgradeType, int>(); // Dictionaries that manage improvement types and their improvement indexes.
+        
+        // Retrieve So Stats directly from Unity (drag & drop).
         
         // STATS SO UNIT
         [SerializeField] public UnitStatSo meleeStatSo;
@@ -112,8 +112,11 @@ namespace IA.Event
         /// </summary>
         private void Awake()
         {
+            // Instantiates XP and Gold values at the start of the game.
             Gold = 2500;
             Xp = 1000;
+            
+            // Get EventsFoundation to instaciate Game Events.
             _eventsFoundation = GetComponent<EventsFoundation>();
 
             for (int index = 0; index < 10; index++)
@@ -127,6 +130,7 @@ namespace IA.Event
         /// </summary>
         private void Start()
         {
+            // A new unit tail for allied units.
             PlayerUnits= new Queue<UnitStatSo>();
         }
 
@@ -149,8 +153,8 @@ namespace IA.Event
         /// <returns>The length off the game object list.</returns>
         public int DetectUnitsAndAllies()
         {
-            var unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit,Allies");
-            return unitsAndAllies.Length;
+            var unitsAndAllies = GameObject.FindGameObjectsWithTag("Unit,Allies"); // List game objects with the tag “Unit, Allies”.
+            return unitsAndAllies.Length; // Returns the size of this list.
         }
         
         /// <summary>
@@ -159,8 +163,8 @@ namespace IA.Event
         /// <returns>The length off the game object list.</returns>
         public int DetectUnitsAndEnemies()
         {
-            var unitsAndEnemies = GameObject.FindGameObjectsWithTag("Unit,Enemies");
-            return unitsAndEnemies.Length;
+            var unitsAndEnemies = GameObject.FindGameObjectsWithTag("Unit,Enemies"); // List game objects with the tag “Unit, Enemies”.
+            return unitsAndEnemies.Length; // Returns the size of this list.
         }
 
         // UPGRADE AGE
@@ -170,15 +174,15 @@ namespace IA.Event
         /// <returns>True if is possible and false if is impossible.</returns>
         public bool AgeUpgrade()
         {
-            if (Xp >= experienceStatSo.ExperienceLevel[Age])
+            if (Xp >= experienceStatSo.ExperienceLevel[Age]) // Verify that the price of the age upgrade is above IA gold.
             {
-                _eventsFoundation.UpgradeAge();
-                IsUnlock = false;
-                Xp -= experienceStatSo.ExperienceLevel[Age];
-                Age++;
-                return true;
+                IsUnlock = false; // Lock the lock unit for each age. 
+                Xp -= experienceStatSo.ExperienceLevel[Age]; // Buy the age upgrade, buy subtract age upgrade price to IA gold.
+                _eventsFoundation.UpgradeAge(); // Call the game event UpgradeAge.
+                Age++; // Indente the age counter.
+                return true; // Return true when all the action is finish, verify that the action was done.
             }
-            return false;
+            return false; // Return false when all the action was not done.
         }
         
         // LAUNCH CAPACITY 
@@ -193,31 +197,31 @@ namespace IA.Event
             switch (capacityChoice)
             {
                 case CapacityChoice.fire: 
-                    if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100)
+                    if (Xp >= (experienceStatSo.ExperienceLevel[Age]*30)/100) // Verify that the price of the capacity upgrade is above IA gold. 
                     {
-                        _eventsFoundation.UseCapacity(capacityFireSo);
-                        Xp -= (experienceStatSo.ExperienceLevel[Age] * 30) / 100;
+                        Xp -= (experienceStatSo.ExperienceLevel[Age] * 30) / 100; // Buy the capacity, buy subtract capacity price to IA gold.
+                        _eventsFoundation.UseCapacity(capacityFireSo); // Call the game event UseCapacity with the capacity type.
                         if (buff)
                         {
-                            Xp += (experienceStatSo.ExperienceLevel[Age] * 20) / 100;
+                            Xp += (experienceStatSo.ExperienceLevel[Age] * 20) / 100; // If is buff it refunded a part of the capacity cost.
                         }
-                        return true;
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
-                    return false;
+                    return false; // Return false when all the action was not done.
                 case CapacityChoice.lightning:
-                    if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100)
+                    if (Xp >= (experienceStatSo.ExperienceLevel[Age]*60)/100) // Verify that the price of the capacity upgrade is above IA gold. 
                     {
-                        _eventsFoundation.UseCapacity(capacityFlashSo);
-                        Xp -= (experienceStatSo.ExperienceLevel[Age] * 60) / 100;
+                        Xp -= (experienceStatSo.ExperienceLevel[Age] * 60) / 100; // Buy the capacity, buy subtract capacity price to IA gold.
+                        _eventsFoundation.UseCapacity(capacityFlashSo); // Call the game event UseCapacity with the capacity type.
                         if (buff)
                         {
-                            Xp += (experienceStatSo.ExperienceLevel[Age]*40)/100;
+                            Xp += (experienceStatSo.ExperienceLevel[Age]*40)/100; // If is buff it refunded a part of the capacity cost.
                         }
-                        return true;
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
-                    return false;   
+                    return false; // Return false when all the action was not done.
             } 
-            return false;
+            return false; // Return false when all the action was not done.
         }
         
         // SPAWN UNIT
@@ -233,60 +237,60 @@ namespace IA.Event
             {
                 case UnitChoice.melee : 
                     // SPAWN MELEE
-                    if (Gold >= meleeStatSo.Price)
+                    if (Gold >= meleeStatSo.Price) // Verify that the price of the unit is above IA gold. 
                     {
-                        _eventsFoundation.SpawnUnit(meleeStatSo);
-                        Gold -= meleeStatSo.Price;
-                        return true;
+                        Gold -= meleeStatSo.Price; // Buy the unit, buy subtract unit price to IA gold.
+                        _eventsFoundation.SpawnUnit(meleeStatSo); // Call the game event SpawnUnit with the unit type.
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
                     if (buff)
                     {
-                        _eventsFoundation.SpawnUnit(meleeStatSo);
-                        return true;
+                        _eventsFoundation.SpawnUnit(meleeStatSo); // If is buff call the game event SpawnUnit with the unit type, without paying.
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
-                    return false;
+                    return false; // Return false when all the action was not done.
                 case UnitChoice.range : 
                     // SPAWN RANGE 
-                    if (Gold >= rangeStatSo.Price)
+                    if (Gold >= rangeStatSo.Price) // Verify that the price of the unit is above IA gold. 
                     {
-                        _eventsFoundation.SpawnUnit(rangeStatSo);
-                        Gold -= rangeStatSo.Price;
-                        return true;
+                        Gold -= rangeStatSo.Price; // Buy the unit, buy subtract unit price to IA gold.
+                        _eventsFoundation.SpawnUnit(rangeStatSo); // Call the game event SpawnUnit with the unit type.
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
                     if (buff)
                     {
-                        _eventsFoundation.SpawnUnit(rangeStatSo);
-                        return true;
+                        _eventsFoundation.SpawnUnit(rangeStatSo); // If is buff call the game event SpawnUnit with the unit type, without paying.
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
-                    return false;
+                    return false; // Return false when all the action was not done.
                 case UnitChoice.armor : 
                     // SPAWN ARMOR
-                    if (Gold >= armorStatSo.Price && IsUnlock)
+                    if (Gold >= armorStatSo.Price && IsUnlock) // Verify that the price of the unit is above IA gold. 
                     {
-                        _eventsFoundation.SpawnUnit(armorStatSo);
-                        Gold -= armorStatSo.Price;
-                        return true;
+                        Gold -= armorStatSo.Price; // Buy the unit, buy subtract unit price to IA gold.
+                        _eventsFoundation.SpawnUnit(armorStatSo); // Call the game event SpawnUnit with the unit type.
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
                     if (buff)
                     {
-                        _eventsFoundation.SpawnUnit(armorStatSo);
-                        return true;
+                        _eventsFoundation.SpawnUnit(armorStatSo); // If is buff call the game event SpawnUnit with the unit type, without paying.
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
-                    return false;
+                    return false; // Return false when all the action was not done.
                 case UnitChoice.antiarmor : 
                     // SPAWN ANTI-ARMOR
-                    if (Gold >= antiArmorStatSo.Price)
+                    if (Gold >= antiArmorStatSo.Price) // Verify that the price of the unit is above IA gold. 
                     {
-                        _eventsFoundation.SpawnUnit(antiArmorStatSo);
-                        Gold -= antiArmorStatSo.Price;
-                        return true;
+                        Gold -= antiArmorStatSo.Price; // Buy the unit, buy subtract unit price to IA gold.
+                        _eventsFoundation.SpawnUnit(antiArmorStatSo); // Call the game event SpawnUnit with the unit type.
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
                     if (buff)
                     {
-                        _eventsFoundation.SpawnUnit(antiArmorStatSo);
-                        return true;
+                        _eventsFoundation.SpawnUnit(antiArmorStatSo); // If is buff call the game event SpawnUnit with the unit type, without paying.
+                        return true; // Return true when all the action is finish, verify that the action was done.
                     }
-                    return false;
+                    return false; // Return false when all the action was not done.
             }
 
             return false;
@@ -297,15 +301,15 @@ namespace IA.Event
         /// Unlock unit by calling the event and buy manager (gold subtraction).
         /// </summary>
         /// <returns>True if is possible and false if is impossible.</returns>
-        public  bool UnlockNewUnit()
+        public bool UnlockNewUnit()
         {
-            if (!IsUnlock && Gold >= 300)
+            if (!IsUnlock && Gold >= 300) // Verify that the price of the unlock is above IA gold and IsUnlock is false, so that the IA should unlock it.
             {
-                IsUnlock = true;
-                Gold -= 300;
+                Gold -= 300; // Buy the unlock, buy subtract unlock price to IA gold.
+                IsUnlock = true; // Set IsUnlock to true.
             }
 
-            return IsUnlock;
+            return IsUnlock; // Return IsUnlock state (true/false)
         }
         
         // TURRET
@@ -315,14 +319,14 @@ namespace IA.Event
         /// <returns>True if is possible and false if is impossible.</returns>
         public bool Turret()
         {
-            if (Gold >= turretStatSo.Price && TurretNumber <= 4)
+            if (Gold >= turretStatSo.Price && TurretNumber <= 4) // Verify that the price of a turret is above IA gold and turret number is above or equal to 4.
             {
-                _eventsFoundation.SpawnTurret(turretStatSo);
                 Gold -= turretStatSo.Price;
-                TurretNumber++;
-                return true;
+                TurretNumber++; // Buy the turret, buy subtract turret price to IA gold.
+                _eventsFoundation.SpawnTurret(turretStatSo); // Call the game event SpawnTurret with the turret stats so.
+                return true; // Return true when all the action is finish, verify that the action was done.
             }
-            return false;
+            return false; // Return false when all the action was not done.
         }
         
         // UPGRADE
@@ -333,14 +337,15 @@ namespace IA.Event
         /// <returns>True if is possible and false if is impossible.</returns>
         public bool Upgrade(UpgradeType upgradeType)
         {
+            // Verify that the price of an upgrade is above IA gold and upgrade index is above 4.
             if (upgradeDictionary[upgradeType] < 3 && upgradePricesSo.GetPrice(upgradeType, upgradeDictionary[upgradeType]) >= Gold)
             {
-                Gold -= upgradePricesSo.GetPrice(upgradeType, upgradeDictionary[upgradeType]);
-                upgradeDictionary[upgradeType]++;
-                _eventsFoundation.Upgrade(upgradeType);
-                return true;
+                Gold -= upgradePricesSo.GetPrice(upgradeType, upgradeDictionary[upgradeType]); // Buy the upgrade, buy subtract upgrade price to IA gold.
+                upgradeDictionary[upgradeType]++; // Indente the upgrade counter.
+                _eventsFoundation.Upgrade(upgradeType); // Call the game event Upgrade with the upgrade type.
+                return true; // Return true when all the action is finish, verify that the action was done.
             }        
-            return false;
+            return false; // Return false when all the action was not done.
         }
         
         /// <summary>
@@ -356,24 +361,26 @@ namespace IA.Event
 
         /// <summary>
         /// Game event listener function called when the event OnRecieveGold is triggered (linked to a GameEventListener component).
+        /// Get the win gold from the game (unit enemies death...).
         /// </summary>
         /// <param name="sender">The sender of the game event.</param>
         /// <param name="data">The data being transferred.</param>
         public void OnRecieveGold(Component sender, object data)
         {
-            if(data is not float gold) return;
-            Gold += gold;
+            if(data is not float gold) return; // If the data receive is not gold return
+            Gold += gold; // Add the gold receive to IA gold.
         }
         
         /// <summary>
         /// Game event listener function called when the event OnRecieveXp is triggered (linked to a GameEventListener component).
+        /// Get the win XP from the game (unit enemies death...).
         /// </summary>
         /// <param name="sender">The sender of the game event.</param>
         /// <param name="data">The data being transferred.</param>
         public void OnRecieveXp(Component sender, object data)
         {
-            if(data is not float xp) return;
-            Xp += xp;
+            if(data is not float xp) return; // If the data receive is not XP return
+            Xp += xp; // Add the XP receive to IA XP.
         }
     }
 }
