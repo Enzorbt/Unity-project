@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 namespace Supinfo.Project.Capacity.Scripts
 {
+    /// <summary>
+    /// Manage the logic for the special capacity buttons.
+    /// </summary>
     public class SpecialCapacityButtonUI : MonoBehaviour
     {
         /// <summary>

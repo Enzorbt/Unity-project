@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 
 namespace Supinfo.Project.Capacity.Scripts
 {
+    /// <summary>
+    /// The capacity manager, deals damage to units and display the capacity on the game scene.
+    /// </summary>
     public class SpecialCapacity : MonoBehaviour, ICapacity
     {
         /// <summary>
