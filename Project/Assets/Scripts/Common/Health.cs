@@ -3,6 +3,9 @@ using UnityEngine.Serialization;
 
 namespace Supinfo.Project.Scripts.Common
 {
+    /// <summary>
+    /// The Health class is used for other classes to derived from, it implements the basic functionalities of a health manager.
+    /// </summary>
     public abstract class Health : MonoBehaviour
     {
         /// <summary>

@@ -5,21 +5,38 @@ using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 
 namespace Supinfo.Project.Interfaces.IA
 {
+    /// <summary>
+    /// Interface for objects that can trigger game events.
+    /// </summary>
     public interface IEventFoundation
     {
-        // SPAWN UNIT 
+        /// <summary>
+        /// Spawns a unit with the given stats.
+        /// </summary>
+        /// <param name="unitStatSo">The stats of the unit to spawn.</param>
         public void SpawnUnit(UnitStatSo unitStatSo);
-        
-        // GET AMELIORATION 
+
+        /// <summary>
+        /// Upgrades the object in the way specified by the upgrade type.
+        /// </summary>
+        /// <param name="upgradeType">The type of upgrade to apply.</param>
         public void Upgrade(UpgradeType upgradeType);
-        
-        // BUY TURRET EMPLACEMENT 
+
+        /// <summary>
+        /// Spawns a turret with the given stats.
+        /// </summary>
+        /// <param name="turretStatSo">The stats of the turret to spawn.</param>
         public void SpawnTurret(TurretStatSo turretStatSo);
-        
-        // USE CAPACITY 
+
+        /// <summary>
+        /// Uses the capacity specified by the capacity stats.
+        /// </summary>
+        /// <param name="capacitySo">The stats of the capacity to use.</param>
         public void UseCapacity(CapacitySo capacitySo);
-        
-        // UPGRADE AGE 
+
+        /// <summary>
+        /// Upgrades the age of the game, potentially unlocking new units, turrets, or capacities.
+        /// </summary>
         public void UpgradeAge();
     }
 }
