@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Supinfo.Project.Scripts.Events
@@ -13,7 +14,12 @@ namespace Supinfo.Project.Scripts.Events
         /// The list of all gameEventListeners that subscribe to the event.
         /// </summary>
         private List<GameEventListener> _gameEventListeners;
-        
+
+        private void Awake()
+        {
+            _gameEventListeners = new List<GameEventListener>();
+        }
+
         public void Raise(Component sender, object data)
         {
             foreach (var gameEventListener in _gameEventListeners)
