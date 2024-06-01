@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Supinfo.Project.ScriptableObjects.Base;
 using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
@@ -84,6 +85,7 @@ namespace Supinfo.Project.Castle.Scripts
                 CurHealth = 0;
             }
         }
+        
 
         public void OnAgeUpgrade(Component sender, object data)
         {
