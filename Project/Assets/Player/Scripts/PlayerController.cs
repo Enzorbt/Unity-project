@@ -43,6 +43,11 @@ namespace Supinfo.Project.Scripts
         /// Right boundary for camera movement.
         /// </summary>
         [SerializeField] private float rightBoundary = 34.55f;
+
+        /// <summary>
+        /// State of the Drag possibility (true = can, false = cannot)
+        /// </summary>
+        private bool _canDrag;
         
         void Awake()
         {
@@ -52,6 +57,7 @@ namespace Supinfo.Project.Scripts
         
         void Update()
         {
+            if (!_canDrag) return;
             if (Input.GetMouseButton(0)) // Clicking in left mouse button
             {
                 _difference = _camera.ScreenToWorldPoint(Input.mousePosition) - _camera.transform.position;
@@ -87,6 +93,17 @@ namespace Supinfo.Project.Scripts
 
             // Move camera horizontally
             _camera.transform.position = new Vector3(newX, _cameraOriginalPos.y, _origin.z);
+        }
+
+        /// <summary>
+        /// Game event listener function to change the state of the drag possibility.
+        /// </summary>
+        /// <param name="sender">The sender of the triggered event.</param>
+        /// <param name="data">The data send by the sender.</param>
+        public void OnDragStateChange(Component sender, object data)
+        {
+            if (data is not bool state) return;
+            _canDrag = state;
         }
     }
 }

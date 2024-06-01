@@ -95,7 +95,7 @@ namespace Supinfo.Project.Capacity.Scripts
             onClick.Raise(this, _capacitySo);  // Raise the click event.
             onXpChange.Raise(this, -(_xpMax * cost));  // Raise the XP change event.
 
-            yield return new WaitForSeconds(_capacitySo.Cooldown);  // Wait for the cooldown duration.
+            yield return new WaitForSeconds(_capacitySo.Cooldown + (_capacitySo.CapabilityType == CapabilityType.Meteor ? 1.25f : 0f));  // Wait for the cooldown duration.
 
             _canUse = true;  // Set capacity use flag to true.
             SetActiveButton(_xpRatio >= cost && _canUse);  // Update button state based on XP ratio and use flag.
@@ -103,7 +103,7 @@ namespace Supinfo.Project.Capacity.Scripts
         private IEnumerator CooldownImageAnimation()
         {
             if (cooldownImage is null) yield break;
-            var cooldownDuration = _capacitySo.Cooldown;
+            var cooldownDuration = _capacitySo.Cooldown+ (_capacitySo.CapabilityType == CapabilityType.Meteor ? 1.25f : 0f);
             var elapsedTime = 0f;
 
             while (elapsedTime < cooldownDuration)
