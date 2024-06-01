@@ -17,6 +17,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 42218d364adfd41128033bd20cbe2e6a, type: 2}
     - target: {fileID: 1776877459599816412, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 760ce4283cff1df46aa11f93df2444e3, type: 3}
+    - target: {fileID: 1776877459599816412, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: unitStatSo
       value: 
       objectReference: {fileID: 11400000, guid: ad061516469483f44b24dadab6d420f9, type: 2}
@@ -52,6 +56,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 5972872764081665365}
+    - target: {fileID: 5842219500471513408, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ade60fc60cb9db24e8a8fd45126d68f6, type: 3}
     - target: {fileID: 6359458530771199948, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: unitStatSo
       value: 

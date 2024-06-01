@@ -2,6 +2,7 @@
 using Common;
 using Interfaces;
 using Supinfo.Project.Projectiles.Scripts;
+using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ namespace Supinfo.Project.Unit.Scripts
         private Animator _animator;
         
         [SerializeField] private GameObject projectile;
+        public GameEvent onPlaySound;
+        [SerializeField]
+        private AudioClip attackSound;
         
         private bool _canShoot = true;
 
@@ -67,10 +71,12 @@ namespace Supinfo.Project.Unit.Scripts
             
             instantiatedProjectile.SetActive(true);
             _animator.SetBool("attack", true);
+            onPlaySound?.Raise(this, attackSound);
             // wait for cooldown
             yield return new WaitForSeconds(cooldown);
             _animator.SetBool("attack", false);
 
+            
             _canShoot = true;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Interfaces;
 using Supinfo.Project.Projectiles.Scripts;
+using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
@@ -11,6 +12,10 @@ namespace Supinfo.Project.Turret.Scripts
     {
         [SerializeField] private GameObject projectile;
 
+        public GameEvent onPlaySound;
+        [SerializeField]
+        private AudioClip attackSound;
+        
         private bool _canShoot = true;
 
         public void Shoot(float amount, float cooldown, float speed, Transform target, UnitType attackerType)
@@ -59,6 +64,8 @@ namespace Supinfo.Project.Turret.Scripts
             projectileThinker.tag = "Projectile," + gameObject.tag.Split(",")[1];
 
             instantiatedProjectile.SetActive(true);
+            
+            onPlaySound?.Raise(this, attackSound);
 
             // wait for cooldown
             yield return new WaitForSeconds(cooldown);

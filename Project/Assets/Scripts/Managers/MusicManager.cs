@@ -1,3 +1,4 @@
+using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.ScriptableObjects.Music;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -27,16 +28,11 @@ namespace Supinfo.Project.Scripts.Managers
         /// AudioSource for playing music.
         /// </summary>
         [SerializeField] private AudioSource audioSourceMusic;
-
+        
         /// <summary>
         /// AudioSource for playing sound effects.
         /// </summary>
         [SerializeField] private AudioSource audioSourceSound;
-
-        /// <summary>
-        /// Current age of the game.
-        /// </summary>
-        private int currentAge = 0;
         
         /// <summary>
         /// Original main menu music clip.
@@ -51,8 +47,9 @@ namespace Supinfo.Project.Scripts.Managers
         /// <summary>
         /// Current scene name.
         /// </summary>
-        [SerializeField] private SceneName sceneName;
-
+        [SerializeField]
+        private SceneName sceneName;
+        
 
         private void Awake()
         {
@@ -97,7 +94,7 @@ namespace Supinfo.Project.Scripts.Managers
         /// </summary>
         /// <param name="sender">The component that sent the event.</param>
         /// <param name="data">The data associated with the event.</param>
-        public void onMusicVolumeChange(Component sender, object data)
+        public void OnMusicVolumeChange(Component sender, object data)
         {
             if (data is not float volume) return;
             audioSourceMusic.volume = volume;  // Set the new volume.
@@ -109,7 +106,7 @@ namespace Supinfo.Project.Scripts.Managers
         /// </summary>
         /// <param name="sender">The component that sent the event.</param>
         /// <param name="data">The data associated with the event.</param>
-        public void onMusicVolumeMute(Component sender, object data)
+        public void OnMusicVolumeMute(Component sender, object data)
         {
             if (data is not bool isMuted) return;
             audioSourceMusic.mute = isMuted;  // Mute or unmute the music.
@@ -121,35 +118,35 @@ namespace Supinfo.Project.Scripts.Managers
         /// </summary>
         /// <param name="sender">The component that sent the event.</param>
         /// <param name="data">The data associated with the event.</param>
-        public void onSoundVolumeChange(Component sender, object data)
+        public void OnSoundVolumeChange(Component sender, object data)
         {
             if (data is not float soundVolume) return;
             audioSourceSound.volume = soundVolume;  // Set the new sound volume.
             PlayerPrefs.SetFloat("soundVolume", soundVolume);  // Save the new sound volume to player preferences.
         }
-
+        
         /// <summary>
         /// Handles the mute/unmute of sound effects.
         /// </summary>
         /// <param name="sender">The component that sent the event.</param>
         /// <param name="data">The data associated with the event.</param>
-        public void onSoundVolumeMute(Component sender, object data)
+        public void OnSoundVolumeMute(Component sender, object data)
         {
             if (data is not bool isSoundMuted) return;
             audioSourceSound.mute = isSoundMuted;  // Mute or unmute the sound effects.
             PlayerPrefs.SetInt("isSoundMuted", isSoundMuted ? 1 : 0);  // Save the mute status to player preferences.
         }
-
+        
         /// <summary>
         /// Plays a sound when a button is clicked.
         /// </summary>
         /// <param name="sender">The component that sent the event.</param>
         /// <param name="data">The data associated with the event.</param>
-        public void onPlayButtonClickSound(Component sender, object data)
+        public void OnPlaySound(Component sender, object data)
         {
-            if (data is AudioClip buttonClip && audioSourceSound != null)
+            if (data is AudioClip clip && audioSourceSound != null)
             {
-                audioSourceSound.PlayOneShot(buttonClip);  // Play the button click sound.
+                audioSourceSound.PlayOneShot(clip);
             }
         }
         
