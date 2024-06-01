@@ -35,6 +35,16 @@ public class SpecialCapacity : MonoBehaviour, ICapacity
     /// Private variable to know if the game is running or not, (running state).
     /// </summary>
     private bool _running;
+    
+    /// <summary>
+    /// The game event that trigger the sound.
+    /// </summary>
+    public GameEvent onPlaySound;
+    
+    /// <summary>
+    /// The audioclip to play when thunder capacity is used.
+    /// </summary>
+    [SerializeField] private AudioClip thunderSound;
 
     private void Start()
     {
@@ -147,6 +157,7 @@ public class SpecialCapacity : MonoBehaviour, ICapacity
     {
         // Set the lightning symbol holder active to show the symbol.
         lightningSymbolHolder.SetActive(true);
+        onPlaySound?.Raise(this, thunderSound);
         yield return new WaitForSeconds(0.2f);
 
         // Set the lightning symbol holder inactive to hide the symbol.
