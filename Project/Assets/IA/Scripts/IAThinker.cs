@@ -11,7 +11,10 @@ using Random = System.Random;
 
 namespace IA.Event
 {
-    public enum UnitChoice // Enumeration for unit types, IA unit choices.
+    /// <summary>
+    /// Enumeration for unit types, IA unit choices.
+    /// </summary>
+    public enum UnitChoice
     {
         melee,
         range,
@@ -19,7 +22,10 @@ namespace IA.Event
         antiarmor
     };
     
-    public enum ActionChoice // Enumeration for action choices.
+    /// <summary>
+    /// Enumeration for action choices.
+    /// </summary>
+    public enum ActionChoice
     {
         spawn,
         capacity,
@@ -29,7 +35,10 @@ namespace IA.Event
         turret,
     };
     
-    public enum CapacityChoice // Enumeration for capacity types, hence capacity choices.
+    /// <summary>
+    /// Enumeration for capacity types, hence capacity choices.
+    /// </summary>
+    public enum CapacityChoice
     {
         fire, 
         lightning,
@@ -41,9 +50,19 @@ namespace IA.Event
     public class IAThinker : ThinkerWithDelay
     {
         // Call other class / script.
-        private EventsFoundation _eventsFoundation; // Calls the EventsFoundation class, which manages game events for the AI.
-        private Random aleatoire = new Random(); // Calls the native Random class.
+        /// <summary>
+        /// EventsFoundation class, which manages game events for the AI.
+        /// </summary>
+        private EventsFoundation _eventsFoundation;
         
+        /// <summary>
+        /// Native Random class.
+        /// </summary>
+        private Random aleatoire = new Random(); 
+        
+        /// <summary>
+        /// Declaration of IA Gold.
+        /// </summary>
         protected internal float Gold
         {
             get => _gold;
@@ -58,6 +77,9 @@ namespace IA.Event
         }
         private float _gold;
 
+        /// <summary>
+        /// Declaration of IA XP.
+        /// </summary>
         protected internal float Xp
         {
             get => _xp; // If the XP is negative, it will be reset to 0.
@@ -72,44 +94,82 @@ namespace IA.Event
         }
         private float _xp;
         
-        private int Age {get; set;} // Age variable for AI scripts.
-        public  int TurretNumber {get; set;} // Variable number of AI script turrets.
-        public bool IsUnlock {get; set;} // Locked unit verification variable for AI scripts.
-        public int SpawnCounter { get; set; } // Spawn counteur lets you manage spawn action times. 
-        public int UpgradeCounter { get; set; } // Upgrade counter allows you to manage the timing of improvement actions. 
+        /// <summary>
+        /// Age variable for AI scripts.
+        /// </summary>
+        private int Age {get; set;}
         
-        public int AgeCounter { get; set; } // Age counter allows you to manage the times of actions for the passage to higher ages. 
-
-        public int TurretCounter { get; set; } // Turret counter to manage turret spawn action times. 
-
-        public Queue<UnitStatSo> PlayerUnits { get; set; } // Queue of allied units, used to find out the type of opposing units.
+        /// <summary>
+        /// Variable number of AI script turrets.
+        /// </summary>
+        public  int TurretNumber {get; set;}
         
-        private Dictionary<UpgradeType, int> upgradeDictionary = new Dictionary<UpgradeType, int>(); // Dictionaries that manage improvement types and their improvement indexes.
+        /// <summary>
+        /// Locked unit verification variable for AI scripts.
+        /// </summary>
+        public bool IsUnlock {get; set;}
+        
+        /// <summary>
+        /// Spawn counteur lets you manage spawn action times. 
+        /// </summary>
+        public int SpawnCounter { get; set; } 
+        
+        /// <summary>
+        /// Upgrade counter allows you to manage the timing of improvement actions. 
+        /// </summary>
+        public int UpgradeCounter { get; set; }
+        
+        /// <summary>
+        /// Age counter allows you to manage the times of actions for the passage to higher ages. 
+        /// </summary>
+        public int AgeCounter { get; set; }
+
+        /// <summary>
+        /// Turret counter to manage turret spawn action times.
+        /// </summary>
+        public int TurretCounter { get; set; } 
+
+        /// <summary>
+        /// Queue of allied units, used to find out the type of opposing units.
+        /// </summary>
+        public Queue<UnitStatSo> PlayerUnits { get; set; }
+        
+        /// <summary>
+        /// Dictionaries that manage improvement types and their improvement indexes.
+        /// </summary>
+        private Dictionary<UpgradeType, int> upgradeDictionary = new Dictionary<UpgradeType, int>();
         
         // Retrieve So Stats directly from Unity (drag & drop).
         
-        // STATS SO UNIT
+        /// <summary>
+        /// STATS SO UNIT 
+        /// </summary>
         [SerializeField] public UnitStatSo meleeStatSo;
         [SerializeField] public UnitStatSo rangeStatSo;
         [SerializeField] public UnitStatSo armorStatSo;
         [SerializeField] public UnitStatSo antiArmorStatSo;
 
-        // STATS SO XP AGE 
+        /// <summary>
+        /// STATS SO XP AGE 
+        /// </summary>
         [SerializeField] public ExperienceStatSo experienceStatSo;
 
-        // STATS SO Turret
+        /// <summary>
+        /// STATS SO Turret
+        /// </summary>
         [SerializeField] public TurretStatSo turretStatSo;
 
-        // STATS SO SPECIAL CAPACITY
+        /// <summary>
+        /// STATS SO SPECIAL CAPACITY
+        /// </summary>
         [SerializeField] public CapacitySo capacityFireSo;
         [SerializeField] public CapacitySo capacityFlashSo;
 
-        // STATS SO UPGRADE
+        /// <summary>
+        /// STATS SO UPGRADE
+        /// </summary>
         [SerializeField] public UpgradePricesSo upgradePricesSo;
         
-        /// <summary>
-        /// Call Function before Start.
-        /// </summary>
         private void Awake()
         {
             // Instantiates XP and Gold values at the start of the game.
@@ -124,10 +184,7 @@ namespace IA.Event
                 upgradeDictionary.Add((UpgradeType)index, 0);
             }
         }
-
-        /// <summary>
-        /// Call Function When Script is instanciate.
-        /// </summary>
+        
         private void Start()
         {
             // A new unit tail for allied units.
