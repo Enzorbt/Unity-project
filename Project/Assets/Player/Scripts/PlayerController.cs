@@ -47,7 +47,7 @@ namespace Supinfo.Project.Scripts
         /// <summary>
         /// State of the Drag possibility (true = can, false = cannot)
         /// </summary>
-        private bool _canDrag;
+        private bool _canDrag = true;
         
         void Awake()
         {

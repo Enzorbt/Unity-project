@@ -30,12 +30,15 @@ namespace Supinfo.Project.Unit.Scripts
             var target = detection?.Detect(unitThinker.Direction, 1, tags[1] == "Allies" ? "Unit,Enemies" : "Unit,Allies");
             if (target is not null)
             {
+                Debug.LogWarning("detect unit short");
                 unitThinker.TryGetComponent(out IShooter shooter);
                 shooter?.Shoot(
                     unitThinker.Damage,
                     unitThinker.HitSpeed,
                     unitThinker.WalkSpeed + 1,
-                    target.transform, unitThinker.UnitType);
+                    target.transform, 
+                    unitThinker.UnitType
+                    );
                 return;
             }
 
@@ -43,13 +46,16 @@ namespace Supinfo.Project.Unit.Scripts
             target = detection?.Detect(unitThinker.Direction, unitThinker.Range, tags[1] == "Allies" ? "Unit,Enemies" : "Unit,Allies");
             if (target is not null)
             {
+                Debug.LogWarning("detect unit long");
+
                 unitThinker.TryGetComponent(out IShooter shooter);
                 shooter?.Shoot(
                     unitThinker.Damage,
                     unitThinker.HitSpeed,
                     unitThinker.WalkSpeed + 1,
-                    target.transform, unitThinker.UnitType);
-                return;
+                    target.transform, 
+                    unitThinker.UnitType
+                    );
             }
 
             // Detect castles
@@ -61,8 +67,9 @@ namespace Supinfo.Project.Unit.Scripts
                     unitThinker.Damage,
                     unitThinker.HitSpeed,
                     unitThinker.WalkSpeed + 1,
-                    target.transform, unitThinker.UnitType);
-                return;
+                    target.transform, 
+                    unitThinker.UnitType
+                    );
             }
 
             // Detect nearby allies
