@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
@@ -10,6 +11,11 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
     {
         private bool _canAttack;
         private Animator _animator;
+        
+        public GameEvent onPlaySound;
+        
+        [SerializeField]
+        private AudioClip attackSound;
 
         private void Start()
         {
@@ -28,6 +34,8 @@ namespace Supinfo.Project.Unit.Scripts.UnitCollision
             _canAttack = true;
             target.TakeDamage(amount, attackerType);
             _animator.SetBool("attack", true);
+            
+            onPlaySound?.Raise(this, attackSound);
             
             yield return new WaitForSeconds(cooldown);
             

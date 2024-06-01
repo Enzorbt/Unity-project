@@ -3441,8 +3441,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 654252873}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onMusicVolumeMute
+          Assembly-CSharp
+        m_MethodName: OnMusicVolumeMute
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3470,8 +3470,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 654252873}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onMusicVolumeChange
+          Assembly-CSharp
+        m_MethodName: OnMusicVolumeChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3499,8 +3499,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 654252873}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onSoundVolumeMute
+          Assembly-CSharp
+        m_MethodName: OnSoundVolumeMute
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3528,8 +3528,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 654252873}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onSoundVolumeChange
+          Assembly-CSharp
+        m_MethodName: OnSoundVolumeChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3557,8 +3557,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 654252873}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onPlayButtonClickSound
+          Assembly-CSharp
+        m_MethodName: OnPlaySound
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
