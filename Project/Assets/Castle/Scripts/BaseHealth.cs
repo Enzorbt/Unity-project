@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Supinfo.Project.ScriptableObjects.Base;
 using Supinfo.Project.Scripts.Common;
 using Supinfo.Project.Scripts.Events;
@@ -7,7 +6,6 @@ using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.Managers;
 using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Supinfo.Project.Castle.Scripts
 {
@@ -86,12 +84,20 @@ namespace Supinfo.Project.Castle.Scripts
             }
         }
         
-
+        /// <summary>
+        /// Game event listener function called when the event OnAgeUpgrade is triggered (linked to a GameEventListener component).
+        /// </summary>
+        /// <param name="sender">The sender of the game event.</param>
+        /// <param name="data">The data being transferred.</param>
         public void OnAgeUpgrade(Component sender, object data)
         {
             StartCoroutine(UpdateStatsWithDelay());
         }
 
+        /// <summary>
+        /// Updates the health of the base.
+        /// </summary>
+        /// <returns>Wait for certain time.</returns>
         private IEnumerator UpdateStatsWithDelay()
         {
             yield return new WaitForSeconds(2f);
