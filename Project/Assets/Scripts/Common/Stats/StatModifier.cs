@@ -42,11 +42,5 @@ namespace Supinfo.Project.Scripts.Common.Stats
         /// </summary>
         [SerializeField] private int order;
         public int Order => order;
-
-        /// <summary>
-        /// The source of this modifier, can be used to identify where the modification comes from.
-        /// </summary>
-        private object source;
-        public object Source { get; }
     }
 }

@@ -1,15 +1,16 @@
-using System;
 using System.Collections;
 using Supinfo.Project.Interfaces.Capacity;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Supinfo.Project.Capacity.Scripts
 {
+    /// <summary>
+    /// The capacity manager, deals damage to units and display the capacity on the game scene.
+    /// </summary>
     public class SpecialCapacity : MonoBehaviour, ICapacity
     {
         /// <summary>

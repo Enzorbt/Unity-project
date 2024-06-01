@@ -1,15 +1,15 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Managers;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
 using UnityEngine.UI;
-using Supinfo.Project.Scripts.Managers;
 
 namespace Supinfo.Project.Capacity.Scripts
 {
+    /// <summary>
+    /// Manage the logic for the special capacity buttons.
+    /// </summary>
     public class SpecialCapacityButtonUI : MonoBehaviour
     {
         /// <summary>

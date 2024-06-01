@@ -4,6 +4,9 @@ using System.Collections;
 
 namespace Supinfo.Project.Castle.Scripts
 {
+    /// <summary>
+    /// Manages the health bar of the base.
+    /// </summary>
     public class BaseHealthBar : MonoBehaviour
     {
         /// <summary>

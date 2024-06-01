@@ -1,22 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Supinfo.Project.Scripts.Common.Stats
 {
+    /// <summary>
+    /// Holds all the information of a given statistic, like its base value and its modifiers.
+    /// </summary>
     [Serializable]
     public class Stat
     {
+        /// <summary>
+        /// The last age that was use.
+        /// </summary>
         private int _lastAge = 0;
+        
+        /// <summary>
+        /// The last upgrade index that was use.
+        /// </summary>
         private int _lastUpgrade = 0;
         
+        /// <summary>
+        /// State of the calculation, true if already calculated, false otherwise.
+        /// </summary>
         private bool _hasBeenCalculated = false;
 
-        [SerializeField] 
-        private float baseValue;
+        /// <summary>
+        /// The base value of the statistic.
+        /// </summary>
+        [SerializeField] private float baseValue;
         
+        /// <summary>
+        /// The current value of the statistic.
+        /// </summary>
         private float _value;
         
         /// <summary>
@@ -24,7 +40,7 @@ namespace Supinfo.Project.Scripts.Common.Stats
         /// </summary>
         /// <param name="age">the current age</param>
         /// <param name="upgrades">the current upgrade count for this Stat</param>
-        /// <returns></returns>
+        /// <returns>The value of the statistic.</returns>
         public float GetValue(int age = 0, int upgrades = 0)
         {
             // here we check if the value is dirty, if so we clean it
@@ -37,18 +53,22 @@ namespace Supinfo.Project.Scripts.Common.Stats
             return _value;
         }
         
-        [SerializeField]
-        private List<StatModifier> ageStatModifiers;
+        /// <summary>
+        /// The list of age modifiers.
+        /// </summary>
+        [SerializeField] private List<StatModifier> ageStatModifiers;
         
-        [SerializeField]
-        private List<StatModifier> upgradeStatModifiers;
+        /// <summary>
+        /// The list of upgrade modifiers.
+        /// </summary>
+        [SerializeField] private List<StatModifier> upgradeStatModifiers;
 
         /// <summary>
-        /// 
+        /// Calculates the final value for the statistic.
         /// </summary>
         /// <param name="age">the current age</param>
         /// <param name="upgrades">the current upgrade count for this Stat</param>
-        /// <returns></returns>
+        /// <returns>The calculated value</returns>
         protected virtual float CalculateFinalValue(int age, int upgrades)
         {
             float finalValue = baseValue;
@@ -71,6 +91,13 @@ namespace Supinfo.Project.Scripts.Common.Stats
             return finalValue;
         }
 
+        /// <summary>
+        /// Calculate value for a given value and modifiers to apply.
+        /// </summary>
+        /// <param name="val">The value to modify.</param>
+        /// <param name="list">The list of modifiers to use.</param>
+        /// <param name="number">The number of modifiers to take into account.</param>
+        /// <returns>The calculated value.</returns>
         private float CalculateValue(float val, List<StatModifier> list, int number)
         {
             float tempValue = val;
@@ -103,9 +130,6 @@ namespace Supinfo.Project.Scripts.Common.Stats
 
             return (float)Math.Round(tempValue, 4);
         }
-        
-        
-
     }
 }
 
