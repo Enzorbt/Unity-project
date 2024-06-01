@@ -20,23 +20,33 @@ namespace Supinfo.Project.Turret.Scripts
         {
             // Get all colliders within the specified range
             var targets = Physics2D.OverlapCircleAll(transform.position, range);
+
             // Initialize variables to track the nearest collider and its distance
-            Collider2D minTarget = null;
-            float minDistance;
-            
+            Collider2D nearestTarget = null;
+            float minDistance = float.MaxValue;
+
             // Iterate through the detected colliders
             foreach (var target in targets)
             {
-                if (!target.CompareTag(detectTag)) break; 
-                minTarget = targets[0];
-                minDistance = Vector3.Distance(transform.position, minTarget.transform.position);
-                var distance = Vector3.Distance(transform.position, target.transform.position);
-                if (distance > minDistance) break;
-                minDistance = distance;
-                minTarget = target;
+                // Check if the target has the correct tag
+                if (!target.CompareTag(detectTag))
+                {
+                    continue;
+                }
 
+                // Calculate the distance to the target
+                var distance = Vector2.Distance(transform.position, target.transform.position);
+
+                // Update the nearest target if this one is closer
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    nearestTarget = target;
+                }
             }
-            return minTarget;
+
+            return nearestTarget;
         }
+
     }
 }

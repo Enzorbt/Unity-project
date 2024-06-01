@@ -23,7 +23,7 @@ namespace Supinfo.Project.Projectiles.Scripts
             
             // Enemy detection
             projectileThinker.TryGetComponent(out IUnitDetection detection);
-            var target = detection?.Detect(projectileThinker.DetectionDirection, 0.1f, tags[1] == "Allies" ? "Unit,Enemies" : "Unit,Allies");  // Detect units.
+            var target = detection?.Detect(projectileThinker.DetectionDirection, 0.5f, tags[1] == "Allies" ? "Unit,Enemies" : "Unit,Allies");  // Detect units.
             
             // Damage enemy if in range (distance)
             if (target is not null)
