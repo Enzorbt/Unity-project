@@ -40,6 +40,13 @@ namespace Supinfo.Project.Unit.Scripts.Health
         /// </summary>
         public GameEvent onUnitDeathXp;
         
+        public GameEvent onPlaySound;
+        
+        [SerializeField]
+        private AudioClip deathSound;
+        
+        
+        
         /// <summary>
         /// Update is called once per frame. Here it's used to test damage reception on a key press.
         /// </summary>
@@ -70,6 +77,7 @@ namespace Supinfo.Project.Unit.Scripts.Health
                 {
                     onUnitDeathXp.Raise(this, XpGiven);
                 }
+                onPlaySound?.Raise(this, deathSound);
                 Destroy(gameObject);
             }
         }

@@ -563,6 +563,8 @@ MonoBehaviour:
   healthBar: {fileID: 1651531720413543367}
   onUnitDeathCoins: {fileID: 11400000, guid: 68c4aabd9866a9a41873c9573fe7099e, type: 2}
   onUnitDeathXp: {fileID: 11400000, guid: e2ebdb48bc152294983e78fa2b44f1df, type: 2}
+  onPlaySound: {fileID: 11400000, guid: 6f956f78ecf0c493fa9d09bdefbfdab2, type: 2}
+  deathSound: {fileID: 8300000, guid: 84fe5ea4520342c47b4fbf16f3a987ce, type: 3}
 --- !u!114 &6359458530771199948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2641f4dc4c1f422aa945147ee6e6f0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlaySound: {fileID: 11400000, guid: 6f956f78ecf0c493fa9d09bdefbfdab2, type: 2}
+  attackSound: {fileID: 8300000, guid: cd453a3e00f29ba4f8900861d2c6dcf8, type: 3}
 --- !u!114 &3590464389390261383
 MonoBehaviour:
   m_ObjectHideFlags: 0
