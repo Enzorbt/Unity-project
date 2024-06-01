@@ -37,7 +37,6 @@ namespace Supinfo.Project.Scripts.Managers
         public void OnGameSpeedChange(Component sender, object data)
         {
             if (data is not GameSpeed gameSpeed) return;  // Validate data type.
-            Debug.Log(gameSpeed);  // Log the new game speed.
             Time.timeScale = gameSpeed switch
             {
                 GameSpeed.Stop => 0,    // Set timescale to 0 for Stop.
