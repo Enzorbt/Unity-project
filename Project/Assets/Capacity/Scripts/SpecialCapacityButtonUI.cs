@@ -81,6 +81,7 @@ namespace Supinfo.Project.Capacity.Scripts
             if (_canUse && _xpRatio >= cost)
             {
                 StartCoroutine(UseCapacityWithCooldown());  // Start coroutine for capacity usage and cooldown.
+                StartCoroutine(CooldownImageAnimation());  // Start coroutine for cooldown image animation.
             }
         }
 
@@ -94,24 +95,25 @@ namespace Supinfo.Project.Capacity.Scripts
             onClick.Raise(this, _capacitySo);  // Raise the click event.
             onXpChange.Raise(this, -(_xpMax * cost));  // Raise the XP change event.
 
-            if (cooldownImage != null)
-            {
-                float elapsedTime = 0f;  // Initialize elapsed time.
-                float cooldownDuration = _capacitySo.Cooldown;  // Get the cooldown duration from capacity data.
-
-                while (elapsedTime < cooldownDuration)
-                {
-                    elapsedTime += Time.deltaTime;  // Increment elapsed time.
-                    cooldownImage.fillAmount = elapsedTime / cooldownDuration;  // Update fill amount.
-                    yield return null;  // Wait for the next frame.
-                }
-                cooldownImage.fillAmount = 0f;  // Reset fill amount.
-            }
-
             yield return new WaitForSeconds(_capacitySo.Cooldown);  // Wait for the cooldown duration.
 
             _canUse = true;  // Set capacity use flag to true.
             SetActiveButton(_xpRatio >= cost && _canUse);  // Update button state based on XP ratio and use flag.
+        }
+        private IEnumerator CooldownImageAnimation()
+        {
+            if (cooldownImage is null) yield break;
+            var cooldownDuration = _capacitySo.Cooldown;
+            var elapsedTime = 0f;
+
+            while (elapsedTime < cooldownDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                cooldownImage.fillAmount = elapsedTime / cooldownDuration;
+                yield return null;
+            }
+
+            cooldownImage.fillAmount = 0f;
         }
 
         /// <summary>
