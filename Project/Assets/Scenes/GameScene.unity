@@ -7087,6 +7087,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801674843}
   m_CullTransparentMesh: 1
+--- !u!1 &819528387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 819528388}
+  - component: {fileID: 819528389}
+  m_Layer: 0
+  m_Name: LanguageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &819528388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819528387}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 930.68286, y: 603.7955, z: -3.2413025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1150515911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &819528389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819528387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae353ad16e149aeb15d2058182d80be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  languageDropdown: {fileID: 85918409}
 --- !u!1 &829049499
 GameObject:
   m_ObjectHideFlags: 0
@@ -8133,8 +8178,8 @@ MonoBehaviour:
   rightMostPoint: {fileID: 1508315730}
   lightningSymbolHolder: {fileID: 887295102}
   onSpecialCapacityStatusChange: {fileID: 11400000, guid: ce9c187835463124ea1c4c1b7fe0f434, type: 2}
-  onPlaySound: {fileID: 0}
-  attackSound: {fileID: 0}
+  onPlaySound: {fileID: 11400000, guid: 6f956f78ecf0c493fa9d09bdefbfdab2, type: 2}
+  thunderSound: {fileID: 8300000, guid: 0f51a9ff92c68f246a8739960099fd5a, type: 3}
 --- !u!4 &935100706
 Transform:
   m_ObjectHideFlags: 0
@@ -8576,6 +8621,8 @@ MonoBehaviour:
   rightMostPoint: {fileID: 264559321}
   lightningSymbolHolder: {fileID: 887295102}
   onSpecialCapacityStatusChange: {fileID: 11400000, guid: a6c5cba4bffff4b488f1101b75ecadf1, type: 2}
+  onPlaySound: {fileID: 11400000, guid: 6f956f78ecf0c493fa9d09bdefbfdab2, type: 2}
+  thunderSound: {fileID: 8300000, guid: 0f51a9ff92c68f246a8739960099fd5a, type: 3}
 --- !u!1 &977279896
 GameObject:
   m_ObjectHideFlags: 0
@@ -9953,6 +10000,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 819528388}
   - {fileID: 1676750210}
   - {fileID: 963584095}
   - {fileID: 632469248}

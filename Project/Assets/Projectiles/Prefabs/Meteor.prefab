@@ -132,6 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  projectile: {fileID: 0}
+  onPlaySound: {fileID: 11400000, guid: 6f956f78ecf0c493fa9d09bdefbfdab2, type: 2}
+  meteorSound: {fileID: 8300000, guid: 0f51a9ff92c68f246a8739960099fd5a, type: 3}
 --- !u!212 &2472462182981309740
 SpriteRenderer:
   m_ObjectHideFlags: 0
