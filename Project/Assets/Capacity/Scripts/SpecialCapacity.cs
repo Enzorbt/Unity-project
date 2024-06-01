@@ -12,18 +12,41 @@ namespace Supinfo.Project.Capacity.Scripts
 {
     public class SpecialCapacity : MonoBehaviour, ICapacity
     {
+        /// <summary>
+        /// The left most point of reference to choose a position for meteors spawn.
+        /// </summary>
         [SerializeField] private GameObject leftMostPoint;
+        /// <summary>
+        /// The point of reference to the left to choose a position for meteors spawn.
+        /// </summary>
         [SerializeField] private GameObject rightMostPoint;
+        /// <summary>
+        /// The game object that holds the lightning sprite.
+        /// </summary>
         [SerializeField] private GameObject lightningSymbolHolder;
+        /// <summary>
+        /// The game event to trigger when special capacity is already being used.
+        /// </summary>
         [SerializeField] private GameEvent onSpecialCapacityStatusChange;
         
+        /// <summary>
+        /// The state of the special capacity (running or not running).
+        /// </summary>
         private bool _running;
 
+        /// <summary>
+        /// Called when the object is instantiated.
+        /// </summary>
         private void Start()
         {
             onSpecialCapacityStatusChange.Raise(this, true);
         }
 
+        /// <summary>
+        /// Game event listener function called when the event onLaunchCapacity is triggered (linked to a GameEventListener component).
+        /// </summary>
+        /// <param name="sender">The sender of the game event.</param>
+        /// <param name="data">The data being transferred.</param>
         public void LaunchCapacity(Component sender, object data)
         {
             if (data is not CapacitySo capacitySo) return;
@@ -34,6 +57,11 @@ namespace Supinfo.Project.Capacity.Scripts
             }
         }
 
+        /// <summary>
+        /// Coroutine used to make capacities being delayed.
+        /// </summary>
+        /// <param name="capacitySo">The capacity scriptable object.</param>
+        /// <returns>Waiting for seconds.</returns>
         private IEnumerator CapacityDelayed(CapacitySo capacitySo)
         {
             onSpecialCapacityStatusChange.Raise(this, false);
@@ -86,6 +114,10 @@ namespace Supinfo.Project.Capacity.Scripts
             onSpecialCapacityStatusChange.Raise(this, true);
         }
 
+        /// <summary>
+        /// Coroutine for the lightning animation.
+        /// </summary>
+        /// <returns>Wait for seconds.</returns>
         private IEnumerator LightningAnim()
         {
             for (var i = 0; i < 5; i++)
