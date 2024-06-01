@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -20,6 +21,8 @@ namespace Supinfo.Project.Scripts.Managers
         /// Flag to indicate if the locale is being changed.
         /// </summary>
         private bool isChangingLocale = false;
+        
+        public static event Action<int> onLanguageChanged;
 
         /// <summary>
         /// Enum representing available languages.
@@ -42,6 +45,8 @@ namespace Supinfo.Project.Scripts.Managers
             ChangeLocale(currentLanguageIndex);  // Change the locale to the current language.
 
             languageDropdown.onValueChanged.AddListener(OnLanguageChanged);  // Add listener for language change.
+            onLanguageChanged?.Invoke(currentLanguageIndex);
+            
         }
 
         /// <summary>
@@ -67,6 +72,7 @@ namespace Supinfo.Project.Scripts.Managers
         private void OnLanguageChanged(int index)
         {
             ChangeLocale(index);  // Change the locale based on the selected index.
+            onLanguageChanged?.Invoke(index);
         }
 
         /// <summary>

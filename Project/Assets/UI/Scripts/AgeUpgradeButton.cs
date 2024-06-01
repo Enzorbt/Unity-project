@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 namespace Supinfo.Project.UI.Scripts
@@ -16,22 +18,22 @@ namespace Supinfo.Project.UI.Scripts
         /// The image component of the button.
         /// </summary>
         private Image image;
-        
+
         /// <summary>
         /// The sprite displayed when the button is pressed.
         /// </summary>
         [SerializeField] private Sprite pressButtonImg;
-        
+
         /// <summary>
         /// The sprite displayed when the button is not pressed.
         /// </summary>
         [SerializeField] private Sprite buttonImg;
-        
+
         /// <summary>
         /// Event raised when the button is clicked to upgrade the age.
         /// </summary>
         [SerializeField] private GameEvent onAgeUpgrade;
-        
+
         /// <summary>
         /// The text component displaying the current age.
         /// </summary>
@@ -41,14 +43,14 @@ namespace Supinfo.Project.UI.Scripts
         /// The list of available ages.
         /// </summary>
         [SerializeField] private List<string> ages;
-         
+
         /// <summary>
-        ///  The index of the current age in the list.
+        /// The index of the current age in the list.
         /// </summary>
         private int currentAgeIndex = 0;
-        
+
         /// <summary>
-        ///Flag indicating whether the age can be upgraded.
+        /// Flag indicating whether the age can be upgraded.
         /// </summary>
         private bool _canEvolve;
 
@@ -61,7 +63,13 @@ namespace Supinfo.Project.UI.Scripts
             image = transform.GetComponentInChildren<Image>(); // Get the image component.
             image.sprite = pressButtonImg; // Set the initial sprite.
             EnableButton(false); // Deactivate the button.
-            UpdateAgeText(); // Update the age text.
+
+            LanguageManager.onLanguageChanged += UpdateAgeTexts; // Subscribe to the language change event
+        }
+
+        private void OnDestroy()
+        {
+            LanguageManager.onLanguageChanged -= UpdateAgeTexts;  // Unsubscribe from language change event
         }
 
         /// <summary>
@@ -75,14 +83,14 @@ namespace Supinfo.Project.UI.Scripts
             _canEvolve = value;
             EnableButton(_canEvolve);
         }
-        
+
         /// <summary>
         /// Handles the button click event.
         /// </summary>
         public void OnClick()
         {
             onAgeUpgrade.Raise(this, 2); // Raise the age upgrade event.
-            
+
             EnableButton(false); // Deactivate the button.
 
             // Increment the current age index and check for limits.
@@ -104,19 +112,39 @@ namespace Supinfo.Project.UI.Scripts
             button.enabled = value; // Set the button's activation state.
             image.sprite = value ? buttonImg : pressButtonImg; // Set the sprite based on the activation state.
         }
-        
+
         /// <summary>
         /// Updates the text displaying the current age.
         /// </summary>
         private void UpdateAgeText()
         {
             if (ageText is null) return;
-            if (ageText != null && currentAgeIndex < ages.Count)
-            {
-                ageText.text = ages[currentAgeIndex]; // Set the text to the current age.
-            }
+            ageText.text = ages[currentAgeIndex]; // Set the text to the current age.
         }
-        
+
+        private void UpdateAgeTexts(int localeID)
+        {
+            StartCoroutine(UpdateAgesFromLocalization());
+        }
+
+        private IEnumerator UpdateAgesFromLocalization()
+        {
+            yield return LocalizationSettings.InitializationOperation;
+            ages.Clear();
+            for (var i = 0; i < 7; i++)
+            {
+                var tableName = $"AgeNames_{i + 1}";
+                var table = LocalizationSettings.StringDatabase.GetTable(tableName);
+                
+                var localizedText = table.GetEntry(tableName)?.GetLocalizedString();
+                if (localizedText is not null)
+                {
+                    ages.Add(localizedText);
+                }
+            }
+            UpdateAgeText();
+        }
+
         /// <summary>
         /// Handles changes in the game speed.
         /// </summary>
@@ -125,7 +153,7 @@ namespace Supinfo.Project.UI.Scripts
         public void OnGameSpeedChange(Component sender, object data)
         {
             if (data is not GameSpeed gameSpeed) return;
-            
+
             EnableButton(gameSpeed == GameSpeed.Stop ? false : _canEvolve); // Enable or disable the button based on the game speed.
         }
     }
