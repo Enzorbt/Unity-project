@@ -34,7 +34,6 @@ namespace Supinfo.Project.Unit.Scripts
         {
             // Perform a raycast in the specified direction and range
             var hits = Physics2D.RaycastAll(transform.position, direction, range);
-            Debug.DrawRay(transform.position, direction * range, Color.red);
             // Iterate through the hits
             foreach (var hit in hits)
             {
