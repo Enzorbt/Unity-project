@@ -1,11 +1,9 @@
-using System;
 using System.Collections;
 using Supinfo.Project.Interfaces.Capacity;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Supinfo.Project.Capacity.Scripts
