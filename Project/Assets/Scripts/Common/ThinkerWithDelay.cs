@@ -16,10 +16,7 @@ public class ThinkerWithDelay : MonoBehaviour
     /// </summary>
     [SerializeField]
     private BrainWithDelay brain;
-
-    /// <summary>
-    /// The brain that the thinker uses to perform thinking.
-    /// </summary>
+    
     public BrainWithDelay Brain
     {
         get => brain;
@@ -36,15 +33,10 @@ public class ThinkerWithDelay : MonoBehaviour
         if (!IsThinking)
         {
             // Check if the brain is not null
-            if (brain != null)
+            if (brain is not null)
             {
                 // Start a coroutine to perform thinking with a delay
                 StartCoroutine(brain.ThinkWithDelay(this));
-            }
-            else
-            {
-                // Log an error message if the brain is null
-                Debug.LogError("Brain is null in ThinkerWithDelay");
             }
         }
     }
