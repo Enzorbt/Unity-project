@@ -3,6 +3,8 @@ using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
 using UnityEngine;
 
+// The condition of counter is controlling time and action priority
+
 namespace IA.Event
 {
     [CreateAssetMenu(menuName = "Brains/IABrain3")]

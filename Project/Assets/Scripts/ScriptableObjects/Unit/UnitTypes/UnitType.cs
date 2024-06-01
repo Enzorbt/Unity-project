@@ -17,7 +17,7 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.UnitTypes
         /// </summary>
         [Header("UnitType")] 
         [SerializeField] private string _name;
-        
+
         /// <summary>
         /// Array of UnitType objects that this unit type is strong against.
         /// This array can be used to determine combat effectiveness and strategy in the game,
@@ -25,6 +25,10 @@ namespace Supinfo.Project.Scripts.ScriptableObjects.UnitTypes
         /// </summary>
         [Header("UnitTypes it is strong against")] 
         [SerializeField] private UnitType _strongAgainst;
+        
+        /// <summary>
+        /// Gets the unit types that this unit type is strong against.
+        /// </summary>
         public UnitType StrongAgainst => _strongAgainst;
     }
 }
