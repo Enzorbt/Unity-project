@@ -19,7 +19,6 @@ namespace Supinfo.Project.Projectiles.Scripts
         {
             var hits = new RaycastHit2D[10];  // Array to store the raycast hits.
             Physics2D.RaycastNonAlloc(transform.position, direction, hits, range);  // Perform the raycast.
-            Debug.DrawRay(transform.position, direction*range, Color.red);
             foreach (var hit in hits)
             {
                 if (hit.collider is null) break;  // Exit the loop if no more hits are detected.

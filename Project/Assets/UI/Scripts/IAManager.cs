@@ -116,17 +116,11 @@ namespace Supinfo.Project.UI.Scripts
         /// <param name="mode">The 	extbf{LoadSceneMode} used to load the scene.</param>
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            // Log a message to the console
-            Debug.Log("Scene loaded");
-
             // Find the game object with the "IA" tag
             var ia = GameObject.FindGameObjectWithTag("IA");
 
             // Try to get the ThinkerWithDelay component from the game object
             ia.TryGetComponent(out ThinkerWithDelay thinker);
-
-            // Log a message to the console
-            Debug.Log("thinker found");
 
             // Set the IA behavior in the game
             thinker.Brain = _iaChoice;
