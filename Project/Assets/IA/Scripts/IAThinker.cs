@@ -85,6 +85,8 @@ namespace IA.Event
         public Queue<UnitStatSo> PlayerUnits { get; set; } // Queue of allied units, used to find out the type of opposing units.
         
         private Dictionary<UpgradeType, int> upgradeDictionary = new Dictionary<UpgradeType, int>(); // Dictionaries that manage improvement types and their improvement indexes.
+
+        private bool _canUseCapacity;
         
         // Retrieve So Stats directly from Unity (drag & drop).
         
@@ -194,6 +196,8 @@ namespace IA.Event
         /// <returns>True if is possible and false if is impossible.</returns>
         public bool SpecialCapacity(CapacityChoice capacityChoice, bool buff)
         {
+            if (!_canUseCapacity) return false;
+            
             switch (capacityChoice)
             {
                 case CapacityChoice.fire: 
@@ -381,6 +385,12 @@ namespace IA.Event
         {
             if(data is not float xp) return; // If the data receive is not XP return
             Xp += xp; // Add the XP receive to IA XP.
+        }
+
+        public void OnCapacityStatusChange(Component sender, object data)
+        {
+            if(data is not bool state) return;
+            _canUseCapacity = state;
         }
     }
 }

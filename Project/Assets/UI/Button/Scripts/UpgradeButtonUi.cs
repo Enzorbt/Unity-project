@@ -46,15 +46,19 @@ namespace Supinfo.Project.UI.Button.Scripts
 
             if (onGoldChange is null) return;
             
+            _goldCount -= upgradePricesSo.GetPrice(upgradeType, _count);
             onGoldChange.Raise(this, - upgradePricesSo.GetPrice(upgradeType, _count));
             
             medals[_count].gameObject.SetActive(true);
             _count++;
             
-            if (_count >= 3)
+            if (_count >= 2)
             {
                 SetActiveButton(false);
             }
+            
+            // activate the button
+            SetActiveButton(_goldCount >= upgradePricesSo.GetPrice(upgradeType, _count));
         }
 
         public void OnGoldCountChange(Component sender, object data)
@@ -64,7 +68,7 @@ namespace Supinfo.Project.UI.Button.Scripts
             _goldCount = goldCount;
             
             // do nothing if all upgrades bought
-            if (_count >= 3) return;
+            if (_count >= 2) return;
             
             // activate the button
             SetActiveButton(_goldCount >= upgradePricesSo.GetPrice(upgradeType, _count));
@@ -79,7 +83,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         {
             if (data is not GameSpeed gameSpeed) return;
             
-            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _goldCount >= upgradePricesSo.GetPrice(upgradeType, _count) && _count < 3);
+            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _goldCount >= upgradePricesSo.GetPrice(upgradeType, _count) && _count < 2);
         }
 
     }
