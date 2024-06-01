@@ -17,9 +17,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7b92e314bf7643a4f8c3d8e323cf64a9, type: 2}
     - target: {fileID: 1776877459599816412, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e1a408d3861234c4d85ae90d7a0d5dc5, type: 3}
+    - target: {fileID: 1776877459599816412, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: unitStatSo
       value: 
       objectReference: {fileID: 11400000, guid: 2a5d22672fdd15f4c878c16c2056be01, type: 2}
+    - target: {fileID: 1776877459599816412, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
+      propertyPath: onPlaySound
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f956f78ecf0c493fa9d09bdefbfdab2, type: 2}
     - target: {fileID: 4371070662113245973, guid: e55ba1b7bd30d3446a7a52380c1b614c, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -127,3 +135,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 9031365976890039232, guid: 4db086e24358fa146ac035ff2d6f5b65, type: 3}
+  onPlaySound: {fileID: 11400000, guid: 6f956f78ecf0c493fa9d09bdefbfdab2, type: 2}
+  attackSound: {fileID: 8300000, guid: d1efd7f92ac02cd4f8bab31fdfc6c489, type: 3}

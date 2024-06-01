@@ -1,4 +1,4 @@
-﻿using Common;
+using Common;
 using UnityEngine;
 
 namespace Supinfo.Project.Common

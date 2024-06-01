@@ -8133,6 +8133,8 @@ MonoBehaviour:
   rightMostPoint: {fileID: 1508315730}
   lightningSymbolHolder: {fileID: 887295102}
   onSpecialCapacityStatusChange: {fileID: 11400000, guid: ce9c187835463124ea1c4c1b7fe0f434, type: 2}
+  onPlaySound: {fileID: 0}
+  attackSound: {fileID: 0}
 --- !u!4 &935100706
 Transform:
   m_ObjectHideFlags: 0
@@ -12754,6 +12756,7 @@ GameObject:
   - component: {fileID: 1676750212}
   - component: {fileID: 1676750211}
   - component: {fileID: 1676750217}
+  - component: {fileID: 1676750218}
   m_Layer: 5
   m_Name: AudioManager
   m_TagString: Untagged
@@ -12800,8 +12803,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1676750216}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onPlayButtonClickSound
+          Assembly-CSharp
+        m_MethodName: OnPlaySound
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12829,8 +12832,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1676750216}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onSoundVolumeMute
+          Assembly-CSharp
+        m_MethodName: OnSoundVolumeMute
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12858,8 +12861,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1676750216}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onSoundVolumeChange
+          Assembly-CSharp
+        m_MethodName: OnSoundVolumeChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12887,8 +12890,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1676750216}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onMusicVolumeMute
+          Assembly-CSharp
+        m_MethodName: OnMusicVolumeMute
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12916,8 +12919,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1676750216}
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
-          Scripts
-        m_MethodName: onMusicVolumeChange
+          Assembly-CSharp
+        m_MethodName: OnMusicVolumeChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12963,6 +12966,35 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
           Assembly-CSharp
         m_MethodName: UpgradeAge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1676750218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676750209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82d812bab984c1399401c808d1d4318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 6f956f78ecf0c493fa9d09bdefbfdab2, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1676750216}
+        m_TargetAssemblyTypeName: Supinfo.Project.Scripts.Managers.MusicManager,
+          Assembly-CSharp
+        m_MethodName: OnPlaySound
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16567,7 +16599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -552, y: -103}
+  m_AnchoredPosition: {x: -537.2, y: -131.4}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2127818438

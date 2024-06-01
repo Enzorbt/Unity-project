@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Supinfo.Project.Scripts
 {
+    /// <summary>
+    /// Enum representing different types of upgrades available in the game.
+    /// </summary>
     public enum UpgradeType
     {
         MeleeAttack,
@@ -18,21 +21,64 @@ namespace Supinfo.Project.Scripts
         TurretAttack,
         TurretRange,
         GoldGiven
-        // unlock armor is dealt in the armor button scripts
+        // Unlock armor is dealt with in the armor button scripts
     }
+
+    /// <summary>
+    /// The UpgradeManager class is responsible for handling the upgrades of various units and turrets in the game.
+    /// </summary>
     public class UpgradeManager : MonoBehaviour
     {
+        /// <summary>
+        /// ScriptableObject for melee unit stats.
+        /// </summary>
         [SerializeField] private MeleeStatSo meleeStatSo;
+        
+        /// <summary>
+        /// ScriptableObject for anti-armor unit stats.
+        /// </summary>
         [SerializeField] private MeleeStatSo antiArmorStatSo;
+        
+        /// <summary>
+        /// ScriptableObject for armor unit stats.
+        /// </summary>
         [SerializeField] private MeleeStatSo armorStatSo;
+        
+        /// <summary>
+        /// ScriptableObject for range unit stats.
+        /// </summary>
         [SerializeField] private RangeStatSo rangeStatSo;
+        
+        /// <summary>
+        /// ScriptableObject for turret stats.
+        /// </summary>
         [SerializeField] private TurretStatSo turretStatSo;
         
+        /// <summary>
+        /// ScriptableObject for other melee unit stats.
+        /// </summary>
         [SerializeField] private MeleeStatSo otherMeleeStatSo;
+        
+        /// <summary>
+        /// ScriptableObject for other anti-armor unit stats.
+        /// </summary>
         [SerializeField] private MeleeStatSo otherAntiArmorStatSo;
+        
+        /// <summary>
+        /// ScriptableObject for other armor unit stats.
+        /// </summary>
         [SerializeField] private MeleeStatSo otherArmorStatSo;
+        
+        /// <summary>
+        /// ScriptableObject for other range unit stats.
+        /// </summary>
         [SerializeField] private RangeStatSo otherRangeStatSo;
 
+        /// <summary>
+        /// Upgrades the specified type of unit or turret based on the upgrade type provided.
+        /// </summary>
+        /// <param name="sender">The component that triggered the upgrade.</param>
+        /// <param name="data">The upgrade type data.</param>
         public void Upgrade(Component sender, object data)
         {
             if (data is not UpgradeType upgradeType) return;
@@ -40,32 +86,22 @@ namespace Supinfo.Project.Scripts
             switch (upgradeType)
             {
                 case UpgradeType.MeleeAttack:
-                    meleeStatSo?.Upgrade(upgradeType);
-                    break;
                 case UpgradeType.MeleeHealth:
                     meleeStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.RangeAttack:
-                    rangeStatSo?.Upgrade(upgradeType);
-                    break;
                 case UpgradeType.RangeRange:
                     rangeStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.AntiArmorAttack:
-                    antiArmorStatSo?.Upgrade(upgradeType);
-                    break;
                 case UpgradeType.AntiArmorHealth:
                     antiArmorStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.ArmorAttack:
-                    armorStatSo?.Upgrade(upgradeType);
-                    break;
                 case UpgradeType.ArmorHealth:
                     armorStatSo?.Upgrade(upgradeType);
                     break;
                 case UpgradeType.TurretAttack:
-                    turretStatSo?.Upgrade(upgradeType);
-                    break;
                 case UpgradeType.TurretRange:
                     turretStatSo?.Upgrade(upgradeType);
                     break;
@@ -79,6 +115,5 @@ namespace Supinfo.Project.Scripts
                     throw new ArgumentOutOfRangeException();
             }
         }
-        
     }
 }

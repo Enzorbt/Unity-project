@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 9031365976890039232, guid: 4db086e24358fa146ac035ff2d6f5b65, type: 3}
+  onPlaySound: {fileID: 11400000, guid: 6f956f78ecf0c493fa9d09bdefbfdab2, type: 2}
+  attackSound: {fileID: 8300000, guid: 668d9f1a7d4b0aa468a68834d3f8277b, type: 3}
 --- !u!114 &-7309273111792413769
 MonoBehaviour:
   m_ObjectHideFlags: 0

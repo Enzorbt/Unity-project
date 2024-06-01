@@ -1,205 +1,196 @@
 using System.Collections;
 using Supinfo.Project.Scripts.Events;
-using Supinfo.Project.Scripts.Managers;
 using Supinfo.Project.Scripts.ScriptableObjects.Capacity;
 using UnityEngine;
 using UnityEngine.UI;
+using Supinfo.Project.Scripts.Managers;
 
 namespace Supinfo.Project.Capacity.Scripts
 {
     /// <summary>
-    /// Manage the logic for the special capacity buttons.
+    /// UI component to handle the special capacity button functionality.
     /// </summary>
     public class SpecialCapacityButtonUI : MonoBehaviour
     {
         /// <summary>
-        /// The maximum of xp (to display in the text).
+        /// Maximum experience points.
         /// </summary>
         private float _xpMax;
-        
+
         /// <summary>
-        /// The game event to trigger when the button is clicked.
+        /// Event triggered on button click.
         /// </summary>
         [SerializeField] private GameEvent onClick;
-        
+
         /// <summary>
-        /// The game event to trigger to notify a xp change.
+        /// Event triggered when XP changes.
         /// </summary>
         [SerializeField] private GameEvent onXpChange;
         
         /// <summary>
-        /// The capacity scriptable object with all its stats.
+        /// Scriptable object for capacity data.
         /// </summary>
-        [SerializeField]
-        private CapacitySo _capacitySo;
+        [SerializeField] private CapacitySo _capacitySo;
         
         /// <summary>
-        /// The cost of the capacity as a percentage of the xp total.
+        /// Cost of using the capacity in terms of XP ratio.
         /// </summary>
-        [Range(0,1)]
-        [SerializeField] private float cost;
-        
-        /// <summary>
-        /// The image of the capacity (to change it for each age).
-        /// </summary>
-        private Image _image;
+        [Range(0, 1)] [SerializeField] private float cost;
 
         /// <summary>
-        /// The xp ratio of the user.
+        /// // Image component of the button.
         /// </summary>
-        private float _xpRatio;
-
-        /// <summary>
-        /// State of the usage of the capacity (if capacity is already playing, it is false.
-        /// </summary>
-        private bool _canUse = true;
+        private Image _image;  
         
         /// <summary>
-        /// The cooldown image.
+        /// // Current XP ratio.
+        /// </summary>
+        private float _xpRatio; 
+        
+        /// <summary>
+        /// Flag to check if the capacity can be used.
+        /// </summary>
+        private bool _canUse = true; 
+
+        /// <summary>
+        /// Image for cooldown representation.
         /// </summary>
         [SerializeField] private Image cooldownImage;
 
-        /// <summary>
-        /// Called when the game object is instantiated.
-        /// </summary>
+
         private void Awake()
         {
-            SetActiveButton(false);
-            _image = GetComponentsInChildren<Image>()[1];
+            SetActiveButton(false);  // Initially disable the button.
+            _image = GetComponentsInChildren<Image>()[1];  // Get the second Image component in children.
             if (_image != null)
             {
-                _image.sprite = _capacitySo.Sprite;
+                _image.sprite = _capacitySo.Sprite;  // Set the image sprite from capacity data.
             }
             
             if (cooldownImage != null)
             {
-                cooldownImage.type = Image.Type.Filled;
-                cooldownImage.fillMethod = Image.FillMethod.Radial360;
-                cooldownImage.fillOrigin = (int)Image.Origin360.Top;
-                cooldownImage.fillAmount = 0f;
+                cooldownImage.type = Image.Type.Filled;  // Set the image type to filled.
+                cooldownImage.fillMethod = Image.FillMethod.Radial360;  // Set the fill method to radial.
+                cooldownImage.fillOrigin = (int)Image.Origin360.Top;  // Set the fill origin to top.
+                cooldownImage.fillAmount = 0f;  // Initialize fill amount to zero.
             }
         }
 
-        /// <summary>
-        /// Method to be called when the button is clicked.
-        /// </summary>
         public void OnClick()
         {
             if (_canUse && _xpRatio >= cost)
             {
-                StartCoroutine(UseCapacityWithCooldown());
+                StartCoroutine(UseCapacityWithCooldown());  // Start coroutine for capacity usage and cooldown.
             }
         }
 
         /// <summary>
-        /// Coroutine function to use the capacity with a cooldown.
+        /// Coroutine to handle the capacity usage with cooldown.
         /// </summary>
-        /// <returns></returns>
         private IEnumerator UseCapacityWithCooldown()
         {
-            _canUse = false;
-            SetActiveButton(false);
-            onClick.Raise(this, _capacitySo);
-            onXpChange.Raise(this, -(_xpMax * cost));
+            _canUse = false;  // Set capacity use flag to false.
+            SetActiveButton(false);  // Disable the button.
+            onClick.Raise(this, _capacitySo);  // Raise the click event.
+            onXpChange.Raise(this, -(_xpMax * cost));  // Raise the XP change event.
 
             if (cooldownImage != null)
             {
-                float elapsedTime = 0f;
-                float cooldownDuration = _capacitySo.Cooldown;
+                float elapsedTime = 0f;  // Initialize elapsed time.
+                float cooldownDuration = _capacitySo.Cooldown;  // Get the cooldown duration from capacity data.
 
                 while (elapsedTime < cooldownDuration)
                 {
-                    elapsedTime += Time.deltaTime;
-                    cooldownImage.fillAmount = elapsedTime / cooldownDuration;
-                    yield return null;
+                    elapsedTime += Time.deltaTime;  // Increment elapsed time.
+                    cooldownImage.fillAmount = elapsedTime / cooldownDuration;  // Update fill amount.
+                    yield return null;  // Wait for the next frame.
                 }
-                cooldownImage.fillAmount = 0f;
+                cooldownImage.fillAmount = 0f;  // Reset fill amount.
             }
 
-            yield return new WaitForSeconds(_capacitySo.Cooldown);
+            yield return new WaitForSeconds(_capacitySo.Cooldown);  // Wait for the cooldown duration.
 
-            _canUse = true;
-            SetActiveButton(_xpRatio >= cost && _canUse);
+            _canUse = true;  // Set capacity use flag to true.
+            SetActiveButton(_xpRatio >= cost && _canUse);  // Update button state based on XP ratio and use flag.
         }
 
         /// <summary>
-        /// Game event listener function called when the event onXpRatioChange is triggered (linked to a GameEventListener component).
+        /// Method called when XP ratio changes.
         /// </summary>
-        /// <param name="sender">The sender of the game event.</param>
-        /// <param name="data">The data being transferred.</param>
+        /// <param name="sender">Sender component.</param>
+        /// <param name="data">XP ratio data.</param>
         public void OnXpRatioChange(Component sender, object data)
         {
-            if (data is not float xpRatio) return;
+            if (data is not float xpRatio) return;  // Validate XP ratio data.
 
-            _xpRatio = xpRatio;
+            _xpRatio = xpRatio;  // Update XP ratio.
 
-            SetActiveButton(_xpRatio >= cost && _canUse);
+            SetActiveButton(_xpRatio >= cost && _canUse);  // Update button state based on XP ratio and use flag.
         }
 
         /// <summary>
-        /// Change the state of the button.
+        /// Method to set the button active state.
         /// </summary>
-        /// <param name="state"></param>
+        /// <param name="state">Active state.</param>
         private void SetActiveButton(bool state)
         {
-            gameObject.GetComponentInChildren<UnityEngine.UI.Button>().enabled = state;
+            gameObject.GetComponentInChildren<UnityEngine.UI.Button>().enabled = state;  // Enable/disable the button.
         }
 
         /// <summary>
-        /// Game event listener function called when the event onXPMaxChange is triggered (linked to a GameEventListener component).
+        /// Method called when maximum XP changes.
         /// </summary>
-        /// <param name="sender">The sender of the game event.</param>
-        /// <param name="data">The data being transferred.</param>
+        /// <param name="sender">Sender component.</param>
+        /// <param name="data">Maximum XP data.</param>
         public void OnXpMaxChange(Component sender, object data)
         {
-            if (data is not float xpMax) return;
+            if (data is not float xpMax) return;  // Validate maximum XP data.
 
-            _xpMax = xpMax;
+            _xpMax = xpMax;  // Update maximum XP.
         }
 
         /// <summary>
-        /// Game event listener function called when the event onAgeUpgrade is triggered (linked to a GameEventListener component).
+        /// Method called when age is upgraded.
         /// </summary>
-        /// <param name="sender">The sender of the game event.</param>
-        /// <param name="data">The data being transferred.</param>
+        /// <param name="sender">Sender component.</param>
+        /// <param name="data">Upgrade data.</param>
         public void OnAgeUpgrade(Component sender, object data)
         {
-            StartCoroutine(ChangeSprite());
+            StartCoroutine(ChangeSprite());  // Start coroutine to change sprite.
         }
 
         /// <summary>
-        /// Change the sprite inside the button (with cooldown to wait for the sprite change in the scriptable object).
+        /// Coroutine to change the sprite after a delay.
         /// </summary>
-        /// <returns></returns>
         private IEnumerator ChangeSprite()
         {
-            yield return new WaitForSeconds(1f);
-            if (_image is null) yield break;
-            _image.sprite = _capacitySo.Sprite;
+            yield return new WaitForSeconds(1f);  // Wait for 1 second.
+            if (_image == null) yield break;  // Exit if image is null.
+            _image.sprite = _capacitySo.Sprite;  // Update image sprite.
         }
 
         /// <summary>
-        /// Game event listener function called when the event onGameSpeedChange is triggered (linked to a GameEventListener component).
+        /// Method called when game speed changes.
         /// </summary>
-        /// <param name="sender">The sender of the game event.</param>
-        /// <param name="data">The data being transferred.</param>
+        /// <param name="sender">Sender component.</param>
+        /// <param name="data">Game speed data.</param>
         public void OnGameSpeedChange(Component sender, object data)
         {
-            if (data is not GameSpeed gameSpeed) return;
+            if (data is not GameSpeed gameSpeed) return;  // Validate game speed data.
 
-            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _xpRatio >= cost && _canUse);
+            SetActiveButton(gameSpeed == GameSpeed.Stop ? false : _xpRatio >= cost && _canUse);  // Update button state based on game speed.
         }
 
         /// <summary>
-        /// Game event listener function called when the event onSpecialCapacityStatusChange is triggered (linked to a GameEventListener component).
+        /// Method called when special capacity status changes.
         /// </summary>
-        /// <param name="sender">The sender of the game event.</param>
-        /// <param name="data">The data being transferred.</param>
+        /// <param name="sender">Sender component.</param>
+        /// <param name="data">Status data.</param>
         public void OnSpecialCapacityStatusChange(Component sender, object data)
         {
-            if(data is not bool status) return;
-            _canUse = status;
-            SetActiveButton(_xpRatio >= cost && _canUse);
+            if (data is not bool status) return;  // Validate status data.
+            _canUse = status;  // Update capacity use flag.
+            SetActiveButton(_xpRatio >= cost && _canUse);  // Update button state based on XP ratio and use flag.
         }
     }
 }
