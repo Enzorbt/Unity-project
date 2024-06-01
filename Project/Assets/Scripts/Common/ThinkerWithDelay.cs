@@ -1,41 +1,36 @@
-﻿using Supinfo.Project.Common;
+using Common;
 using UnityEngine;
 
-/// <summary>
-/// This class represents a thinker with a delay. It uses a BrainWithDelay object to perform thinking.
-/// </summary>
-public class ThinkerWithDelay : MonoBehaviour
+namespace Supinfo.Project.Common
 {
     /// <summary>
-    /// A flag that indicates whether the thinker is currently thinking.
+    /// The ThinkerWithDelay class is responsible for launching the ThinkWithDelay function of the BrainWithDelay class, it can take as a brain any BrainWithDelay object.
     /// </summary>
-    public bool IsThinking {get; set;}
-
-    /// <summary>
-    /// The brain that the thinker uses to perform thinking.
-    /// </summary>
-    [SerializeField]
-    private BrainWithDelay brain;
-    
-    public BrainWithDelay Brain
+    public class ThinkerWithDelay : MonoBehaviour
     {
-        get => brain;
-        set => brain = value;
-    }
+        /// <summary>
+        /// The state of the thinker, true if already thinking, false otherwise.
+        /// </summary>
+        public bool IsThinking {get; set;}
+        
+        /// <summary>
+        /// The brain of the thinker.
+        /// </summary>
+        [SerializeField] private BrainWithDelay brain;
 
-    /// <summary>
-    /// This method is called by Unity every physics frame. It checks if the thinker is not currently thinking
-    /// and if the brain is not null, then it starts a coroutine to perform thinking with a delay.
-    /// </summary>
-    private void FixedUpdate()
-    {
-        // Check if the thinker is not currently thinking
-        if (!IsThinking)
+        /// <summary>
+        /// The property to set the brain.
+        /// </summary>
+        public BrainWithDelay Brain
         {
-            // Check if the brain is not null
-            if (brain is not null)
+            get => brain;
+            set => brain = value;
+        }
+
+        private void FixedUpdate()
+        {
+            if (!IsThinking && brain is not null)
             {
-                // Start a coroutine to perform thinking with a delay
                 StartCoroutine(brain.ThinkWithDelay(this));
             }
         }

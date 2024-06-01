@@ -3,35 +3,38 @@ using UnityEngine;
 
 namespace Supinfo.Project.Scripts.Events
 {
+    /// <summary>
+    /// Wrapper for the built-in unity event.
+    /// </summary>
     [CreateAssetMenu(menuName = "GameEvent")]
     public class GameEvent : ScriptableObject, IEvent
     {
-        public List<GameEventListener> _listeners;
-
-        // Raise event throught different methods signatures
+        /// <summary>
+        /// The list of all gameEventListeners that subscribe to the event.
+        /// </summary>
+        private List<GameEventListener> _gameEventListeners;
+        
         public void Raise(Component sender, object data)
         {
-            for (int i = 0; i < _listeners.Count; i++)
+            foreach (var gameEventListener in _gameEventListeners)
             {
-                _listeners[i].OnEventRaised(sender, data);
+                gameEventListener.OnEventRaised(sender, data);
             }
         }
-
-        // Manage listeners
+        
         public void RegisterListener(GameEventListener listener)
         {
-            if (!_listeners.Contains(listener))
+            if (!_gameEventListeners.Contains(listener))
             {
-                _listeners.Add(listener);
-
+                _gameEventListeners.Add(listener);
             }
         }
-
+        
         public void UnregisterListener(GameEventListener listener)
         {
-            if (_listeners.Contains(listener))
+            if (_gameEventListeners.Contains(listener))
             {
-                _listeners.Remove(listener);
+                _gameEventListeners.Remove(listener);
             }
         }
     }
