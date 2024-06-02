@@ -129,7 +129,7 @@ MonoBehaviour:
     upgradeStatModifiers: []
   unitType: {fileID: 11400000, guid: ae01f77c6ef19d84b9cb2c6a3348d900, type: 2}
   maxHealth:
-    baseValue: 200
+    baseValue: 150
     ageStatModifiers:
     - value: 100
       type: 0

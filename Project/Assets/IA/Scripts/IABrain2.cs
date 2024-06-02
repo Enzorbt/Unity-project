@@ -4,6 +4,8 @@ using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.ScriptableObjects.Upgrades;
 using UnityEngine;
 
+// The condition of counter is controlling time and action priority
+
 namespace IA.Event
 {
     [CreateAssetMenu(menuName = "Brains/IABrain2")]

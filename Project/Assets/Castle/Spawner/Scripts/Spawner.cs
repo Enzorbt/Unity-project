@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,35 +7,61 @@ using Supinfo.Project.Scripts.Managers;
 using Supinfo.Project.Unit.Scripts;
 using Supinfo.Project.Unit.Scripts.Health;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Supinfo.Project.Castle.Spawner.Scripts
 {
     public class Spawner : MonoBehaviour
     {
-        // Private fields
-        private Vector3 _spawnPosition;
+        /// <summary>
+        /// The number of units that are spawned and still alive.
+        /// </summary>
         private int _spawnNumber;
-        [SerializeField]
-        private int spawnLimit = 10;
+        /// <summary>
+        /// The maximum number of units that can be spawned.
+        /// </summary>
+        [SerializeField] private int spawnLimit = 10;
 
-        [SerializeField]
-        private GameEvent onSpawnQueueStatusChange;
+        /// <summary>
+        /// The event to raise when the number of units in the queue changes.
+        /// </summary>
+        [SerializeField] private GameEvent onSpawnQueueStatusChange;
         
-        private SpriteRenderer _unitSpriteRenderer;
-        private bool _isSpawning = false;
+        /// <summary>
+        /// The status of the spawner (true if the spawner can spawn, false otherwise).
+        /// </summary>
+        private bool _isSpawning;
+        
+        /// <summary>
+        /// The unit container that holds the units spawned by the spawner.
+        /// </summary>
         private Transform _unitsContainer;
+        
+        /// <summary>
+        /// The tag that the spawned units will receive.
+        /// </summary>
         private string _unitTag;
 
+        /// <summary>
+        /// The Queue that holds the units to spawn (as their scriptable object).
+        /// </summary>
         private Queue<UnitStatSo> _unitStatSos;
+        
+        /// <summary>
+        /// The spawn position for the units.
+        /// </summary>
         private Vector3 _spawnPoint;
 
+        /// <summary>
+        /// The image objects that constitute the queue (UI).
+        /// </summary>
         private List<Image> _images = new List<Image>();
         
-        [SerializeField]
-        private BaseIdentifier baseId;
-
+        /// <summary>
+        /// The unique identifier for the base (Allies/Enemies).
+        /// </summary>
+        [SerializeField] private BaseIdentifier baseId;
+        
         private void Start()
         {
             _unitStatSos = new Queue<UnitStatSo>();
@@ -52,7 +77,7 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
                 _images[i].enabled = false;
             }
         }
-
+        
         private void Update()
         {
             if (!_isSpawning && _spawnNumber <= spawnLimit && _unitStatSos.Count != 0)
@@ -63,6 +88,11 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             _spawnNumber = _unitsContainer.childCount;
         }
 
+        /// <summary>
+        /// Function to calculate the spawn point of the unit (that depends on the size of the prefab, and the size of its sprite).
+        /// </summary>
+        /// <param name="unit">The unit to spawn.</param>
+        /// <returns>The spawn point of the unit, raised to match its size.</returns>
         private Vector3 GetSpawnPoint(GameObject unit)
         {
             var unitSpriteRenderer = unit.GetComponent<SpriteRenderer>();
@@ -74,6 +104,10 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             return new Vector3(posX, posY, 0);
         }
 
+        /// <summary>
+        /// The main function of the spawner class, make the unit spawn (with a cooldown).
+        /// </summary>
+        /// <returns>Wait for seconds.</returns>
         private IEnumerator SpawnWithCoolDown()
         {
             _isSpawning = true;
@@ -129,6 +163,9 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             _isSpawning = false;
         }
 
+        /// <summary>
+        /// Update the unit's queue (UI) with the units that are currently in the queue (_unitsStatSos variable).
+        /// </summary>
         private void UpdateQueueUI()
         {
             // disable all sprites
@@ -144,6 +181,11 @@ namespace Supinfo.Project.Castle.Spawner.Scripts
             }
         }
 
+        /// <summary>
+        /// Game event listener function called when the event onUnitSpawn is triggered (linked to a GameEventListener component).
+        /// </summary>
+        /// <param name="sender">The sender of the game event.</param>
+        /// <param name="data">The data being transferred.</param>
         public void SpawnUnit(Component sender, object data)
         {
             if (data is not UnitStatSo unitStatSo) return;
