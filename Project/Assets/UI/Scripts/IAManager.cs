@@ -125,6 +125,9 @@ namespace Supinfo.Project.UI.Scripts
 
             // Set the IA behavior in the game
             thinker.Brain = _iaChoice;
+
+            if (transform.parent is null) return;
+            if (transform is null) return;
             
             // Destroy game object
             transform.parent = ia.transform;
