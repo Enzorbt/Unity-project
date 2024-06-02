@@ -20,7 +20,7 @@ namespace Supinfo.Project.UI.Scripts
         /// The game event that changes the state of the drag manager.
         /// </summary>
         [SerializeField] private GameEvent onDragStateChange;
-
+        
         private Image _image;
 
         private void Start()
