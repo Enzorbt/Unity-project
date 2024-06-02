@@ -59,7 +59,6 @@ The project includes two specifications: a development-oriented subject and a ga
 - ROBERT Enzo - FrontEnd developer + Commercial + Music
 - BOUDOU Romain - FrontEnd developer + Animation + Drawing
 
-
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details.
