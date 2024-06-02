@@ -14830,7 +14830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGoldCountChange: {fileID: 11400000, guid: fb331398eef5f4e009819eaac0515d31, type: 2}
-  goldGain: 500
+  goldGain: 5
   goldGainCooldown: 2
 --- !u!114 &1954219968
 MonoBehaviour:
