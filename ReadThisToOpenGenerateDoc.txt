@@ -1,0 +1,5 @@
+Hey mates,
+To launch our generate developer documentation
+U should open the index.html in 2PROJ\GenerateDeveloperDocFolder.
+Path : 2PROJ\GenerateDeveloperDocFolder\index.html
+Enjoy ur reading.
