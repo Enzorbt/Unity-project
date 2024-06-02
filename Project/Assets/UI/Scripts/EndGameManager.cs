@@ -77,11 +77,19 @@ namespace Supinfo.Project.UI.Scripts
             LanguageManager.onLanguageChanged += UpdateEndTexts; // Subscribe to the language change event
         }
 
+        /// <summary>
+        /// Called when the script instance is being destroyed.
+        /// Unsubscribes from the language change event.
+        /// </summary>
         private void OnDestroy()
         {
             LanguageManager.onLanguageChanged -= UpdateEndTexts;  // Unsubscribe from language change event
         }
 
+        /// <summary>
+        /// Called once per frame.
+        /// Updates the elapsed time and displays it on the timer text if the game is running.
+        /// </summary>
         private void Update()
         {
             if (isRunning)
@@ -128,11 +136,19 @@ namespace Supinfo.Project.UI.Scripts
             _bannerImage.color = color;
         }
         
+        /// <summary>
+        /// Starts the coroutine to update the end texts from localization settings.
+        /// </summary>
+        /// <param name="localeID">The locale ID indicating the language to update to.</param>
         private void UpdateEndTexts(int localeID)
         {
             StartCoroutine(UpdateEndFromLocalization());
         }
 
+        /// <summary>
+        /// Coroutine that updates the end texts (e.g., "Victory", "Defeat") from the localization database.
+        /// </summary>
+        /// <returns>Returns an IEnumerator for the coroutine.</returns>
         private IEnumerator UpdateEndFromLocalization()
         {
             yield return LocalizationSettings.InitializationOperation;

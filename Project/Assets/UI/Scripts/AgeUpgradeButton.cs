@@ -127,6 +127,9 @@ namespace Supinfo.Project.UI.Scripts
             StartCoroutine(UpdateAgesFromLocalization());
         }
 
+        /// <summary>
+        /// Here the coroutine to update ageText with localization Tables.
+        /// </summary>
         private IEnumerator UpdateAgesFromLocalization()
         {
             yield return LocalizationSettings.InitializationOperation;
