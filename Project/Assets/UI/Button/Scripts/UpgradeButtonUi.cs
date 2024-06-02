@@ -3,9 +3,8 @@ using Supinfo.Project.Scripts;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Managers;
 using Supinfo.Project.Scripts.ScriptableObjects.Upgrades;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Supinfo.Project.UI.Button.Scripts
 {
@@ -50,11 +49,23 @@ namespace Supinfo.Project.UI.Button.Scripts
         private float _goldCount;
 
         /// <summary>
+        /// The image component of the button
+        /// </summary>
+        private Image _imageButton;
+
+        /// <summary>
+        /// The button component of this game object.
+        /// </summary>
+        private UnityEngine.UI.Button _button;
+        
+        /// <summary>
         /// Initializes the button to be deactivated.
         /// </summary>
         private void Awake()
         {
+            _button = gameObject.GetComponentInChildren<UnityEngine.UI.Button>();
             SetActiveButton(false);
+            _imageButton = GetComponentsInChildren<Image>()[0];
         }
 
         /// <summary>
@@ -111,7 +122,10 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// <param name="state">The activation state.</param>
         private void SetActiveButton(bool state)
         {
-            gameObject.GetComponentInChildren<UnityEngine.UI.Button>().enabled = state;
+            if (_button is null) return;
+            _button.enabled = state;
+            if (_imageButton is null) return;
+            _imageButton.color = state ? new Color(1,1,1,0.4f) : new Color(1,0,0,0.4f);
         }
     }
 }

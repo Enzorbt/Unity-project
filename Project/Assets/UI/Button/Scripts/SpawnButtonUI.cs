@@ -29,9 +29,14 @@ namespace Supinfo.Project.UI.Button.Scripts
         }
 
         /// <summary>
-        /// Reference to the image component for this button.
+        /// Reference to the image component for this button of the button.
         /// </summary>
-        private Image _image;
+        private Image _imageButton;
+        
+        /// <summary>
+        /// Reference to the image component for this button of the unitSprite.
+        /// </summary>
+        private Image _imageUnit;
         
         /// <summary>
         /// Event triggered when a unit is spawned.
@@ -73,7 +78,8 @@ namespace Supinfo.Project.UI.Button.Scripts
         {
             _button = transform.GetComponentInChildren<UnityEngine.UI.Button>();
             IsActive = true;
-            _image = GetComponentsInChildren<Image>()[1];
+            _imageButton = GetComponentsInChildren<Image>()[0];
+            _imageUnit = GetComponentsInChildren<Image>()[1];
             
             if (cooldownImage != null)
             {
@@ -134,9 +140,11 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// <param name="value">The value indicating whether the button should be enabled.</param>
         private void EnableButton(bool value)
         {
-            if (_button == null) return;
+            if (_button is null) return;
+            if(_imageButton is null) return;
             if (!IsActive) return;
             _button.enabled = value;
+            _imageButton.color = value ? new Color(1,1,1,0.4f) : new Color(1,0,0,0.4f);
         }
 
         /// <summary>
@@ -182,7 +190,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         private IEnumerator ChangeSprite()
         {
             yield return new WaitForSeconds(1f);
-            _image.sprite = unitStatSo.Sprite;
+            _imageUnit.sprite = unitStatSo.Sprite;
         }
     }
 }
