@@ -30,14 +30,7 @@ namespace Supinfo.Project.Unit.Scripts
             var target = detection?.Detect(unitThinker.Direction, 1, tags[1] == "Allies" ? "Unit,Enemies" : "Unit,Allies");
             if (target is not null)
             {
-                unitThinker.TryGetComponent(out IShooter shooter);
-                shooter?.Shoot(
-                    unitThinker.Damage,
-                    unitThinker.HitSpeed,
-                    unitThinker.WalkSpeed + 1,
-                    target.transform, 
-                    unitThinker.UnitType
-                    );
+                Attack(unitThinker, target);
                 return;
             }
 
@@ -45,28 +38,14 @@ namespace Supinfo.Project.Unit.Scripts
             target = detection?.Detect(unitThinker.Direction, unitThinker.Range, tags[1] == "Allies" ? "Unit,Enemies" : "Unit,Allies");
             if (target is not null)
             {
-                unitThinker.TryGetComponent(out IShooter shooter);
-                shooter?.Shoot(
-                    unitThinker.Damage,
-                    unitThinker.HitSpeed,
-                    unitThinker.WalkSpeed + 1,
-                    target.transform, 
-                    unitThinker.UnitType
-                    );
+                Attack(unitThinker, target);
             }
 
             // Detect castles
             target = detection?.Detect(unitThinker.Direction, unitThinker.Range, tags[1] == "Allies" ? "Castle,Enemies" : "Castle,Allies");
             if (target is not null)
             {
-                unitThinker.TryGetComponent(out IShooter shooter);
-                shooter?.Shoot(
-                    unitThinker.Damage,
-                    unitThinker.HitSpeed,
-                    unitThinker.WalkSpeed + 1,
-                    target.transform, 
-                    unitThinker.UnitType
-                    );
+                Attack(unitThinker, target);
             }
 
             // Detect nearby allies
@@ -97,8 +76,9 @@ namespace Supinfo.Project.Unit.Scripts
                 unitThinker.Damage,
                 unitThinker.HitSpeed,
                 unitThinker.WalkSpeed + 1,
-                target.transform,
-                unitThinker.UnitType);
+                target.transform, 
+                unitThinker.UnitType
+            );
         }
     }
 }

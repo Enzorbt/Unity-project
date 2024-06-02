@@ -33,7 +33,7 @@ namespace IA.Event
                     iaThinker.Turret();
                     break;
                 case ActionChoice.upgrade: // UPGRADE
-                    if (iaThinker.UpgradeCounter > 10)
+                    if (iaThinker.UpgradeCounter > 20)
                     {
                         iaThinker.Upgrade((UpgradeType)iaThinker.getRand(0, 10));
                         iaThinker.UpgradeCounter = 0;
@@ -42,7 +42,7 @@ namespace IA.Event
                     break;
             }
 
-            iaThinker.Gold += 5; 
+            iaThinker.Gold += 10; 
             
             yield return new WaitForSeconds(delayTime);
             
