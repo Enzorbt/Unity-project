@@ -48,19 +48,24 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// </summary>
         private Image _image;
 
+        /// <summary>
+        /// The image component of the button
+        /// </summary>
+        private Image _imageButton;
+
         private void Awake()
         {
             _button = GetComponentInChildren<UnityEngine.UI.Button>();
             _image = GetComponentsInChildren<Image>()[1];
+            _imageButton = GetComponentsInChildren<Image>()[0];
         }
         
         public void OnClick()
         {
-            if (_spawnNumber >= 4) return;
             onSpawnTurret.Raise(this, turretStatSo);
             onGoldChange.Raise(this, -turretStatSo.Price);
             _spawnNumber++;
-            EnableButton(_spawnNumber <= 4 && _goldCount >= turretStatSo.Price);
+            EnableButton(_spawnNumber <= 3 && _goldCount >= turretStatSo.Price);
         }
 
         /// <summary>
@@ -68,7 +73,10 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// </summary>
         private void EnableButton(bool value)
         {
+            if (_button is null) return;
+            if (_imageButton is null) return;
             _button.enabled = value;
+            _imageButton.color = value ? new Color(1,1,1,0.4f) : new Color(1,0,0,0.4f);
         }
 
         /// <summary>
@@ -77,7 +85,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         public void OnGameSpeedChange(Component sender, object data)
         {
             if (data is not GameSpeed gameSpeed) return;
-            EnableButton(gameSpeed == GameSpeed.Stop ? false : _spawnNumber <= 4 && _goldCount >= turretStatSo.Price);
+            EnableButton(gameSpeed == GameSpeed.Stop ? false : _spawnNumber <= 3 && _goldCount >= turretStatSo.Price);
         }
 
         /// <summary>
@@ -87,7 +95,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         {
             if(data is not float goldCount) return;
             _goldCount = goldCount;
-            EnableButton(_spawnNumber <= 4 && _goldCount >= turretStatSo.Price);
+            EnableButton(_spawnNumber <= 3 && _goldCount >= turretStatSo.Price);
         }
         
         /// <summary>

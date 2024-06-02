@@ -392,7 +392,7 @@ namespace IA.Event
         /// <returns>True if is possible and false if is impossible.</returns>
         public bool Turret()
         {
-            if (Gold >= turretStatSo.Price && TurretNumber <= 4) // Verify that the price of a turret is above IA gold and turret number is above or equal to 4.
+            if (Gold >= turretStatSo.Price && TurretNumber < 4) // Verify that the price of a turret is above IA gold and turret number is above or equal to 4.
             {
                 Gold -= turretStatSo.Price;
                 TurretNumber++; // Buy the turret, buy subtract turret price to IA gold.

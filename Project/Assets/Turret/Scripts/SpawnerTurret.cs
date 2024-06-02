@@ -50,7 +50,7 @@ public class SpawnerTurret : MonoBehaviour
         if (turretStatSo.Prefab != null)
         {
             // Calculate the Y position for the new turret based on spawn number
-            var yPosition = spawnPosition.transform.position.y + _spawnNumber * 0.9f; 
+            var yPosition = spawnPosition.transform.position.y + _spawnNumber * 1.5f; 
             var newSpawnPosition = new Vector3(spawnPosition.transform.position.x, yPosition, _spawnNumber);
             var spawnedTurret = Instantiate(turretStatSo.Prefab, newSpawnPosition, Quaternion.identity);
             var tags = transform.tag.Split(',');
@@ -62,6 +62,7 @@ public class SpawnerTurret : MonoBehaviour
             // Update turret sprite
             var spriteRenderer = spawnedTurret.GetComponentInChildren<SpriteRenderer>();
             spriteRenderer.sprite = turretStatSo.Sprite;
+            spriteRenderer.sortingOrder = 7 - _spawnNumber;
             
             spawnedTurret.tag = "Turret," + tags[1];
             _spawnedTurrets.Add(spawnedTurret);

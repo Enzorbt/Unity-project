@@ -88,9 +88,6 @@ namespace Supinfo.Project.Unit.Scripts
             // Instantiate the projectile
             var instantiatedProjectile = Instantiate(projectile, newPosition, rotation);
 
-            // Set the projectile layer
-            instantiatedProjectile.layer = 3;
-
             // Try to get the ProjectileThinker component
             instantiatedProjectile.TryGetComponent(out ProjectileThinker projectileThinker);
 
