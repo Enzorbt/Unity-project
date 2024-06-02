@@ -176,7 +176,16 @@ MonoBehaviour:
     - value: 150
       type: 0
       order: 5
-    upgradeStatModifiers: []
+    upgradeStatModifiers:
+    - value: 2
+      type: 0
+      order: 0
+    - value: 2
+      type: 0
+      order: 0
+    - value: 2
+      type: 0
+      order: 0
   walkSpeed:
     baseValue: 2
     ageStatModifiers:
