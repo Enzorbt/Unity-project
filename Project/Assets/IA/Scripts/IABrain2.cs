@@ -1,7 +1,6 @@
 using System.Collections;
 using Supinfo.Project.Common;
 using Supinfo.Project.Scripts;
-using Supinfo.Project.Scripts.ScriptableObjects.Upgrades;
 using UnityEngine;
 
 // The condition of counter is controlling time and action priority
@@ -35,8 +34,11 @@ namespace IA.Event
             if (iaThinker.DetectUnitsAndAllies() > 0 && iaThinker.DetectUnitsAndEnemies() < 2 && iaThinker.SpawnCounter > 15)
             {
                 iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3), false);
+                yield return new WaitForSeconds(0.01f);
                 iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3), false);
+                yield return new WaitForSeconds(0.01f);
                 iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3), true);
+                yield return new WaitForSeconds(0.01f);
                 iaThinker.SpawnCounter = 0;
             }
             
@@ -70,7 +72,7 @@ namespace IA.Event
             iaThinker.SpawnCounter++;
             iaThinker.UpgradeCounter++;
             iaThinker.TurretCounter++;
-            iaThinker.Gold += 5; 
+            iaThinker.Gold += 10; 
             
         }
     }

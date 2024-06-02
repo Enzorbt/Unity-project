@@ -32,7 +32,9 @@ namespace IA.Event
             if (iaThinker.DetectUnitsAndAllies() == 0 && iaThinker.DetectUnitsAndEnemies() == 0 && iaThinker.SpawnCounter > 10)
             {                
                 iaThinker.Spawn(UnitChoice.melee, true);
+                yield return new WaitForSeconds(0.01f);
                 iaThinker.Spawn(UnitChoice.melee, true);
+                yield return new WaitForSeconds(0.01f);
                 iaThinker.SpawnCounter = 0;
             }
             
@@ -40,8 +42,11 @@ namespace IA.Event
             if (iaThinker.DetectUnitsAndAllies() > 0 && iaThinker.DetectUnitsAndEnemies() < 3 && iaThinker.SpawnCounter > 20)
             {
                 iaThinker.Spawn(UnitChoice.melee, false);
+                yield return new WaitForSeconds(0.01f);
                 iaThinker.Spawn(UnitChoice.range, false);
+                yield return new WaitForSeconds(0.01f);
                 iaThinker.Spawn(UnitChoice.range, false);
+                yield return new WaitForSeconds(0.01f);
                 iaThinker.SpawnCounter = 0;
             }
             
@@ -79,7 +84,7 @@ namespace IA.Event
             iaThinker.SpawnCounter++;
             iaThinker.UpgradeCounter++;
             iaThinker.TurretCounter++;
-            iaThinker.Gold += 5; 
+            iaThinker.Gold += 20; 
         }
     }
 }
