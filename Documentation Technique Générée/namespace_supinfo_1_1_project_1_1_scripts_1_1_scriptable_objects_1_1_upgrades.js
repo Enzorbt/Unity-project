@@ -1,0 +1,4 @@
+var namespace_supinfo_1_1_project_1_1_scripts_1_1_scriptable_objects_1_1_upgrades =
+[
+    [ "UpgradePricesSo", "class_supinfo_1_1_project_1_1_scripts_1_1_scriptable_objects_1_1_upgrades_1_1_upgrade_prices_so.html", "class_supinfo_1_1_project_1_1_scripts_1_1_scriptable_objects_1_1_upgrades_1_1_upgrade_prices_so" ]
+];
