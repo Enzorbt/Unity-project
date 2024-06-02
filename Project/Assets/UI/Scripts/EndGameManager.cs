@@ -94,7 +94,7 @@ namespace Supinfo.Project.UI.Scripts
         {
             if (isRunning)
             {
-                elapsedTime += Time.deltaTime;
+                elapsedTime += Time.unscaledDeltaTime;
                 timerText.text = FormatTime(elapsedTime);
             }
         }
@@ -167,7 +167,7 @@ namespace Supinfo.Project.UI.Scripts
         /// <returns>A formatted time string.</returns>
         private string FormatTime(float time)
         {
-            int minutes = Mathf.FloorToInt(time / 60F);
+            int minutes = Mathf.FloorToInt(time/ 60F);
             int seconds = Mathf.FloorToInt(time - minutes * 60);
             return string.Format("{0:0}:{1:00}", minutes, seconds);
         }
