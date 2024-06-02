@@ -109,7 +109,7 @@ namespace IA.Event
             
             // Comporetement Applicatif
             
-            if (iaThinker.TurretCounter > 7) // TURRET
+            if (iaThinker.TurretCounter > 30) // TURRET
             {
                 iaThinker.Turret();
                 iaThinker.TurretCounter = 0;
@@ -131,7 +131,7 @@ namespace IA.Event
             iaThinker.UpgradeCounter++;
             iaThinker.TurretCounter++;
             iaThinker.Gold += 100; 
-            iaThinker.Xp += 30; 
+            iaThinker.Xp += 10; 
         }
     }
 }
