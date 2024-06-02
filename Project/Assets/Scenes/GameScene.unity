@@ -6118,8 +6118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4008843417084f0982ef4938f8720467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGameSpeedChange: {fileID: 0}
-  onDragStateChange: {fileID: 0}
+  onGameSpeedChange: {fileID: 11400000, guid: dacdc402123e94defbc9f31c4ec82254, type: 2}
+  onDragStateChange: {fileID: 11400000, guid: 19ddf81a07f56ed47995538182a7ed72, type: 2}
 --- !u!114 &649845008
 MonoBehaviour:
   m_ObjectHideFlags: 0
