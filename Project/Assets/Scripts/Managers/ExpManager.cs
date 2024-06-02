@@ -64,6 +64,17 @@ namespace Supinfo.Project.Scripts.Managers
         }
 
         /// <summary>
+        /// Update is called once per frame.
+        /// </summary>
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                ReceiveExp(this, 10000f);  // Grant 500 XP when the 'X' key is pressed.
+            }
+        }
+
+        /// <summary>
         /// Listener for age upgrade event.
         /// </summary>
         /// <param name="sender">Event sender.</param>
