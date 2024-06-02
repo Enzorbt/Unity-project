@@ -86,7 +86,6 @@ namespace Supinfo.Project.Scripts.Managers
             if (_age < 5)
             {
                 _age++;  // Increment age.
-                Debug.Log("age:" + _age);
             }
             
             if (_age <= experienceStatSo.ExperienceLevel.Count)
