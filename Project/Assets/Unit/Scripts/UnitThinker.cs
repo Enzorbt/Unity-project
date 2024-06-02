@@ -1,5 +1,4 @@
 ﻿using Common;
-using ScriptableObjects.Unit;
 using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
 using UnityEngine;
 

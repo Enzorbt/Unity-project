@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Interfaces;
 using Supinfo.Project.Scripts.ScriptableObjects.UnitTypes;
