@@ -81,9 +81,6 @@ namespace Supinfo.Project.UI.Button.Scripts
             _imageButton = GetComponentsInChildren<Image>()[0];
             _imageUnit = GetComponentsInChildren<Image>()[1];
             
-            Debug.Log(_imageUnit);
-            Debug.Log(_imageButton);
-            
             if (cooldownImage != null)
             {
                 cooldownImage.type = Image.Type.Filled;
