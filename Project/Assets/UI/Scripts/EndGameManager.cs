@@ -6,7 +6,6 @@ using Supinfo.Project.Scripts.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Supinfo.Project.UI.Scripts
@@ -47,6 +46,21 @@ namespace Supinfo.Project.UI.Scripts
         [SerializeField] private GameEvent onGameSpeedChange;
 
         /// <summary>
+        /// The TextMeshProUGUI component that displays the timer.
+        /// </summary>
+        [SerializeField] private TextMeshProUGUI timerText;
+
+        /// <summary>
+        /// The elapsed time since the game started.
+        /// </summary>
+        private float elapsedTime;
+
+        /// <summary>
+        /// Boolean to track if the game is still running.
+        /// </summary>
+        private bool isRunning;
+
+        /// <summary>
         /// This method is called when the script instance is being loaded.
         /// It initializes the text and image components.
         /// </summary>
@@ -57,6 +71,8 @@ namespace Supinfo.Project.UI.Scripts
             _bannerImage = banner.GetComponentInChildren<Image>();
             _originalBannerColor = _bannerImage.color;
             _endTexts = new List<string>();
+            elapsedTime = 0f;
+            isRunning = true;
 
             LanguageManager.onLanguageChanged += UpdateEndTexts; // Subscribe to the language change event
         }
@@ -64,6 +80,15 @@ namespace Supinfo.Project.UI.Scripts
         private void OnDestroy()
         {
             LanguageManager.onLanguageChanged -= UpdateEndTexts;  // Unsubscribe from language change event
+        }
+
+        private void Update()
+        {
+            if (isRunning)
+            {
+                elapsedTime += Time.deltaTime;
+                timerText.text = FormatTime(elapsedTime);
+            }
         }
 
         /// <summary>
@@ -75,6 +100,7 @@ namespace Supinfo.Project.UI.Scripts
         public void OnCastleDeath(Component sender, object data)
         {
             if (data is not BaseIdentifier baseId) return;
+            isRunning = false;
             winPanel.SetActive(true);
             switch (baseId)
             {
@@ -116,6 +142,18 @@ namespace Supinfo.Project.UI.Scripts
             
             _endTexts.Add(table.GetEntry("Victory")?.GetLocalizedString());
             _endTexts.Add(table.GetEntry("Defeat")?.GetLocalizedString());
+        }
+
+        /// <summary>
+        /// Formats the elapsed time as a string.
+        /// </summary>
+        /// <param name="time">The elapsed time in seconds.</param>
+        /// <returns>A formatted time string.</returns>
+        private string FormatTime(float time)
+        {
+            int minutes = Mathf.FloorToInt(time / 60F);
+            int seconds = Mathf.FloorToInt(time - minutes * 60);
+            return string.Format("{0:0}:{1:00}", minutes, seconds);
         }
     }
 }
