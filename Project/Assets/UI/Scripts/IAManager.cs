@@ -116,6 +116,7 @@ namespace Supinfo.Project.UI.Scripts
         /// <param name="mode">The 	extbf{LoadSceneMode} used to load the scene.</param>
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            if (SceneManager.GetActiveScene().name == "Main Menu") return;
             // Find the game object with the "IA" tag
             var ia = GameObject.FindGameObjectWithTag("IA");
 
@@ -124,6 +125,9 @@ namespace Supinfo.Project.UI.Scripts
 
             // Set the IA behavior in the game
             thinker.Brain = _iaChoice;
+            
+            // Destroy game object
+            transform.parent = ia.transform;
         }
     }
 }

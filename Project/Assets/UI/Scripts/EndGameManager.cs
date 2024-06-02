@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Supinfo.Project.Scripts.Events;
 using Supinfo.Project.Scripts.Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,16 +20,6 @@ namespace Supinfo.Project.UI.Scripts
         /// The GameObject representing the win/lose panel.
         /// </summary>
         [SerializeField] private GameObject winPanel;
-
-        /// <summary>
-        /// The GameEvent that is triggered when the game is restarted.
-        /// </summary>
-        [SerializeField] private GameEvent onRestart;
-
-        /// <summary>
-        /// The GameEvent that is triggered when the main menu is returned to.
-        /// </summary>
-        [SerializeField] private GameEvent onReturnToMainMenu;
 
         /// <summary>
         /// The TextMeshProUGUI component that displays the victory/defeat text.
@@ -44,6 +37,16 @@ namespace Supinfo.Project.UI.Scripts
         private Color _originalBannerColor;
 
         /// <summary>
+        /// The variable that holds the texts.
+        /// </summary>
+        private List<String> _endTexts;
+
+        /// <summary>
+        /// The gameSpeedEvent that changes the speed of the game
+        /// </summary>
+        [SerializeField] private GameEvent onGameSpeedChange;
+
+        /// <summary>
         /// This method is called when the script instance is being loaded.
         /// It initializes the text and image components.
         /// </summary>
@@ -53,6 +56,14 @@ namespace Supinfo.Project.UI.Scripts
             _text = banner.GetComponentInChildren<TextMeshProUGUI>();
             _bannerImage = banner.GetComponentInChildren<Image>();
             _originalBannerColor = _bannerImage.color;
+            _endTexts = new List<string>();
+
+            LanguageManager.onLanguageChanged += UpdateEndTexts; // Subscribe to the language change event
+        }
+
+        private void OnDestroy()
+        {
+            LanguageManager.onLanguageChanged -= UpdateEndTexts;  // Unsubscribe from language change event
         }
 
         /// <summary>
@@ -68,14 +79,16 @@ namespace Supinfo.Project.UI.Scripts
             switch (baseId)
             {
                 case BaseIdentifier.BaseEnemies:
-                    EnableWinPanel(_originalBannerColor, "Victory");
+                    EnableWinPanel(_originalBannerColor, _endTexts[0]);
                     break;
                 case BaseIdentifier.BaseAllies:
-                    EnableWinPanel(Color.red, "Defeat");
+                    EnableWinPanel(Color.red, _endTexts[1]);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            onGameSpeedChange.Raise(this, GameSpeed.Stop);
         }
 
         /// <summary>
@@ -88,21 +101,21 @@ namespace Supinfo.Project.UI.Scripts
             _text.text = title;
             _bannerImage.color = color;
         }
-
-        /// <summary>
-        /// This method restarts the current scene.
-        /// </summary>
-        public void RestartGame()
+        
+        private void UpdateEndTexts(int localeID)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(UpdateEndFromLocalization());
         }
 
-        /// <summary>
-        /// This method loads the main menu scene.
-        /// </summary>
-        public void ReturnToMainMenu()
+        private IEnumerator UpdateEndFromLocalization()
         {
-            SceneManager.LoadScene("Main Menu");
+            yield return LocalizationSettings.InitializationOperation;
+            _endTexts.Clear();
+            var tableName = "EndText";
+            var table = LocalizationSettings.StringDatabase.GetTable(tableName);
+            
+            _endTexts.Add(table.GetEntry("Victory")?.GetLocalizedString());
+            _endTexts.Add(table.GetEntry("Defeat")?.GetLocalizedString());
         }
     }
 }
