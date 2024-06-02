@@ -24,6 +24,7 @@ namespace IA.Event
                     break;
                 case ActionChoice.spawn: // SPAWN UNIT
                     iaThinker.Spawn((UnitChoice)iaThinker.getRand(0, 3), false);
+                    yield return new WaitForSeconds(0.01f);
                     break;
                 case ActionChoice.unlock: // UNLOCK UNIT
                     iaThinker.UnlockNewUnit();
@@ -32,7 +33,7 @@ namespace IA.Event
                     iaThinker.Turret();
                     break;
                 case ActionChoice.upgrade: // UPGRADE
-                    if (iaThinker.UpgradeCounter > 2)
+                    if (iaThinker.UpgradeCounter > 10)
                     {
                         iaThinker.Upgrade((UpgradeType)iaThinker.getRand(0, 10));
                         iaThinker.UpgradeCounter = 0;
