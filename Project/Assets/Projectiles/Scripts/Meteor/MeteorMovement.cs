@@ -13,8 +13,6 @@ namespace Supinfo.Project.Projectiles.Scripts.Meteor
         /// </summary>
         [SerializeField] private float speed;
         
-        [SerializeField] private GameObject projectile;
-        
         /// <summary>
         /// The game event that trigger the sound.
         /// </summary>
