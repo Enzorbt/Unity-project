@@ -107,10 +107,13 @@ namespace Supinfo.Project.UI.Scripts
         /// <param name="value">The activation state of the button.</param>
         private void EnableButton(bool value)
         {
-            var button = transform.GetComponentInChildren<UnityEngine.UI.Button>(); // Get the button component.
-            if (button is null) return;
-            button.enabled = value; // Set the button's activation state.
-            image.sprite = value ? buttonImg : pressButtonImg; // Set the sprite based on the activation state.
+            if(currentAgeIndex <= 5)
+            {
+                var button = transform.GetComponentInChildren<UnityEngine.UI.Button>(); // Get the button component.
+                if (button is null) return;
+                button.enabled = value; // Set the button's activation state.
+                image.sprite = value ? buttonImg : pressButtonImg; // Set the sprite based on the activation state.                
+            }
         }
 
         /// <summary>
