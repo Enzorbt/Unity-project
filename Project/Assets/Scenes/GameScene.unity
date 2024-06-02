@@ -16684,13 +16684,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockCosts:
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
+  - 300
+  - 300
+  - 300
+  - 300
+  - 300
+  - 300
+  - 300
   onGoldChange: {fileID: 11400000, guid: d104f05112d6cb942890819b299868db, type: 2}
   _image: {fileID: 0}
 --- !u!114 &2128826347

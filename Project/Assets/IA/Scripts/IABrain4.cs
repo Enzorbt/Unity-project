@@ -40,6 +40,7 @@ namespace IA.Event
                     iaThinker.Spawn(UnitChoice.antiarmor, true);
                     yield return new WaitForSeconds(0.01f);
                     iaThinker.PlayerUnits.Dequeue();
+                    iaThinker.Gold += 100; 
                     iaThinker.SpawnCounter = 0;
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.rangeStatSo.Type.StrongAgainst) // ANTI ARMOR
@@ -47,6 +48,7 @@ namespace IA.Event
                     iaThinker.Spawn(UnitChoice.range, true);
                     yield return new WaitForSeconds(0.01f);
                     iaThinker.PlayerUnits.Dequeue();
+                    iaThinker.Gold += 100; 
                     iaThinker.SpawnCounter = 0;
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.meleeStatSo.Type.StrongAgainst) // RANGE
@@ -54,6 +56,7 @@ namespace IA.Event
                     iaThinker.Spawn(UnitChoice.melee, true);
                     yield return new WaitForSeconds(0.01f);
                     iaThinker.PlayerUnits.Dequeue();
+                    iaThinker.Gold += 100; 
                     iaThinker.SpawnCounter = 0;
                 }
                 else if (iaThinker.PlayerUnits.Peek().Type == iaThinker.armorStatSo.Type.StrongAgainst) // MELEE
@@ -61,18 +64,20 @@ namespace IA.Event
                     iaThinker.Spawn(UnitChoice.armor, true);
                     yield return new WaitForSeconds(0.01f);
                     iaThinker.PlayerUnits.Dequeue();
+                    iaThinker.Gold += 100; 
                     iaThinker.SpawnCounter = 0;
                 }   
             }
             
             // SI LE JOUEUR NE PLACE RIEN TANK (ARMOR + RANGE)
-            if (iaThinker.DetectUnitsAndEnemies() == 0 && iaThinker.SpawnCounter > 10)
+            if (iaThinker.DetectUnitsAndEnemies() == 0)
             {
                 iaThinker.Spawn(UnitChoice.range, true);
                 yield return new WaitForSeconds(0.01f);
                 iaThinker.Spawn(UnitChoice.range, true);
                 yield return new WaitForSeconds(0.01f);
                 iaThinker.SpawnCounter = 0;
+                iaThinker.Gold += 100; 
             }
             
             if (iaThinker.DetectUnitsAndAllies() == 0 && iaThinker.DetectUnitsAndEnemies() == 0 && iaThinker.SpawnCounter > 7)
@@ -86,6 +91,7 @@ namespace IA.Event
                     iaThinker.Spawn(UnitChoice.range, true);
                     yield return new WaitForSeconds(0.01f);
                     iaThinker.SpawnCounter = 0;
+                    iaThinker.Gold += 100; 
                 }
             }
             
@@ -125,7 +131,7 @@ namespace IA.Event
             iaThinker.UpgradeCounter++;
             iaThinker.TurretCounter++;
             iaThinker.Gold += 100; 
-            iaThinker.Xp += 150; 
+            iaThinker.Xp += 30; 
         }
     }
 }
