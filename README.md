@@ -52,13 +52,12 @@ The project includes two specifications: a development-oriented subject and a ga
 
 - https://github.com/LoicLE-HENANF/2PROJ.git
 - cd sports-tournament-platform
-
 ## Contributors
 
 - LE-HENANF Loïc - BackEnd developer + Project Master
 - PREUVOST Paul - BackEnd developer + IA developer
-- ROBERT Enzo - BackEnd developer - FrontEnd developer + Commercial
-- BOUDOU Romain - BackEnd developer - FrontEnd developer + Animation + Drawing
+- ROBERT Enzo - FrontEnd developer + Commercial
+- BOUDOU Romain - FrontEnd developer + Animation + Drawing
 
 
 ## License
