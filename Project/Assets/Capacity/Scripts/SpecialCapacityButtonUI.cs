@@ -57,9 +57,21 @@ namespace Supinfo.Project.Capacity.Scripts
         /// </summary>
         [SerializeField] private Image cooldownImage;
 
+        /// <summary>
+        /// The image of the button (background).
+        /// </summary>
+        private Image _imageButton;
+
+        /// <summary>
+        /// The button component of the game object.
+        /// </summary>
+        private Button _button;
+
 
         private void Awake()
         {
+            _button = gameObject.GetComponentInChildren<Button>();
+            _imageButton = GetComponentsInChildren<Image>()[0];
             SetActiveButton(false);  // Initially disable the button.
             _image = GetComponentsInChildren<Image>()[1];  // Get the second Image component in children.
             if (_image != null)
@@ -136,7 +148,12 @@ namespace Supinfo.Project.Capacity.Scripts
         /// <param name="state">Active state.</param>
         private void SetActiveButton(bool state)
         {
-            gameObject.GetComponentInChildren<UnityEngine.UI.Button>().enabled = state;  // Enable/disable the button.
+            if (_button is null) return;
+            _button.enabled = state;  // Enable/disable the button.
+            
+            if(_imageButton is null) return;
+            _imageButton.color = state ? new Color(1,1,1,0.4f) : new Color(1,0,0,0.4f);
+
         }
 
         /// <summary>

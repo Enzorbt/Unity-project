@@ -83,7 +83,11 @@ namespace Supinfo.Project.Scripts.Managers
         {
             _expCount -= experienceStatSo.ExperienceLevel[_age];  // Subtract current level's XP from total XP.
             
-            _age++;  // Increment age.
+            if (_age < 5)
+            {
+                _age++;  // Increment age.
+                Debug.Log("age:" + _age);
+            }
             
             if (_age <= experienceStatSo.ExperienceLevel.Count)
             {

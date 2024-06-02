@@ -48,10 +48,16 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// </summary>
         private Image _image;
 
+        /// <summary>
+        /// The image component of the button
+        /// </summary>
+        private Image _imageButton;
+
         private void Awake()
         {
             _button = GetComponentInChildren<UnityEngine.UI.Button>();
             _image = GetComponentsInChildren<Image>()[1];
+            _imageButton = GetComponentsInChildren<Image>()[0];
         }
         
         public void OnClick()
@@ -68,7 +74,11 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// </summary>
         private void EnableButton(bool value)
         {
+            if (_button is null) return;
+            if (_imageButton is null) return;
             _button.enabled = value;
+            _imageButton.color = value ? new Color(1,1,1,0.4f) : new Color(1,0,0,0.4f);
+
         }
 
         /// <summary>
