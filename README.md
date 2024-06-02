@@ -57,7 +57,7 @@ The project includes two specifications: a development-oriented subject and a ga
 
 - LE-HENANF Loïc - BackEnd developer + Project Master
 - PREUVOST Paul - BackEnd developer + IA developer
-- ROBERT Enzo - FrontEnd developer + Commercial
+- ROBERT Enzo - FrontEnd developer + Commercial + Music
 - BOUDOU Romain - FrontEnd developer + Animation + Drawing
 
 
