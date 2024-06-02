@@ -1,4 +1,4 @@
-#Age of War Game Project
+# Age of Guild Game Project
 Introduction
 
     Anblisoft, a leading video game publisher, is looking for a development team to create an Age of War game. The objective of this project is to provide a stable and saleable version that meets the stated specifications. The team is free to use any language and technology, but cannot copy or adapt existing code, use no-code game-making apps, in-game map editors, or blueprint-type tools.
