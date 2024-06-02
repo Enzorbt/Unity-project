@@ -1,0 +1,4 @@
+var class_supinfo_1_1_project_1_1_scripts_1_1_scriptable_objects_1_1_experience_1_1_experience_stat_so =
+[
+    [ "ExperienceLevel", "class_supinfo_1_1_project_1_1_scripts_1_1_scriptable_objects_1_1_experience_1_1_experience_stat_so.html#a8bc70a3d47c5eff8d4c2795a8bc500b2", null ]
+];
