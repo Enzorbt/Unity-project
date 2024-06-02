@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 21078110208
-    m_Localized: "Dur\xE9e de la partie :"
+    m_Localized: 'Duree de la partie :'
     m_Metadata:
       m_Items: []
   references:
