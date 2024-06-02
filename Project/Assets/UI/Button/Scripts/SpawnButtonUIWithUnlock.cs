@@ -50,12 +50,18 @@ namespace Supinfo.Project.UI.Button.Scripts
         /// <summary>
         /// Reference to the image component.
         /// </summary>
-        public Image _image;
+        private Image _image;
+
+        /// <summary>
+        /// The image component of the button (background).
+        /// </summary>
+        private Image _imageButton;
             
         private void Awake()
         {
             _button = transform.GetComponentInChildren<UnityEngine.UI.Button>();
             _spawnButtonUI = GetComponent<SpawnButtonUI>();
+            _imageButton = GetComponentsInChildren<Image>()[0];
             _image = GetComponentsInChildren<Image>()[2];
         }
 
@@ -107,6 +113,7 @@ namespace Supinfo.Project.UI.Button.Scripts
         {
             if (_button is null) return;
             _button.enabled = value;
+            _imageButton.color = value ? new Color(1,1,1,0.4f) : new Color(1,0,0,0.4f);
         }
         
         /// <summary>
