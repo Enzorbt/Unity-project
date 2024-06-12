@@ -51,7 +51,8 @@ The project includes two specifications: a development-oriented subject and a ga
 ### Clone the repository:
 
 - https://github.com/LoicLE-HENANF/2PROJ.git
-- cd sports-tournament-platform
+- cd 2PROJ
+
 ## Contributors
 
 - LE-HENANF Loïc - BackEnd developer + Project Master
